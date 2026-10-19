@@ -38,7 +38,6 @@
             button3 = new Button();
             button2 = new Button();
             button1 = new Button();
-            quanlisinhvien1 = new StudentManagment.GUI.User_Control.Quanlisinhvien();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -208,22 +207,11 @@
             button1.Text = "Tra cứu sinh viên";
             button1.UseVisualStyleBackColor = false;
             // 
-            // quanlisinhvien1
-            // 
-            quanlisinhvien1.Dock = DockStyle.Fill;
-            quanlisinhvien1.Font = new Font("Roboto Condensed", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            quanlisinhvien1.Location = new Point(220, 0);
-            quanlisinhvien1.Margin = new Padding(0);
-            quanlisinhvien1.Name = "quanlisinhvien1";
-            quanlisinhvien1.Size = new Size(1046, 682);
-            quanlisinhvien1.TabIndex = 1;
-            // 
             // frmQuanLySinhVien
             // 
             AutoScaleDimensions = new SizeF(6F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1266, 682);
-            Controls.Add(quanlisinhvien1);
             Controls.Add(panel1);
             Font = new Font("Roboto Condensed", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Name = "frmQuanLySinhVien";
@@ -248,6 +236,5 @@
         private Button button3;
         private Button button5;
         private Button button2;
-        private GUI.User_Control.Quanlisinhvien quanlisinhvien1;
     }
 }
