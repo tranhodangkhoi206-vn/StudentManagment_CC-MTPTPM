@@ -35,10 +35,10 @@
             label2 = new Label();
             txbTimkiem = new TextBox();
             tableLayoutPanel3 = new TableLayoutPanel();
+            cbxNhomchuyennganh = new ComboBox();
+            label4 = new Label();
             label3 = new Label();
             cbxNhomlop = new ComboBox();
-            label4 = new Label();
-            cbxNhomchuyennganh = new ComboBox();
             drvDanhsachsinhvien = new DataGridView();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -146,6 +146,29 @@
             tableLayoutPanel3.Size = new Size(1060, 59);
             tableLayoutPanel3.TabIndex = 1;
             // 
+            // cbxNhomchuyennganh
+            // 
+            cbxNhomchuyennganh.Anchor = AnchorStyles.Left;
+            cbxNhomchuyennganh.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cbxNhomchuyennganh.FormattingEnabled = true;
+            cbxNhomchuyennganh.Location = new Point(715, 11);
+            cbxNhomchuyennganh.Name = "cbxNhomchuyennganh";
+            cbxNhomchuyennganh.Size = new Size(342, 37);
+            cbxNhomchuyennganh.TabIndex = 3;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Dock = DockStyle.Fill;
+            label4.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.Location = new Point(439, 0);
+            label4.Margin = new Padding(0);
+            label4.Name = "label4";
+            label4.Size = new Size(273, 59);
+            label4.TabIndex = 2;
+            label4.Text = "Nhóm theo ngành học:";
+            label4.TextAlign = ContentAlignment.MiddleLeft;
+            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -168,29 +191,6 @@
             cbxNhomlop.Name = "cbxNhomlop";
             cbxNhomlop.Size = new Size(273, 37);
             cbxNhomlop.TabIndex = 1;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Dock = DockStyle.Fill;
-            label4.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(439, 0);
-            label4.Margin = new Padding(0);
-            label4.Name = "label4";
-            label4.Size = new Size(273, 59);
-            label4.TabIndex = 2;
-            label4.Text = "Nhóm theo chuyên ngành:";
-            label4.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // cbxNhomchuyennganh
-            // 
-            cbxNhomchuyennganh.Anchor = AnchorStyles.Left;
-            cbxNhomchuyennganh.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cbxNhomchuyennganh.FormattingEnabled = true;
-            cbxNhomchuyennganh.Location = new Point(715, 11);
-            cbxNhomchuyennganh.Name = "cbxNhomchuyennganh";
-            cbxNhomchuyennganh.Size = new Size(342, 37);
-            cbxNhomchuyennganh.TabIndex = 3;
             // 
             // drvDanhsachsinhvien
             // 
