@@ -32,6 +32,8 @@
             panel1 = new Panel();
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel2 = new TableLayoutPanel();
+            cbxTinhtrang = new ComboBox();
+            label8 = new Label();
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
@@ -46,8 +48,6 @@
             tbtnNu = new RadioButton();
             rbtnNam = new RadioButton();
             cbxChuyennganh = new ComboBox();
-            label8 = new Label();
-            cbxTinhtrang = new ComboBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
             btnThem = new Button();
             btnXoa = new Button();
@@ -135,6 +135,29 @@
             tableLayoutPanel2.Size = new Size(1060, 175);
             tableLayoutPanel2.TabIndex = 0;
             // 
+            // cbxTinhtrang
+            // 
+            cbxTinhtrang.Anchor = AnchorStyles.Left;
+            cbxTinhtrang.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cbxTinhtrang.FormattingEnabled = true;
+            cbxTinhtrang.Location = new Point(161, 127);
+            cbxTinhtrang.Name = "cbxTinhtrang";
+            cbxTinhtrang.Size = new Size(170, 37);
+            cbxTinhtrang.TabIndex = 13;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Dock = DockStyle.Fill;
+            label8.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label8.ForeColor = SystemColors.ControlText;
+            label8.Location = new Point(3, 116);
+            label8.Name = "label8";
+            label8.Size = new Size(152, 59);
+            label8.TabIndex = 12;
+            label8.Text = "Tình trạng:";
+            label8.TextAlign = ContentAlignment.MiddleLeft;
+            // 
             // label7
             // 
             label7.AutoSize = true;
@@ -145,7 +168,7 @@
             label7.Name = "label7";
             label7.Size = new Size(162, 58);
             label7.TabIndex = 10;
-            label7.Text = "Chuyên ngành:";
+            label7.Text = "Ngành học:";
             label7.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label6
@@ -304,29 +327,6 @@
             cbxChuyennganh.Name = "cbxChuyennganh";
             cbxChuyennganh.Size = new Size(206, 37);
             cbxChuyennganh.TabIndex = 11;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Dock = DockStyle.Fill;
-            label8.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.ForeColor = SystemColors.ControlText;
-            label8.Location = new Point(3, 116);
-            label8.Name = "label8";
-            label8.Size = new Size(152, 59);
-            label8.TabIndex = 12;
-            label8.Text = "Tình trạng:";
-            label8.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // cbxTinhtrang
-            // 
-            cbxTinhtrang.Anchor = AnchorStyles.Left;
-            cbxTinhtrang.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cbxTinhtrang.FormattingEnabled = true;
-            cbxTinhtrang.Location = new Point(161, 127);
-            cbxTinhtrang.Name = "cbxTinhtrang";
-            cbxTinhtrang.Size = new Size(170, 37);
-            cbxTinhtrang.TabIndex = 13;
             // 
             // flowLayoutPanel1
             // 

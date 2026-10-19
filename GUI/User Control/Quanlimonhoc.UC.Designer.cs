@@ -55,11 +55,11 @@
             label5 = new Label();
             nudLythuyet = new NumericUpDown();
             flowLayoutPanel1 = new FlowLayoutPanel();
-            dgvDanhsachmonhoc = new DataGridView();
             btnThem = new Button();
             btnXoa = new Button();
             btnSua = new Button();
             btnLammoi = new Button();
+            dgvDanhsachmonhoc = new DataGridView();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -243,7 +243,7 @@
             label4.Name = "label4";
             label4.Size = new Size(156, 60);
             label4.TabIndex = 0;
-            label4.Text = "Chuyên ngành:";
+            label4.Text = "Ngành học:";
             label4.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // cbxChuyennganh
@@ -437,15 +437,6 @@
             flowLayoutPanel1.Size = new Size(489, 60);
             flowLayoutPanel1.TabIndex = 6;
             // 
-            // dgvDanhsachmonhoc
-            // 
-            dgvDanhsachmonhoc.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDanhsachmonhoc.Dock = DockStyle.Fill;
-            dgvDanhsachmonhoc.Location = new Point(492, 3);
-            dgvDanhsachmonhoc.Name = "dgvDanhsachmonhoc";
-            dgvDanhsachmonhoc.Size = new Size(565, 630);
-            dgvDanhsachmonhoc.TabIndex = 1;
-            // 
             // btnThem
             // 
             btnThem.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -485,6 +476,15 @@
             btnLammoi.TabIndex = 3;
             btnLammoi.Text = "Làm mới";
             btnLammoi.UseVisualStyleBackColor = true;
+            // 
+            // dgvDanhsachmonhoc
+            // 
+            dgvDanhsachmonhoc.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDanhsachmonhoc.Dock = DockStyle.Fill;
+            dgvDanhsachmonhoc.Location = new Point(492, 3);
+            dgvDanhsachmonhoc.Name = "dgvDanhsachmonhoc";
+            dgvDanhsachmonhoc.Size = new Size(565, 630);
+            dgvDanhsachmonhoc.TabIndex = 1;
             // 
             // Quanlimonhoc
             // 
