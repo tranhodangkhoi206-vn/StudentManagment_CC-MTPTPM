@@ -15,4 +15,11 @@
     <PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="BLL\" />
+    <Folder Include="DAL\" />
+    <Folder Include="DTO\" />
+    <Folder Include="GUI\User Control\" />
+  </ItemGroup>
+
 </Project>
