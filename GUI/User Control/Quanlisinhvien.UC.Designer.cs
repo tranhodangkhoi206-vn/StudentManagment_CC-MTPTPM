@@ -70,9 +70,9 @@
             label1.ForeColor = SystemColors.ButtonHighlight;
             label1.Location = new Point(21, 14);
             label1.Name = "label1";
-            label1.Size = new Size(398, 58);
+            label1.Size = new Size(404, 58);
             label1.TabIndex = 0;
-            label1.Text = "QUẢN LÍ SINH VIÊN";
+            label1.Text = "QUẢN LÝ SINH VIÊN";
             // 
             // panel1
             // 

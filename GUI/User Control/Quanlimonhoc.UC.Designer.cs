@@ -95,9 +95,9 @@
             label1.ForeColor = SystemColors.ButtonHighlight;
             label1.Location = new Point(18, 8);
             label1.Name = "label1";
-            label1.Size = new Size(386, 58);
+            label1.Size = new Size(392, 58);
             label1.TabIndex = 0;
-            label1.Text = "QUẢN LÍ MÔN HỌC";
+            label1.Text = "QUẢN LÝ MÔN HỌC";
             // 
             // tableLayoutPanel1
             // 
