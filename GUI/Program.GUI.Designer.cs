@@ -155,7 +155,7 @@
             btnQuanlidiem.Name = "btnQuanlidiem";
             btnQuanlidiem.Size = new Size(220, 50);
             btnQuanlidiem.TabIndex = 8;
-            btnQuanlidiem.Text = "Quản lí điểm";
+            btnQuanlidiem.Text = "Quản lý điểm";
             btnQuanlidiem.UseVisualStyleBackColor = false;
             // 
             // btnDangxuat
@@ -190,7 +190,7 @@
             btnQuanlimonhoc.Name = "btnQuanlimonhoc";
             btnQuanlimonhoc.Size = new Size(220, 50);
             btnQuanlimonhoc.TabIndex = 2;
-            btnQuanlimonhoc.Text = "Quản lí môn học";
+            btnQuanlimonhoc.Text = "Quản lý môn học";
             btnQuanlimonhoc.UseVisualStyleBackColor = false;
             // 
             // btnQuanlisinhvien
@@ -207,7 +207,7 @@
             btnQuanlisinhvien.Name = "btnQuanlisinhvien";
             btnQuanlisinhvien.Size = new Size(220, 50);
             btnQuanlisinhvien.TabIndex = 1;
-            btnQuanlisinhvien.Text = "Quản lí sinh viên";
+            btnQuanlisinhvien.Text = "Quản lý sinh viên";
             btnQuanlisinhvien.UseVisualStyleBackColor = false;
             // 
             // btnTracuusinhvien
