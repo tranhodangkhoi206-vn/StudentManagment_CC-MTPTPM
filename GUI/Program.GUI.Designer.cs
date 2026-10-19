@@ -33,12 +33,12 @@
             tableLayoutPanel2 = new TableLayoutPanel();
             lbTen = new Label();
             tableLayoutPanel3 = new TableLayoutPanel();
+            btnQuanlichuyennganh = new Button();
+            btnQuanlidiem = new Button();
+            btnDangxuat = new Button();
             btnQuanlimonhoc = new Button();
             btnQuanlisinhvien = new Button();
             btnTracuusinhvien = new Button();
-            btnDangxuat = new Button();
-            btnQuanlidiem = new Button();
-            btnQuanlichuyennganh = new Button();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -124,6 +124,58 @@
             tableLayoutPanel3.Size = new Size(220, 515);
             tableLayoutPanel3.TabIndex = 1;
             // 
+            // btnQuanlichuyennganh
+            // 
+            btnQuanlichuyennganh.BackgroundImageLayout = ImageLayout.None;
+            btnQuanlichuyennganh.Cursor = Cursors.Hand;
+            btnQuanlichuyennganh.Dock = DockStyle.Fill;
+            btnQuanlichuyennganh.FlatAppearance.BorderColor = SystemColors.Highlight;
+            btnQuanlichuyennganh.FlatStyle = FlatStyle.Flat;
+            btnQuanlichuyennganh.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnQuanlichuyennganh.ForeColor = SystemColors.ButtonHighlight;
+            btnQuanlichuyennganh.Location = new Point(0, 150);
+            btnQuanlichuyennganh.Margin = new Padding(0);
+            btnQuanlichuyennganh.Name = "btnQuanlichuyennganh";
+            btnQuanlichuyennganh.Size = new Size(220, 50);
+            btnQuanlichuyennganh.TabIndex = 9;
+            btnQuanlichuyennganh.Text = "QL.Ngành học";
+            btnQuanlichuyennganh.UseVisualStyleBackColor = false;
+            // 
+            // btnQuanlidiem
+            // 
+            btnQuanlidiem.BackgroundImageLayout = ImageLayout.None;
+            btnQuanlidiem.Cursor = Cursors.Hand;
+            btnQuanlidiem.Dock = DockStyle.Fill;
+            btnQuanlidiem.FlatAppearance.BorderColor = SystemColors.Highlight;
+            btnQuanlidiem.FlatStyle = FlatStyle.Flat;
+            btnQuanlidiem.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnQuanlidiem.ForeColor = SystemColors.ButtonHighlight;
+            btnQuanlidiem.Location = new Point(0, 200);
+            btnQuanlidiem.Margin = new Padding(0);
+            btnQuanlidiem.Name = "btnQuanlidiem";
+            btnQuanlidiem.Size = new Size(220, 50);
+            btnQuanlidiem.TabIndex = 8;
+            btnQuanlidiem.Text = "Quản lí điểm";
+            btnQuanlidiem.UseVisualStyleBackColor = false;
+            // 
+            // btnDangxuat
+            // 
+            btnDangxuat.BackColor = Color.LimeGreen;
+            btnDangxuat.BackgroundImageLayout = ImageLayout.None;
+            btnDangxuat.Cursor = Cursors.Hand;
+            btnDangxuat.Dock = DockStyle.Fill;
+            btnDangxuat.FlatAppearance.BorderColor = SystemColors.Highlight;
+            btnDangxuat.FlatStyle = FlatStyle.Flat;
+            btnDangxuat.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDangxuat.ForeColor = SystemColors.ButtonHighlight;
+            btnDangxuat.Location = new Point(0, 250);
+            btnDangxuat.Margin = new Padding(0);
+            btnDangxuat.Name = "btnDangxuat";
+            btnDangxuat.Size = new Size(220, 50);
+            btnDangxuat.TabIndex = 6;
+            btnDangxuat.Text = "Đăng xuất";
+            btnDangxuat.UseVisualStyleBackColor = false;
+            // 
             // btnQuanlimonhoc
             // 
             btnQuanlimonhoc.BackgroundImageLayout = ImageLayout.None;
@@ -174,58 +226,6 @@
             btnTracuusinhvien.TabIndex = 0;
             btnTracuusinhvien.Text = "Tra cứu sinh viên";
             btnTracuusinhvien.UseVisualStyleBackColor = false;
-            // 
-            // btnDangxuat
-            // 
-            btnDangxuat.BackColor = Color.LimeGreen;
-            btnDangxuat.BackgroundImageLayout = ImageLayout.None;
-            btnDangxuat.Cursor = Cursors.Hand;
-            btnDangxuat.Dock = DockStyle.Fill;
-            btnDangxuat.FlatAppearance.BorderColor = SystemColors.Highlight;
-            btnDangxuat.FlatStyle = FlatStyle.Flat;
-            btnDangxuat.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnDangxuat.ForeColor = SystemColors.ButtonHighlight;
-            btnDangxuat.Location = new Point(0, 250);
-            btnDangxuat.Margin = new Padding(0);
-            btnDangxuat.Name = "btnDangxuat";
-            btnDangxuat.Size = new Size(220, 50);
-            btnDangxuat.TabIndex = 6;
-            btnDangxuat.Text = "Đăng xuất";
-            btnDangxuat.UseVisualStyleBackColor = false;
-            // 
-            // btnQuanlidiem
-            // 
-            btnQuanlidiem.BackgroundImageLayout = ImageLayout.None;
-            btnQuanlidiem.Cursor = Cursors.Hand;
-            btnQuanlidiem.Dock = DockStyle.Fill;
-            btnQuanlidiem.FlatAppearance.BorderColor = SystemColors.Highlight;
-            btnQuanlidiem.FlatStyle = FlatStyle.Flat;
-            btnQuanlidiem.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnQuanlidiem.ForeColor = SystemColors.ButtonHighlight;
-            btnQuanlidiem.Location = new Point(0, 200);
-            btnQuanlidiem.Margin = new Padding(0);
-            btnQuanlidiem.Name = "btnQuanlidiem";
-            btnQuanlidiem.Size = new Size(220, 50);
-            btnQuanlidiem.TabIndex = 8;
-            btnQuanlidiem.Text = "Quản lí điểm";
-            btnQuanlidiem.UseVisualStyleBackColor = false;
-            // 
-            // btnQuanlichuyennganh
-            // 
-            btnQuanlichuyennganh.BackgroundImageLayout = ImageLayout.None;
-            btnQuanlichuyennganh.Cursor = Cursors.Hand;
-            btnQuanlichuyennganh.Dock = DockStyle.Fill;
-            btnQuanlichuyennganh.FlatAppearance.BorderColor = SystemColors.Highlight;
-            btnQuanlichuyennganh.FlatStyle = FlatStyle.Flat;
-            btnQuanlichuyennganh.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnQuanlichuyennganh.ForeColor = SystemColors.ButtonHighlight;
-            btnQuanlichuyennganh.Location = new Point(0, 150);
-            btnQuanlichuyennganh.Margin = new Padding(0);
-            btnQuanlichuyennganh.Name = "btnQuanlichuyennganh";
-            btnQuanlichuyennganh.Size = new Size(220, 50);
-            btnQuanlichuyennganh.TabIndex = 9;
-            btnQuanlichuyennganh.Text = "QL.Chuyên ngành";
-            btnQuanlichuyennganh.UseVisualStyleBackColor = false;
             // 
             // frmQuanLySinhVien
             // 
