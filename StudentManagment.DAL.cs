@@ -69,17 +69,21 @@ namespace StudentManagment
             {
                 using (SqlConnection conn = KetNoiCSDL.Connection())
                 {
+                    // Đổi DiemGPA = @GPA thành GPA = @GPA
                     string query = @"UPDATE SinhVien 
-                        SET HoTen = @HoTen, Khoa = @Khoa, Lop = @Lop, DiemGPA = @DiemGPA 
-                        WHERE MSSV = @MSSV";
+                         SET HoTen = @HoTen, 
+                             Lop = @Lop, 
+                             Khoa = @Khoa, 
+                             GPA = @GPA 
+                         WHERE MSSV = @MSSV";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@MSSV", sv.MSSV);
                         cmd.Parameters.AddWithValue("@HoTen", sv.HoTen);
-                        cmd.Parameters.AddWithValue("@Khoa", sv.Khoa);
                         cmd.Parameters.AddWithValue("@Lop", sv.Lop);
-                        cmd.Parameters.AddWithValue("@DiemGPA", sv.DiemGPA.ToString("0.00"));
+                        cmd.Parameters.AddWithValue("@Khoa", sv.Khoa);
+                        cmd.Parameters.AddWithValue("@GPA", sv.DiemGPA);
 
                         conn.Open();
                         int rowsAffected = cmd.ExecuteNonQuery();
@@ -88,6 +92,22 @@ namespace StudentManagment
                 }
             }
 
+            public bool Xoa(string mssv)
+            {
+                using (SqlConnection conn = KetNoiCSDL.Connection())
+                {
+                    string query = "DELETE FROM SinhVien WHERE MSSV = @MSSV";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@MSSV", mssv);
+
+                        conn.Open();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        return rowsAffected > 0;
+                    }
+                }
+            }
         }
     }
 }

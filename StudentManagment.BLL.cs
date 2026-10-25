@@ -64,5 +64,18 @@ namespace StudentManagment
 
             return dal.Sua(sv);
         }
+
+        // Nghiệp vụ Xóa sinh viên: Kiểm tra bỏ trống và kiểm tra tồn tại
+        public bool XoaSinhVien(string mssv)
+        {
+            if (string.IsNullOrWhiteSpace(mssv))
+                throw new ArgumentException("Mã số sinh viên (MSSV) cần xóa không được để trống!", nameof(mssv));
+
+            mssv = mssv.Trim();
+            if (!dal.KiemTraTonTai(mssv))
+                throw new KeyNotFoundException($"Không tìm thấy sinh viên có MSSV: {mssv} để xóa!");
+
+            return dal.Xoa(mssv);
+        }
     }
 }
