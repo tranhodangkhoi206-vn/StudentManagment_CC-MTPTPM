@@ -16,6 +16,7 @@ namespace StudentManagment
         {
             InitializeComponent();
             LoadDanhSachSinhVien();
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
         }
         private void LoadDanhSachSinhVien()
         {
@@ -29,22 +30,28 @@ namespace StudentManagment
                 MessageBox.Show("Không thể tải danh sách sinh viên: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void drvDanhSachSinhVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            // Bỏ qua nếu click vào tiêu đề cột hoặc ngoài phạm vi dòng dữ liệu
             if (e.RowIndex >= 0 && e.RowIndex < dataGridView1.Rows.Count)
             {
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
 
-                txbMSSV.Text = row.Cells["MSSV"].Value?.ToString();
-                txbHovaten.Text = row.Cells["HoTen"].Value?.ToString();
-                txbKhoa.Text = row.Cells["Khoa"].Value?.ToString();
-                txbLop.Text = row.Cells["Lop"].Value?.ToString();
-                txbDiem.Text = row.Cells["GPA"].Value?.ToString(); // nếu cột trong SQL đặt là DiemGPA thì đổi "GPA" thành "DiemGPA"
+                // Bỏ qua dòng trống mới thêm (dòng dấu * cuối bảng)
+                if (row.IsNewRow) return;
 
-                // Khóa ô nhập mã sinh viên khi đang xem/sửa
+                // Đổ dữ liệu từ bảng lên các ô nhập liệu phía trên
+                txbMSSV.Text = row.Cells["MSSV"].Value?.ToString() ?? "";
+                txbHovaten.Text = row.Cells["HoTen"].Value?.ToString() ?? "";
+                txbKhoa.Text = row.Cells["Khoa"].Value?.ToString() ?? "";
+                txbLop.Text = row.Cells["Lop"].Value?.ToString() ?? "";
+                txbDiem.Text = row.Cells["GPA"].Value?.ToString() ?? "";
+
+                // Khóa ô MSSV không cho chỉnh sửa trực tiếp mã khóa chính
                 txbMSSV.ReadOnly = true;
             }
         }
+        
 
         private void label7_Click(object sender, EventArgs e)
         {
@@ -137,15 +144,56 @@ namespace StudentManagment
         }
         private void btnXoa_Click(object sender, EventArgs e)
         {
-          
+            string mssv = txbMSSV.Text.Trim();
+            _log.LogDebug("Bắt đầu xử lý xóa sinh viên có MSSV: {MSSV}", mssv);
+
+            if (string.IsNullOrWhiteSpace(mssv))
+            {
+                _log.LogWarning("Yêu cầu xóa không hợp lệ: Chưa chọn hoặc chưa nhập MSSV.");
+                MessageBox.Show("Vui lòng chọn hoặc nhập MSSV của sinh viên cần xóa!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult dialogResult = MessageBox.Show($"Bạn có chắc chắn muốn xóa sinh viên MSSV: {mssv}?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult != DialogResult.Yes)
+            {
+                _log.LogInformation("Người dùng đã hủy thao tác xóa sinh viên MSSV: {MSSV}", mssv);
+                return;
+            }
+
+            try
+            {
+                if (_bll.XoaSinhVien(mssv))
+                {
+                    _log.LogInformation("Đã xóa thành công sinh viên MSSV: {MSSV}", mssv);
+                    MessageBox.Show("Xóa sinh viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnLamMoi_Click(sender, e);
+                    LoadDanhSachSinhVien();
+                }
+            }
+            catch (KeyNotFoundException ex)
+            {
+                _log.LogError("Không tìm thấy sinh viên để xóa: {Message}", ex.Message);
+                MessageBox.Show(ex.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentException ex)
+            {
+                _log.LogWarning("Lỗi tham số đầu vào khi xóa sinh viên: {Message}", ex.Message);
+                MessageBox.Show(ex.Message, "Lỗi nhập liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (SqlException ex)
+            {
+                _log.LogCritical(ex, "SỰ CỐ CSDL NGHIÊM TRỌNG khi xóa sinh viên MSSV {MSSV} (Mã lỗi: {SqlCode})", mssv, ex.Number);
+                MessageBox.Show("Lỗi kết nối cơ sở dữ liệu nghiêm trọng!", "Lỗi hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            catch (Exception ex)
+            {
+                _log.LogCritical(ex, "SỰ CỐ HỆ THỐNG KHÔNG XÁC ĐỊNH khi xóa sinh viên MSSV {MSSV}", mssv);
+                MessageBox.Show("Đã xảy ra sự cố nghiêm trọng không xác định trong ứng dụng!", "Lỗi hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnLamMoi_Click(object sender, EventArgs e)
         {
             string mssv = txbMSSV.Text.Trim();
             string hoTen = txbHovaten.Text.Trim();
@@ -157,6 +205,7 @@ namespace StudentManagment
 
             try
             {
+                // ĐỐI CHIẾU CHÍNH XÁC THỨ TỰ: mssv -> hoTen -> lop -> khoa -> gpaText
                 _bll.KiemTraThongTinSinhVien(mssv, hoTen, lop, khoa, gpaText, out double gpa);
 
                 SinhVienDTO sv = new SinhVienDTO(mssv, hoTen, khoa, lop, gpa);
@@ -197,6 +246,11 @@ namespace StudentManagment
                 _log.LogCritical(ex, "SỰ CỐ HỆ THỐNG KHÔNG XÁC ĐỊNH khi sửa sinh viên MSSV {MSSV}", mssv);
                 MessageBox.Show("Đã xảy ra sự cố nghiêm trọng không xác định trong ứng dụng!", "Lỗi hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
+        }
+
+        private void btnLamMoi_Click(object sender, EventArgs e)
+        {
+            
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
