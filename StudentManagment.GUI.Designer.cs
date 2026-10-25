@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             tableLayoutPanel1 = new TableLayoutPanel();
             label1 = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
+            btnTimKiem = new Button();
             tableLayoutPanel7 = new TableLayoutPanel();
             label6 = new Label();
             txbKhoa = new TextBox();
@@ -47,11 +49,16 @@
             label2 = new Label();
             txbHovaten = new TextBox();
             tableLayoutPanel8 = new TableLayoutPanel();
-            btnThem = new Button();
-            btnXoa = new Button();
-            btnSua = new Button();
             btnLamMoi = new Button();
-            drvDanhSachSinhVien = new DataGridView();
+            btnSua = new Button();
+            btnXoa = new Button();
+            btnThem = new Button();
+            tableLayoutPanel9 = new TableLayoutPanel();
+            lblTimKien = new Label();
+            textBox1 = new TextBox();
+            dataGridView1 = new DataGridView();
+            folderBrowserDialog1 = new FolderBrowserDialog();
+            toolTip1 = new ToolTip(components);
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel7.SuspendLayout();
@@ -60,7 +67,8 @@
             tableLayoutPanel4.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
             tableLayoutPanel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)drvDanhSachSinhVien).BeginInit();
+            tableLayoutPanel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -69,7 +77,7 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.Controls.Add(label1, 0, 0);
             tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 0, 1);
-            tableLayoutPanel1.Controls.Add(drvDanhSachSinhVien, 0, 2);
+            tableLayoutPanel1.Controls.Add(dataGridView1, 0, 2);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -99,21 +107,36 @@
             tableLayoutPanel2.ColumnCount = 2;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Controls.Add(btnTimKiem, 1, 3);
             tableLayoutPanel2.Controls.Add(tableLayoutPanel7, 0, 2);
             tableLayoutPanel2.Controls.Add(tableLayoutPanel6, 1, 1);
             tableLayoutPanel2.Controls.Add(tableLayoutPanel5, 0, 1);
             tableLayoutPanel2.Controls.Add(tableLayoutPanel4, 1, 0);
             tableLayoutPanel2.Controls.Add(tableLayoutPanel3, 0, 0);
             tableLayoutPanel2.Controls.Add(tableLayoutPanel8, 1, 2);
+            tableLayoutPanel2.Controls.Add(tableLayoutPanel9, 0, 3);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(3, 103);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 3;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel2.RowCount = 4;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 25.0006237F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 25.0006275F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 25.0006275F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 24.9981289F));
             tableLayoutPanel2.Size = new Size(1218, 187);
             tableLayoutPanel2.TabIndex = 1;
+            // 
+            // btnTimKiem
+            // 
+            btnTimKiem.Dock = DockStyle.Fill;
+            btnTimKiem.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnTimKiem.Location = new Point(612, 141);
+            btnTimKiem.Name = "btnTimKiem";
+            btnTimKiem.Size = new Size(603, 43);
+            btnTimKiem.TabIndex = 7;
+            btnTimKiem.Text = "Tìm kiếm";
+            btnTimKiem.UseVisualStyleBackColor = true;
+            btnTimKiem.Click += btnTimKiem_Click;
             // 
             // tableLayoutPanel7
             // 
@@ -123,11 +146,11 @@
             tableLayoutPanel7.Controls.Add(label6, 0, 0);
             tableLayoutPanel7.Controls.Add(txbKhoa, 1, 0);
             tableLayoutPanel7.Dock = DockStyle.Fill;
-            tableLayoutPanel7.Location = new Point(3, 127);
+            tableLayoutPanel7.Location = new Point(3, 95);
             tableLayoutPanel7.Name = "tableLayoutPanel7";
             tableLayoutPanel7.RowCount = 1;
             tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel7.Size = new Size(603, 57);
+            tableLayoutPanel7.Size = new Size(603, 40);
             tableLayoutPanel7.TabIndex = 4;
             // 
             // label6
@@ -137,7 +160,7 @@
             label6.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label6.Location = new Point(3, 0);
             label6.Name = "label6";
-            label6.Size = new Size(178, 57);
+            label6.Size = new Size(178, 40);
             label6.TabIndex = 0;
             label6.Text = "Khoa:";
             label6.TextAlign = ContentAlignment.MiddleLeft;
@@ -159,11 +182,11 @@
             tableLayoutPanel6.Controls.Add(label5, 0, 0);
             tableLayoutPanel6.Controls.Add(txbDiem, 1, 0);
             tableLayoutPanel6.Dock = DockStyle.Fill;
-            tableLayoutPanel6.Location = new Point(612, 65);
+            tableLayoutPanel6.Location = new Point(612, 49);
             tableLayoutPanel6.Name = "tableLayoutPanel6";
             tableLayoutPanel6.RowCount = 1;
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel6.Size = new Size(603, 56);
+            tableLayoutPanel6.Size = new Size(603, 40);
             tableLayoutPanel6.TabIndex = 3;
             // 
             // label5
@@ -173,7 +196,7 @@
             label5.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.Location = new Point(3, 0);
             label5.Name = "label5";
-            label5.Size = new Size(178, 56);
+            label5.Size = new Size(178, 40);
             label5.TabIndex = 0;
             label5.Text = "Điểm (GPA):";
             label5.TextAlign = ContentAlignment.MiddleLeft;
@@ -195,11 +218,11 @@
             tableLayoutPanel5.Controls.Add(label4, 0, 0);
             tableLayoutPanel5.Controls.Add(txbMSSV, 1, 0);
             tableLayoutPanel5.Dock = DockStyle.Fill;
-            tableLayoutPanel5.Location = new Point(3, 65);
+            tableLayoutPanel5.Location = new Point(3, 49);
             tableLayoutPanel5.Name = "tableLayoutPanel5";
             tableLayoutPanel5.RowCount = 1;
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.Size = new Size(603, 56);
+            tableLayoutPanel5.Size = new Size(603, 40);
             tableLayoutPanel5.TabIndex = 2;
             // 
             // label4
@@ -209,7 +232,7 @@
             label4.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.Location = new Point(3, 0);
             label4.Name = "label4";
-            label4.Size = new Size(178, 56);
+            label4.Size = new Size(178, 40);
             label4.TabIndex = 0;
             label4.Text = "MSSV:";
             label4.TextAlign = ContentAlignment.MiddleLeft;
@@ -235,7 +258,7 @@
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 1;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.Size = new Size(603, 56);
+            tableLayoutPanel4.Size = new Size(603, 40);
             tableLayoutPanel4.TabIndex = 1;
             // 
             // label3
@@ -245,7 +268,7 @@
             label3.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.Location = new Point(3, 0);
             label3.Name = "label3";
-            label3.Size = new Size(178, 56);
+            label3.Size = new Size(178, 40);
             label3.TabIndex = 0;
             label3.Text = "Lớp:";
             label3.TextAlign = ContentAlignment.MiddleLeft;
@@ -271,7 +294,7 @@
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 1;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.Size = new Size(603, 56);
+            tableLayoutPanel3.Size = new Size(603, 40);
             tableLayoutPanel3.TabIndex = 0;
             // 
             // label2
@@ -281,7 +304,7 @@
             label2.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.Location = new Point(3, 0);
             label2.Name = "label2";
-            label2.Size = new Size(178, 56);
+            label2.Size = new Size(178, 40);
             label2.TabIndex = 0;
             label2.Text = "Họ và tên:";
             label2.TextAlign = ContentAlignment.MiddleLeft;
@@ -307,45 +330,12 @@
             tableLayoutPanel8.Controls.Add(btnXoa, 1, 0);
             tableLayoutPanel8.Controls.Add(btnThem, 0, 0);
             tableLayoutPanel8.Dock = DockStyle.Fill;
-            tableLayoutPanel8.Location = new Point(612, 127);
+            tableLayoutPanel8.Location = new Point(612, 95);
             tableLayoutPanel8.Name = "tableLayoutPanel8";
             tableLayoutPanel8.RowCount = 1;
             tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel8.Size = new Size(603, 57);
+            tableLayoutPanel8.Size = new Size(603, 40);
             tableLayoutPanel8.TabIndex = 5;
-            // 
-            // btnThem
-            // 
-            btnThem.Dock = DockStyle.Fill;
-            btnThem.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnThem.Location = new Point(3, 3);
-            btnThem.Name = "btnThem";
-            btnThem.Size = new Size(144, 51);
-            btnThem.TabIndex = 0;
-            btnThem.Text = "Thêm";
-            btnThem.UseVisualStyleBackColor = true;
-            // 
-            // btnXoa
-            // 
-            btnXoa.Dock = DockStyle.Fill;
-            btnXoa.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnXoa.Location = new Point(153, 3);
-            btnXoa.Name = "btnXoa";
-            btnXoa.Size = new Size(144, 51);
-            btnXoa.TabIndex = 1;
-            btnXoa.Text = "Xóa";
-            btnXoa.UseVisualStyleBackColor = true;
-            // 
-            // btnSua
-            // 
-            btnSua.Dock = DockStyle.Fill;
-            btnSua.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSua.Location = new Point(303, 3);
-            btnSua.Name = "btnSua";
-            btnSua.Size = new Size(144, 51);
-            btnSua.TabIndex = 2;
-            btnSua.Text = "Sửa";
-            btnSua.UseVisualStyleBackColor = true;
             // 
             // btnLamMoi
             // 
@@ -353,20 +343,95 @@
             btnLamMoi.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnLamMoi.Location = new Point(453, 3);
             btnLamMoi.Name = "btnLamMoi";
-            btnLamMoi.Size = new Size(147, 51);
+            btnLamMoi.Size = new Size(147, 34);
             btnLamMoi.TabIndex = 3;
             btnLamMoi.Text = "Làm mới";
             btnLamMoi.UseVisualStyleBackColor = true;
+            btnLamMoi.Click += btnLamMoi_Click;
             // 
-            // drvDanhSachSinhVien
+            // btnSua
             // 
-            drvDanhSachSinhVien.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            drvDanhSachSinhVien.Dock = DockStyle.Fill;
-            drvDanhSachSinhVien.Location = new Point(3, 296);
-            drvDanhSachSinhVien.Name = "drvDanhSachSinhVien";
-            drvDanhSachSinhVien.RowHeadersWidth = 51;
-            drvDanhSachSinhVien.Size = new Size(1218, 492);
-            drvDanhSachSinhVien.TabIndex = 2;
+            btnSua.Dock = DockStyle.Fill;
+            btnSua.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSua.Location = new Point(303, 3);
+            btnSua.Name = "btnSua";
+            btnSua.Size = new Size(144, 34);
+            btnSua.TabIndex = 2;
+            btnSua.Text = "Sửa";
+            btnSua.UseVisualStyleBackColor = true;
+            btnSua.Click += btnSua_Click;
+            // 
+            // btnXoa
+            // 
+            btnXoa.Dock = DockStyle.Fill;
+            btnXoa.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnXoa.Location = new Point(153, 3);
+            btnXoa.Name = "btnXoa";
+            btnXoa.Size = new Size(144, 34);
+            btnXoa.TabIndex = 1;
+            btnXoa.Text = "Xóa";
+            btnXoa.UseVisualStyleBackColor = true;
+            btnXoa.Click += btnXoa_Click;
+            // 
+            // btnThem
+            // 
+            btnThem.Dock = DockStyle.Fill;
+            btnThem.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnThem.Location = new Point(3, 3);
+            btnThem.Name = "btnThem";
+            btnThem.Size = new Size(144, 34);
+            btnThem.TabIndex = 0;
+            btnThem.Text = "Thêm";
+            btnThem.UseVisualStyleBackColor = true;
+            btnThem.Click += btnThem_Click;
+            // 
+            // tableLayoutPanel9
+            // 
+            tableLayoutPanel9.ColumnCount = 2;
+            tableLayoutPanel9.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30.51F));
+            tableLayoutPanel9.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 69.49F));
+            tableLayoutPanel9.Controls.Add(lblTimKien, 0, 0);
+            tableLayoutPanel9.Controls.Add(textBox1, 1, 0);
+            tableLayoutPanel9.Dock = DockStyle.Fill;
+            tableLayoutPanel9.Location = new Point(0, 138);
+            tableLayoutPanel9.Margin = new Padding(0);
+            tableLayoutPanel9.Name = "tableLayoutPanel9";
+            tableLayoutPanel9.RowCount = 1;
+            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel9.Size = new Size(609, 49);
+            tableLayoutPanel9.TabIndex = 6;
+            tableLayoutPanel9.Paint += tableLayoutPanel9_Paint;
+            // 
+            // lblTimKien
+            // 
+            lblTimKien.AutoSize = true;
+            lblTimKien.Dock = DockStyle.Fill;
+            lblTimKien.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTimKien.Location = new Point(3, 0);
+            lblTimKien.Name = "lblTimKien";
+            lblTimKien.Size = new Size(179, 49);
+            lblTimKien.TabIndex = 0;
+            lblTimKien.Text = "Tìm Kiếm:";
+            lblTimKien.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // textBox1
+            // 
+            textBox1.BorderStyle = BorderStyle.FixedSingle;
+            textBox1.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox1.Location = new Point(188, 3);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(413, 42);
+            textBox1.TabIndex = 2;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(3, 296);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(1218, 484);
+            dataGridView1.TabIndex = 2;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // frmQuanLySinhVien
             // 
@@ -391,7 +456,9 @@
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel3.PerformLayout();
             tableLayoutPanel8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)drvDanhSachSinhVien).EndInit();
+            tableLayoutPanel9.ResumeLayout(false);
+            tableLayoutPanel9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -420,6 +487,12 @@
         private Button btnSua;
         private Button btnXoa;
         private Button btnThem;
-        private DataGridView drvDanhSachSinhVien;
+        private FolderBrowserDialog folderBrowserDialog1;
+        private TableLayoutPanel tableLayoutPanel9;
+        private Label lblTimKien;
+        private Button btnTimKiem;
+        private TextBox textBox1;
+        private ToolTip toolTip1;
+        private DataGridView dataGridView1;
     }
 }
