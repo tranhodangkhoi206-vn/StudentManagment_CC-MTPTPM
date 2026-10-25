@@ -4,12 +4,12 @@ using StudentManagment.DTO;
 
 namespace StudentManagment.BLL
 {
-    public class Dangnhap
+    public class DangnhapBLL
     {
-        private readonly ILogger<Dangnhap> _logger;
+        private readonly ILogger<DangnhapBLL> _logger;
         private DangnhapDAL dangnhapDAL = new DangnhapDAL();
         // Khởi tạo constructor để lấy logger từ form
-        public Dangnhap(ILogger<Dangnhap> logger)
+        public DangnhapBLL(ILogger<DangnhapBLL> logger)
         {
             _logger = logger;
         }
