@@ -18,7 +18,7 @@ namespace StudentManagment
                 .WriteTo.File(
                     Path.Combine(AppContext.BaseDirectory, "logs", "app.txt"),
                     rollingInterval: RollingInterval.Day, // mỗi ngày một file: app20261015.txt
-                    outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff} [{Level:u3}] {SourceContext}: {Message:lj}{NewLine}{Exception}")
+                    outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff} [{Level:u}] {SourceContext}: {Message:lj}{NewLine}{Exception}")
                 .CreateLogger();
 
             builder.AddSerilog(serilog, dispose: true);
