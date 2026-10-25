@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Text.RegularExpressions;
-using System.Globalization;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using static StudentManagment.StudentManagment_DAL;
 
 namespace StudentManagment
 {
     public class SinhVienBLL
     {
+        private readonly SinhVienDAL dal = new SinhVienDAL();
         public bool KiemTraThongTinSinhVien(string mssv, string hoTen, string lop, string khoa, string gpaText, out double gpa)
         {
             gpa = 0.0;
@@ -51,6 +54,15 @@ namespace StudentManagment
                 throw new ArgumentOutOfRangeException(nameof(gpa), "Điểm GPA phải nằm trong khoảng từ 0.0 đến 4.0!");
 
             return true;
+        }
+
+        // Nghiệp vụ Sửa sinh viên: Bắt buộc sinh viên phải tồn tại
+        public bool SuaSinhVien(SinhVienDTO sv)
+        {
+            if (!dal.KiemTraTonTai(sv.MSSV))
+                throw new KeyNotFoundException($"Không tìm thấy sinh viên có MSSV: {sv.MSSV} để cập nhật!");
+
+            return dal.Sua(sv);
         }
     }
 }
