@@ -35,7 +35,6 @@
             tableLayoutPanel3 = new TableLayoutPanel();
             btnQuanlichuyennganh = new Button();
             btnQuanlidiem = new Button();
-            btnDangxuat = new Button();
             btnQuanlimonhoc = new Button();
             btnQuanlisinhvien = new Button();
             btnTracuusinhvien = new Button();
@@ -106,7 +105,6 @@
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel3.Controls.Add(btnQuanlichuyennganh, 0, 3);
             tableLayoutPanel3.Controls.Add(btnQuanlidiem, 0, 4);
-            tableLayoutPanel3.Controls.Add(btnDangxuat, 0, 5);
             tableLayoutPanel3.Controls.Add(btnQuanlimonhoc, 0, 2);
             tableLayoutPanel3.Controls.Add(btnQuanlisinhvien, 0, 1);
             tableLayoutPanel3.Controls.Add(btnTracuusinhvien, 0, 0);
@@ -114,14 +112,13 @@
             tableLayoutPanel3.Location = new Point(0, 167);
             tableLayoutPanel3.Margin = new Padding(0);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
-            tableLayoutPanel3.RowCount = 7;
+            tableLayoutPanel3.RowCount = 6;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel3.Size = new Size(220, 515);
             tableLayoutPanel3.TabIndex = 1;
             // 
@@ -141,6 +138,8 @@
             btnQuanlichuyennganh.TabIndex = 9;
             btnQuanlichuyennganh.Text = "QL.Ngành học";
             btnQuanlichuyennganh.UseVisualStyleBackColor = false;
+            btnQuanlichuyennganh.Click += btnQuanlichuyennganh_Click;
+            btnQuanlichuyennganh.Leave += btnQuanlichuyennganh_Leave;
             // 
             // btnQuanlidiem
             // 
@@ -158,24 +157,8 @@
             btnQuanlidiem.TabIndex = 8;
             btnQuanlidiem.Text = "Quản lý điểm";
             btnQuanlidiem.UseVisualStyleBackColor = false;
-            // 
-            // btnDangxuat
-            // 
-            btnDangxuat.BackColor = Color.LimeGreen;
-            btnDangxuat.BackgroundImageLayout = ImageLayout.None;
-            btnDangxuat.Cursor = Cursors.Hand;
-            btnDangxuat.Dock = DockStyle.Fill;
-            btnDangxuat.FlatAppearance.BorderColor = SystemColors.Highlight;
-            btnDangxuat.FlatStyle = FlatStyle.Flat;
-            btnDangxuat.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnDangxuat.ForeColor = SystemColors.ButtonHighlight;
-            btnDangxuat.Location = new Point(0, 250);
-            btnDangxuat.Margin = new Padding(0);
-            btnDangxuat.Name = "btnDangxuat";
-            btnDangxuat.Size = new Size(220, 50);
-            btnDangxuat.TabIndex = 6;
-            btnDangxuat.Text = "Đăng xuất";
-            btnDangxuat.UseVisualStyleBackColor = false;
+            btnQuanlidiem.Click += btnQuanlidiem_Click;
+            btnQuanlidiem.Leave += btnQuanlidiem_Leave;
             // 
             // btnQuanlimonhoc
             // 
@@ -193,6 +176,8 @@
             btnQuanlimonhoc.TabIndex = 2;
             btnQuanlimonhoc.Text = "Quản lý môn học";
             btnQuanlimonhoc.UseVisualStyleBackColor = false;
+            btnQuanlimonhoc.Click += btnQuanlimonhoc_Click;
+            btnQuanlimonhoc.Leave += btnQuanlimonhoc_Leave;
             // 
             // btnQuanlisinhvien
             // 
@@ -210,6 +195,8 @@
             btnQuanlisinhvien.TabIndex = 1;
             btnQuanlisinhvien.Text = "Quản lý sinh viên";
             btnQuanlisinhvien.UseVisualStyleBackColor = false;
+            btnQuanlisinhvien.Click += btnQuanlisinhvien_Click;
+            btnQuanlisinhvien.Leave += btnQuanlisinhvien_Leave;
             // 
             // btnTracuusinhvien
             // 
@@ -272,7 +259,6 @@
         private Button btnQuanlisinhvien;
         private Button btnQuanlichuyennganh;
         private Button btnQuanlidiem;
-        private Button btnDangxuat;
         private Panel pUserControl;
     }
 }

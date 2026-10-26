@@ -19,7 +19,7 @@ namespace StudentManagment
             using ILoggerFactory loggerFactory = Logging.CreateLoggerFactory();
             // Truyền qua frm đăng nhập để truyền qua các phần khác
             // Application.Run(new frmDangnhap(loggerFactory));
-            Application.Run(new frmQuanLySinhVien(loggerFactory));
+            Application.Run(new frmQuanLySinhVien(loggerFactory, ""));
         }
     }
 }

@@ -26,7 +26,7 @@ namespace StudentManagment.GUI
                 if (taiKhoanHopLe)
                 {
                     this.Hide();
-                    frmQuanLySinhVien quanLySinhVienGUI = new frmQuanLySinhVien(_loggerFactory);
+                    frmQuanLySinhVien quanLySinhVienGUI = new frmQuanLySinhVien(_loggerFactory, dangnhapBLL.LayTenHienThi());
                     quanLySinhVienGUI.Show();
                     logger.LogInformation("Đăng nhập thành công, hiển thị form chính.");
                 }
