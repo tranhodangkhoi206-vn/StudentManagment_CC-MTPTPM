@@ -1,4 +1,6 @@
 using StudentManagment.GUI;
+using Microsoft.Extensions.Logging;
+using StudentManagment.Helper;
 
 namespace StudentManagment
 {
@@ -13,7 +15,8 @@ namespace StudentManagment
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new frmDangnhap());
+            ILoggerFactory loggerFactory = Logging.CreateLoggerFactory();
+            Application.Run(new frmDangnhap(loggerFactory));
         }
     }
 }

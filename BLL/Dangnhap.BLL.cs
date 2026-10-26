@@ -27,14 +27,14 @@ namespace StudentManagment.BLL
                     return false;
                 }
                 TaikhoanDTO taikhoan = dangnhapDAL.LayTaiKhoanCoDieuKien(username, password);
-		        // Tài khoản == null khi có lỗi ở lớp DAL xảy ra
-		        if (taikhoan == null) { throw new Exception(); }
+                // Tài khoản == null khi có lỗi ở lớp DAL xảy ra
+                if (taikhoan == null) { throw new Exception(); }
                 if (username == taikhoan.Username && password == taikhoan.Matkhau)
                 {
                     logger.LogInformation("Người dùng đã đăng nhập thành công vào hệ thống. Với username: {username}", username);
                     return true;
                 }
-                else 
+                else
                 {
                     MessageBox.Show("Tên tài khoản hoặc mật khẩu đã sai. Vui lòng thử lại.");
                     logger.LogInformation("Người dùng nhập sai tài khoản hoặc mật khẩu đăng nhập.");
