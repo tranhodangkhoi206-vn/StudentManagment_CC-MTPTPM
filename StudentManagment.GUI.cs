@@ -250,7 +250,37 @@ namespace StudentManagment
 
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
-            
+            try
+            {
+                // Reset các ô nhập liệu thông tin
+                ClearForm();
+
+                // Tải lại toàn bộ danh sách sinh viên ban đầu lên bảng
+                LoadDanhSachSinhVien();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đã xảy ra lỗi khi làm mới dữ liệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ClearForm()
+        {
+            // 1. Xóa nội dung trong các ô thông tin sinh viên
+            txbMSSV.Clear();
+            txbHovaten.Clear();
+            txbLop.Clear();
+            txbKhoa.Clear();
+            txbDiem.Clear();
+
+            // 2. Mở khóa ô MSSV để sẵn sàng thêm sinh viên mới
+            txbMSSV.ReadOnly = false;
+
+            // 3. Bỏ chọn dòng trên DataGridView
+            dataGridView1.ClearSelection();
+
+            // 4. Focus con trỏ chuột về ô MSSV
+            txbMSSV.Focus();
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
