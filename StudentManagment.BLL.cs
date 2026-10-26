@@ -17,6 +17,8 @@ namespace StudentManagment
         public bool KiemTraThongTinSinhVien(string mssv, string hoTen, string lop, string khoa, string gpaText, out double gpa)
         {
             gpa = 0.0;
+            // Chuẩn hóa: thay thế dấu phẩy ',' thành dấu chấm '.'
+            gpaText = gpaText.Trim().Replace(',', '.');
 
             // 1. Kiểm tra MSSV
             if (string.IsNullOrWhiteSpace(mssv))
@@ -54,6 +56,11 @@ namespace StudentManagment
             if (gpa < 0.0 || gpa > 4.0)
                 throw new ArgumentOutOfRangeException(nameof(gpa), "Điểm GPA phải nằm trong khoảng từ 0.0 đến 4.0!");
 
+            // Ép kiểu an toàn với CultureInfo.InvariantCulture
+            if (!double.TryParse(gpaText, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out gpa))
+            {
+                throw new ArgumentException("Điểm GPA phải là một số thực hợp lệ!", nameof(gpaText));
+            }
             return true;
         }
 
