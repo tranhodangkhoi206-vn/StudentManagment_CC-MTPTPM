@@ -91,8 +91,8 @@
             // tableLayoutPanel2
             // 
             tableLayoutPanel2.ColumnCount = 2;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 338F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 571F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 318F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 591F));
             tableLayoutPanel2.Controls.Add(label2, 0, 0);
             tableLayoutPanel2.Controls.Add(txbTimkiem, 1, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
@@ -111,7 +111,7 @@
             label2.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.Location = new Point(3, 0);
             label2.Name = "label2";
-            label2.Size = new Size(332, 59);
+            label2.Size = new Size(312, 59);
             label2.TabIndex = 0;
             label2.Text = "Tìm kiếm theo tên sinh viên:";
             label2.TextAlign = ContentAlignment.MiddleLeft;
@@ -121,9 +121,9 @@
             txbTimkiem.Anchor = AnchorStyles.Left;
             txbTimkiem.BorderStyle = BorderStyle.FixedSingle;
             txbTimkiem.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbTimkiem.Location = new Point(341, 11);
+            txbTimkiem.Location = new Point(321, 11);
             txbTimkiem.Name = "txbTimkiem";
-            txbTimkiem.Size = new Size(716, 36);
+            txbTimkiem.Size = new Size(736, 36);
             txbTimkiem.TabIndex = 1;
             // 
             // tableLayoutPanel3
