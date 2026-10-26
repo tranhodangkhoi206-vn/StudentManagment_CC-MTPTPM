@@ -32,9 +32,9 @@ namespace StudentManagment.DAL
                         logger.LogInformation("Đang lấy tài khoản từ cơ sở dữ liệu.");
                         return new TaikhoanDTO
                         {
-                            Hovaten = reader["HOVATEN"].ToString()!,
-                            Username = reader["USERNAME"].ToString()!,
-                            Matkhau = reader["PASSWORD"].ToString()!
+                            Hovaten = reader["HOVATEN"].ToString().Trim(),
+                            Username = reader["USERNAME"].ToString().Trim(),
+                            Matkhau = reader["PASSWORD"].ToString().Trim()
                         };
                     }
                 }
@@ -52,7 +52,7 @@ namespace StudentManagment.DAL
                 return null;
             }
             logger.LogInformation("Người dùng đăng nhập với tài khoản không tồn tại trong hệ thống.");
-            return new TaikhoanDTO { Hovaten = "", Username = "", Matkhau = "" };
+            return new TaikhoanDTO { Hovaten = "1", Username = "1", Matkhau = "1" };
         }
     }
 }
