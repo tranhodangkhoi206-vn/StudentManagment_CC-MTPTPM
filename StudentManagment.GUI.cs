@@ -272,6 +272,7 @@ namespace StudentManagment
             txbLop.Clear();
             txbKhoa.Clear();
             txbDiem.Clear();
+            textBox1.Clear();
 
             // 2. Mở khóa ô MSSV để sẵn sàng thêm sinh viên mới
             txbMSSV.ReadOnly = false;
@@ -289,7 +290,7 @@ namespace StudentManagment
             {
                 string keyword = textBox1.Text.Trim();
 
-                // Gọi phương thức tìm kiếm qua biến _bll đã khai báo sẵn trên Form
+                // Gọi tầng BLL kiểm tra nghiệp vụ và tìm kiếm
                 DataTable result = _bll.SearchSinhVienByMSSV(keyword);
 
                 if (result.Rows.Count > 0)
@@ -298,8 +299,9 @@ namespace StudentManagment
                 }
                 else
                 {
-                    MessageBox.Show($"Không tìm thấy sinh viên nào có MSSV: {keyword}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    dataGridView1.DataSource = result;
+                    // Thông báo chuẩn khi không tìm thấy MSSV
+                    MessageBox.Show("không tìm được sinh viên có MSSV bạn vừa nhập!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dataGridView1.DataSource = result; // Làm trống bảng dữ liệu hiển thị
                 }
             }
             catch (ArgumentException ex)

@@ -42,7 +42,7 @@ namespace StudentManagment
                         cmd.Parameters.AddWithValue("@HoTen", sv.HoTen);
                         cmd.Parameters.AddWithValue("@Khoa", sv.Khoa);
                         cmd.Parameters.AddWithValue("@Lop", sv.Lop);
-                        cmd.Parameters.AddWithValue("@GPA", sv.DiemGPA.ToString("0.00"));
+                        cmd.Parameters.AddWithValue("@GPA", sv.DiemGPA);
 
                         int rowsAffected = cmd.ExecuteNonQuery();
                         return rowsAffected > 0;
@@ -115,7 +115,9 @@ namespace StudentManagment
             // Tìm kiếm sinh viên theo MSSV
             public DataTable SearchSinhVienByMSSV(string mssv)
             {
-                string query = "SELECT MSSV, HoTen, Lop, Khoa, DiemGPA FROM SinhVien WHERE MSSV = @MSSV";
+                // Đổi DiemGPA thành GPA cho đúng với cấu trúc bảng SinhVien
+                string query = "SELECT MSSV, HoTen, Khoa, Lop, GPA FROM SinhVien WHERE MSSV = @MSSV";
+
                 using (SqlConnection conn = KetNoiCSDL.Connection())
                 {
                     using (SqlCommand cmd = new SqlCommand(query, conn))
