@@ -28,6 +28,8 @@ namespace StudentManagment
                 }
                 return dt;
             }
+
+            // Thêm sinh viên
             public bool ThemSinhVien(SinhVienDTO sv)
             {
                 using (SqlConnection conn = KetNoiCSDL.Connection())
@@ -92,6 +94,7 @@ namespace StudentManagment
                 }
             }
 
+            // Xóa sinh viên
             public bool Xoa(string mssv)
             {
                 using (SqlConnection conn = KetNoiCSDL.Connection())
@@ -105,6 +108,25 @@ namespace StudentManagment
                         conn.Open();
                         int rowsAffected = cmd.ExecuteNonQuery();
                         return rowsAffected > 0;
+                    }
+                }
+            }
+
+            // Tìm kiếm sinh viên theo MSSV
+            public DataTable SearchSinhVienByMSSV(string mssv)
+            {
+                string query = "SELECT MSSV, HoTen, Lop, Khoa, DiemGPA FROM SinhVien WHERE MSSV = @MSSV";
+                using (SqlConnection conn = KetNoiCSDL.Connection())
+                {
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@MSSV", mssv);
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+                            da.Fill(dt);
+                            return dt;
+                        }
                     }
                 }
             }

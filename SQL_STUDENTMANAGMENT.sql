@@ -1,4 +1,4 @@
-CREATE DATABASE STUDENTMANAGMENT
+ÔªøCREATE DATABASE STUDENTMANAGMENT
 GO
 USE STUDENTMANAGMENT 
 GO
@@ -13,12 +13,12 @@ CREATE TABLE SinhVien (
 
 INSERT INTO SinhVien (MSSV, HoTen, Lop, Khoa, GPA) VALUES
 ('SV001', N'Nguy?n Van An', 'DH24CT', N'K? thu?t ph?n m?m', '3.65'),
-('SV002', N'Tr?n Th? BÌch Ng?c', 'DH24CT1', N'An to‡n thÙng tin', '3.80'),
-('SV003', N'LÍ Ho‡ng Nam', 'DH24CT2', N'TrÌ tu? nh‚n t?o', '2.95'),
+('SV002', N'Tr?n Th? B√≠ch Ng?c', 'DH24CT1', N'An to√†n th√¥ng tin', '3.80'),
+('SV003', N'L√™ Ho√†ng Nam', 'DH24CT2', N'Tr√≠ tu? nh√¢n t?o', '2.95'),
 ('SV004', N'Ph?m Minh Tu?n', 'DH24CT1', N'K? thu?t ph?n m?m', '3.42'),
-('SV005', N'–? Qu?nh Huong', 'DH24CT', N'An to‡n thÙng tin', '3.10'),
-('SV006', N'Vu Qu?c Huy', 'DH24CT2', N'TrÌ tu? nh‚n t?o', '2.50'),
-('SV007', N'B˘i Phuong Th?o', 'DH24CT1', N'TrÌ tu? nh‚n t?o', '3.90'),
-('SV008', N'–?ng Gia B?o', 'DH24CT', N'K? thu?t ph?n m?m', '3.15'),
-('SV009', N'Ho‡ng Tr?ng Nghia', 'DH24CT2', N'An to‡n thÙng tin', '2.80'),
-('SV010', N'NgÙ Mai Phuong', 'DH24CT1', N'TrÌ tu? nh‚n t?o', '3.55');
+('SV005', N'√ê? Qu?nh Huong', 'DH24CT', N'An to√†n th√¥ng tin', '3.10'),
+('SV006', N'Vu Qu?c Huy', 'DH24CT2', N'Tr√≠ tu? nh√¢n t?o', '2.50'),
+('SV007', N'B√πi Phuong Th?o', 'DH24CT1', N'Tr√≠ tu? nh√¢n t?o', '3.90'),
+('SV008', N'√ê?ng Gia B?o', 'DH24CT', N'K? thu?t ph?n m?m', '3.15'),
+('SV009', N'Ho√†ng Tr?ng Nghia', 'DH24CT2', N'An to√†n th√¥ng tin', '2.80'),
+('SV010', N'Ng√¥ Mai Phuong', 'DH24CT1', N'Tr√≠ tu? nh√¢n t?o', '3.55');

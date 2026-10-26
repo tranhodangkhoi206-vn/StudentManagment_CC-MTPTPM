@@ -30,7 +30,7 @@ namespace StudentManagment
                 MessageBox.Show("Không thể tải danh sách sinh viên: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellClick(object? sender, DataGridViewCellEventArgs e)
         {
             // Bỏ qua nếu click vào tiêu đề cột hoặc ngoài phạm vi dòng dữ liệu
             if (e.RowIndex >= 0 && e.RowIndex < dataGridView1.Rows.Count)
@@ -285,7 +285,33 @@ namespace StudentManagment
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string keyword = textBox1.Text.Trim();
 
+                // Gọi phương thức tìm kiếm qua biến _bll đã khai báo sẵn trên Form
+                DataTable result = _bll.SearchSinhVienByMSSV(keyword);
+
+                if (result.Rows.Count > 0)
+                {
+                    dataGridView1.DataSource = result;
+                }
+                else
+                {
+                    MessageBox.Show($"Không tìm thấy sinh viên nào có MSSV: {keyword}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dataGridView1.DataSource = result;
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Lỗi định dạng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBox1.Focus();
+                textBox1.SelectAll();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Lỗi hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
