@@ -370,7 +370,7 @@
             btnSua.Location = new Point(360, 0);
             btnSua.Margin = new Padding(0);
             btnSua.Name = "btnSua";
-            btnSua.Size = new Size(180, 59);
+            btnSua.Size = new Size(171, 59);
             btnSua.TabIndex = 2;
             btnSua.Text = "Sửa";
             btnSua.UseVisualStyleBackColor = true;
@@ -378,7 +378,7 @@
             // btnLammoi
             // 
             btnLammoi.Font = new Font("Roboto Condensed", 15.75F);
-            btnLammoi.Location = new Point(540, 0);
+            btnLammoi.Location = new Point(531, 0);
             btnLammoi.Margin = new Padding(0);
             btnLammoi.Name = "btnLammoi";
             btnLammoi.Size = new Size(180, 59);

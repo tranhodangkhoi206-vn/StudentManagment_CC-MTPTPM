@@ -6,6 +6,7 @@ namespace StudentManagment.BLL
 {
     public class DangnhapBLL
     {
+        private TaikhoanDTO _taikhoan;
         private readonly ILogger<DangnhapBLL> logger;
         private DangnhapDAL dangnhapDAL;
         // Khởi tạo constructor để lấy logger factory từ form
@@ -13,6 +14,10 @@ namespace StudentManagment.BLL
         {
             logger = loggerFactory.CreateLogger<DangnhapBLL>();
             dangnhapDAL = new DangnhapDAL(loggerFactory);
+        }
+	    public string LayTenHienThi()
+        {
+            return _taikhoan.Hovaten;
         }
         public bool KiemTraDangNhap(string username, string password)
         {
@@ -32,6 +37,7 @@ namespace StudentManagment.BLL
                 if (username == taikhoan.Username && password == taikhoan.Matkhau)
                 {
                     logger.LogInformation("Người dùng đã đăng nhập thành công vào hệ thống. Với username: {username}", username);
+                    _taikhoan = taikhoan;
                     return true;
                 }
                 else
