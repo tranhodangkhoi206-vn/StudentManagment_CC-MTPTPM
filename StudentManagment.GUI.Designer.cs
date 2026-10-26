@@ -134,7 +134,7 @@
             btnTimKiem.Name = "btnTimKiem";
             btnTimKiem.Size = new Size(603, 43);
             btnTimKiem.TabIndex = 7;
-            btnTimKiem.Text = "Tìm kiếm";
+            btnTimKiem.Text = "Tìm kiếm theo MSSV";
             btnTimKiem.UseVisualStyleBackColor = true;
             btnTimKiem.Click += btnTimKiem_Click;
             // 

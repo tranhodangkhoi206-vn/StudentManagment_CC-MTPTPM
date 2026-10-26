@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -76,6 +77,27 @@ namespace StudentManagment
                 throw new KeyNotFoundException($"Không tìm thấy sinh viên có MSSV: {mssv} để xóa!");
 
             return dal.Xoa(mssv);
+        }
+
+        // Nghiệp vụ Tìm kiếm sinh viên theo MSSV
+        public DataTable SearchSinhVienByMSSV(string mssv)
+        {
+            // 1. Kiểm tra để trống
+            if (string.IsNullOrWhiteSpace(mssv))
+            {
+                throw new ArgumentException("Mã số sinh viên (MSSV) không được để trống!", nameof(mssv));
+            }
+
+            mssv = mssv.Trim();
+
+            // 2. Kiểm tra định dạng: 2 chữ 'SV' ở trước và 3 chữ số ở sau (Ví dụ: SV001, SV002, ...)
+            if (!Regex.IsMatch(mssv, @"^SV\d{3}$"))
+            {
+                throw new ArgumentException("Mã số sinh viên (MSSV) không đúng định dạng! MSSV phải bắt đầu bằng 'SV' và theo sau là 3 chữ số (Ví dụ: SV001).", nameof(mssv));
+            }
+
+            // 3. Gọi tầng DAL để truy vấn dữ liệu
+            return dal.SearchSinhVienByMSSV(mssv);
         }
     }
 }
