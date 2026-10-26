@@ -83,9 +83,9 @@
             txbMatkhau.Anchor = AnchorStyles.Left;
             txbMatkhau.BorderStyle = BorderStyle.FixedSingle;
             txbMatkhau.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbMatkhau.Location = new Point(186, 144);
+            txbMatkhau.Location = new Point(186, 148);
             txbMatkhau.Name = "txbMatkhau";
-            txbMatkhau.Size = new Size(357, 44);
+            txbMatkhau.Size = new Size(357, 36);
             txbMatkhau.TabIndex = 5;
             // 
             // label4
@@ -117,9 +117,9 @@
             txbTennguoidung.Anchor = AnchorStyles.Left;
             txbTennguoidung.BorderStyle = BorderStyle.FixedSingle;
             txbTennguoidung.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbTennguoidung.Location = new Point(186, 74);
+            txbTennguoidung.Location = new Point(186, 78);
             txbTennguoidung.Name = "txbTennguoidung";
-            txbTennguoidung.Size = new Size(357, 44);
+            txbTennguoidung.Size = new Size(357, 36);
             txbTennguoidung.TabIndex = 4;
             // 
             // tableLayoutPanel2
@@ -147,6 +147,7 @@
             btnThoat.TabIndex = 1;
             btnThoat.Text = "Thoát";
             btnThoat.UseVisualStyleBackColor = true;
+            btnThoat.Click += btnThoat_Click;
             // 
             // btnDangnhap
             // 
@@ -161,12 +162,13 @@
             // 
             // frmDangnhap
             // 
-            AutoScaleDimensions = new SizeF(7F, 18F);
+            AutoScaleDimensions = new SizeF(6F, 14F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(546, 288);
             Controls.Add(tableLayoutPanel1);
             Font = new Font("Roboto Condensed", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Name = "frmDangnhap";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Đăng nhập";
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();

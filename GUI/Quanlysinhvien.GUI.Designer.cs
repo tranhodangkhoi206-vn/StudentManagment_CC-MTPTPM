@@ -39,6 +39,7 @@
             btnQuanlimonhoc = new Button();
             btnQuanlisinhvien = new Button();
             btnTracuusinhvien = new Button();
+            pUserControl = new Panel();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -213,6 +214,7 @@
             // btnTracuusinhvien
             // 
             btnTracuusinhvien.BackgroundImageLayout = ImageLayout.None;
+            btnTracuusinhvien.CausesValidation = false;
             btnTracuusinhvien.Cursor = Cursors.Hand;
             btnTracuusinhvien.Dock = DockStyle.Fill;
             btnTracuusinhvien.FlatAppearance.BorderColor = SystemColors.Highlight;
@@ -226,16 +228,30 @@
             btnTracuusinhvien.TabIndex = 0;
             btnTracuusinhvien.Text = "Tra cứu sinh viên";
             btnTracuusinhvien.UseVisualStyleBackColor = false;
+            btnTracuusinhvien.Click += btnTracuusinhvien_Click;
+            btnTracuusinhvien.Leave += btnTracuusinhvien_Leave;
+            // 
+            // pUserControl
+            // 
+            pUserControl.Dock = DockStyle.Fill;
+            pUserControl.Location = new Point(220, 0);
+            pUserControl.Margin = new Padding(0);
+            pUserControl.Name = "pUserControl";
+            pUserControl.Size = new Size(1046, 682);
+            pUserControl.TabIndex = 1;
             // 
             // frmQuanLySinhVien
             // 
             AutoScaleDimensions = new SizeF(6F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1266, 682);
+            Controls.Add(pUserControl);
             Controls.Add(panel1);
             Font = new Font("Roboto Condensed", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Name = "frmQuanLySinhVien";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Quản lý sinh viên";
+            FormClosed += frmQuanLySinhVien_FormClosed;
             panel1.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
@@ -257,5 +273,6 @@
         private Button btnQuanlichuyennganh;
         private Button btnQuanlidiem;
         private Button btnDangxuat;
+        private Panel pUserControl;
     }
 }

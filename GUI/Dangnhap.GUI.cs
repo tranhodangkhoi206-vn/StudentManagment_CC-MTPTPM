@@ -37,5 +37,10 @@ namespace StudentManagment.GUI
                 MessageBox.Show("Có lỗi xảy ra khi bạn đăng nhập, hãy thử lại.");
             }
         }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
