@@ -1,9 +1,5 @@
 using StudentManagment.GUI;
 using Microsoft.Extensions.Logging;
-<<<<<<< HEAD
-// Goi den lop de lay ham logger
-=======
->>>>>>> feature/dang-nhap
 using StudentManagment.Helper;
 
 namespace StudentManagment
