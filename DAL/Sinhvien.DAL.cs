@@ -33,5 +33,26 @@ namespace StudentManagment.DAL
                 throw;
             }
         }
+	    public DataTable LaySinhVienTheoDieuKienTen(string hovaten)
+        {
+            try
+            {
+                using(SqlConnection conn = csdl.KetNoiCoSoDuLieu())
+                {
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter adapter = new SqlDataAdapter();
+		            SqlCommand cmd = new SqlCommand("SELECT * FROM SINHVIEN WHERE HOVATEN LIKE @HOVATEN",conn);
+                    cmd.Parameters.AddWithValue("@HOVATEN", "%" + hovaten + "%");
+                    adapter.SelectCommand = cmd;
+                    logger.LogInformation("Đang lấy danh sách sinh viên theo điều kiện tên...");
+                    adapter.Fill(dt);
+                    return dt;
+                }
+            } catch (SqlException sqlEx)
+            {
+		        logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi lấy danh sách sinh viên theo điều kiện tên.");
+                throw;
+            }
+        }
     }
 }

@@ -28,20 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             drvDanhsachsinhvien = new DataGridView();
-            panel1 = new Panel();
-            label1 = new Label();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            tableLayoutPanel2 = new TableLayoutPanel();
-            label2 = new Label();
-            txbTimkiem = new TextBox();
-            tableLayoutPanel3 = new TableLayoutPanel();
-            cbxNhomchuyennganh = new ComboBox();
-            label4 = new Label();
-            label3 = new Label();
-            cbxNhomlop = new ComboBox();
             MASV = new DataGridViewTextBoxColumn();
             HOVATEN = new DataGridViewTextBoxColumn();
             MALOP = new DataGridViewTextBoxColumn();
@@ -49,6 +38,18 @@
             GIOITINH = new DataGridViewTextBoxColumn();
             MANGANH = new DataGridViewTextBoxColumn();
             TINHTRANG = new DataGridViewTextBoxColumn();
+            panel1 = new Panel();
+            label1 = new Label();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            label2 = new Label();
+            txbTimkiem = new TextBox();
+            btnTimKiem = new Button();
+            tableLayoutPanel3 = new TableLayoutPanel();
+            cbxNhomchuyennganh = new ComboBox();
+            label4 = new Label();
+            label3 = new Label();
+            cbxNhomlop = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)drvDanhsachsinhvien).BeginInit();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -60,30 +61,93 @@
             // 
             drvDanhsachsinhvien.AllowUserToAddRows = false;
             drvDanhsachsinhvien.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Roboto Condensed", 16F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            drvDanhsachsinhvien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Roboto Condensed", 16F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            drvDanhsachsinhvien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             drvDanhsachsinhvien.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             drvDanhsachsinhvien.Columns.AddRange(new DataGridViewColumn[] { MASV, HOVATEN, MALOP, NGAYSINH, GIOITINH, MANGANH, TINHTRANG });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Roboto Condensed", 16F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            drvDanhsachsinhvien.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Roboto Condensed", 16F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            drvDanhsachsinhvien.DefaultCellStyle = dataGridViewCellStyle4;
             drvDanhsachsinhvien.Dock = DockStyle.Fill;
             drvDanhsachsinhvien.Location = new Point(3, 121);
             drvDanhsachsinhvien.Name = "drvDanhsachsinhvien";
             drvDanhsachsinhvien.ReadOnly = true;
             drvDanhsachsinhvien.Size = new Size(1054, 512);
             drvDanhsachsinhvien.TabIndex = 2;
+            // 
+            // MASV
+            // 
+            MASV.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            MASV.DataPropertyName = "MASV";
+            MASV.HeaderText = "Mã sinh viên";
+            MASV.Name = "MASV";
+            MASV.ReadOnly = true;
+            MASV.Width = 147;
+            // 
+            // HOVATEN
+            // 
+            HOVATEN.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            HOVATEN.DataPropertyName = "HOVATEN";
+            HOVATEN.HeaderText = "Họ và tên";
+            HOVATEN.Name = "HOVATEN";
+            HOVATEN.ReadOnly = true;
+            HOVATEN.Width = 120;
+            // 
+            // MALOP
+            // 
+            MALOP.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            MALOP.DataPropertyName = "MALOP";
+            MALOP.HeaderText = "Mã lớp";
+            MALOP.Name = "MALOP";
+            MALOP.ReadOnly = true;
+            MALOP.Width = 97;
+            // 
+            // NGAYSINH
+            // 
+            NGAYSINH.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            NGAYSINH.DataPropertyName = "NGAYSINH";
+            NGAYSINH.HeaderText = "Ngày sinh";
+            NGAYSINH.Name = "NGAYSINH";
+            NGAYSINH.ReadOnly = true;
+            NGAYSINH.Width = 124;
+            // 
+            // GIOITINH
+            // 
+            GIOITINH.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            GIOITINH.DataPropertyName = "GIOITINH";
+            GIOITINH.HeaderText = "Giới tính";
+            GIOITINH.Name = "GIOITINH";
+            GIOITINH.ReadOnly = true;
+            GIOITINH.Width = 110;
+            // 
+            // MANGANH
+            // 
+            MANGANH.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            MANGANH.DataPropertyName = "MANGANH";
+            MANGANH.HeaderText = "Mã ngành";
+            MANGANH.Name = "MANGANH";
+            MANGANH.ReadOnly = true;
+            MANGANH.Width = 125;
+            // 
+            // TINHTRANG
+            // 
+            TINHTRANG.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            TINHTRANG.DataPropertyName = "TINHTRANG";
+            TINHTRANG.HeaderText = "Tình trạng";
+            TINHTRANG.Name = "TINHTRANG";
+            TINHTRANG.ReadOnly = true;
+            TINHTRANG.Width = 127;
             // 
             // panel1
             // 
@@ -128,11 +192,13 @@
             // 
             // tableLayoutPanel2
             // 
-            tableLayoutPanel2.ColumnCount = 2;
+            tableLayoutPanel2.ColumnCount = 3;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 318F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 591F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel2.Controls.Add(label2, 0, 0);
             tableLayoutPanel2.Controls.Add(txbTimkiem, 1, 0);
+            tableLayoutPanel2.Controls.Add(btnTimKiem, 2, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(0, 0);
             tableLayoutPanel2.Margin = new Padding(0);
@@ -161,8 +227,21 @@
             txbTimkiem.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txbTimkiem.Location = new Point(321, 11);
             txbTimkiem.Name = "txbTimkiem";
-            txbTimkiem.Size = new Size(736, 36);
+            txbTimkiem.Size = new Size(585, 36);
             txbTimkiem.TabIndex = 1;
+            txbTimkiem.TextChanged += txbTimkiem_TextChanged;
+            // 
+            // btnTimKiem
+            // 
+            btnTimKiem.Dock = DockStyle.Fill;
+            btnTimKiem.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnTimKiem.Location = new Point(912, 3);
+            btnTimKiem.Name = "btnTimKiem";
+            btnTimKiem.Size = new Size(145, 53);
+            btnTimKiem.TabIndex = 2;
+            btnTimKiem.Text = "Tìm kiếm";
+            btnTimKiem.UseVisualStyleBackColor = true;
+            btnTimKiem.Click += btnTimKiem_Click;
             // 
             // tableLayoutPanel3
             // 
@@ -230,69 +309,6 @@
             cbxNhomlop.Size = new Size(273, 37);
             cbxNhomlop.TabIndex = 1;
             // 
-            // MASV
-            // 
-            MASV.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            MASV.DataPropertyName = "MASV";
-            MASV.HeaderText = "Mã sinh viên";
-            MASV.Name = "MASV";
-            MASV.ReadOnly = true;
-            MASV.Width = 147;
-            // 
-            // HOVATEN
-            // 
-            HOVATEN.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            HOVATEN.DataPropertyName = "HOVATEN";
-            HOVATEN.HeaderText = "Họ và tên";
-            HOVATEN.Name = "HOVATEN";
-            HOVATEN.ReadOnly = true;
-            HOVATEN.Width = 120;
-            // 
-            // MALOP
-            // 
-            MALOP.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            MALOP.DataPropertyName = "MALOP";
-            MALOP.HeaderText = "Mã lớp";
-            MALOP.Name = "MALOP";
-            MALOP.ReadOnly = true;
-            MALOP.Width = 97;
-            // 
-            // NGAYSINH
-            // 
-            NGAYSINH.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            NGAYSINH.DataPropertyName = "NGAYSINH";
-            NGAYSINH.HeaderText = "Ngày sinh";
-            NGAYSINH.Name = "NGAYSINH";
-            NGAYSINH.ReadOnly = true;
-            NGAYSINH.Width = 124;
-            // 
-            // GIOITINH
-            // 
-            GIOITINH.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            GIOITINH.DataPropertyName = "GIOITINH";
-            GIOITINH.HeaderText = "Giới tính";
-            GIOITINH.Name = "GIOITINH";
-            GIOITINH.ReadOnly = true;
-            GIOITINH.Width = 110;
-            // 
-            // MANGANH
-            // 
-            MANGANH.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            MANGANH.DataPropertyName = "MANGANH";
-            MANGANH.HeaderText = "Mã ngành";
-            MANGANH.Name = "MANGANH";
-            MANGANH.ReadOnly = true;
-            MANGANH.Width = 125;
-            // 
-            // TINHTRANG
-            // 
-            TINHTRANG.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            TINHTRANG.DataPropertyName = "TINHTRANG";
-            TINHTRANG.HeaderText = "Tình trạng";
-            TINHTRANG.Name = "TINHTRANG";
-            TINHTRANG.ReadOnly = true;
-            TINHTRANG.Width = 127;
-            // 
             // Tracuusinhvien
             // 
             AutoScaleDimensions = new SizeF(6F, 14F);
@@ -334,5 +350,6 @@
         private DataGridViewTextBoxColumn GIOITINH;
         private DataGridViewTextBoxColumn MANGANH;
         private DataGridViewTextBoxColumn TINHTRANG;
+        private Button btnTimKiem;
     }
 }

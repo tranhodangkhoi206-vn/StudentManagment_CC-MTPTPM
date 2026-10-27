@@ -61,17 +61,6 @@ namespace StudentManagment.GUI.User_Control
         //             }
         //         }
         //
-        //
-        //         private void label7_Click(object sender, EventArgs e)
-        //         {
-        //
-        //         }
-        //
-        //         private void tableLayoutPanel9_Paint(object sender, PaintEventArgs e)
-        //         {
-        //
-        //         }
-        //
         //         private void btnThem_Click(object sender, EventArgs e)
         //         {
         //             string mssv = txbMSSV.Text.Trim();

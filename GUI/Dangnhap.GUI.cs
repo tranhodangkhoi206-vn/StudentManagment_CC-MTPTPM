@@ -43,9 +43,9 @@ namespace StudentManagment.GUI
                     }
                 }
             }
-            catch (Exception ex)
+            catch 
             {
-                logger.LogError(ex, "Lỗi xảy ra khi với form đăng nhập.");
+                // logger.LogError(ex, "Lỗi xảy ra khi với form đăng nhập.");
                 MessageBox.Show("Có lỗi xảy ra khi bạn đăng nhập.\nVui lòng thử lại sau.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
