@@ -69,10 +69,7 @@ namespace StudentManagment.GUI.User_Control
                 string maSinhVien = txbMasinhvien.Text.ToString();
                 DataTable dt = new DataTable();
                 dt = quanlysinhvienBLL.XoaSinhVienTheoMaSinhVien(maSinhVien);
-                if (dt != null)
-                {
-                    drvDanhsachsinhvien.DataSource = dt;
-                }
+                drvDanhsachsinhvien.DataSource = dt;
             }
             catch
             {
@@ -118,7 +115,7 @@ namespace StudentManagment.GUI.User_Control
         {
             txbMasinhvien.Text = "";
             txbHovaten.Text = "";
-		    cbxLop.SelectedIndex = -1;
+            cbxLop.SelectedIndex = -1;
             dtpNgaySinh.Value = DateTime.Today.Date;
             rbtnNam.Checked = true;
             cbxChuyennganh.SelectedIndex = -1;
