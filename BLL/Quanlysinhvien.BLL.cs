@@ -10,11 +10,13 @@ namespace StudentManagment.BLL
         private readonly ILogger<QuanlysinhvienBLL> logger;
         private SinhvienDAL sinhvienDAL;
         private NganhhocDAL nganhhocDAL;
+        private LopDAL lopDAL;
         public QuanlysinhvienBLL(ILoggerFactory loggerFactory)
         {
             logger = loggerFactory.CreateLogger<QuanlysinhvienBLL>();
             sinhvienDAL = new SinhvienDAL(loggerFactory);
             nganhhocDAL = new NganhhocDAL(loggerFactory);
+            lopDAL = new LopDAL(loggerFactory);
         }
         public DataTable HienThiDanhSachSinhVien()
         {
@@ -37,6 +39,17 @@ namespace StudentManagment.BLL
             catch (Exception ex)
             {
                 logger.LogError(ex, "Xảy ra lỗi khi hiển thị danh sách ngành học cho combo box.");
+                throw;
+            }
+        }
+	    public DataTable HienThiDanhSachLopChoComboBox()
+        {
+            try
+            {
+                return lopDAL.LayToanBoLopChoComboBox();
+            } catch (Exception ex)
+            {
+                logger.LogError(ex, "Xảy ra lỗi khi hiển thị danh sách lớp cho combo box.");
                 throw;
             }
         }
