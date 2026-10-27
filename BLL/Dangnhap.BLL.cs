@@ -15,11 +15,11 @@ namespace StudentManagment.BLL
             logger = loggerFactory.CreateLogger<DangnhapBLL>();
             dangnhapDAL = new DangnhapDAL(loggerFactory);
         }
-	    public string LayTenHienThi()
+        public string LayTenHienThi()
         {
             return _taikhoan.Hovaten;
         }
-        public bool KiemTraDangNhap(string username, string password)
+        public bool KiemTraDangNhapRong(string username, string password)
         {
             try
             {
@@ -27,10 +27,23 @@ namespace StudentManagment.BLL
                 bool kiemTraPassword = string.IsNullOrEmpty(password);
                 if (kiemTraUsername || kiemTraPassword)
                 {
-                    MessageBox.Show("Bạn phải nhập đầy đủ thông tin trước khi đăng nhập.");
-                    logger.LogInformation("Người dùng chưa nhập đầy đủ thông tin.");
+                    logger.LogInformation("Người dùng chưa nhập đầy đủ thông tin đăng nhập.");
+                    return true;
+                }
+                else
+                {
                     return false;
                 }
+            } catch (Exception ex)
+            {
+                logger.LogError(ex, "Có lỗi xảy ra khi kiểm tra form đăng nhập có rỗng hay không. Với Username: {username}", username);
+                throw;
+            }
+        }
+        public bool KiemTraDangNhap(string username, string password)
+        {
+            try
+            {
                 TaikhoanDTO taikhoan = dangnhapDAL.LayTaiKhoanCoDieuKien(username, password);
                 if (username == taikhoan.Username && password == taikhoan.Matkhau)
                 {
@@ -40,7 +53,7 @@ namespace StudentManagment.BLL
                 }
                 else
                 {
-                    logger.LogInformation("Người dùng nhập sai tài khoản hoặc mật khẩu đăng nhập.");
+                    logger.LogWarning("Người dùng nhập sai tài khoản hoặc mật khẩu đăng nhập. Với Username: {username}", username);
                     return false;
                 }
             }

@@ -22,23 +22,30 @@ namespace StudentManagment.GUI
             {
                 string username = txbTennguoidung.Text.Trim();
                 string password = txbMatkhau.Text.Trim();
-                bool taiKhoanHopLe = dangnhapBLL.KiemTraDangNhap(username, password);
-                if (taiKhoanHopLe)
+                bool kiemTraRong = dangnhapBLL.KiemTraDangNhapRong(username, password);
+                if (kiemTraRong)
                 {
-                    this.Hide();
-                    frmQuanLySinhVien quanLySinhVienGUI = new frmQuanLySinhVien(_loggerFactory, dangnhapBLL.LayTenHienThi());
-                    quanLySinhVienGUI.Show();
-                    logger.LogInformation("Đăng nhập thành công, hiển thị form chính.");
+                    MessageBox.Show("Bạn phải nhập đầy đủ thông tin trước khi đăng nhập.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    logger.LogInformation("Đăng nhập không thành công, không hiển thị form");
-                    MessageBox.Show("Tên người dung hoặc mật khẩu chưa chính xác.\nVui lòng thử lại sau.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    bool taiKhoanHopLe = dangnhapBLL.KiemTraDangNhap(username, password);
+                    if (taiKhoanHopLe)
+                    {
+                        this.Hide();
+                        frmQuanLySinhVien quanLySinhVienGUI = new frmQuanLySinhVien(_loggerFactory, dangnhapBLL.LayTenHienThi());
+                        quanLySinhVienGUI.Show();
+                        logger.LogInformation("Đăng nhập thành công, hiển thị form chính.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Tên người dung hoặc mật khẩu chưa chính xác.\nVui lòng thử lại sau.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Lỗi xảy ra khi người dùng đăng nhập trên form.");
+                logger.LogError(ex, "Lỗi xảy ra khi với form đăng nhập.");
                 MessageBox.Show("Có lỗi xảy ra khi bạn đăng nhập.\nVui lòng thử lại sau.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -46,6 +53,11 @@ namespace StudentManagment.GUI
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void frmDangnhap_Load(object sender, EventArgs e)
+        {
+            txbMatkhau.PasswordChar = '*';
         }
     }
 }
