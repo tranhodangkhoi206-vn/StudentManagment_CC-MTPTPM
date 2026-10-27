@@ -170,6 +170,7 @@
             Name = "frmDangnhap";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Đăng nhập";
+            Load += frmDangnhap_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
