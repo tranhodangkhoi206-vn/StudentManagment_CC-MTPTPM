@@ -1,21 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
+using StudentManagment.DAL;
 
 namespace StudentManagment.GUI.User_Control
 {
     public partial class Quanlisinhvien : UserControl
     {
+        private SinhvienDAL sinhvienDAL;
+        private readonly ILogger<SinhvienDAL> logger;
         public Quanlisinhvien(ILoggerFactory loggerFactory)
         {
             InitializeComponent();
+            logger = loggerFactory.CreateLogger<SinhvienDAL>();
+            sinhvienDAL = new SinhvienDAL(loggerFactory);
+        }
+
+        private void Quanlisinhvien_Load(object sender, EventArgs e)
+        {
+            drvDanhsachsinhvien.DataSource = sinhvienDAL.LayToanBoSinhVien();
         }
         //         private readonly ILogger<frmQuanLySinhVien> _log = Logging.For<frmQuanLySinhVien>();
         //         private readonly SinhVienDAL _dal = new SinhVienDAL();
