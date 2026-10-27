@@ -13,7 +13,7 @@ namespace StudentManagment.GUI
         {
             InitializeComponent();
             _loggerFactory = loggerFactory;
-            logger = _loggerFactory.CreateLogger<frmDangnhap>();
+            logger = loggerFactory.CreateLogger<frmDangnhap>();
             dangnhapBLL = new DangnhapBLL(loggerFactory);
         }
         private void btnDangnhap_Click(object sender, EventArgs e)

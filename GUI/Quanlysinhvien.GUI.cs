@@ -5,9 +5,11 @@ namespace StudentManagment
 {
     public partial class frmQuanLySinhVien : Form
     {
+        private readonly ILoggerFactory _loggerFactory;
         public frmQuanLySinhVien(ILoggerFactory loggerFactory, string tenHienThi)
         {
             InitializeComponent();
+            _loggerFactory = loggerFactory;
             lbTen.Text = tenHienThi;
         }
 
@@ -22,7 +24,7 @@ namespace StudentManagment
             btnTracuusinhvien.ForeColor = Color.White;
 
             pUserControl.Controls.Clear();
-            Tracuusinhvien ucTracuusinhvien = new Tracuusinhvien();
+            Tracuusinhvien ucTracuusinhvien = new Tracuusinhvien(_loggerFactory);
             ucTracuusinhvien.Dock = DockStyle.Fill;
             pUserControl.Controls.Add(ucTracuusinhvien);
             ucTracuusinhvien.BringToFront();
@@ -40,7 +42,7 @@ namespace StudentManagment
             btnQuanlisinhvien.ForeColor = Color.White;
 
             pUserControl.Controls.Clear();
-            Quanlisinhvien ucQuanlisinhvien = new Quanlisinhvien();
+            Quanlisinhvien ucQuanlisinhvien = new Quanlisinhvien(_loggerFactory);
             ucQuanlisinhvien.Dock = DockStyle.Fill;
             pUserControl.Controls.Add(ucQuanlisinhvien);
             ucQuanlisinhvien.BringToFront();
@@ -58,7 +60,7 @@ namespace StudentManagment
             btnQuanlimonhoc.ForeColor = Color.White;
 
             pUserControl.Controls.Clear();
-            Quanlimonhoc ucQuanlimonhoc = new Quanlimonhoc();
+            Quanlimonhoc ucQuanlimonhoc = new Quanlimonhoc(_loggerFactory);
             ucQuanlimonhoc.Dock = DockStyle.Fill;
             pUserControl.Controls.Add(ucQuanlimonhoc);
             ucQuanlimonhoc.BringToFront();
@@ -76,7 +78,7 @@ namespace StudentManagment
             btnQuanlichuyennganh.ForeColor = Color.White;
 
             pUserControl.Controls.Clear();
-            Quanlinganhhoc ucQuanlinganhhoc = new Quanlinganhhoc();
+            Quanlinganhhoc ucQuanlinganhhoc = new Quanlinganhhoc(_loggerFactory);
             ucQuanlinganhhoc.Dock = DockStyle.Fill;
             pUserControl.Controls.Add(ucQuanlinganhhoc);
             ucQuanlinganhhoc.BringToFront();
@@ -95,7 +97,7 @@ namespace StudentManagment
             btnQuanlidiem.ForeColor = Color.White;
 
             pUserControl.Controls.Clear();
-            Quanlidiem ucQuanlidiem = new Quanlidiem();
+            Quanlidiem ucQuanlidiem = new Quanlidiem(_loggerFactory);
             ucQuanlidiem.Dock = DockStyle.Fill;
             pUserControl.Controls.Add(ucQuanlidiem);
             ucQuanlidiem.BringToFront();
