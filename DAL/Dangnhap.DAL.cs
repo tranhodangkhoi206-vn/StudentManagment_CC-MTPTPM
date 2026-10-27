@@ -12,7 +12,6 @@ namespace StudentManagment.DAL
     public class DangnhapDAL
     {
         private readonly ILogger<DangnhapDAL> logger;
-        private CosodulieuDAL csdl = new CosodulieuDAL();
         public DangnhapDAL(ILoggerFactory loggerFactory)
         {
             logger = loggerFactory.CreateLogger<DangnhapDAL>();
@@ -21,7 +20,7 @@ namespace StudentManagment.DAL
         {
             try
             {
-                using (SqlConnection conn = csdl.KetNoiCoSoDuLieu())
+                using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
                 {
                     SqlCommand cmd = new SqlCommand("SELECT * FROM TAIKHOAN WHERE USERNAME=@USERNAME AND PASSWORD=@PASSWORD", conn);
                     cmd.Parameters.AddWithValue("@USERNAME", username);
