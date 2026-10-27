@@ -25,5 +25,17 @@ namespace StudentManagment.BLL
                 throw;
             }
         }
+        public DataTable HienThiDanhSachSinhVienTheoDieuKienTen(string hovaten)
+        {
+            try
+            {
+                return sinhvienDAL.LaySinhVienTheoDieuKienTen(hovaten);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Xảy ra lỗi khi hiển thị danh sách sinh viên theo điều khiện tên.");
+                throw;
+            }
+        }
     }
 }
