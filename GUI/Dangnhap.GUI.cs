@@ -30,11 +30,16 @@ namespace StudentManagment.GUI
                     quanLySinhVienGUI.Show();
                     logger.LogInformation("Đăng nhập thành công, hiển thị form chính.");
                 }
+                else
+                {
+                    logger.LogInformation("Đăng nhập không thành công, không hiển thị form");
+                    MessageBox.Show("Tên người dung hoặc mật khẩu chưa chính xác.\nVui lòng thử lại sau.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Lỗi xảy ra ở form đăng nhập.");
-                MessageBox.Show("Có lỗi xảy ra khi bạn đăng nhập, hãy thử lại.");
+                logger.LogError(ex, "Lỗi xảy ra khi người dùng đăng nhập trên form.");
+                MessageBox.Show("Có lỗi xảy ra khi bạn đăng nhập.\nVui lòng thử lại sau.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
