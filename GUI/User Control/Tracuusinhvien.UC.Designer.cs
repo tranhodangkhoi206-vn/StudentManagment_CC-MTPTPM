@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            drvDanhsachsinhvien = new DataGridView();
             panel1 = new Panel();
             label1 = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -39,13 +42,48 @@
             label4 = new Label();
             label3 = new Label();
             cbxNhomlop = new ComboBox();
-            drvDanhsachsinhvien = new DataGridView();
+            MASV = new DataGridViewTextBoxColumn();
+            HOVATEN = new DataGridViewTextBoxColumn();
+            MALOP = new DataGridViewTextBoxColumn();
+            NGAYSINH = new DataGridViewTextBoxColumn();
+            GIOITINH = new DataGridViewTextBoxColumn();
+            MANGANH = new DataGridViewTextBoxColumn();
+            TINHTRANG = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)drvDanhsachsinhvien).BeginInit();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)drvDanhsachsinhvien).BeginInit();
             SuspendLayout();
+            // 
+            // drvDanhsachsinhvien
+            // 
+            drvDanhsachsinhvien.AllowUserToAddRows = false;
+            drvDanhsachsinhvien.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Roboto Condensed", 16F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            drvDanhsachsinhvien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            drvDanhsachsinhvien.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            drvDanhsachsinhvien.Columns.AddRange(new DataGridViewColumn[] { MASV, HOVATEN, MALOP, NGAYSINH, GIOITINH, MANGANH, TINHTRANG });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Roboto Condensed", 16F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            drvDanhsachsinhvien.DefaultCellStyle = dataGridViewCellStyle2;
+            drvDanhsachsinhvien.Dock = DockStyle.Fill;
+            drvDanhsachsinhvien.Location = new Point(3, 121);
+            drvDanhsachsinhvien.Name = "drvDanhsachsinhvien";
+            drvDanhsachsinhvien.ReadOnly = true;
+            drvDanhsachsinhvien.Size = new Size(1054, 512);
+            drvDanhsachsinhvien.TabIndex = 2;
             // 
             // panel1
             // 
@@ -192,14 +230,68 @@
             cbxNhomlop.Size = new Size(273, 37);
             cbxNhomlop.TabIndex = 1;
             // 
-            // drvDanhsachsinhvien
+            // MASV
             // 
-            drvDanhsachsinhvien.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            drvDanhsachsinhvien.Dock = DockStyle.Fill;
-            drvDanhsachsinhvien.Location = new Point(3, 121);
-            drvDanhsachsinhvien.Name = "drvDanhsachsinhvien";
-            drvDanhsachsinhvien.Size = new Size(1054, 512);
-            drvDanhsachsinhvien.TabIndex = 2;
+            MASV.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            MASV.DataPropertyName = "MASV";
+            MASV.HeaderText = "Mã sinh viên";
+            MASV.Name = "MASV";
+            MASV.ReadOnly = true;
+            MASV.Width = 147;
+            // 
+            // HOVATEN
+            // 
+            HOVATEN.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            HOVATEN.DataPropertyName = "HOVATEN";
+            HOVATEN.HeaderText = "Họ và tên";
+            HOVATEN.Name = "HOVATEN";
+            HOVATEN.ReadOnly = true;
+            HOVATEN.Width = 120;
+            // 
+            // MALOP
+            // 
+            MALOP.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            MALOP.DataPropertyName = "MALOP";
+            MALOP.HeaderText = "Mã lớp";
+            MALOP.Name = "MALOP";
+            MALOP.ReadOnly = true;
+            MALOP.Width = 97;
+            // 
+            // NGAYSINH
+            // 
+            NGAYSINH.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            NGAYSINH.DataPropertyName = "NGAYSINH";
+            NGAYSINH.HeaderText = "Ngày sinh";
+            NGAYSINH.Name = "NGAYSINH";
+            NGAYSINH.ReadOnly = true;
+            NGAYSINH.Width = 124;
+            // 
+            // GIOITINH
+            // 
+            GIOITINH.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            GIOITINH.DataPropertyName = "GIOITINH";
+            GIOITINH.HeaderText = "Giới tính";
+            GIOITINH.Name = "GIOITINH";
+            GIOITINH.ReadOnly = true;
+            GIOITINH.Width = 110;
+            // 
+            // MANGANH
+            // 
+            MANGANH.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            MANGANH.DataPropertyName = "MANGANH";
+            MANGANH.HeaderText = "Mã ngành";
+            MANGANH.Name = "MANGANH";
+            MANGANH.ReadOnly = true;
+            MANGANH.Width = 125;
+            // 
+            // TINHTRANG
+            // 
+            TINHTRANG.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            TINHTRANG.DataPropertyName = "TINHTRANG";
+            TINHTRANG.HeaderText = "Tình trạng";
+            TINHTRANG.Name = "TINHTRANG";
+            TINHTRANG.ReadOnly = true;
+            TINHTRANG.Width = 127;
             // 
             // Tracuusinhvien
             // 
@@ -210,6 +302,7 @@
             Font = new Font("Roboto Condensed", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Name = "Tracuusinhvien";
             Size = new Size(1060, 721);
+            ((System.ComponentModel.ISupportInitialize)drvDanhsachsinhvien).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
@@ -217,7 +310,6 @@
             tableLayoutPanel2.PerformLayout();
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)drvDanhsachsinhvien).EndInit();
             ResumeLayout(false);
         }
 
@@ -235,5 +327,12 @@
         private Label label3;
         private ComboBox cbxNhomlop;
         private DataGridView drvDanhsachsinhvien;
+        private DataGridViewTextBoxColumn MASV;
+        private DataGridViewTextBoxColumn HOVATEN;
+        private DataGridViewTextBoxColumn MALOP;
+        private DataGridViewTextBoxColumn NGAYSINH;
+        private DataGridViewTextBoxColumn GIOITINH;
+        private DataGridViewTextBoxColumn MANGANH;
+        private DataGridViewTextBoxColumn TINHTRANG;
     }
 }
