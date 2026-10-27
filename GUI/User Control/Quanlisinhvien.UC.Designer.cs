@@ -39,7 +39,6 @@
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
-            txbLop = new TextBox();
             label4 = new Label();
             txbHovaten = new TextBox();
             label3 = new Label();
@@ -55,6 +54,7 @@
             btnSua = new Button();
             btnLammoi = new Button();
             cbxChuyennganh = new ComboBox();
+            cbxLop = new ComboBox();
             drvDanhsachsinhvien = new DataGridView();
             MASV = new DataGridViewTextBoxColumn();
             HOVATEN = new DataGridViewTextBoxColumn();
@@ -115,15 +115,14 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 158F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 176F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 118F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 254F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 142F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 129F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 220F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 134F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 171F));
             tableLayoutPanel2.Controls.Add(cbxTinhtrang, 1, 2);
             tableLayoutPanel2.Controls.Add(label8, 0, 2);
             tableLayoutPanel2.Controls.Add(label7, 4, 1);
             tableLayoutPanel2.Controls.Add(label6, 2, 1);
             tableLayoutPanel2.Controls.Add(label5, 0, 1);
-            tableLayoutPanel2.Controls.Add(txbLop, 5, 0);
             tableLayoutPanel2.Controls.Add(label4, 4, 0);
             tableLayoutPanel2.Controls.Add(txbHovaten, 3, 0);
             tableLayoutPanel2.Controls.Add(label3, 2, 0);
@@ -133,6 +132,7 @@
             tableLayoutPanel2.Controls.Add(tableLayoutPanel3, 3, 1);
             tableLayoutPanel2.Controls.Add(flowLayoutPanel1, 2, 2);
             tableLayoutPanel2.Controls.Add(cbxChuyennganh, 5, 1);
+            tableLayoutPanel2.Controls.Add(cbxLop, 5, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(0, 0);
             tableLayoutPanel2.Margin = new Padding(0);
@@ -148,12 +148,12 @@
             // 
             cbxTinhtrang.Anchor = AnchorStyles.Left;
             cbxTinhtrang.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbxTinhtrang.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cbxTinhtrang.Font = new Font("Roboto Condensed", 14F);
             cbxTinhtrang.FormattingEnabled = true;
             cbxTinhtrang.Items.AddRange(new object[] { "Đang học", "Đang bảo lưu", "Đã tốt nghiệp" });
-            cbxTinhtrang.Location = new Point(161, 127);
+            cbxTinhtrang.Location = new Point(161, 130);
             cbxTinhtrang.Name = "cbxTinhtrang";
-            cbxTinhtrang.Size = new Size(170, 37);
+            cbxTinhtrang.Size = new Size(170, 31);
             cbxTinhtrang.TabIndex = 13;
             // 
             // label8
@@ -175,9 +175,9 @@
             label7.Dock = DockStyle.Fill;
             label7.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.ForeColor = SystemColors.ControlText;
-            label7.Location = new Point(709, 58);
+            label7.Location = new Point(675, 58);
             label7.Name = "label7";
-            label7.Size = new Size(136, 58);
+            label7.Size = new Size(128, 58);
             label7.TabIndex = 10;
             label7.Text = "Ngành học:";
             label7.TextAlign = ContentAlignment.MiddleLeft;
@@ -208,25 +208,15 @@
             label5.Text = "Ngày sinh:";
             label5.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // txbLop
-            // 
-            txbLop.Anchor = AnchorStyles.Left;
-            txbLop.BorderStyle = BorderStyle.FixedSingle;
-            txbLop.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbLop.Location = new Point(851, 11);
-            txbLop.Name = "txbLop";
-            txbLop.Size = new Size(206, 36);
-            txbLop.TabIndex = 5;
-            // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Dock = DockStyle.Fill;
             label4.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.ForeColor = SystemColors.ControlText;
-            label4.Location = new Point(709, 0);
+            label4.Location = new Point(675, 0);
             label4.Name = "label4";
-            label4.Size = new Size(136, 58);
+            label4.Size = new Size(128, 58);
             label4.TabIndex = 4;
             label4.Text = "Lớp:";
             label4.TextAlign = ContentAlignment.MiddleLeft;
@@ -235,10 +225,10 @@
             // 
             txbHovaten.Anchor = AnchorStyles.Left;
             txbHovaten.BorderStyle = BorderStyle.FixedSingle;
-            txbHovaten.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbHovaten.Location = new Point(455, 11);
+            txbHovaten.Font = new Font("Roboto Condensed", 14F);
+            txbHovaten.Location = new Point(455, 14);
             txbHovaten.Name = "txbHovaten";
-            txbHovaten.Size = new Size(248, 36);
+            txbHovaten.Size = new Size(214, 30);
             txbHovaten.TabIndex = 3;
             // 
             // label3
@@ -271,21 +261,21 @@
             // 
             txbMasinhvien.Anchor = AnchorStyles.Left;
             txbMasinhvien.BorderStyle = BorderStyle.FixedSingle;
-            txbMasinhvien.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbMasinhvien.Location = new Point(161, 11);
+            txbMasinhvien.Font = new Font("Roboto Condensed", 14F);
+            txbMasinhvien.Location = new Point(161, 14);
             txbMasinhvien.Name = "txbMasinhvien";
-            txbMasinhvien.Size = new Size(168, 36);
+            txbMasinhvien.Size = new Size(168, 30);
             txbMasinhvien.TabIndex = 1;
             // 
             // dtpNgaySinh
             // 
             dtpNgaySinh.Anchor = AnchorStyles.Left;
-            dtpNgaySinh.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dtpNgaySinh.Font = new Font("Roboto Condensed", 14F);
             dtpNgaySinh.Format = DateTimePickerFormat.Short;
-            dtpNgaySinh.Location = new Point(158, 69);
+            dtpNgaySinh.Location = new Point(158, 72);
             dtpNgaySinh.Margin = new Padding(0);
             dtpNgaySinh.Name = "dtpNgaySinh";
-            dtpNgaySinh.Size = new Size(168, 36);
+            dtpNgaySinh.Size = new Size(168, 30);
             dtpNgaySinh.TabIndex = 7;
             // 
             // tableLayoutPanel3
@@ -301,17 +291,17 @@
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 1;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.Size = new Size(254, 58);
+            tableLayoutPanel3.Size = new Size(220, 58);
             tableLayoutPanel3.TabIndex = 9;
             // 
             // tbtnNu
             // 
             tbtnNu.AutoSize = true;
             tbtnNu.Dock = DockStyle.Fill;
-            tbtnNu.Font = new Font("Roboto Condensed", 18F);
-            tbtnNu.Location = new Point(130, 3);
+            tbtnNu.Font = new Font("Roboto Condensed", 14F);
+            tbtnNu.Location = new Point(113, 3);
             tbtnNu.Name = "tbtnNu";
-            tbtnNu.Size = new Size(121, 52);
+            tbtnNu.Size = new Size(104, 52);
             tbtnNu.TabIndex = 1;
             tbtnNu.TabStop = true;
             tbtnNu.Text = "Nữ";
@@ -321,10 +311,10 @@
             // 
             rbtnNam.AutoSize = true;
             rbtnNam.Dock = DockStyle.Fill;
-            rbtnNam.Font = new Font("Roboto Condensed", 18F);
+            rbtnNam.Font = new Font("Roboto Condensed", 14F);
             rbtnNam.Location = new Point(3, 3);
             rbtnNam.Name = "rbtnNam";
-            rbtnNam.Size = new Size(121, 52);
+            rbtnNam.Size = new Size(104, 52);
             rbtnNam.TabIndex = 0;
             rbtnNam.TabStop = true;
             rbtnNam.Text = "Nam";
@@ -346,7 +336,7 @@
             // 
             // btnThem
             // 
-            btnThem.Font = new Font("Roboto Condensed", 15.75F);
+            btnThem.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnThem.Location = new Point(0, 0);
             btnThem.Margin = new Padding(0);
             btnThem.Name = "btnThem";
@@ -354,10 +344,11 @@
             btnThem.TabIndex = 0;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = true;
+            btnThem.Click += btnThem_Click;
             // 
             // btnXoa
             // 
-            btnXoa.Font = new Font("Roboto Condensed", 15.75F);
+            btnXoa.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnXoa.Location = new Point(180, 0);
             btnXoa.Margin = new Padding(0);
             btnXoa.Name = "btnXoa";
@@ -365,10 +356,11 @@
             btnXoa.TabIndex = 1;
             btnXoa.Text = "Xóa";
             btnXoa.UseVisualStyleBackColor = true;
+            btnXoa.Click += btnXoa_Click;
             // 
             // btnSua
             // 
-            btnSua.Font = new Font("Roboto Condensed", 15.75F);
+            btnSua.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSua.Location = new Point(360, 0);
             btnSua.Margin = new Padding(0);
             btnSua.Name = "btnSua";
@@ -376,10 +368,11 @@
             btnSua.TabIndex = 2;
             btnSua.Text = "Sửa";
             btnSua.UseVisualStyleBackColor = true;
+            btnSua.Click += btnSua_Click;
             // 
             // btnLammoi
             // 
-            btnLammoi.Font = new Font("Roboto Condensed", 15.75F);
+            btnLammoi.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnLammoi.Location = new Point(531, 0);
             btnLammoi.Margin = new Padding(0);
             btnLammoi.Name = "btnLammoi";
@@ -387,16 +380,28 @@
             btnLammoi.TabIndex = 3;
             btnLammoi.Text = "Làm mới";
             btnLammoi.UseVisualStyleBackColor = true;
+            btnLammoi.Click += btnLammoi_Click;
             // 
             // cbxChuyennganh
             // 
             cbxChuyennganh.Anchor = AnchorStyles.Left;
             cbxChuyennganh.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbxChuyennganh.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cbxChuyennganh.Location = new Point(851, 68);
+            cbxChuyennganh.Font = new Font("Roboto Condensed", 14F);
+            cbxChuyennganh.Location = new Point(809, 71);
             cbxChuyennganh.Name = "cbxChuyennganh";
-            cbxChuyennganh.Size = new Size(206, 37);
+            cbxChuyennganh.Size = new Size(248, 31);
             cbxChuyennganh.TabIndex = 15;
+            // 
+            // cbxLop
+            // 
+            cbxLop.Anchor = AnchorStyles.Left;
+            cbxLop.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxLop.Font = new Font("Roboto Condensed", 14F);
+            cbxLop.FormattingEnabled = true;
+            cbxLop.Location = new Point(809, 13);
+            cbxLop.Name = "cbxLop";
+            cbxLop.Size = new Size(248, 31);
+            cbxLop.TabIndex = 16;
             // 
             // drvDanhsachsinhvien
             // 
@@ -511,7 +516,6 @@
         private Panel panel1;
         private TableLayoutPanel tableLayoutPanel1;
         private TableLayoutPanel tableLayoutPanel2;
-        private TextBox txbLop;
         private Label label4;
         private TextBox txbHovaten;
         private Label label3;
@@ -540,5 +544,6 @@
         private DataGridViewTextBoxColumn GIOITINH;
         private DataGridViewTextBoxColumn MANGANH;
         private DataGridViewTextBoxColumn TINHTRANG;
+        private ComboBox cbxLop;
     }
 }
