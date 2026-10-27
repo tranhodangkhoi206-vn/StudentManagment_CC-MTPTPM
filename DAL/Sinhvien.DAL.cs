@@ -8,8 +8,8 @@ namespace StudentManagment.DAL
 {
     public class SinhvienDAL
     {
-        private CosodulieuDAL csdl = new CosodulieuDAL();
-        private readonly ILogger logger;
+        private readonly ILogger logger
+            ;
         public SinhvienDAL(ILoggerFactory loggerFactory)
         {
             logger = loggerFactory.CreateLogger<SinhvienDAL>();
@@ -34,32 +34,33 @@ namespace StudentManagment.DAL
                 throw;
             }
         }
-	    public DataTable LaySinhVienTheoDieuKienTen(string hovaten)
+        public DataTable LaySinhVienTheoDieuKienTen(string hovaten)
         {
             try
             {
-                using(SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
+                using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
                 {
                     DataTable dt = new DataTable();
                     SqlDataAdapter adapter = new SqlDataAdapter();
-		            SqlCommand cmd = new SqlCommand("SELECT * FROM SINHVIEN WHERE HOVATEN LIKE @HOVATEN",conn);
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM SINHVIEN WHERE HOVATEN LIKE @HOVATEN", conn);
                     cmd.Parameters.AddWithValue("@HOVATEN", "%" + hovaten + "%");
                     adapter.SelectCommand = cmd;
                     logger.LogInformation("Đang lấy danh sách sinh viên theo điều kiện tên...");
                     adapter.Fill(dt);
                     return dt;
                 }
-            } catch (SqlException sqlEx)
+            }
+            catch (SqlException sqlEx)
             {
-		        logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi lấy danh sách sinh viên theo điều kiện tên.");
+                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi lấy danh sách sinh viên theo điều kiện tên.");
                 throw;
             }
         }
-	    public DataTable LaySinhVienTheoDieuKienLop(string maLop)
+        public DataTable LaySinhVienTheoDieuKienLop(string maLop)
         {
             try
             {
-                using(SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
+                using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
                 {
                     SqlDataAdapter adapter = new SqlDataAdapter();
                     SqlCommand cmd = new SqlCommand("SELECT * FROM SINHVIEN WHERE MALOP=@MALOP", conn);
@@ -70,17 +71,18 @@ namespace StudentManagment.DAL
                     adapter.Fill(dt);
                     return dt;
                 }
-            } catch (SqlException sqlEx)
+            }
+            catch (SqlException sqlEx)
             {
-		        logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi lấy danh sách sinh viên theo điều kiện lớp.");
+                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi lấy danh sách sinh viên theo điều kiện lớp.");
                 throw;
             }
         }
-	    public DataTable LaySinhVienTheoDieuKienNganhHoc(string maNganh)
+        public DataTable LaySinhVienTheoDieuKienNganhHoc(string maNganh)
         {
             try
             {
-                using(SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
+                using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
                 {
                     SqlDataAdapter adapter = new SqlDataAdapter();
                     SqlCommand cmd = new SqlCommand("SELECT * FROM SINHVIEN WHERE MANGANH=@MANGANH", conn);
@@ -91,9 +93,40 @@ namespace StudentManagment.DAL
                     adapter.Fill(dt);
                     return dt;
                 }
-            } catch (SqlException sqlEx)
+            }
+            catch (SqlException sqlEx)
             {
-		        logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi lấy danh sách sinh viên theo điều kiện ngành học.");
+                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi lấy danh sách sinh viên theo điều kiện ngành học.");
+                throw;
+            }
+        }
+        public DataTable ThemSinhVienMoi(SinhvienDTO sinhVienMoi)
+        {
+            try
+            {
+
+                using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
+                {
+                    DataTable dt = LayToanBoSinhVien();
+                    SqlDataAdapter adapter = new SqlDataAdapter();
+                    SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
+                    DataRow row = dt.NewRow();
+                    row["MASV"] = sinhVienMoi.MaSinhVien;
+                    row["HOVATEN"] = sinhVienMoi.HoVaTen;
+                    row["MALOP"] = sinhVienMoi.MaLop;
+                    row["NGAYSINH"] = sinhVienMoi.NgaySinh;
+                    row["GIOITINH"] = sinhVienMoi.GioiTinh;
+                    row["MANGANH"] = sinhVienMoi.MaNganh;
+                    row["TINHTRANG"] = sinhVienMoi.TinhTrang;
+                    dt.Rows.Add(row);
+                    logger.LogInformation("Đang thêm sinh viên mới vào danh sách sinh viên. Với dữ liệu:\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVienMoi.MaSinhVien, sinhVienMoi.HoVaTen, sinhVienMoi.MaLop, sinhVienMoi.NgaySinh, sinhVienMoi.GioiTinh, sinhVienMoi.MaNganh, sinhVienMoi.TinhTrang);
+                    adapter.Update(dt);
+                    return dt;
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi thêm sinh viên mới. Với thông tin:\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVienMoi.MaSinhVien, sinhVienMoi.HoVaTen, sinhVienMoi.MaLop, sinhVienMoi.NgaySinh, sinhVienMoi.GioiTinh, sinhVienMoi.MaNganh, sinhVienMoi.TinhTrang);
                 throw;
             }
         }
