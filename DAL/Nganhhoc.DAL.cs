@@ -30,5 +30,25 @@ namespace StudentManagment.DAL
                 throw;
             }
         }
+	    public DataTable LayToanBoNganhHoc()
+        {
+            try
+            {
+                using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
+                {
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter adapter = new SqlDataAdapter();
+                    adapter.SelectCommand = new SqlCommand("SELECT * FROM NGANHHOC", conn);
+                    logger.LogInformation("Đang lấy danh sách các ngành học...");
+                    adapter.Fill(dt);
+                    return dt;
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sỡ dữ liệu khi lấy danh sách ngành học.");
+                throw;
+            }
+        }
     }
 }
