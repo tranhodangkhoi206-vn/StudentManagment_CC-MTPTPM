@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Extensions.Logging;
 
 namespace StudentManagment.GUI.User_Control
 {
     public partial class Quanlidiem : UserControl
     {
-        public Quanlidiem()
+        public Quanlidiem(ILoggerFactory loggerFactory)
         {
             InitializeComponent();
         }
