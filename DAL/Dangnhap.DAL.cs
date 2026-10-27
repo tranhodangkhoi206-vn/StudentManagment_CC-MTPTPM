@@ -29,7 +29,7 @@ namespace StudentManagment.DAL
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.Read())
                     {
-                        logger.LogInformation("Đang lấy tài khoản từ cơ sở dữ liệu.");
+                        logger.LogInformation("Đang lấy tài khoản với thông tin Username: {username}.", username);
                         return new TaikhoanDTO
                         {
                             Hovaten = reader["HOVATEN"].ToString().Trim(),
@@ -37,22 +37,23 @@ namespace StudentManagment.DAL
                             Matkhau = reader["PASSWORD"].ToString().Trim()
                         };
                     }
+                    else
+                    {
+                        logger.LogWarning("Đăng nhập thất bại: Không tìm thấy tài khoản hoặc mật khẩu");
+					    return new TaikhoanDTO { Hovaten = "", Username = "", Matkhau = "" };
+                    }
                 }
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sỡ dữ liệu.");
-                MessageBox.Show("Lỗi xảy ra khi đăng nhập. Hãy thử lại sau.");
-                return null;
+                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sỡ dữ liệu khi đang lấy thông tin tài khoản với Username: {username}.", username);
+                throw;
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Lỗi xảy ra khi đăng nhập");
-                MessageBox.Show("Lỗi xảy ra khi đăng nhập. Hãy thử lại sau.");
-                return null;
+                logger.LogError(ex, "Lỗi xảy ra khi đang lấy thông tin khoản với Username: {username}", username);
+                throw;
             }
-            logger.LogInformation("Người dùng đăng nhập với tài khoản không tồn tại trong hệ thống.");
-            return new TaikhoanDTO { Hovaten = "1", Username = "1", Matkhau = "1" };
         }
     }
 }
