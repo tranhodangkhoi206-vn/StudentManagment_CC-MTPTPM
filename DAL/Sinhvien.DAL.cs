@@ -100,7 +100,7 @@ namespace StudentManagment.DAL
                 throw;
             }
         }
-        public DataTable ThemsinhVienSua(SinhvienDTO sinhVienSua)
+        public DataTable ThemsinhVienMoi(SinhvienDTO sinhVienMoi)
         {
             try
             {
@@ -111,22 +111,22 @@ namespace StudentManagment.DAL
                     SqlDataAdapter adapter = new SqlDataAdapter();
                     SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
                     DataRow row = dt.NewRow();
-                    row["MASV"] = sinhVienSua.MaSinhVien;
-                    row["HOVATEN"] = sinhVienSua.HoVaTen;
-                    row["MALOP"] = sinhVienSua.MaLop;
-                    row["NGAYSINH"] = sinhVienSua.NgaySinh;
-                    row["GIOITINH"] = sinhVienSua.GioiTinh;
-                    row["MANGANH"] = sinhVienSua.MaNganh;
-                    row["TINHTRANG"] = sinhVienSua.TinhTrang;
+                    row["MASV"] = sinhVienMoi.MaSinhVien;
+                    row["HOVATEN"] = sinhVienMoi.HoVaTen;
+                    row["MALOP"] = sinhVienMoi.MaLop;
+                    row["NGAYSINH"] = sinhVienMoi.NgaySinh;
+                    row["GIOITINH"] = sinhVienMoi.GioiTinh;
+                    row["MANGANH"] = sinhVienMoi.MaNganh;
+                    row["TINHTRANG"] = sinhVienMoi.TinhTrang;
                     dt.Rows.Add(row);
-                    logger.LogInformation("Đang thêm sinh viên mới vào danh sách sinh viên. Với dữ liệu:\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVienSua.MaSinhVien, sinhVienSua.HoVaTen, sinhVienSua.MaLop, sinhVienSua.NgaySinh, sinhVienSua.GioiTinh, sinhVienSua.MaNganh, sinhVienSua.TinhTrang);
+                    logger.LogInformation("Đang thêm sinh viên mới vào danh sách sinh viên. Với dữ liệu:\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVienMoi.MaSinhVien, sinhVienMoi.HoVaTen, sinhVienMoi.MaLop, sinhVienMoi.NgaySinh, sinhVienMoi.GioiTinh, sinhVienMoi.MaNganh, sinhVienMoi.TinhTrang);
                     adapter.Update(dt);
                     return dt;
                 }
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi thêm sinh viên mới. Với thông tin:\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVienSua.MaSinhVien, sinhVienSua.HoVaTen, sinhVienSua.MaLop, sinhVienSua.NgaySinh, sinhVienSua.GioiTinh, sinhVienSua.MaNganh, sinhVienSua.TinhTrang);
+                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi thêm sinh viên mới. Với thông tin:\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVienMoi.MaSinhVien, sinhVienMoi.HoVaTen, sinhVienMoi.MaLop, sinhVienMoi.NgaySinh, sinhVienMoi.GioiTinh, sinhVienMoi.MaNganh, sinhVienMoi.TinhTrang);
                 throw;
             }
         }
@@ -145,7 +145,6 @@ namespace StudentManagment.DAL
                         logger.LogInformation("Thông tin sinh viên cần sửa không tồn tại. Với mã sinh viên: {masinhvien}", sinhVienSua.MaSinhVien);
                     }
                     DataRow row = rows[0];
-                    row["MASV"] = sinhVienSua.MaSinhVien;
                     row["HOVATEN"] = sinhVienSua.HoVaTen;
                     row["MALOP"] = sinhVienSua.MaLop;
                     row["NGAYSINH"] = sinhVienSua.NgaySinh;
