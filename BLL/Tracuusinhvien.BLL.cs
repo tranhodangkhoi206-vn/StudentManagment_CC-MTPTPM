@@ -8,14 +8,14 @@ namespace StudentManagment.BLL
     {
         private SinhvienDAL sinhvienDAL;
         private LopDAL lopDAL;
-        private NganhhocDAL nganhhcoDAL;
+        private NganhhocDAL nganhhocDAL;
         private readonly ILogger<TracuusinhvienBLL> logger;
         public TracuusinhvienBLL(ILoggerFactory loggerFactory)
         {
             logger = loggerFactory.CreateLogger<TracuusinhvienBLL>();
             sinhvienDAL = new SinhvienDAL(loggerFactory);
             lopDAL = new LopDAL(loggerFactory);
-            nganhhcoDAL = new NganhhocDAL(loggerFactory);
+            nganhhocDAL = new NganhhocDAL(loggerFactory);
         }
         public DataTable HienThiDanhSachSinhVien()
         {
@@ -83,7 +83,7 @@ namespace StudentManagment.BLL
         {
             try
             {
-                return nganhhcoDAL.LayToanBoNganhHocChoComboBox();
+                return nganhhocDAL.LayToanBoNganhHocChoComboBox();
             }
             catch (Exception ex)
             {
