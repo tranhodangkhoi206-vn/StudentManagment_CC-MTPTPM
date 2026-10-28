@@ -39,6 +39,7 @@ namespace StudentManagment.GUI.User_Control
                 string gioiTinh = rbtnNam.Checked ? "Nam" : "Nữ";
                 string nganhHoc = cbxChuyennganh.SelectedValue.ToString().Trim();
                 string tinhTrang = cbxTinhtrang.Text.Trim();
+                MessageBox.Show(lop);
                 SinhvienDTO sinhvienMoi = new SinhvienDTO()
                 {
                     MaSinhVien = maSinhVien,
@@ -83,7 +84,7 @@ namespace StudentManagment.GUI.User_Control
             {
                 string maSinhVien = txbMasinhvien.Text.ToString().Trim();
                 string hoVaTen = txbHovaten.Text.ToString().Trim();
-                string lop = cbxLop.Text.Trim();
+                string lop = cbxLop.SelectedValue.ToString().Trim();
                 DateTime ngaySinh = dtpNgaySinh.Value.Date;
                 string gioiTinh = rbtnNam.Checked ? "Nam" : "Nữ";
                 string nganhHoc = cbxChuyennganh.Text.Trim();

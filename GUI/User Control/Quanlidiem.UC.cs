@@ -26,16 +26,18 @@ namespace StudentManagment.GUI.User_Control
             {
                 string maSinhVien = txbMasinhvien.Text.ToString().Trim();
                 string maMon = txbMamonhoc.Text.ToString().Trim();
-                string diemChuyenCan = txbDiemchuyencan.Text.ToString().Trim();
-                string diemGiuaKy = txbDiemgiuaky.Text.ToString().Trim();
-                string diemCuoiKy = txtDiemcuoiky.Text.ToString().Trim();
+                decimal diemChuyenCan = decimal.Parse(txbDiemchuyencan.Text.ToString().Trim());
+                decimal diemGiuaKy = decimal.Parse(txbDiemgiuaky.Text.ToString().Trim());
+                decimal diemCuoiKy = decimal.Parse(txtDiemcuoiky.Text.ToString().Trim());
                 DiemDTO diemDTO = new DiemDTO()
                 {
                     Masinhvien = maSinhVien,
                     Mamon = maMon,
-                    Diemchuyencan = decimal.Parse(diemChuyenCan),
-                    Diemgiuaky = decimal.Parse(diemGiuaKy),
-                    Diemcuoiky = decimal.Parse(diemCuoiKy)
+                    Diemchuyencan = diemChuyenCan,
+                    Diemgiuaky = diemGiuaKy,
+                    Diemcuoiky = diemCuoiKy,
+                    Diemtong = (diemChuyenCan + diemGiuaKy + diemCuoiKy) / 3
+
                 };
                 DataTable dt = new DataTable();
                 dt = quanlydiemBLL.ThemDiemMoi(diemDTO);
@@ -69,16 +71,17 @@ namespace StudentManagment.GUI.User_Control
             {
                 string maSinhVien = txbMasinhvien.Text.ToString().Trim();
                 string maMon = txbMamonhoc.Text.ToString().Trim();
-                string diemChuyenCan = txbDiemchuyencan.Text.ToString().Trim();
-                string diemGiuaKy = txbDiemgiuaky.Text.ToString().Trim();
-                string diemCuoiKy = txtDiemcuoiky.Text.ToString().Trim();
+                decimal diemChuyenCan = decimal.Parse(txbDiemchuyencan.Text.ToString().Trim());
+                decimal diemGiuaKy = decimal.Parse(txbDiemgiuaky.Text.ToString().Trim());
+                decimal diemCuoiKy = decimal.Parse(txtDiemcuoiky.Text.ToString().Trim());
                 DiemDTO diemDTO = new DiemDTO()
                 {
                     Masinhvien = maSinhVien,
                     Mamon = maMon,
-                    Diemchuyencan = decimal.Parse(diemChuyenCan),
-                    Diemgiuaky = decimal.Parse(diemGiuaKy),
-                    Diemcuoiky = decimal.Parse(diemCuoiKy)
+                    Diemchuyencan = diemChuyenCan,
+                    Diemgiuaky = diemGiuaKy,
+                    Diemcuoiky = diemCuoiKy,
+                    Diemtong = (diemChuyenCan + diemGiuaKy + diemCuoiKy) / 3
                 };
                 DataTable dt = new DataTable();
                 dt = quanlydiemBLL.SuaThongTinDiemTheoMaSinhVienVaMaMon(diemDTO);
