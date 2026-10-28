@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using System.Data;
 using Microsoft.Data.SqlClient;
-namespace StudentManagment.DAL
+namespace StudentManagment.DAL.Util
 {
     public class LopDAL
     {

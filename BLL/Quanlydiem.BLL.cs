@@ -1,16 +1,20 @@
 ﻿using System.Data;
-using StudentManagment.DTO;
 using Microsoft.Extensions.Logging;
+using StudentManagment.DTO;
 using StudentManagment.DAL;
+using StudentManagment.DAL.Util;
+
 namespace StudentManagment.BLL
 {
     public class QuanlydiemBLL
     {
+        private QuanlydiemDAL quanlydiemDAL;
         private DiemDAL diemDAL;
         private readonly ILogger<QuanlydiemBLL> logger;
 	    public QuanlydiemBLL(ILoggerFactory loggerFactory)
         {
             logger = loggerFactory.CreateLogger<QuanlydiemBLL>();
+            quanlydiemDAL = new QuanlydiemDAL(loggerFactory);
             diemDAL = new DiemDAL(loggerFactory);
         }
 	    public DataTable HienThiToanBoDiem()
@@ -28,7 +32,7 @@ namespace StudentManagment.BLL
         {
             try
             {
-                return diemDAL.ThemDiemMoi(diemMoi);
+                return quanlydiemDAL.ThemDiemMoi(diemMoi);
             }
             catch (Exception ex)
             {
@@ -41,7 +45,7 @@ namespace StudentManagment.BLL
         {
             try
             {
-                return diemDAL.SuaThongTinDiemTheoMaSinhVienVaMaMon(diemSua);
+                return quanlydiemDAL.SuaThongTinDiemTheoMaSinhVienVaMaMon(diemSua);
             }
             catch (Exception ex)
             {
@@ -54,7 +58,7 @@ namespace StudentManagment.BLL
         {
             try
             {
-                return diemDAL.XoaThongTinDiemTheoMaSinhVienVaMaMon(maSinhVien, maMon);
+                return quanlydiemDAL.XoaThongTinDiemTheoMaSinhVienVaMaMon(maSinhVien, maMon);
             }
             catch (Exception ex)
             {

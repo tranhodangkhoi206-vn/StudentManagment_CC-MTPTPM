@@ -2,33 +2,18 @@
 using StudentManagment.DTO;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
+using StudentManagment.DAL.Util;
+
 namespace StudentManagment.DAL
 {
-    public class DiemDAL
+    public class QuanlydiemDAL
     {
-        private readonly ILogger<DiemDAL> logger;
-	    public DiemDAL(ILoggerFactory loggerFactory)
+        private readonly ILogger<QuanlydiemDAL> logger;
+        private DiemDAL diemDAL;
+	    public QuanlydiemDAL(ILoggerFactory loggerFactory)
         {
-            logger = loggerFactory.CreateLogger<DiemDAL>();
-        }
-	    public DataTable LayToanBoDiem()
-        {
-            try
-            {
-                using(SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
-                {
-                    DataTable dt = new DataTable();
-                    SqlDataAdapter adapter = new SqlDataAdapter();
-                    adapter.SelectCommand = new SqlCommand("SELECT * FROM DIEM", conn);
-                    logger.LogInformation("Đang lấy danh sách điểm...");
-                    adapter.Fill(dt);
-                    return dt;
-                }
-            } catch (SqlException sqlEx)
-            {
-                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sỡ dữ liệu khi lấy danh sách điểm.");
-                throw;
-            }
+            logger = loggerFactory.CreateLogger<QuanlydiemDAL>();
+            diemDAL = new DiemDAL(loggerFactory);
         }
         public DataTable ThemDiemMoi(DiemDTO diemMoi)
         {
@@ -47,7 +32,7 @@ namespace StudentManagment.DAL
 
                     logger.LogInformation("Đang thêm điểm mới vào danh sách điểm. Với dữ liệu:\nMã sinh viên: {0},\nMã môn: {1},\nĐiểm chuyên cần: {2},\nĐiểm giữa kỳ: {3},\nĐiểm cuối kỳ: {4},\nĐiểm tổng: {5}", diemMoi.Masinhvien, diemMoi.Mamon, diemMoi.Diemchuyencan, diemMoi.Diemgiuaky, diemMoi.Diemcuoiky, diemMoi.Diemtong);
 
-                    return LayToanBoDiem();
+                    return diemDAL.LayToanBoDiem();
                 }
             }
             catch (SqlException sqlEx)
@@ -74,7 +59,7 @@ namespace StudentManagment.DAL
 
                     logger.LogInformation("Đang sửa điểm của sinh viên có mã sinh viên {0} môn {1} trong danh sách điểm. Với dữ liệu:\nĐiểm chuyên cần: {2},\nĐiểm giữa kỳ: {3},\nĐiểm cuối kỳ: {4},\nĐiểm tổng: {5}", diemSua.Masinhvien, diemSua.Mamon, diemSua.Diemchuyencan, diemSua.Diemgiuaky, diemSua.Diemcuoiky, diemSua.Diemtong);
 
-                    return LayToanBoDiem();
+                    return diemDAL.LayToanBoDiem();
                 }
             }
             catch (SqlException sqlEx)
@@ -97,7 +82,7 @@ namespace StudentManagment.DAL
 
                     logger.LogInformation("Đang xóa điểm của sinh viên có mã sinh viên {0} môn {1} khỏi danh sách điểm.", maSinhVien, maMon);
 
-                    return LayToanBoDiem();
+                    return diemDAL.LayToanBoDiem();
                 }
             }
             catch (SqlException sqlEx)

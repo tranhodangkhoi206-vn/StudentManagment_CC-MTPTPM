@@ -1,56 +1,19 @@
 ﻿using System.Data;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
+using StudentManagment.DAL.Util;
 using StudentManagment.DTO;
 
 namespace StudentManagment.DAL
 {
-    public class NganhhocDAL
+    public class QuanlynganhhocDAL 
     {
         private readonly ILogger logger;
-        public NganhhocDAL(ILoggerFactory loggerFactory)
+        private NganhhocDAL nganhhocDAL;
+        public QuanlynganhhocDAL(ILoggerFactory loggerFactory)
         {
-            logger = loggerFactory.CreateLogger<NganhhocDAL>();
-        }
-        public DataTable LayToanBoNganhHocChoComboBox()
-        {
-            try
-            {
-                using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
-                {
-                    SqlDataAdapter adapter = new SqlDataAdapter();
-                    adapter.SelectCommand = new SqlCommand("SELECT MANGANH, TENNGANH FROM NGANHHOC", conn);
-                    DataTable dt = new DataTable();
-                    logger.LogInformation("Đang lấy danh sách ngành học cho combo box...");
-                    adapter.Fill(dt);
-                    return dt;
-                }
-            }
-            catch (SqlException sqlEx)
-            {
-                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi lấy danh sách ngành học cho combo box.");
-                throw;
-            }
-        }
-        public DataTable LayToanBoNganhHoc()
-        {
-            try
-            {
-                using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
-                {
-                    DataTable dt = new DataTable();
-                    SqlDataAdapter adapter = new SqlDataAdapter();
-                    adapter.SelectCommand = new SqlCommand("SELECT * FROM NGANHHOC", conn);
-                    logger.LogInformation("Đang lấy danh sách các ngành học...");
-                    adapter.Fill(dt);
-                    return dt;
-                }
-            }
-            catch (SqlException sqlEx)
-            {
-                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sỡ dữ liệu khi lấy danh sách ngành học.");
-                throw;
-            }
+            logger = loggerFactory.CreateLogger<QuanlynganhhocDAL>();
+            nganhhocDAL = new NganhhocDAL(loggerFactory);
         }
         public DataTable ThemNganhMoi(NganhhocDTO nganhMoi)
         {
@@ -66,7 +29,7 @@ namespace StudentManagment.DAL
 
                     logger.LogInformation("Đang thêm ngành mới vào danh sách ngành. Với dữ liệu:\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhMoi.Manganh, nganhMoi.Tennganh, nganhMoi.Khoaquanly);
 
-                    return LayToanBoNganhHoc();
+                    return nganhhocDAL.LayToanBoNganhHoc();
                 }
             }
             catch (SqlException sqlEx)
@@ -90,7 +53,7 @@ namespace StudentManagment.DAL
 
                     logger.LogInformation("Đang sửa ngành có mã ngành {0} trong danh sách ngành. Với dữ liệu:\nTên ngành: {1},\nKhoa quản lý: {2}", nganhSua.Manganh, nganhSua.Tennganh, nganhSua.Khoaquanly);
 
-                    return LayToanBoNganhHoc();
+                    return nganhhocDAL.LayToanBoNganhHoc();
                 }
             }
             catch (SqlException sqlEx)
@@ -112,7 +75,7 @@ namespace StudentManagment.DAL
 
                     logger.LogInformation("Đang xóa ngành với mã ngành {0} khỏi danh sách ngành.", maNganh);
 
-                    return LayToanBoNganhHoc();
+                    return nganhhocDAL.LayToanBoNganhHoc();
                 }
             }
             catch (SqlException sqlEx)

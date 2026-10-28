@@ -1,19 +1,21 @@
 ﻿
 using System.Data;
 using Microsoft.Extensions.Logging;
-using StudentManagment.DAL;
+using StudentManagment.DAL.Util;
 using StudentManagment.DTO;
 
 namespace StudentManagment.BLL
 {
     public class QuanlymonhocBLL
     {
-        private readonly ILogger<QuanlymonhocBLL> logger;
+        private QuanlymonhocDAL quanlymonhocDAL;
         private MonhocDAL monhocDAL;
         private NganhhocDAL nganhhocDAL;
+        private readonly ILogger<QuanlymonhocBLL> logger;
         public QuanlymonhocBLL(ILoggerFactory loggerFactory)
         {
             logger = loggerFactory.CreateLogger<QuanlymonhocBLL>();
+            quanlymonhocDAL = new QuanlymonhocDAL(loggerFactory);
             monhocDAL = new MonhocDAL(loggerFactory);
             nganhhocDAL = new NganhhocDAL(loggerFactory);
         }
@@ -44,7 +46,7 @@ namespace StudentManagment.BLL
         {
             try
             {
-                return monhocDAL.ThemMonHocMoi(monHocMoi);
+                return quanlymonhocDAL.ThemMonHocMoi(monHocMoi);
             } catch (Exception ex)
             {
                 logger.LogError(ex, "Xảy ra lỗi khi thêm môn học có mã môn học {0} vào danh sách môn học. Với dữ liệu:\nTên môn học: {1}, Mã ngành: {2}, Số tiết lý thuyết: {3}, Số tiết thực hành: {4}, Giảng viên: {5}, Tình trạng: {6}", monHocMoi.Mamon, monHocMoi.Tenmon, monHocMoi.Manganh, monHocMoi.Sotietlythuyet, monHocMoi.Sotietthuchanh, monHocMoi.Giangvien, monHocMoi.Tinhtrang);
@@ -55,7 +57,7 @@ namespace StudentManagment.BLL
         {
             try
             {
-                return monhocDAL.SuaThongTinMonHocTheoMaMon(monHocMoi);
+                return quanlymonhocDAL.SuaThongTinMonHocTheoMaMon(monHocMoi);
             } catch (Exception ex)
             {
                 logger.LogError(ex, "Xảy ra lỗi khi sửa môn học có mã môn học {0} vào danh sách môn học. Với dữ liệu:\nTên môn học: {1}, Mã ngành: {2}, Số tiết lý thuyết: {3}, Số tiết thực hành: {4}, Giảng viên: {5}, Tình trạng: {6}", monHocMoi.Mamon, monHocMoi.Tenmon, monHocMoi.Manganh, monHocMoi.Sotietlythuyet, monHocMoi.Sotietthuchanh, monHocMoi.Giangvien, monHocMoi.Tinhtrang);
@@ -66,7 +68,7 @@ namespace StudentManagment.BLL
         {
             try
             {
-                return monhocDAL.XoaThongTinMonHocTheoMaMon(maMonHoc);
+                return quanlymonhocDAL.XoaThongTinMonHocTheoMaMon(maMonHoc);
             } catch (Exception ex)
             {
                 logger.LogError(ex, "Lỗi xảy ra khi xóa môn học với mã môn học {0}",maMonHoc);
