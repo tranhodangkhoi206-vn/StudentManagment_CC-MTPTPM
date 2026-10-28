@@ -86,7 +86,7 @@ namespace StudentManagment.GUI.User_Control
                 string lop = cbxLop.SelectedValue.ToString().Trim();
                 DateTime ngaySinh = dtpNgaySinh.Value.Date;
                 string gioiTinh = rbtnNam.Checked ? "Nam" : "Nữ";
-                string nganhHoc = cbxChuyennganh.Text.Trim();
+                string nganhHoc = cbxChuyennganh.SelectedValue.ToString().Trim();
                 string tinhTrang = cbxTinhtrang.Text.Trim();
                 SinhvienDTO sinhvienSua = new SinhvienDTO()
                 {
