@@ -47,7 +47,7 @@ namespace StudentManagment.DAL.Util
             {
                 using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
                 {
-                    SqlCommand cmd = new SqlCommand("UPDATE SinhVien SET HOVATEN   = @HOVATEN, MALOP     = @MALOP, NGAYSINH  = @NGAYSINH, GIOITINH  = @GIOITINH, MANGANH   = @MANGANH, TINHTRANG = @TINHTRANG WHERE MASV = @MASV");
+                    SqlCommand cmd = new SqlCommand("UPDATE SinhVien SET HOVATEN   = @HOVATEN, MALOP     = @MALOP, NGAYSINH  = @NGAYSINH, GIOITINH  = @GIOITINH, MANGANH   = @MANGANH, TINHTRANG = @TINHTRANG WHERE MASV = @MASV",conn);
                     cmd.Parameters.AddWithValue("@MASV", sinhVienSua.MaSinhVien);
                     cmd.Parameters.AddWithValue("@HOVATEN", sinhVienSua.HoVaTen);
                     cmd.Parameters.AddWithValue("@MALOP", sinhVienSua.MaLop);
