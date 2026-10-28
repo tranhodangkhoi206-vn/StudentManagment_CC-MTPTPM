@@ -39,7 +39,6 @@ namespace StudentManagment.GUI.User_Control
                 string gioiTinh = rbtnNam.Checked ? "Nam" : "Nữ";
                 string nganhHoc = cbxChuyennganh.SelectedValue.ToString().Trim();
                 string tinhTrang = cbxTinhtrang.Text.Trim();
-                MessageBox.Show(lop);
                 SinhvienDTO sinhvienMoi = new SinhvienDTO()
                 {
                     MaSinhVien = maSinhVien,
