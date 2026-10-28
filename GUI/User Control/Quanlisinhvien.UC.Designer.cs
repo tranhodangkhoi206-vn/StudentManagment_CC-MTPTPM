@@ -28,14 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             label1 = new Label();
             panel1 = new Panel();
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel2 = new TableLayoutPanel();
+            cbxTinhtrang = new ComboBox();
+            label8 = new Label();
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
-            txbLop = new TextBox();
             label4 = new Label();
             txbHovaten = new TextBox();
             label3 = new Label();
@@ -45,15 +48,21 @@
             tableLayoutPanel3 = new TableLayoutPanel();
             tbtnNu = new RadioButton();
             rbtnNam = new RadioButton();
-            cbxChuyennganh = new ComboBox();
-            label8 = new Label();
-            cbxTinhtrang = new ComboBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
             btnThem = new Button();
             btnXoa = new Button();
             btnSua = new Button();
             btnLammoi = new Button();
+            cbxChuyennganh = new ComboBox();
+            cbxLop = new ComboBox();
             drvDanhsachsinhvien = new DataGridView();
+            MASV = new DataGridViewTextBoxColumn();
+            HOVATEN = new DataGridViewTextBoxColumn();
+            MALOP = new DataGridViewTextBoxColumn();
+            NGAYSINH = new DataGridViewTextBoxColumn();
+            GIOITINH = new DataGridViewTextBoxColumn();
+            MANGANH = new DataGridViewTextBoxColumn();
+            TINHTRANG = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -70,9 +79,9 @@
             label1.ForeColor = SystemColors.ButtonHighlight;
             label1.Location = new Point(21, 14);
             label1.Name = "label1";
-            label1.Size = new Size(398, 58);
+            label1.Size = new Size(404, 58);
             label1.TabIndex = 0;
-            label1.Text = "QUẢN LÍ SINH VIÊN";
+            label1.Text = "QUẢN LÝ SINH VIÊN";
             // 
             // panel1
             // 
@@ -106,15 +115,14 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 158F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 176F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 118F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 228F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 168F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 129F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 220F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 134F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 171F));
             tableLayoutPanel2.Controls.Add(cbxTinhtrang, 1, 2);
             tableLayoutPanel2.Controls.Add(label8, 0, 2);
             tableLayoutPanel2.Controls.Add(label7, 4, 1);
             tableLayoutPanel2.Controls.Add(label6, 2, 1);
             tableLayoutPanel2.Controls.Add(label5, 0, 1);
-            tableLayoutPanel2.Controls.Add(txbLop, 5, 0);
             tableLayoutPanel2.Controls.Add(label4, 4, 0);
             tableLayoutPanel2.Controls.Add(txbHovaten, 3, 0);
             tableLayoutPanel2.Controls.Add(label3, 2, 0);
@@ -122,8 +130,9 @@
             tableLayoutPanel2.Controls.Add(txbMasinhvien, 1, 0);
             tableLayoutPanel2.Controls.Add(dtpNgaySinh, 1, 1);
             tableLayoutPanel2.Controls.Add(tableLayoutPanel3, 3, 1);
-            tableLayoutPanel2.Controls.Add(cbxChuyennganh, 5, 1);
             tableLayoutPanel2.Controls.Add(flowLayoutPanel1, 2, 2);
+            tableLayoutPanel2.Controls.Add(cbxChuyennganh, 5, 1);
+            tableLayoutPanel2.Controls.Add(cbxLop, 5, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(0, 0);
             tableLayoutPanel2.Margin = new Padding(0);
@@ -135,17 +144,42 @@
             tableLayoutPanel2.Size = new Size(1060, 175);
             tableLayoutPanel2.TabIndex = 0;
             // 
+            // cbxTinhtrang
+            // 
+            cbxTinhtrang.Anchor = AnchorStyles.Left;
+            cbxTinhtrang.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxTinhtrang.Font = new Font("Roboto Condensed", 14F);
+            cbxTinhtrang.FormattingEnabled = true;
+            cbxTinhtrang.Items.AddRange(new object[] { "Đang học", "Đang bảo lưu", "Đã tốt nghiệp" });
+            cbxTinhtrang.Location = new Point(161, 130);
+            cbxTinhtrang.Name = "cbxTinhtrang";
+            cbxTinhtrang.Size = new Size(170, 31);
+            cbxTinhtrang.TabIndex = 13;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Dock = DockStyle.Fill;
+            label8.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label8.ForeColor = SystemColors.ControlText;
+            label8.Location = new Point(3, 116);
+            label8.Name = "label8";
+            label8.Size = new Size(152, 59);
+            label8.TabIndex = 12;
+            label8.Text = "Tình trạng:";
+            label8.TextAlign = ContentAlignment.MiddleLeft;
+            // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Dock = DockStyle.Fill;
             label7.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.ForeColor = SystemColors.ControlText;
-            label7.Location = new Point(683, 58);
+            label7.Location = new Point(675, 58);
             label7.Name = "label7";
-            label7.Size = new Size(162, 58);
+            label7.Size = new Size(128, 58);
             label7.TabIndex = 10;
-            label7.Text = "Chuyên ngành:";
+            label7.Text = "Ngành học:";
             label7.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label6
@@ -174,25 +208,15 @@
             label5.Text = "Ngày sinh:";
             label5.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // txbLop
-            // 
-            txbLop.Anchor = AnchorStyles.Left;
-            txbLop.BorderStyle = BorderStyle.FixedSingle;
-            txbLop.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbLop.Location = new Point(851, 11);
-            txbLop.Name = "txbLop";
-            txbLop.Size = new Size(206, 36);
-            txbLop.TabIndex = 5;
-            // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Dock = DockStyle.Fill;
             label4.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.ForeColor = SystemColors.ControlText;
-            label4.Location = new Point(683, 0);
+            label4.Location = new Point(675, 0);
             label4.Name = "label4";
-            label4.Size = new Size(162, 58);
+            label4.Size = new Size(128, 58);
             label4.TabIndex = 4;
             label4.Text = "Lớp:";
             label4.TextAlign = ContentAlignment.MiddleLeft;
@@ -201,10 +225,10 @@
             // 
             txbHovaten.Anchor = AnchorStyles.Left;
             txbHovaten.BorderStyle = BorderStyle.FixedSingle;
-            txbHovaten.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbHovaten.Location = new Point(455, 11);
+            txbHovaten.Font = new Font("Roboto Condensed", 14F);
+            txbHovaten.Location = new Point(455, 14);
             txbHovaten.Name = "txbHovaten";
-            txbHovaten.Size = new Size(222, 36);
+            txbHovaten.Size = new Size(214, 30);
             txbHovaten.TabIndex = 3;
             // 
             // label3
@@ -237,20 +261,21 @@
             // 
             txbMasinhvien.Anchor = AnchorStyles.Left;
             txbMasinhvien.BorderStyle = BorderStyle.FixedSingle;
-            txbMasinhvien.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbMasinhvien.Location = new Point(161, 11);
+            txbMasinhvien.Font = new Font("Roboto Condensed", 14F);
+            txbMasinhvien.Location = new Point(161, 14);
             txbMasinhvien.Name = "txbMasinhvien";
-            txbMasinhvien.Size = new Size(168, 36);
+            txbMasinhvien.Size = new Size(168, 30);
             txbMasinhvien.TabIndex = 1;
             // 
             // dtpNgaySinh
             // 
             dtpNgaySinh.Anchor = AnchorStyles.Left;
-            dtpNgaySinh.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dtpNgaySinh.Font = new Font("Roboto Condensed", 14F);
             dtpNgaySinh.Format = DateTimePickerFormat.Short;
-            dtpNgaySinh.Location = new Point(161, 69);
+            dtpNgaySinh.Location = new Point(158, 72);
+            dtpNgaySinh.Margin = new Padding(0);
             dtpNgaySinh.Name = "dtpNgaySinh";
-            dtpNgaySinh.Size = new Size(168, 36);
+            dtpNgaySinh.Size = new Size(168, 30);
             dtpNgaySinh.TabIndex = 7;
             // 
             // tableLayoutPanel3
@@ -266,17 +291,17 @@
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 1;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.Size = new Size(228, 58);
+            tableLayoutPanel3.Size = new Size(220, 58);
             tableLayoutPanel3.TabIndex = 9;
             // 
             // tbtnNu
             // 
             tbtnNu.AutoSize = true;
             tbtnNu.Dock = DockStyle.Fill;
-            tbtnNu.Font = new Font("Roboto Condensed", 18F);
-            tbtnNu.Location = new Point(117, 3);
+            tbtnNu.Font = new Font("Roboto Condensed", 14F);
+            tbtnNu.Location = new Point(113, 3);
             tbtnNu.Name = "tbtnNu";
-            tbtnNu.Size = new Size(108, 52);
+            tbtnNu.Size = new Size(104, 52);
             tbtnNu.TabIndex = 1;
             tbtnNu.TabStop = true;
             tbtnNu.Text = "Nữ";
@@ -286,47 +311,14 @@
             // 
             rbtnNam.AutoSize = true;
             rbtnNam.Dock = DockStyle.Fill;
-            rbtnNam.Font = new Font("Roboto Condensed", 18F);
+            rbtnNam.Font = new Font("Roboto Condensed", 14F);
             rbtnNam.Location = new Point(3, 3);
             rbtnNam.Name = "rbtnNam";
-            rbtnNam.Size = new Size(108, 52);
+            rbtnNam.Size = new Size(104, 52);
             rbtnNam.TabIndex = 0;
             rbtnNam.TabStop = true;
             rbtnNam.Text = "Nam";
             rbtnNam.UseVisualStyleBackColor = true;
-            // 
-            // cbxChuyennganh
-            // 
-            cbxChuyennganh.Anchor = AnchorStyles.Left;
-            cbxChuyennganh.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cbxChuyennganh.FormattingEnabled = true;
-            cbxChuyennganh.Location = new Point(851, 68);
-            cbxChuyennganh.Name = "cbxChuyennganh";
-            cbxChuyennganh.Size = new Size(206, 37);
-            cbxChuyennganh.TabIndex = 11;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Dock = DockStyle.Fill;
-            label8.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.ForeColor = SystemColors.ControlText;
-            label8.Location = new Point(3, 116);
-            label8.Name = "label8";
-            label8.Size = new Size(152, 59);
-            label8.TabIndex = 12;
-            label8.Text = "Tình trạng:";
-            label8.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // cbxTinhtrang
-            // 
-            cbxTinhtrang.Anchor = AnchorStyles.Left;
-            cbxTinhtrang.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cbxTinhtrang.FormattingEnabled = true;
-            cbxTinhtrang.Location = new Point(161, 127);
-            cbxTinhtrang.Name = "cbxTinhtrang";
-            cbxTinhtrang.Size = new Size(170, 37);
-            cbxTinhtrang.TabIndex = 13;
             // 
             // flowLayoutPanel1
             // 
@@ -344,7 +336,7 @@
             // 
             // btnThem
             // 
-            btnThem.Font = new Font("Roboto Condensed", 15.75F);
+            btnThem.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnThem.Location = new Point(0, 0);
             btnThem.Margin = new Padding(0);
             btnThem.Name = "btnThem";
@@ -352,10 +344,11 @@
             btnThem.TabIndex = 0;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = true;
+            btnThem.Click += btnThem_Click;
             // 
             // btnXoa
             // 
-            btnXoa.Font = new Font("Roboto Condensed", 15.75F);
+            btnXoa.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnXoa.Location = new Point(180, 0);
             btnXoa.Margin = new Padding(0);
             btnXoa.Name = "btnXoa";
@@ -363,37 +356,137 @@
             btnXoa.TabIndex = 1;
             btnXoa.Text = "Xóa";
             btnXoa.UseVisualStyleBackColor = true;
+            btnXoa.Click += btnXoa_Click;
             // 
             // btnSua
             // 
-            btnSua.Font = new Font("Roboto Condensed", 15.75F);
+            btnSua.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSua.Location = new Point(360, 0);
             btnSua.Margin = new Padding(0);
             btnSua.Name = "btnSua";
-            btnSua.Size = new Size(180, 59);
+            btnSua.Size = new Size(171, 59);
             btnSua.TabIndex = 2;
             btnSua.Text = "Sửa";
             btnSua.UseVisualStyleBackColor = true;
+            btnSua.Click += btnSua_Click;
             // 
             // btnLammoi
             // 
-            btnLammoi.Font = new Font("Roboto Condensed", 15.75F);
-            btnLammoi.Location = new Point(540, 0);
+            btnLammoi.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnLammoi.Location = new Point(531, 0);
             btnLammoi.Margin = new Padding(0);
             btnLammoi.Name = "btnLammoi";
             btnLammoi.Size = new Size(180, 59);
             btnLammoi.TabIndex = 3;
             btnLammoi.Text = "Làm mới";
             btnLammoi.UseVisualStyleBackColor = true;
+            btnLammoi.Click += btnLammoi_Click;
+            // 
+            // cbxChuyennganh
+            // 
+            cbxChuyennganh.Anchor = AnchorStyles.Left;
+            cbxChuyennganh.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxChuyennganh.Font = new Font("Roboto Condensed", 14F);
+            cbxChuyennganh.Location = new Point(809, 71);
+            cbxChuyennganh.Name = "cbxChuyennganh";
+            cbxChuyennganh.Size = new Size(248, 31);
+            cbxChuyennganh.TabIndex = 15;
+            // 
+            // cbxLop
+            // 
+            cbxLop.Anchor = AnchorStyles.Left;
+            cbxLop.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxLop.Font = new Font("Roboto Condensed", 14F);
+            cbxLop.FormattingEnabled = true;
+            cbxLop.Location = new Point(809, 13);
+            cbxLop.Name = "cbxLop";
+            cbxLop.Size = new Size(248, 31);
+            cbxLop.TabIndex = 16;
             // 
             // drvDanhsachsinhvien
             // 
+            drvDanhsachsinhvien.AllowUserToAddRows = false;
+            drvDanhsachsinhvien.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Roboto Condensed", 12F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            drvDanhsachsinhvien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             drvDanhsachsinhvien.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            drvDanhsachsinhvien.Columns.AddRange(new DataGridViewColumn[] { MASV, HOVATEN, MALOP, NGAYSINH, GIOITINH, MANGANH, TINHTRANG });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Roboto Condensed", 12F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            drvDanhsachsinhvien.DefaultCellStyle = dataGridViewCellStyle2;
             drvDanhsachsinhvien.Dock = DockStyle.Fill;
             drvDanhsachsinhvien.Location = new Point(3, 178);
             drvDanhsachsinhvien.Name = "drvDanhsachsinhvien";
+            drvDanhsachsinhvien.ReadOnly = true;
             drvDanhsachsinhvien.Size = new Size(1054, 449);
             drvDanhsachsinhvien.TabIndex = 1;
+            // 
+            // MASV
+            // 
+            MASV.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            MASV.DataPropertyName = "MASV";
+            MASV.HeaderText = "Mã sinh viên";
+            MASV.Name = "MASV";
+            MASV.ReadOnly = true;
+            // 
+            // HOVATEN
+            // 
+            HOVATEN.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            HOVATEN.DataPropertyName = "HOVATEN";
+            HOVATEN.HeaderText = "Họ và tên";
+            HOVATEN.Name = "HOVATEN";
+            HOVATEN.ReadOnly = true;
+            // 
+            // MALOP
+            // 
+            MALOP.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            MALOP.DataPropertyName = "MALOP";
+            MALOP.HeaderText = "Mã lớp";
+            MALOP.Name = "MALOP";
+            MALOP.ReadOnly = true;
+            // 
+            // NGAYSINH
+            // 
+            NGAYSINH.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            NGAYSINH.DataPropertyName = "NGAYSINH";
+            NGAYSINH.HeaderText = "Ngày sinh";
+            NGAYSINH.Name = "NGAYSINH";
+            NGAYSINH.ReadOnly = true;
+            // 
+            // GIOITINH
+            // 
+            GIOITINH.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            GIOITINH.DataPropertyName = "GIOITINH";
+            GIOITINH.HeaderText = "Giới tính";
+            GIOITINH.Name = "GIOITINH";
+            GIOITINH.ReadOnly = true;
+            // 
+            // MANGANH
+            // 
+            MANGANH.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            MANGANH.DataPropertyName = "MANGANH";
+            MANGANH.HeaderText = "Mã ngành";
+            MANGANH.Name = "MANGANH";
+            MANGANH.ReadOnly = true;
+            // 
+            // TINHTRANG
+            // 
+            TINHTRANG.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            TINHTRANG.DataPropertyName = "TINHTRANG";
+            TINHTRANG.HeaderText = "Tình trạng";
+            TINHTRANG.Name = "TINHTRANG";
+            TINHTRANG.ReadOnly = true;
             // 
             // Quanlisinhvien
             // 
@@ -404,6 +497,7 @@
             Font = new Font("Roboto Condensed", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Name = "Quanlisinhvien";
             Size = new Size(1060, 721);
+            Load += Quanlisinhvien_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
@@ -422,7 +516,6 @@
         private Panel panel1;
         private TableLayoutPanel tableLayoutPanel1;
         private TableLayoutPanel tableLayoutPanel2;
-        private TextBox txbLop;
         private Label label4;
         private TextBox txbHovaten;
         private Label label3;
@@ -444,5 +537,13 @@
         private Button btnSua;
         private Button btnLammoi;
         private DataGridView drvDanhsachsinhvien;
+        private DataGridViewTextBoxColumn MASV;
+        private DataGridViewTextBoxColumn HOVATEN;
+        private DataGridViewTextBoxColumn MALOP;
+        private DataGridViewTextBoxColumn NGAYSINH;
+        private DataGridViewTextBoxColumn GIOITINH;
+        private DataGridViewTextBoxColumn MANGANH;
+        private DataGridViewTextBoxColumn TINHTRANG;
+        private ComboBox cbxLop;
     }
 }
