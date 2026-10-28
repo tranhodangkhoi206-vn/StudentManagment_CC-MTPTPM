@@ -1,3 +1,7 @@
+using StudentManagment.GUI;
+using Microsoft.Extensions.Logging;
+using StudentManagment.Helper;
+
 namespace StudentManagment
 {
     internal static class Program
@@ -11,7 +15,11 @@ namespace StudentManagment
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new frmQuanLySinhVien());
+            // Khởi tạo factory logger cho dự án 
+            using ILoggerFactory loggerFactory = Logging.CreateLoggerFactory();
+            // Truyền qua frm đăng nhập để truyền qua các phần khác
+            Application.Run(new frmDangnhap(loggerFactory));
+            // Application.Run(new frmQuanLySinhVien(loggerFactory, ""));
         }
     }
 }
