@@ -3,34 +3,16 @@ using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
 using StudentManagment.DTO;
 
-namespace StudentManagment.DAL
+namespace StudentManagment.DAL.Util
 {
-    public class MonhocDAL
+    public class QuanlymonhocDAL
     {
-        private readonly ILogger<MonhocDAL> logger;
-        public MonhocDAL(ILoggerFactory loggerFactory)
+        private readonly ILogger<QuanlymonhocDAL> logger;
+        private MonhocDAL monhocDAL;
+        public QuanlymonhocDAL(ILoggerFactory loggerFactory)
         {
-            logger = loggerFactory.CreateLogger<MonhocDAL>();
-        }
-        public DataTable LayToanBoMonHoc()
-        {
-            try
-            {
-                using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
-                {
-                    SqlDataAdapter adapter = new SqlDataAdapter();
-                    adapter.SelectCommand = new SqlCommand("SELECT * FROM MONHOC", conn);
-                    DataTable dt = new DataTable();
-                    logger.LogInformation("Đang lấy toàn bộ môn học...");
-                    adapter.Fill(dt);
-                    return dt;
-                }
-            }
-            catch (SqlException sqlEx)
-            {
-                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi lấy danh sách môn học.");
-                throw;
-            }
+            logger = loggerFactory.CreateLogger<QuanlymonhocDAL>();
+            monhocDAL = new MonhocDAL(loggerFactory);
         }
         public DataTable ThemMonHocMoi(MonhocDTO monHocMoi)
         {
@@ -48,7 +30,7 @@ namespace StudentManagment.DAL
                     cmd.Parameters.AddWithValue("@TINHTRANG", monHocMoi.Tinhtrang);
                     cmd.ExecuteNonQuery();
                     logger.LogInformation("Đang thêm môn học có mã môn {0} vào danh sách môn học. Với dữ liệu:\nTên môn: {1},\nMã ngành: {2},\nSố tiết lý thuyết: {3},\nSố tiết thực hành: {4},\nGiảng viên: {5},\nTình trạng: {6}", monHocMoi.Mamon, monHocMoi.Tenmon, monHocMoi.Manganh, monHocMoi.Sotietlythuyet, monHocMoi.Sotietthuchanh, monHocMoi.Giangvien, monHocMoi.Tinhtrang);
-                    return LayToanBoMonHoc();
+                    return monhocDAL.LayToanBoMonHoc();
                 }
             }
             catch (SqlException sqlEx)
@@ -73,7 +55,7 @@ namespace StudentManagment.DAL
                     cmd.Parameters.AddWithValue("@TINHTRANG", monHocMoi.Tinhtrang);
                     cmd.ExecuteNonQuery();
                     logger.LogInformation("Đang sửa môn học có mã môn {0} vào danh sách môn học. Với dữ liệu:\nTên môn: {1},\nMã ngành: {2},\nSố tiết lý thuyết: {3},\nSố tiết thực hành: {4},\nGiảng viên: {5},\nTình trạng: {6}", monHocMoi.Mamon, monHocMoi.Tenmon, monHocMoi.Manganh, monHocMoi.Sotietlythuyet, monHocMoi.Sotietthuchanh, monHocMoi.Giangvien, monHocMoi.Tinhtrang);
-                    return LayToanBoMonHoc();
+                    return monhocDAL.LayToanBoMonHoc();
                 }
             }
             catch (SqlException sqlEx)
@@ -92,7 +74,7 @@ namespace StudentManagment.DAL
                     cmd.Parameters.AddWithValue("@MAMON", maMon);
                     cmd.ExecuteNonQuery();
                     logger.LogInformation("Đang xóa môn học với mã môn {0} khỏi danh sách môn học.", maMon);
-                    return LayToanBoMonHoc();
+                    return monhocDAL.LayToanBoMonHoc();
                 }
             }
             catch (SqlException sqlEx)

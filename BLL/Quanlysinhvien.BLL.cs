@@ -1,6 +1,6 @@
 ﻿using System.Data;
 using Microsoft.Extensions.Logging;
-using StudentManagment.DAL;
+using StudentManagment.DAL.Util;
 using StudentManagment.DTO;
 
 namespace StudentManagment.BLL
@@ -9,12 +9,14 @@ namespace StudentManagment.BLL
     {
         private readonly ILogger<QuanlysinhvienBLL> logger;
         private SinhvienDAL sinhvienDAL;
+        private QuanlysinhvienDAL quanlysinhvienDAL; 
         private NganhhocDAL nganhhocDAL;
         private LopDAL lopDAL;
         public QuanlysinhvienBLL(ILoggerFactory loggerFactory)
         {
             logger = loggerFactory.CreateLogger<QuanlysinhvienBLL>();
             sinhvienDAL = new SinhvienDAL(loggerFactory);
+            quanlysinhvienDAL = new QuanlysinhvienDAL(loggerFactory); 
             nganhhocDAL = new NganhhocDAL(loggerFactory);
             lopDAL = new LopDAL(loggerFactory);
         }
@@ -57,7 +59,7 @@ namespace StudentManagment.BLL
         {
             try
             {
-                return sinhvienDAL.ThemsinhVienMoi(sinhvienMoi);
+                return quanlysinhvienDAL.ThemsinhVienMoi(sinhvienMoi);
             } catch (Exception ex)
             {
                 logger.LogError(ex, "Xảy ra lỗi khi thêm sinh viên có mã sinh viên {0} vào danh sách sinh viên. Với dữ liệu:\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhvienMoi.MaSinhVien, sinhvienMoi.HoVaTen, sinhvienMoi.MaLop, sinhvienMoi.NgaySinh, sinhvienMoi.GioiTinh, sinhvienMoi.MaNganh, sinhvienMoi.TinhTrang);
@@ -68,7 +70,7 @@ namespace StudentManagment.BLL
         {
             try
             {
-                return sinhvienDAL.SuaThongTinSinhVienTheoMaSinhVien(sinhvienMoi);
+                return quanlysinhvienDAL.SuaThongTinSinhVienTheoMaSinhVien(sinhvienMoi);
             } catch (Exception ex)
             {
                 logger.LogError(ex, "Xảy ra lỗi khi sửa sinh viên có mã sinh viên {0} vào danh sách sinh viên. Với dữ liệu:\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhvienMoi.MaSinhVien, sinhvienMoi.HoVaTen, sinhvienMoi.MaLop, sinhvienMoi.NgaySinh, sinhvienMoi.GioiTinh, sinhvienMoi.MaNganh, sinhvienMoi.TinhTrang);
@@ -79,7 +81,7 @@ namespace StudentManagment.BLL
         {
             try
             {
-                return sinhvienDAL.XoaThongTinSinhVienTheoMaSinhVien(maSinhVien);
+                return quanlysinhvienDAL.XoaThongTinSinhVienTheoMaSinhVien(maSinhVien);
             } catch (Exception ex)
             {
                 logger.LogError(ex, "Lỗi xảy ra khi xóa sinh viên với mã sinh viên {masinhvien}", maSinhVien);

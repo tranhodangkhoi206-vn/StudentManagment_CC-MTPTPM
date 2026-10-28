@@ -1,16 +1,19 @@
 ﻿using System.Data;
 using Microsoft.Extensions.Logging;
 using StudentManagment.DAL;
+using StudentManagment.DAL.Util;
 using StudentManagment.DTO;
 namespace StudentManagment.BLL
 {
     public class QuanlynganhhocBLL
     {
-        private readonly ILogger<QuanlynganhhocBLL> logger;
+        private QuanlynganhhocDAL quanlynganhhocDAL;
         private NganhhocDAL nganhhocDAL;
+        private readonly ILogger<QuanlynganhhocBLL> logger;
 	public QuanlynganhhocBLL(ILoggerFactory loggerFactory)
         {
             logger = loggerFactory.CreateLogger<QuanlynganhhocBLL>();
+            quanlynganhhocDAL = new QuanlynganhhocDAL(loggerFactory);
             nganhhocDAL = new NganhhocDAL(loggerFactory);
         }
         public DataTable HienThiToanBoNganhHoc()
@@ -28,7 +31,7 @@ namespace StudentManagment.BLL
         {
             try
             {
-                return nganhhocDAL.ThemNganhMoi(nganhMoi);
+                return quanlynganhhocDAL.ThemNganhMoi(nganhMoi);
             }
             catch (Exception ex)
             {
@@ -41,7 +44,7 @@ namespace StudentManagment.BLL
         {
             try
             {
-                return nganhhocDAL.SuaThongTinNganhTheoMaNganh(nganhSua);
+                return quanlynganhhocDAL.SuaThongTinNganhTheoMaNganh(nganhSua);
             }
             catch (Exception ex)
             {
@@ -54,7 +57,7 @@ namespace StudentManagment.BLL
         {
             try
             {
-                return nganhhocDAL.XoaThongTinNganhTheoMaNganh(maNganh);
+                return quanlynganhhocDAL.XoaThongTinNganhTheoMaNganh(maNganh);
             }
             catch (Exception ex)
             {

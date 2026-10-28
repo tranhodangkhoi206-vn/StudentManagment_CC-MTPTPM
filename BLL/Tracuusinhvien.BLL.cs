@@ -1,12 +1,14 @@
 ﻿using System.Data;
 using Microsoft.Extensions.Logging;
 using StudentManagment.DAL;
+using StudentManagment.DAL.Util;
 
 namespace StudentManagment.BLL
 {
     public class TracuusinhvienBLL
     {
         private SinhvienDAL sinhvienDAL;
+        private TracuusinhvienDAL tracuusinhvienDAL;
         private LopDAL lopDAL;
         private NganhhocDAL nganhhocDAL;
         private readonly ILogger<TracuusinhvienBLL> logger;
@@ -14,6 +16,7 @@ namespace StudentManagment.BLL
         {
             logger = loggerFactory.CreateLogger<TracuusinhvienBLL>();
             sinhvienDAL = new SinhvienDAL(loggerFactory);
+            tracuusinhvienDAL = new TracuusinhvienDAL(loggerFactory);
             lopDAL = new LopDAL(loggerFactory);
             nganhhocDAL = new NganhhocDAL(loggerFactory);
         }
@@ -33,7 +36,7 @@ namespace StudentManagment.BLL
         {
             try
             {
-                return sinhvienDAL.LaySinhVienTheoDieuKienTen(hovaten);
+                return tracuusinhvienDAL.LaySinhVienTheoDieuKienTen(hovaten);
             }
             catch (Exception ex)
             {
@@ -45,7 +48,7 @@ namespace StudentManagment.BLL
         {
             try
             {
-                return sinhvienDAL.LaySinhVienTheoDieuKienLop(malop);
+                return tracuusinhvienDAL.LaySinhVienTheoDieuKienLop(malop);
             }
             catch (Exception ex)
             {
@@ -57,7 +60,7 @@ namespace StudentManagment.BLL
         {
             try
             {
-                return sinhvienDAL.LaySinhVienTheoDieuKienNganhHoc(manganh);
+                return tracuusinhvienDAL.LaySinhVienTheoDieuKienNganhHoc(manganh);
             }
             catch (Exception ex)
             {
