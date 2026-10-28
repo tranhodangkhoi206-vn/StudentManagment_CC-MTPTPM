@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using Microsoft.Extensions.Logging;
+using StudentManagment.DAL;
 using StudentManagment.DAL.Util;
 using StudentManagment.DTO;
 
