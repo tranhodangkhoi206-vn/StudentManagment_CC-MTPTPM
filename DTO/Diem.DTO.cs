@@ -10,9 +10,9 @@
 	    // DIEMTONG DECIMAL(4,2)
 	    public string Masinhvien { get; set;}
 	    public string Mamon { get;set; }
-	    public decimal Diemchuyencan { get; set;}
-	    public decimal Diemgiuaky { get; set;}
-	    public decimal Diemcuoiky { get; set;}
-	    public decimal Diemtong { get; set;}
+	    public float Diemchuyencan { get; set;}
+	    public float Diemgiuaky { get; set;}
+	    public float Diemcuoiky { get; set;}
+	    public float Diemtong { get; set;}
     }
 }

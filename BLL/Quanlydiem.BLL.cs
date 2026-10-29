@@ -25,9 +25,9 @@ namespace StudentManagment.BLL
         {
             if (string.IsNullOrEmpty(diemMoi.Mamon) ||
                 string.IsNullOrEmpty(diemMoi.Masinhvien) ||
-            string.IsNullOrEmpty(diemMoi.Diemchuyencan.ToString()) ||
-            string.IsNullOrEmpty(diemMoi.Diemgiuaky.ToString()) ||
-            string.IsNullOrEmpty(diemMoi.Diemcuoiky.ToString())
+            diemMoi.Diemchuyencan == -1 ||
+            diemMoi.Diemgiuaky == -1 ||
+            diemMoi.Diemcuoiky == -1
                 )
             {
                 logger.LogWarning("Người dùng chưa nhập đầy đủ thông tin điểm khi thêm.");
@@ -39,7 +39,7 @@ namespace StudentManagment.BLL
 
         public DataTable SuaThongTinDiemTheoMaSinhVienVaMaMon(DiemDTO diemSua)
         {
-            if (string.IsNullOrEmpty(diemSua.Mamon)|| 
+            if (string.IsNullOrEmpty(diemSua.Mamon) ||
                 string.IsNullOrEmpty(diemSua.Masinhvien)
                 )
             {
