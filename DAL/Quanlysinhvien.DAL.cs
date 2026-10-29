@@ -2,8 +2,9 @@
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
 using StudentManagment.DTO;
+using StudentManagment.DAL.Util;
 
-namespace StudentManagment.DAL.Util
+namespace StudentManagment.DAL
 {
     public class QuanlysinhvienDAL
     {
