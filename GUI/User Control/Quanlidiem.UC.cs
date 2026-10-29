@@ -29,9 +29,9 @@ namespace StudentManagment.GUI.User_Control
                 {
                     Masinhvien = txbMasinhvien.Text.ToString().Trim(),
                     Mamon = txbMamonhoc.Text.ToString().Trim(),
-                    Diemchuyencan = decimal.Parse(txbDiemchuyencan.Text.ToString().Trim()),
-                    Diemgiuaky = decimal.Parse(txbDiemgiuaky.Text.ToString().Trim()),
-                    Diemcuoiky = decimal.Parse(txtDiemcuoiky.Text.ToString().Trim()),
+                    Diemchuyencan = string.IsNullOrEmpty(txbDiemchuyencan.Text) ? -1 : float.Parse(txbDiemchuyencan.Text.ToString().Trim()),
+                    Diemgiuaky = string.IsNullOrEmpty(txbDiemgiuaky.Text) ? -1 : float.Parse(txbDiemgiuaky.Text.ToString().Trim()),
+                    Diemcuoiky = string.IsNullOrEmpty(txtDiemcuoiky.Text) ? -1 : float.Parse(txtDiemcuoiky.Text.ToString().Trim()),
                 };
                 DataTable dt = quanlydiemBLL.ThemDiemMoi(diemDTO);
                 if (dt.Rows.Count != 0)
@@ -47,8 +47,9 @@ namespace StudentManagment.GUI.User_Control
             {
                 MessageBox.Show("Bạn phải nhập đầy đủ thông tin trước khi thêm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show("" + ex);
                 MessageBox.Show("Lỗi khi thêm điểm mới.\nVui lòng thử lại sau.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -87,9 +88,9 @@ namespace StudentManagment.GUI.User_Control
                 {
                     Masinhvien = txbMasinhvien.Text.ToString().Trim(),
                     Mamon = txbMamonhoc.Text.ToString().Trim(),
-                    Diemchuyencan = decimal.Parse(txbDiemchuyencan.Text.ToString().Trim()),
-                    Diemgiuaky = decimal.Parse(txbDiemgiuaky.Text.ToString().Trim()),
-                    Diemcuoiky = decimal.Parse(txtDiemcuoiky.Text.ToString().Trim()),
+                    Diemchuyencan = string.IsNullOrEmpty(txbDiemchuyencan.Text) ? -1 : float.Parse(txbDiemchuyencan.Text.ToString().Trim()),
+                    Diemgiuaky = string.IsNullOrEmpty(txbDiemgiuaky.Text) ? -1 : float.Parse(txbDiemgiuaky.Text.ToString().Trim()),
+                    Diemcuoiky = string.IsNullOrEmpty(txtDiemcuoiky.Text) ? -1 : float.Parse(txtDiemcuoiky.Text.ToString().Trim()),
                 };
                 DataTable dt = quanlydiemBLL.SuaThongTinDiemTheoMaSinhVienVaMaMon(diemDTO);
                 if (dt.Rows.Count != 0)
