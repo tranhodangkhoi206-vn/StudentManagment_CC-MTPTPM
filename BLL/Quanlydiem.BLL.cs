@@ -11,60 +11,53 @@ namespace StudentManagment.BLL
         private QuanlydiemDAL quanlydiemDAL;
         private DiemDAL diemDAL;
         private readonly ILogger<QuanlydiemBLL> logger;
-	    public QuanlydiemBLL(ILoggerFactory loggerFactory)
+        public QuanlydiemBLL(ILoggerFactory loggerFactory)
         {
             logger = loggerFactory.CreateLogger<QuanlydiemBLL>();
             quanlydiemDAL = new QuanlydiemDAL(loggerFactory);
             diemDAL = new DiemDAL(loggerFactory);
         }
-	    public DataTable HienThiToanBoDiem()
+        public DataTable HienThiToanBoDiem()
         {
-            try
-            {
-                return diemDAL.LayToanBoDiem();
-            } catch (Exception ex)
-            {
-                logger.LogError(ex, "Có lỗi xảy ra khi lấy danh sách điểm.");
-                throw;
-            }
+            return diemDAL.LayToanBoDiem();
         }
         public DataTable ThemDiemMoi(DiemDTO diemMoi)
         {
-            try
+            if (string.IsNullOrEmpty(diemMoi.Mamon) ||
+                string.IsNullOrEmpty(diemMoi.Masinhvien) ||
+            string.IsNullOrEmpty(diemMoi.Diemchuyencan.ToString()) ||
+            string.IsNullOrEmpty(diemMoi.Diemgiuaky.ToString()) ||
+            string.IsNullOrEmpty(diemMoi.Diemcuoiky.ToString())
+                )
             {
-                return quanlydiemDAL.ThemDiemMoi(diemMoi);
+                logger.LogWarning("Người dùng chưa nhập đầy đủ thông tin điểm khi thêm.");
+                throw new ArgumentException();
             }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi khi thêm điểm của sinh viên có mã sinh viên {0} môn {1} vào danh sách điểm. Với dữ liệu:\nĐiểm chuyên cần: {2},\nĐiểm giữa kỳ: {3},\nĐiểm cuối kỳ: {4},\nĐiểm tổng: {5}", diemMoi.Masinhvien, diemMoi.Mamon, diemMoi.Diemchuyencan, diemMoi.Diemgiuaky, diemMoi.Diemcuoiky, diemMoi.Diemtong);
-                throw;
-            }
+            diemMoi.Diemtong = (diemMoi.Diemchuyencan + diemMoi.Diemgiuaky + diemMoi.Diemcuoiky) / 3;
+            return quanlydiemDAL.ThemDiemMoi(diemMoi);
         }
 
         public DataTable SuaThongTinDiemTheoMaSinhVienVaMaMon(DiemDTO diemSua)
         {
-            try
+            if (string.IsNullOrEmpty(diemSua.Mamon)|| 
+                string.IsNullOrEmpty(diemSua.Masinhvien)
+                )
             {
-                return quanlydiemDAL.SuaThongTinDiemTheoMaSinhVienVaMaMon(diemSua);
+                logger.LogWarning("Người dùng chưa nhập mã môn và mã sinh viên khi sửa thông tin điểm.");
+                throw new ArgumentException();
             }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi khi sửa điểm của sinh viên có mã sinh viên {0} môn {1} trong danh sách điểm. Với dữ liệu:\nĐiểm chuyên cần: {2},\nĐiểm giữa kỳ: {3},\nĐiểm cuối kỳ: {4},\nĐiểm tổng: {5}", diemSua.Masinhvien, diemSua.Mamon, diemSua.Diemchuyencan, diemSua.Diemgiuaky, diemSua.Diemcuoiky, diemSua.Diemtong);
-                throw;
-            }
+            diemSua.Diemtong = (diemSua.Diemchuyencan + diemSua.Diemgiuaky + diemSua.Diemcuoiky) / 3;
+            return quanlydiemDAL.SuaThongTinDiemTheoMaSinhVienVaMaMon(diemSua);
         }
 
         public DataTable XoaThongTinDiemTheoMaSinhVienVaMaMon(string maSinhVien, string maMon)
         {
-            try
+            if (string.IsNullOrEmpty(maSinhVien) || string.IsNullOrEmpty(maMon))
             {
-                return quanlydiemDAL.XoaThongTinDiemTheoMaSinhVienVaMaMon(maSinhVien, maMon);
+                logger.LogWarning("Người dùng chưa nhập mã môn và mã sinh viên khi xóa thông tin điểm.");
+                throw new ArgumentException();
             }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Lỗi xảy ra khi xóa điểm của sinh viên có mã sinh viên {0} môn {1}", maSinhVien, maMon);
-                throw;
-            }
+            return quanlydiemDAL.XoaThongTinDiemTheoMaSinhVienVaMaMon(maSinhVien, maMon);
         }
     }
 }

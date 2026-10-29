@@ -10,7 +10,7 @@ namespace StudentManagment.DAL
     {
         private readonly ILogger<QuanlydiemDAL> logger;
         private DiemDAL diemDAL;
-	    public QuanlydiemDAL(ILoggerFactory loggerFactory)
+        public QuanlydiemDAL(ILoggerFactory loggerFactory)
         {
             logger = loggerFactory.CreateLogger<QuanlydiemDAL>();
             diemDAL = new DiemDAL(loggerFactory);
@@ -40,6 +40,11 @@ namespace StudentManagment.DAL
                 logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi thêm điểm mới. Với thông tin:\nMã sinh viên: {0},\nMã môn: {1},\nĐiểm chuyên cần: {2},\nĐiểm giữa kỳ: {3},\nĐiểm cuối kỳ: {4},\nĐiểm tổng: {5}", diemMoi.Masinhvien, diemMoi.Mamon, diemMoi.Diemchuyencan, diemMoi.Diemgiuaky, diemMoi.Diemcuoiky, diemMoi.Diemtong);
                 throw;
             }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Xảy ra lỗi khi thêm điểm của sinh viên có mã sinh viên {0} môn {1} vào danh sách điểm. Với dữ liệu:\nĐiểm chuyên cần: {2},\nĐiểm giữa kỳ: {3},\nĐiểm cuối kỳ: {4},\nĐiểm tổng: {5}", diemMoi.Masinhvien, diemMoi.Mamon, diemMoi.Diemchuyencan, diemMoi.Diemgiuaky, diemMoi.Diemcuoiky, diemMoi.Diemtong);
+                throw;
+            }
         }
 
         public DataTable SuaThongTinDiemTheoMaSinhVienVaMaMon(DiemDTO diemSua)
@@ -67,6 +72,11 @@ namespace StudentManagment.DAL
                 logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi sửa điểm của sinh viên có mã sinh viên {0} môn {1} trong danh sách điểm. Với dữ liệu:\nĐiểm chuyên cần: {2},\nĐiểm giữa kỳ: {3},\nĐiểm cuối kỳ: {4},\nĐiểm tổng: {5}", diemSua.Masinhvien, diemSua.Mamon, diemSua.Diemchuyencan, diemSua.Diemgiuaky, diemSua.Diemcuoiky, diemSua.Diemtong);
                 throw;
             }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Xảy ra lỗi khi sửa điểm của sinh viên có mã sinh viên {0} môn {1} trong danh sách điểm. Với dữ liệu:\nĐiểm chuyên cần: {2},\nĐiểm giữa kỳ: {3},\nĐiểm cuối kỳ: {4},\nĐiểm tổng: {5}", diemSua.Masinhvien, diemSua.Mamon, diemSua.Diemchuyencan, diemSua.Diemgiuaky, diemSua.Diemcuoiky, diemSua.Diemtong);
+                throw;
+            }
         }
 
         public DataTable XoaThongTinDiemTheoMaSinhVienVaMaMon(string maSinhVien, string maMon)
@@ -88,6 +98,11 @@ namespace StudentManagment.DAL
             catch (SqlException sqlEx)
             {
                 logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi xóa điểm của sinh viên có mã sinh viên {0} môn {1} khỏi danh sách điểm", maSinhVien, maMon);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Lỗi xảy ra khi xóa điểm của sinh viên có mã sinh viên {0} môn {1}", maSinhVien, maMon);
                 throw;
             }
         }

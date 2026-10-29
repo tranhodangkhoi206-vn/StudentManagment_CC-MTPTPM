@@ -31,6 +31,11 @@ namespace StudentManagment.DAL.Util
                 logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi lấy danh sách môn học.");
                 throw;
             }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Xảy ra lỗi khi hiển thị danh sách môn học.");
+                throw;
+            }
         }
     }
 }

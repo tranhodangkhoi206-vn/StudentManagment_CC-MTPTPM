@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
 using StudentManagment.BLL;
 using StudentManagment.DTO;
@@ -24,26 +25,29 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
-                string maSinhVien = txbMasinhvien.Text.ToString().Trim();
-                string maMon = txbMamonhoc.Text.ToString().Trim();
-                decimal diemChuyenCan = decimal.Parse(txbDiemchuyencan.Text.ToString().Trim());
-                decimal diemGiuaKy = decimal.Parse(txbDiemgiuaky.Text.ToString().Trim());
-                decimal diemCuoiKy = decimal.Parse(txtDiemcuoiky.Text.ToString().Trim());
                 DiemDTO diemDTO = new DiemDTO()
                 {
-                    Masinhvien = maSinhVien,
-                    Mamon = maMon,
-                    Diemchuyencan = diemChuyenCan,
-                    Diemgiuaky = diemGiuaKy,
-                    Diemcuoiky = diemCuoiKy,
-                    Diemtong = (diemChuyenCan + diemGiuaKy + diemCuoiKy) / 3
-
+                    Masinhvien = txbMasinhvien.Text.ToString().Trim(),
+                    Mamon = txbMamonhoc.Text.ToString().Trim(),
+                    Diemchuyencan = decimal.Parse(txbDiemchuyencan.Text.ToString().Trim()),
+                    Diemgiuaky = decimal.Parse(txbDiemgiuaky.Text.ToString().Trim()),
+                    Diemcuoiky = decimal.Parse(txtDiemcuoiky.Text.ToString().Trim()),
                 };
-                DataTable dt = new DataTable();
-                dt = quanlydiemBLL.ThemDiemMoi(diemDTO);
-                dgvDanhsachmonhoc.DataSource = dt;
+                DataTable dt = quanlydiemBLL.ThemDiemMoi(diemDTO);
+                if (dt.Rows.Count != 0)
+                {
+                    dgvDanhsachmonhoc.DataSource = dt;
+                }
             }
-            catch
+            catch (SqlException)
+            {
+                MessageBox.Show("Lỗi kết nối cơ sở dữ liệu khi thêm điểm mợi.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Bạn phải nhập đầy đủ thông tin trước khi thêm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception)
             {
                 MessageBox.Show("Lỗi khi thêm điểm mới.\nVui lòng thử lại sau.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -55,11 +59,21 @@ namespace StudentManagment.GUI.User_Control
             {
                 string maSinhVien = txbMasinhvien.Text.ToString().Trim();
                 string maMon = txbMamonhoc.Text.ToString().Trim();
-                DataTable dt = new DataTable();
-                dt = quanlydiemBLL.XoaThongTinDiemTheoMaSinhVienVaMaMon(maSinhVien, maMon);
-                dgvDanhsachmonhoc.DataSource = dt;
+                DataTable dt = quanlydiemBLL.XoaThongTinDiemTheoMaSinhVienVaMaMon(maSinhVien, maMon);
+                if (dt.Rows.Count != 0)
+                {
+                    dgvDanhsachmonhoc.DataSource = dt;
+                }
             }
-            catch
+            catch (SqlException)
+            {
+                MessageBox.Show("Lỗi kết nối đến cơ sở dữ liệu khi xóa thông tin điểm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Bạn phải nhập mã môn và mã sinh viên trước khi xóa.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception)
             {
                 MessageBox.Show("Lỗi khi xóa điểm.\nVui lòng thử lại sau.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -69,25 +83,29 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
-                string maSinhVien = txbMasinhvien.Text.ToString().Trim();
-                string maMon = txbMamonhoc.Text.ToString().Trim();
-                decimal diemChuyenCan = decimal.Parse(txbDiemchuyencan.Text.ToString().Trim());
-                decimal diemGiuaKy = decimal.Parse(txbDiemgiuaky.Text.ToString().Trim());
-                decimal diemCuoiKy = decimal.Parse(txtDiemcuoiky.Text.ToString().Trim());
                 DiemDTO diemDTO = new DiemDTO()
                 {
-                    Masinhvien = maSinhVien,
-                    Mamon = maMon,
-                    Diemchuyencan = diemChuyenCan,
-                    Diemgiuaky = diemGiuaKy,
-                    Diemcuoiky = diemCuoiKy,
-                    Diemtong = (diemChuyenCan + diemGiuaKy + diemCuoiKy) / 3
+                    Masinhvien = txbMasinhvien.Text.ToString().Trim(),
+                    Mamon = txbMamonhoc.Text.ToString().Trim(),
+                    Diemchuyencan = decimal.Parse(txbDiemchuyencan.Text.ToString().Trim()),
+                    Diemgiuaky = decimal.Parse(txbDiemgiuaky.Text.ToString().Trim()),
+                    Diemcuoiky = decimal.Parse(txtDiemcuoiky.Text.ToString().Trim()),
                 };
-                DataTable dt = new DataTable();
-                dt = quanlydiemBLL.SuaThongTinDiemTheoMaSinhVienVaMaMon(diemDTO);
-                dgvDanhsachmonhoc.DataSource = dt;
+                DataTable dt = quanlydiemBLL.SuaThongTinDiemTheoMaSinhVienVaMaMon(diemDTO);
+                if (dt.Rows.Count != 0)
+                {
+                    dgvDanhsachmonhoc.DataSource = dt;
+                }
             }
-            catch
+            catch (SqlException)
+            {
+                MessageBox.Show("Lỗi kết nối đến cơ sở dữ liệu khi mà sửa thông tin điểm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Bạn phải nhập mã điểm và mã sinh viên trước khi sửa thông tin điểm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception)
             {
                 MessageBox.Show("Lỗi khi sửa điểm.\nVui lòng thử lại sau.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

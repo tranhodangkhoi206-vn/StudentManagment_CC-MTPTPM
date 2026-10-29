@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
 using StudentManagment.BLL;
 using StudentManagment.DTO;
@@ -29,26 +30,29 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
-                string maMon = txbMamonhoc.Text.Trim();
-                string tenMon = txbTenmonhoc.Text.Trim();
-                string nganhHoc = cbxChuyennganh.SelectedValue.ToString().Trim();
-                int tietLyThuyet = ((int)nudLythuyet.Value);
-                int tietThucHanh = ((int)nudThuchanh.Value);
-                string giangVien = txbGiangvien.Text.Trim();
-                string tinhTrang = cbxTinhtrang.Text.Trim();
                 MonhocDTO monhocDTO = new MonhocDTO()
                 {
-                    Mamon = maMon,
-                    Tenmon = tenMon,
-                    Manganh = nganhHoc,
-                    Sotietlythuyet = tietLyThuyet,
-                    Sotietthuchanh = tietThucHanh,
-                    Giangvien = giangVien,
-                    Tinhtrang = tinhTrang
+                    Mamon = txbMamonhoc.Text.Trim(),
+                    Tenmon = txbTenmonhoc.Text.Trim(),
+                    Manganh = cbxChuyennganh.SelectedValue != null ? cbxChuyennganh.SelectedValue.ToString().Trim() : "",
+                    Sotietlythuyet = (int)nudLythuyet.Value,
+                    Sotietthuchanh = (int)nudThuchanh.Value,
+                    Giangvien = txbGiangvien.Text.Trim(),
+                    Tinhtrang = cbxTinhtrang.Text.Trim()
                 };
-                DataTable dt = new DataTable();
-                dt = quanlymonhocBLL.ThemmonhocMoi(monhocDTO);
-                dgvDanhsachmonhoc.DataSource = dt;
+                DataTable dt = quanlymonhocBLL.ThemmonhocMoi(monhocDTO);
+                if (dt.Rows.Count != 0)
+                {
+                    dgvDanhsachmonhoc.DataSource = dt;
+                }
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Lỗi kết nối đến cơ sở dữ liệu khi thêm môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Bạn phải nhập đầy đủ thông tin môn học trước khi thêm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch
             {
@@ -60,28 +64,31 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
-                string maMon = txbMamonhoc.Text.Trim();
-                string tenMon = txbTenmonhoc.Text.Trim();
-                string nganhHoc = cbxChuyennganh.SelectedValue.ToString().Trim();
-                int tietLyThuyet = ((int)nudLythuyet.Value);
-                int tietThucHanh = ((int)nudThuchanh.Value);
-                string giangVien = txbGiangvien.Text.Trim();
-                string tinhTrang = cbxTinhtrang.Text.Trim();
                 MonhocDTO monhocDTO = new MonhocDTO()
                 {
-                    Mamon = maMon,
-                    Tenmon = tenMon,
-                    Manganh = nganhHoc,
-                    Sotietlythuyet = tietLyThuyet,
-                    Sotietthuchanh = tietThucHanh,
-                    Giangvien = giangVien,
-                    Tinhtrang = tinhTrang
+                    Mamon = txbMamonhoc.Text.Trim(),
+                    Tenmon = txbTenmonhoc.Text.Trim(),
+                    Manganh = cbxChuyennganh.SelectedValue != null ? cbxChuyennganh.SelectedValue.ToString().Trim() : "",
+                    Sotietlythuyet = (int)nudLythuyet.Value,
+                    Sotietthuchanh = (int)nudThuchanh.Value,
+                    Giangvien = txbGiangvien.Text.Trim(),
+                    Tinhtrang = cbxTinhtrang.Text.Trim()
                 };
-                DataTable dt = new DataTable();
-                dt = quanlymonhocBLL.SuaMonHocTheoMaMonHoc(monhocDTO);
-                dgvDanhsachmonhoc.DataSource = dt;
+                DataTable dt = quanlymonhocBLL.SuaMonHocTheoMaMonHoc(monhocDTO);
+                if (dt.Rows.Count != 0)
+                {
+                    dgvDanhsachmonhoc.DataSource = dt;
+                }
             }
-            catch
+            catch (SqlException)
+            {
+                MessageBox.Show("Lỗi kết nối đến cơ sở dữ liệu khi sửa thông tin môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Bạn phải nhập mã môn học trước khi sửa thông tin môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception)
             {
                 MessageBox.Show("Lỗi khi sửa môn học mới.\nVui lòng thử lại sau.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -92,11 +99,21 @@ namespace StudentManagment.GUI.User_Control
             try
             {
                 string maMon = txbMamonhoc.Text.ToString().Trim();
-                DataTable dt = new DataTable();
-                dt = quanlymonhocBLL.XoaMonHocTheoMaMonHoc(maMon);
-                dgvDanhsachmonhoc.DataSource = dt;
+                DataTable dt = quanlymonhocBLL.XoaMonHocTheoMaMonHoc(maMon);
+                if (dt.Rows.Count != 0)
+                {
+                    dgvDanhsachmonhoc.DataSource = dt;
+                }
             }
-            catch
+	        catch (SqlException)
+            {
+                MessageBox.Show("Lỗi kết nối đến cơ sở dữ liệu khi xóa thông tin môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+		    catch (ArgumentException)
+            {
+                MessageBox.Show("Bạn phải nhập mã môn học trước khi xóa môn học khỏi danh sách.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception)
             {
                 MessageBox.Show("Lỗi khi xóa môn học.\nVui lòng thử lại sau.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -108,7 +125,7 @@ namespace StudentManagment.GUI.User_Control
             txbTenmonhoc.Text = "";
             cbxChuyennganh.SelectedIndex = -1;
             nudLythuyet.Value = 1;
-            nudThuchanh.Value =1;
+            nudThuchanh.Value = 1;
             txbGiangvien.Text = "";
             cbxTinhtrang.SelectedIndex = -1;
         }
