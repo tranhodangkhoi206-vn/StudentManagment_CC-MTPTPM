@@ -6,7 +6,7 @@ using StudentManagment.DTO;
 
 namespace StudentManagment.DAL
 {
-    public class QuanlynganhhocDAL 
+    public class QuanlynganhhocDAL
     {
         private readonly ILogger logger;
         private NganhhocDAL nganhhocDAL;
@@ -28,13 +28,17 @@ namespace StudentManagment.DAL
                     cmd.ExecuteNonQuery();
 
                     logger.LogInformation("Đang thêm ngành mới vào danh sách ngành. Với dữ liệu:\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhMoi.Manganh, nganhMoi.Tennganh, nganhMoi.Khoaquanly);
-
                     return nganhhocDAL.LayToanBoNganhHoc();
                 }
             }
             catch (SqlException sqlEx)
             {
                 logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi thêm ngành mới. Với thông tin:\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhMoi.Manganh, nganhMoi.Tennganh, nganhMoi.Khoaquanly);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Xảy ra lỗi khi thêm ngành có mã ngành {0} vào danh sách ngành. Với dữ liệu:\nTên ngành: {1},\nKhoa quản lý: {2}", nganhMoi.Manganh, nganhMoi.Tennganh, nganhMoi.Khoaquanly);
                 throw;
             }
         }
@@ -61,6 +65,11 @@ namespace StudentManagment.DAL
                 logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi sửa ngành có mã ngành {0} trong danh sách ngành. Với dữ liệu:\nTên ngành: {1},\nKhoa quản lý: {2}", nganhSua.Manganh, nganhSua.Tennganh, nganhSua.Khoaquanly);
                 throw;
             }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Xảy ra lỗi khi sửa ngành có mã ngành {0} trong danh sách ngành. Với dữ liệu:\nTên ngành: {1},\nKhoa quản lý: {2}", nganhSua.Manganh, nganhSua.Tennganh, nganhSua.Khoaquanly);
+                throw;
+            }
         }
 
         public DataTable XoaThongTinNganhTheoMaNganh(string maNganh)
@@ -81,6 +90,11 @@ namespace StudentManagment.DAL
             catch (SqlException sqlEx)
             {
                 logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi xóa ngành có mã ngành {0} khỏi danh sách ngành", maNganh);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Lỗi xảy ra khi xóa ngành với mã ngành {0}", maNganh);
                 throw;
             }
         }

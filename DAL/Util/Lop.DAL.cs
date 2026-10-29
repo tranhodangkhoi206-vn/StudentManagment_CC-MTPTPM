@@ -29,6 +29,11 @@ namespace StudentManagment.DAL.Util
                 logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi lấy danh sách lớp cho combo box.");
                 throw;
             }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Xảy ra lỗi khi lấy danh sách lớp cho combo boxo");
+                throw;
+            }
         }
     }
 }

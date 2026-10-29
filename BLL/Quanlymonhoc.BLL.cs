@@ -19,61 +19,46 @@ namespace StudentManagment.BLL
             monhocDAL = new MonhocDAL(loggerFactory);
             nganhhocDAL = new NganhhocDAL(loggerFactory);
         }
-	    public DataTable HienThiDanhSachMonHoc()
+        public DataTable HienThiDanhSachMonHoc()
         {
-		    try
-            {
-                return monhocDAL.LayToanBoMonHoc();
-            } catch(Exception ex)
-            {
-                logger.LogError(ex,"Xảy ra lỗi khi hiển thị danh sách môn học.");
-                throw;
-            }
+            return monhocDAL.LayToanBoMonHoc();
         }
         public DataTable HienThiDanhSachNganhHocChoComboBox()
         {
-            try
-            {
-                return nganhhocDAL.LayToanBoNganhHocChoComboBox();
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi khi hiển thị danh sách ngành học cho combo box.");
-                throw;
-            }
+            return nganhhocDAL.LayToanBoNganhHocChoComboBox();
         }
         public DataTable ThemmonhocMoi(MonhocDTO monHocMoi)
         {
-            try
+            if (
+                string.IsNullOrEmpty(monHocMoi.Mamon) ||
+                string.IsNullOrEmpty(monHocMoi.Manganh) ||
+                string.IsNullOrEmpty(monHocMoi.Tenmon) ||
+                string.IsNullOrEmpty(monHocMoi.Tinhtrang) ||
+                string.IsNullOrEmpty(monHocMoi.Giangvien)
+            )
             {
-                return quanlymonhocDAL.ThemMonHocMoi(monHocMoi);
-            } catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi khi thêm môn học có mã môn học {0} vào danh sách môn học. Với dữ liệu:\nTên môn học: {1}, Mã ngành: {2}, Số tiết lý thuyết: {3}, Số tiết thực hành: {4}, Giảng viên: {5}, Tình trạng: {6}", monHocMoi.Mamon, monHocMoi.Tenmon, monHocMoi.Manganh, monHocMoi.Sotietlythuyet, monHocMoi.Sotietthuchanh, monHocMoi.Giangvien, monHocMoi.Tinhtrang);
-                throw;
+                logger.LogWarning("Người dùng chưa nhập đầy đủ thông tin trước khi thêm.");
+                throw new ArgumentException();
             }
+            return quanlymonhocDAL.ThemMonHocMoi(monHocMoi);
         }
         public DataTable SuaMonHocTheoMaMonHoc(MonhocDTO monHocMoi)
         {
-            try
+            if (string.IsNullOrEmpty(monHocMoi.Mamon))
             {
-                return quanlymonhocDAL.SuaThongTinMonHocTheoMaMon(monHocMoi);
-            } catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi khi sửa môn học có mã môn học {0} vào danh sách môn học. Với dữ liệu:\nTên môn học: {1}, Mã ngành: {2}, Số tiết lý thuyết: {3}, Số tiết thực hành: {4}, Giảng viên: {5}, Tình trạng: {6}", monHocMoi.Mamon, monHocMoi.Tenmon, monHocMoi.Manganh, monHocMoi.Sotietlythuyet, monHocMoi.Sotietthuchanh, monHocMoi.Giangvien, monHocMoi.Tinhtrang);
-                throw;
+                logger.LogWarning("Người dùng chưa nhập mã môn khi sửa môn học.");
+                throw new ArgumentException();
             }
+            return quanlymonhocDAL.SuaThongTinMonHocTheoMaMon(monHocMoi);
         }
-	    public DataTable XoaMonHocTheoMaMonHoc(string maMonHoc)
+        public DataTable XoaMonHocTheoMaMonHoc(string maMonHoc)
         {
-            try
+            if (string.IsNullOrEmpty(maMonHoc))
             {
-                return quanlymonhocDAL.XoaThongTinMonHocTheoMaMon(maMonHoc);
-            } catch (Exception ex)
-            {
-                logger.LogError(ex, "Lỗi xảy ra khi xóa môn học với mã môn học {0}",maMonHoc);
-                throw;
+                logger.LogWarning("Người dùng chua nhập mã môn học khi xóa môn học.");
+                throw new ArgumentException();
             }
+            return quanlymonhocDAL.XoaThongTinMonHocTheoMaMon(maMonHoc);
         }
     }
 }

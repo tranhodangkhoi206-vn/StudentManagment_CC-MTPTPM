@@ -10,7 +10,7 @@ namespace StudentManagment.BLL
         private QuanlynganhhocDAL quanlynganhhocDAL;
         private NganhhocDAL nganhhocDAL;
         private readonly ILogger<QuanlynganhhocBLL> logger;
-	public QuanlynganhhocBLL(ILoggerFactory loggerFactory)
+        public QuanlynganhhocBLL(ILoggerFactory loggerFactory)
         {
             logger = loggerFactory.CreateLogger<QuanlynganhhocBLL>();
             quanlynganhhocDAL = new QuanlynganhhocDAL(loggerFactory);
@@ -18,52 +18,40 @@ namespace StudentManagment.BLL
         }
         public DataTable HienThiToanBoNganhHoc()
         {
-            try
-            {
-                return nganhhocDAL.LayToanBoNganhHoc();
-            } catch (Exception ex)
-            {
-                logger.LogError(ex, "Lỗi xảy ra khi lấy danh sách ngành học.");
-                throw;
-            }
+            return nganhhocDAL.LayToanBoNganhHoc();
         }
         public DataTable ThemNganhMoi(NganhhocDTO nganhMoi)
         {
-            try
+            if (
+                string.IsNullOrEmpty(nganhMoi.Manganh) ||
+                string.IsNullOrEmpty(nganhMoi.Tennganh) ||
+                string.IsNullOrEmpty(nganhMoi.Khoaquanly)
+            )
             {
-                return quanlynganhhocDAL.ThemNganhMoi(nganhMoi);
+                logger.LogWarning("Người dùng chưa nhập đầy đủ thông tin ngành học khi thêm.");
+                throw new ArgumentException();
             }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi khi thêm ngành có mã ngành {0} vào danh sách ngành. Với dữ liệu:\nTên ngành: {1},\nKhoa quản lý: {2}", nganhMoi.Manganh, nganhMoi.Tennganh, nganhMoi.Khoaquanly);
-                throw;
-            }
+            return quanlynganhhocDAL.ThemNganhMoi(nganhMoi);
         }
 
         public DataTable SuaThongTinNganhTheoMaNganh(NganhhocDTO nganhSua)
         {
-            try
+            if (string.IsNullOrEmpty(nganhSua.Manganh))
             {
-                return quanlynganhhocDAL.SuaThongTinNganhTheoMaNganh(nganhSua);
+                logger.LogWarning("Người dùng chua nhập mã ngành khi sửa thông tin ngành học.");
+                throw new ArgumentException();
             }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi khi sửa ngành có mã ngành {0} trong danh sách ngành. Với dữ liệu:\nTên ngành: {1},\nKhoa quản lý: {2}", nganhSua.Manganh, nganhSua.Tennganh, nganhSua.Khoaquanly);
-                throw;
-            }
+            return quanlynganhhocDAL.SuaThongTinNganhTheoMaNganh(nganhSua);
         }
 
         public DataTable XoaThongTinNganhTheoMaNganh(string maNganh)
         {
-            try
+            if (string.IsNullOrEmpty(maNganh))
             {
-                return quanlynganhhocDAL.XoaThongTinNganhTheoMaNganh(maNganh);
+                logger.LogWarning("Người dùng chưa nhập mã ngành khi xóa ngành học.");
+                throw new ArgumentException();
             }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Lỗi xảy ra khi xóa ngành với mã ngành {0}", maNganh);
-                throw;
-            }
+            return quanlynganhhocDAL.XoaThongTinNganhTheoMaNganh(maNganh);
         }
     }
 }

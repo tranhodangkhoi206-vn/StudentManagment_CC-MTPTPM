@@ -1,7 +1,6 @@
 ﻿using System.Data;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
-using StudentManagment.DTO;
 
 namespace StudentManagment.DAL.Util
 {
@@ -31,6 +30,11 @@ namespace StudentManagment.DAL.Util
                 logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi lấy danh sách ngành học cho combo box.");
                 throw;
             }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Xảy ra lỗi khi lấy danh sách ngành học cho combo box.");
+                throw;
+            }
         }
         public DataTable LayToanBoNganhHoc()
         {
@@ -49,6 +53,11 @@ namespace StudentManagment.DAL.Util
             catch (SqlException sqlEx)
             {
                 logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sỡ dữ liệu khi lấy danh sách ngành học.");
+                throw;
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Xảy ra lỗi khi lấy toàn bộ ngành học.");
                 throw;
             }
         }
