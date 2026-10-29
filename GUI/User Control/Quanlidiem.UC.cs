@@ -29,9 +29,9 @@ namespace StudentManagment.GUI.User_Control
                 {
                     Masinhvien = txbMasinhvien.Text.ToString().Trim(),
                     Mamon = txbMamonhoc.Text.ToString().Trim(),
-                    Diemchuyencan = string.IsNullOrEmpty(txbDiemchuyencan.Text) ? -1 : float.Parse(txbDiemchuyencan.Text.ToString().Trim()),
-                    Diemgiuaky = string.IsNullOrEmpty(txbDiemgiuaky.Text) ? -1 : float.Parse(txbDiemgiuaky.Text.ToString().Trim()),
-                    Diemcuoiky = string.IsNullOrEmpty(txtDiemcuoiky.Text) ? -1 : float.Parse(txtDiemcuoiky.Text.ToString().Trim()),
+                    Diemchuyencan = string.IsNullOrEmpty(txbDiemchuyencan.Text) ? -1 : double.Parse(txbDiemchuyencan.Text.ToString().Trim()),
+                    Diemgiuaky = string.IsNullOrEmpty(txbDiemgiuaky.Text) ? -1 : double.Parse(txbDiemgiuaky.Text.ToString().Trim()),
+                    Diemcuoiky = string.IsNullOrEmpty(txtDiemcuoiky.Text) ? -1 : double.Parse(txtDiemcuoiky.Text.ToString().Trim()),
                 };
                 DataTable dt = quanlydiemBLL.ThemDiemMoi(diemDTO);
                 if (dt.Rows.Count != 0)
@@ -88,9 +88,9 @@ namespace StudentManagment.GUI.User_Control
                 {
                     Masinhvien = txbMasinhvien.Text.ToString().Trim(),
                     Mamon = txbMamonhoc.Text.ToString().Trim(),
-                    Diemchuyencan = string.IsNullOrEmpty(txbDiemchuyencan.Text) ? -1 : float.Parse(txbDiemchuyencan.Text.ToString().Trim()),
-                    Diemgiuaky = string.IsNullOrEmpty(txbDiemgiuaky.Text) ? -1 : float.Parse(txbDiemgiuaky.Text.ToString().Trim()),
-                    Diemcuoiky = string.IsNullOrEmpty(txtDiemcuoiky.Text) ? -1 : float.Parse(txtDiemcuoiky.Text.ToString().Trim()),
+                    Diemchuyencan = string.IsNullOrEmpty(txbDiemchuyencan.Text) ? -1 : double.Parse(txbDiemchuyencan.Text.ToString().Trim()),
+                    Diemgiuaky = string.IsNullOrEmpty(txbDiemgiuaky.Text) ? -1 : double.Parse(txbDiemgiuaky.Text.ToString().Trim()),
+                    Diemcuoiky = string.IsNullOrEmpty(txtDiemcuoiky.Text) ? -1 : double.Parse(txtDiemcuoiky.Text.ToString().Trim()),
                 };
                 DataTable dt = quanlydiemBLL.SuaThongTinDiemTheoMaSinhVienVaMaMon(diemDTO);
                 if (dt.Rows.Count != 0)

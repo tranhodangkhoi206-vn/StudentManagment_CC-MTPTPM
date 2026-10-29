@@ -2,6 +2,7 @@
 using System.Data;
 using Microsoft.Extensions.Logging;
 using StudentManagment.DAL.Util;
+using StudentManagment.DAL;
 using StudentManagment.DTO;
 
 namespace StudentManagment.BLL
