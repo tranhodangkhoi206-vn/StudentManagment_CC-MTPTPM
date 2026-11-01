@@ -6,20 +6,20 @@ using StudentManagment.DTO;
 
 namespace StudentManagment.GUI.User_Control
 {
-    public partial class Quanlidiem : UserControl
+    public partial class Quanlydiem : UserControl
     {
-        private readonly ILogger<Quanlidiem> logger;
+        private readonly ILogger<Quanlydiem> logger;
         private QuanlydiemBLL quanlydiemBLL;
-        public Quanlidiem(ILoggerFactory loggerFactory)
+        public Quanlydiem(ILoggerFactory loggerFactory)
         {
             InitializeComponent();
-            logger = loggerFactory.CreateLogger<Quanlidiem>();
+            logger = loggerFactory.CreateLogger<Quanlydiem>();
             quanlydiemBLL = new QuanlydiemBLL(loggerFactory);
         }
 
-        private void Quanlidiem_Load(object sender, EventArgs e)
+        private void Quanlydiem_Load(object sender, EventArgs e)
         {
-            dgvDanhsachmonhoc.DataSource = quanlydiemBLL.HienThiToanBoDiem();
+            dgvDiem.DataSource = quanlydiemBLL.HienThiToanBoDiem();
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
@@ -27,21 +27,21 @@ namespace StudentManagment.GUI.User_Control
             {
                 DiemDTO diemDTO = new DiemDTO()
                 {
-                    Masinhvien = txbMasinhvien.Text.ToString().Trim(),
-                    Mamon = txbMamonhoc.Text.ToString().Trim(),
-                    Diemchuyencan = string.IsNullOrEmpty(txbDiemchuyencan.Text) ? -1 : double.Parse(txbDiemchuyencan.Text.ToString().Trim()),
-                    Diemgiuaky = string.IsNullOrEmpty(txbDiemgiuaky.Text) ? -1 : double.Parse(txbDiemgiuaky.Text.ToString().Trim()),
-                    Diemcuoiky = string.IsNullOrEmpty(txtDiemcuoiky.Text) ? -1 : double.Parse(txtDiemcuoiky.Text.ToString().Trim()),
+                    Masinhvien = tbMasinhvien.Text.ToString().Trim(),
+                    Mamon = tbMamonhoc.Text.ToString().Trim(),
+                    Diemchuyencan = string.IsNullOrEmpty(tbDiemchuyencan.Text) ? -1 : double.Parse(tbDiemchuyencan.Text.ToString().Trim()),
+                    Diemgiuaky = string.IsNullOrEmpty(tbDiemgiuaky.Text) ? -1 : double.Parse(tbDiemgiuaky.Text.ToString().Trim()),
+                    Diemcuoiky = string.IsNullOrEmpty(tbDiemcuoiky.Text) ? -1 : double.Parse(tbDiemcuoiky.Text.ToString().Trim()),
                 };
                 DataTable dt = quanlydiemBLL.ThemDiemMoi(diemDTO);
                 if (dt.Rows.Count != 0)
                 {
-                    dgvDanhsachmonhoc.DataSource = dt;
+                    dgvDiem.DataSource = dt;
                 }
             }
             catch (SqlException)
             {
-                MessageBox.Show("Lỗi kết nối cơ sở dữ liệu khi thêm điểm mợi.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi kết nối cơ sở dữ liệu khi thêm điểm mới.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (ArgumentException)
             {
@@ -58,12 +58,12 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
-                string maSinhVien = txbMasinhvien.Text.ToString().Trim();
-                string maMon = txbMamonhoc.Text.ToString().Trim();
+                string maSinhVien = tbMasinhvien.Text.ToString().Trim();
+                string maMon = tbMamonhoc.Text.ToString().Trim();
                 DataTable dt = quanlydiemBLL.XoaThongTinDiemTheoMaSinhVienVaMaMon(maSinhVien, maMon);
                 if (dt.Rows.Count != 0)
                 {
-                    dgvDanhsachmonhoc.DataSource = dt;
+                    dgvDiem.DataSource = dt;
                 }
             }
             catch (SqlException)
@@ -86,16 +86,16 @@ namespace StudentManagment.GUI.User_Control
             {
                 DiemDTO diemDTO = new DiemDTO()
                 {
-                    Masinhvien = txbMasinhvien.Text.ToString().Trim(),
-                    Mamon = txbMamonhoc.Text.ToString().Trim(),
-                    Diemchuyencan = string.IsNullOrEmpty(txbDiemchuyencan.Text) ? -1 : double.Parse(txbDiemchuyencan.Text.ToString().Trim()),
-                    Diemgiuaky = string.IsNullOrEmpty(txbDiemgiuaky.Text) ? -1 : double.Parse(txbDiemgiuaky.Text.ToString().Trim()),
-                    Diemcuoiky = string.IsNullOrEmpty(txtDiemcuoiky.Text) ? -1 : double.Parse(txtDiemcuoiky.Text.ToString().Trim()),
+                    Masinhvien = tbMasinhvien.Text.ToString().Trim(),
+                    Mamon = tbMamonhoc.Text.ToString().Trim(),
+                    Diemchuyencan = string.IsNullOrEmpty(tbDiemchuyencan.Text) ? -1 : double.Parse(tbDiemchuyencan.Text.ToString().Trim()),
+                    Diemgiuaky = string.IsNullOrEmpty(tbDiemgiuaky.Text) ? -1 : double.Parse(tbDiemgiuaky.Text.ToString().Trim()),
+                    Diemcuoiky = string.IsNullOrEmpty(tbDiemcuoiky.Text) ? -1 : double.Parse(tbDiemcuoiky.Text.ToString().Trim()),
                 };
                 DataTable dt = quanlydiemBLL.SuaThongTinDiemTheoMaSinhVienVaMaMon(diemDTO);
                 if (dt.Rows.Count != 0)
                 {
-                    dgvDanhsachmonhoc.DataSource = dt;
+                    dgvDiem.DataSource = dt;
                 }
             }
             catch (SqlException)
@@ -114,11 +114,11 @@ namespace StudentManagment.GUI.User_Control
 
         private void btnLammoi_Click(object sender, EventArgs e)
         {
-            txbMasinhvien.Text = "";
-            txbMamonhoc.Text = "";
-            txbDiemchuyencan.Text = "";
-            txbDiemgiuaky.Text = "";
-            txtDiemcuoiky.Text = "";
+            tbMasinhvien.Text = "";
+            tbMamonhoc.Text = "";
+            tbDiemchuyencan.Text = "";
+            tbDiemgiuaky.Text = "";
+            tbDiemcuoiky.Text = "";
         }
     }
 }

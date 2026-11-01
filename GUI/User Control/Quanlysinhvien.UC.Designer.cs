@@ -28,10 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             tableLayoutPanel1 = new TableLayoutPanel();
             label1 = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
             tableLayoutPanel3 = new TableLayoutPanel();
+            tableLayoutPanel14 = new TableLayoutPanel();
+            btnTimkiem = new Button();
+            label9 = new Label();
+            tableLayoutPanel13 = new TableLayoutPanel();
+            btnDondep = new Button();
+            btnSua = new Button();
             tableLayoutPanel10 = new TableLayoutPanel();
             cbTinhtrang = new ComboBox();
             label8 = new Label();
@@ -55,19 +63,22 @@
             tableLayoutPanel4 = new TableLayoutPanel();
             label2 = new Label();
             tbMasinhvien = new TextBox();
-            dgvSinhvien = new DataGridView();
             tableLayoutPanel12 = new TableLayoutPanel();
-            tableLayoutPanel13 = new TableLayoutPanel();
-            tableLayoutPanel14 = new TableLayoutPanel();
-            btnThem = new Button();
             btnXoa = new Button();
-            btnSua = new Button();
-            btnDondep = new Button();
-            btnTimkiem = new Button();
-            label9 = new Label();
+            btnThem = new Button();
+            dgvSinhvien = new DataGridView();
+            MASV = new DataGridViewTextBoxColumn();
+            HOVATEN = new DataGridViewTextBoxColumn();
+            GIOITINH = new DataGridViewTextBoxColumn();
+            NGAYSINH = new DataGridViewTextBoxColumn();
+            MALOP = new DataGridViewTextBoxColumn();
+            MANGANH = new DataGridViewTextBoxColumn();
+            TINHTRANG = new DataGridViewTextBoxColumn();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
+            tableLayoutPanel14.SuspendLayout();
+            tableLayoutPanel13.SuspendLayout();
             tableLayoutPanel10.SuspendLayout();
             tableLayoutPanel9.SuspendLayout();
             tableLayoutPanel8.SuspendLayout();
@@ -76,10 +87,8 @@
             tableLayoutPanel11.SuspendLayout();
             tableLayoutPanel5.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvSinhvien).BeginInit();
             tableLayoutPanel12.SuspendLayout();
-            tableLayoutPanel13.SuspendLayout();
-            tableLayoutPanel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvSinhvien).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -162,6 +171,83 @@
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel3.Size = new Size(331, 533);
             tableLayoutPanel3.TabIndex = 0;
+            // 
+            // tableLayoutPanel14
+            // 
+            tableLayoutPanel14.ColumnCount = 2;
+            tableLayoutPanel14.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 37.4622345F));
+            tableLayoutPanel14.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 62.5377655F));
+            tableLayoutPanel14.Controls.Add(btnTimkiem, 0, 0);
+            tableLayoutPanel14.Controls.Add(label9, 1, 0);
+            tableLayoutPanel14.Dock = DockStyle.Fill;
+            tableLayoutPanel14.Location = new Point(0, 450);
+            tableLayoutPanel14.Margin = new Padding(0);
+            tableLayoutPanel14.Name = "tableLayoutPanel14";
+            tableLayoutPanel14.RowCount = 1;
+            tableLayoutPanel14.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel14.Size = new Size(331, 50);
+            tableLayoutPanel14.TabIndex = 9;
+            // 
+            // btnTimkiem
+            // 
+            btnTimkiem.Dock = DockStyle.Left;
+            btnTimkiem.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnTimkiem.Location = new Point(3, 3);
+            btnTimkiem.Name = "btnTimkiem";
+            btnTimkiem.Size = new Size(114, 44);
+            btnTimkiem.TabIndex = 1;
+            btnTimkiem.Text = "Tìm kiếm";
+            btnTimkiem.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Dock = DockStyle.Fill;
+            label9.Font = new Font("Roboto Condensed", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.Location = new Point(127, 0);
+            label9.Name = "label9";
+            label9.Size = new Size(201, 50);
+            label9.TabIndex = 2;
+            label9.Text = "(Nhập mã sinh viên để tìm kiếm)";
+            label9.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // tableLayoutPanel13
+            // 
+            tableLayoutPanel13.ColumnCount = 2;
+            tableLayoutPanel13.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel13.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel13.Controls.Add(btnDondep, 1, 0);
+            tableLayoutPanel13.Controls.Add(btnSua, 0, 0);
+            tableLayoutPanel13.Dock = DockStyle.Fill;
+            tableLayoutPanel13.Location = new Point(0, 400);
+            tableLayoutPanel13.Margin = new Padding(0);
+            tableLayoutPanel13.Name = "tableLayoutPanel13";
+            tableLayoutPanel13.RowCount = 1;
+            tableLayoutPanel13.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel13.Size = new Size(331, 50);
+            tableLayoutPanel13.TabIndex = 8;
+            // 
+            // btnDondep
+            // 
+            btnDondep.Dock = DockStyle.Left;
+            btnDondep.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDondep.Location = new Point(168, 3);
+            btnDondep.Name = "btnDondep";
+            btnDondep.Size = new Size(114, 44);
+            btnDondep.TabIndex = 2;
+            btnDondep.Text = "Dọn dẹp";
+            btnDondep.UseVisualStyleBackColor = true;
+            // 
+            // btnSua
+            // 
+            btnSua.Dock = DockStyle.Left;
+            btnSua.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSua.Location = new Point(3, 3);
+            btnSua.Name = "btnSua";
+            btnSua.Size = new Size(114, 44);
+            btnSua.TabIndex = 1;
+            btnSua.Text = "Sửa";
+            btnSua.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel10
             // 
@@ -466,16 +552,6 @@
             tbMasinhvien.Size = new Size(200, 32);
             tbMasinhvien.TabIndex = 1;
             // 
-            // dgvSinhvien
-            // 
-            dgvSinhvien.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSinhvien.Dock = DockStyle.Fill;
-            dgvSinhvien.Location = new Point(337, 6);
-            dgvSinhvien.Margin = new Padding(0);
-            dgvSinhvien.Name = "dgvSinhvien";
-            dgvSinhvien.Size = new Size(447, 533);
-            dgvSinhvien.TabIndex = 1;
-            // 
             // tableLayoutPanel12
             // 
             tableLayoutPanel12.ColumnCount = 2;
@@ -492,37 +568,16 @@
             tableLayoutPanel12.Size = new Size(331, 50);
             tableLayoutPanel12.TabIndex = 7;
             // 
-            // tableLayoutPanel13
+            // btnXoa
             // 
-            tableLayoutPanel13.ColumnCount = 2;
-            tableLayoutPanel13.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel13.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel13.Controls.Add(btnDondep, 1, 0);
-            tableLayoutPanel13.Controls.Add(btnSua, 0, 0);
-            tableLayoutPanel13.Dock = DockStyle.Fill;
-            tableLayoutPanel13.Location = new Point(0, 400);
-            tableLayoutPanel13.Margin = new Padding(0);
-            tableLayoutPanel13.Name = "tableLayoutPanel13";
-            tableLayoutPanel13.RowCount = 1;
-            tableLayoutPanel13.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel13.Size = new Size(331, 50);
-            tableLayoutPanel13.TabIndex = 8;
-            // 
-            // tableLayoutPanel14
-            // 
-            tableLayoutPanel14.ColumnCount = 2;
-            tableLayoutPanel14.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 37.4622345F));
-            tableLayoutPanel14.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 62.5377655F));
-            tableLayoutPanel14.Controls.Add(btnTimkiem, 0, 0);
-            tableLayoutPanel14.Controls.Add(label9, 1, 0);
-            tableLayoutPanel14.Dock = DockStyle.Fill;
-            tableLayoutPanel14.Location = new Point(0, 450);
-            tableLayoutPanel14.Margin = new Padding(0);
-            tableLayoutPanel14.Name = "tableLayoutPanel14";
-            tableLayoutPanel14.RowCount = 1;
-            tableLayoutPanel14.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel14.Size = new Size(331, 50);
-            tableLayoutPanel14.TabIndex = 9;
+            btnXoa.Dock = DockStyle.Left;
+            btnXoa.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnXoa.Location = new Point(168, 3);
+            btnXoa.Name = "btnXoa";
+            btnXoa.Size = new Size(114, 44);
+            btnXoa.TabIndex = 1;
+            btnXoa.Text = "Xóa";
+            btnXoa.UseVisualStyleBackColor = true;
             // 
             // btnThem
             // 
@@ -535,75 +590,114 @@
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = true;
             // 
-            // btnXoa
+            // dgvSinhvien
             // 
-            btnXoa.Dock = DockStyle.Left;
-            btnXoa.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnXoa.Location = new Point(168, 3);
-            btnXoa.Name = "btnXoa";
-            btnXoa.Size = new Size(114, 44);
-            btnXoa.TabIndex = 1;
-            btnXoa.Text = "Xóa";
-            btnXoa.UseVisualStyleBackColor = true;
+            dgvSinhvien.AllowUserToAddRows = false;
+            dgvSinhvien.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvSinhvien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgvSinhvien.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSinhvien.Columns.AddRange(new DataGridViewColumn[] { MASV, HOVATEN, GIOITINH, NGAYSINH, MALOP, MANGANH, TINHTRANG });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvSinhvien.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvSinhvien.Dock = DockStyle.Fill;
+            dgvSinhvien.Location = new Point(337, 6);
+            dgvSinhvien.Margin = new Padding(0);
+            dgvSinhvien.Name = "dgvSinhvien";
+            dgvSinhvien.ReadOnly = true;
+            dgvSinhvien.Size = new Size(447, 533);
+            dgvSinhvien.TabIndex = 1;
             // 
-            // btnSua
+            // MASV
             // 
-            btnSua.Dock = DockStyle.Left;
-            btnSua.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSua.Location = new Point(3, 3);
-            btnSua.Name = "btnSua";
-            btnSua.Size = new Size(114, 44);
-            btnSua.TabIndex = 1;
-            btnSua.Text = "Sửa";
-            btnSua.UseVisualStyleBackColor = true;
+            MASV.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            MASV.DataPropertyName = "MASV";
+            MASV.HeaderText = "Mã sinh viên";
+            MASV.Name = "MASV";
+            MASV.ReadOnly = true;
+            MASV.Width = 116;
             // 
-            // btnDondep
+            // HOVATEN
             // 
-            btnDondep.Dock = DockStyle.Left;
-            btnDondep.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnDondep.Location = new Point(168, 3);
-            btnDondep.Name = "btnDondep";
-            btnDondep.Size = new Size(114, 44);
-            btnDondep.TabIndex = 2;
-            btnDondep.Text = "Dọn dẹp";
-            btnDondep.UseVisualStyleBackColor = true;
+            HOVATEN.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            HOVATEN.DataPropertyName = "HOVATEN";
+            HOVATEN.HeaderText = "Họ và tên";
+            HOVATEN.Name = "HOVATEN";
+            HOVATEN.ReadOnly = true;
+            HOVATEN.Width = 96;
             // 
-            // btnTimkiem
+            // GIOITINH
             // 
-            btnTimkiem.Dock = DockStyle.Left;
-            btnTimkiem.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnTimkiem.Location = new Point(3, 3);
-            btnTimkiem.Name = "btnTimkiem";
-            btnTimkiem.Size = new Size(114, 44);
-            btnTimkiem.TabIndex = 1;
-            btnTimkiem.Text = "Tìm kiếm";
-            btnTimkiem.UseVisualStyleBackColor = true;
+            GIOITINH.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            GIOITINH.DataPropertyName = "GIOITINH";
+            GIOITINH.HeaderText = "Giới tính";
+            GIOITINH.Name = "GIOITINH";
+            GIOITINH.ReadOnly = true;
+            GIOITINH.Width = 88;
             // 
-            // label9
+            // NGAYSINH
             // 
-            label9.AutoSize = true;
-            label9.Dock = DockStyle.Fill;
-            label9.Font = new Font("Roboto Condensed", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.Location = new Point(127, 0);
-            label9.Name = "label9";
-            label9.Size = new Size(201, 50);
-            label9.TabIndex = 2;
-            label9.Text = "(Nhập mã sinh viên để tìm kiếm)";
-            label9.TextAlign = ContentAlignment.MiddleLeft;
+            NGAYSINH.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            NGAYSINH.DataPropertyName = "NGAYSINH";
+            NGAYSINH.HeaderText = "Ngày sinh";
+            NGAYSINH.Name = "NGAYSINH";
+            NGAYSINH.ReadOnly = true;
+            NGAYSINH.Width = 98;
             // 
-            // Quanlisinhvien
+            // MALOP
+            // 
+            MALOP.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            MALOP.DataPropertyName = "MALOP";
+            MALOP.HeaderText = "Mã lớp";
+            MALOP.Name = "MALOP";
+            MALOP.ReadOnly = true;
+            MALOP.Width = 78;
+            // 
+            // MANGANH
+            // 
+            MANGANH.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            MANGANH.DataPropertyName = "MANGANH";
+            MANGANH.HeaderText = "Mã ngành";
+            MANGANH.Name = "MANGANH";
+            MANGANH.ReadOnly = true;
+            MANGANH.Width = 98;
+            // 
+            // TINHTRANG
+            // 
+            TINHTRANG.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            TINHTRANG.DataPropertyName = "TINHTRANG";
+            TINHTRANG.HeaderText = "Tình trạng";
+            TINHTRANG.Name = "TINHTRANG";
+            TINHTRANG.ReadOnly = true;
+            // 
+            // Quanlysinhvien
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             Controls.Add(tableLayoutPanel1);
             Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Name = "Quanlisinhvien";
+            Name = "Quanlysinhvien";
             Size = new Size(790, 611);
             Load += Quanlysinhvien_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);
+            tableLayoutPanel14.ResumeLayout(false);
+            tableLayoutPanel14.PerformLayout();
+            tableLayoutPanel13.ResumeLayout(false);
             tableLayoutPanel10.ResumeLayout(false);
             tableLayoutPanel10.PerformLayout();
             tableLayoutPanel9.ResumeLayout(false);
@@ -620,11 +714,8 @@
             tableLayoutPanel5.PerformLayout();
             tableLayoutPanel4.ResumeLayout(false);
             tableLayoutPanel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvSinhvien).EndInit();
             tableLayoutPanel12.ResumeLayout(false);
-            tableLayoutPanel13.ResumeLayout(false);
-            tableLayoutPanel14.ResumeLayout(false);
-            tableLayoutPanel14.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvSinhvien).EndInit();
             ResumeLayout(false);
         }
 
@@ -667,5 +758,12 @@
         private Button btnSua;
         private Button btnXoa;
         private Label label9;
+        private DataGridViewTextBoxColumn MASV;
+        private DataGridViewTextBoxColumn HOVATEN;
+        private DataGridViewTextBoxColumn GIOITINH;
+        private DataGridViewTextBoxColumn NGAYSINH;
+        private DataGridViewTextBoxColumn MALOP;
+        private DataGridViewTextBoxColumn MANGANH;
+        private DataGridViewTextBoxColumn TINHTRANG;
     }
 }

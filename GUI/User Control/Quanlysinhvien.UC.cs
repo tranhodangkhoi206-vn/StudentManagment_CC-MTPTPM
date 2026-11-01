@@ -17,16 +17,16 @@ namespace StudentManagment.GUI.User_Control
 
         private void Quanlysinhvien_Load(object sender, EventArgs e)
         {
-            // cbxChuyennganh.DisplayMember = "TENNGANH";
-            // cbxChuyennganh.ValueMember = "MANGANH";
-            // cbxChuyennganh.DataSource = quanlysinhvienBLL.HienThiDanhSachNganhHocChoComboBox();
-            // cbxLop.DisplayMember = "TENLOP";
-            // cbxLop.ValueMember = "MALOP";
-            // cbxLop.DataSource = quanlysinhvienBLL.HienThiDanhSachLopChoComboBox();
-            // drvDanhsachsinhvien.DataSource = quanlysinhvienBLL.HienThiDanhSachSinhVien();
-            // cbxChuyennganh.SelectedIndex = -1;
-            // cbxLop.SelectedIndex = -1;
-            // rbtnNam.Checked = true;
+            cbManganh.DisplayMember = "TENNGANH";
+            cbManganh.ValueMember = "MANGANH";
+            cbManganh.DataSource = quanlysinhvienBLL.HienThiDanhSachNganhHocChoComboBox();
+            cbMalop.DisplayMember = "TENLOP";
+            cbMalop.ValueMember = "MALOP";
+            cbMalop.DataSource = quanlysinhvienBLL.HienThiDanhSachLopChoComboBox();
+            dgvSinhvien.DataSource = quanlysinhvienBLL.HienThiDanhSachSinhVien();
+            cbManganh.SelectedIndex = -1;
+            cbMalop.SelectedIndex = -1;
+            rbNam.Checked = true;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -35,18 +35,18 @@ namespace StudentManagment.GUI.User_Control
             {
                 SinhvienDTO sinhvienMoi = new SinhvienDTO()
                 {
-                    // MaSinhVien = txbMasinhvien.Text.ToString(),
-                    // HoVaTen = txbHovaten.Text.ToString(),
-                    // MaLop = cbxLop.SelectedValue != null ? cbxLop.SelectedValue.ToString().Trim() : "",
-                    // NgaySinh = dtpNgaySinh.Value.Date,
-                    // GioiTinh = rbtnNam.Checked ? "Nam" : "Nữ",
-                    // MaNganh = cbxChuyennganh.SelectedValue != null ? cbxChuyennganh.SelectedValue.ToString().Trim() : "",
-                    // TinhTrang = cbxTinhtrang.Text.Trim()
+                    MaSinhVien = tbMasinhvien.Text.ToString(),
+                    HoVaTen = tbHovaten.Text.ToString(),
+                    MaLop = cbMalop.SelectedValue != null ? cbMalop.SelectedValue.ToString().Trim() : "",
+                    NgaySinh = dtpNgaysinh.Value.Date,
+                    GioiTinh = rbNam.Checked ? "Nam" : "Nữ",
+                    MaNganh = cbManganh.SelectedValue != null ? cbManganh.SelectedValue.ToString().Trim() : "",
+                    TinhTrang = cbTinhtrang.Text.Trim()
                 };
                 DataTable dt = quanlysinhvienBLL.ThemsinhvienMoi(sinhvienMoi);
                 if (dt.Rows.Count != 0)
                 {
-                    // drvDanhsachsinhvien.DataSource = dt;
+                    dgvSinhvien.DataSource = dt;
                 }
             }
             catch (ArgumentException)
@@ -67,9 +67,9 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
-                // string maSinhVien = txbMasinhvien.Text.ToString();
-                // DataTable dt = quanlysinhvienBLL.XoaSinhVienTheoMaSinhVien(maSinhVien);
-                // drvDanhsachsinhvien.DataSource = dt;
+                string maSinhVien = tbMasinhvien.Text.ToString();
+                DataTable dt = quanlysinhvienBLL.XoaSinhVienTheoMaSinhVien(maSinhVien);
+                dgvSinhvien.DataSource = dt;
             }
 	        catch (ArgumentException)
             {
@@ -91,18 +91,18 @@ namespace StudentManagment.GUI.User_Control
             {
                 SinhvienDTO sinhvienSua = new SinhvienDTO()
                 {
-                    // MaSinhVien = txbMasinhvien.Text.ToString(),
-                    // HoVaTen = txbHovaten.Text.ToString(),
-                    // MaLop = cbxLop.SelectedValue != null ? cbxLop.SelectedValue.ToString().Trim() : "",
-                    // NgaySinh = dtpNgaySinh.Value.Date,
-                    // GioiTinh = rbtnNam.Checked ? "Nam" : "Nữ",
-                    // MaNganh = cbxChuyennganh.SelectedValue != null ? cbxChuyennganh.SelectedValue.ToString().Trim() : "",
-                    // TinhTrang = cbxTinhtrang.Text.Trim()
+                    MaSinhVien = tbMasinhvien.Text.ToString(),
+                    HoVaTen = tbHovaten.Text.ToString(),
+                    MaLop = cbMalop.SelectedValue != null ? cbMalop.SelectedValue.ToString().Trim() : "",
+                    NgaySinh = dtpNgaysinh.Value.Date,
+                    GioiTinh = rbNam.Checked ? "Nam" : "Nữ",
+                    MaNganh = cbManganh.SelectedValue != null ? cbManganh.SelectedValue.ToString().Trim() : "",
+                    TinhTrang = cbTinhtrang.Text.Trim()
                 };
                 DataTable dt = quanlysinhvienBLL.SuaSinhVienTheoMaSinhVien(sinhvienSua);
                 if (dt.Rows.Count != 0)
                 {
-                    // drvDanhsachsinhvien.DataSource = dt;
+                    dgvSinhvien.DataSource = dt;
                 }
             }
 	        catch(ArgumentException)
@@ -121,13 +121,13 @@ namespace StudentManagment.GUI.User_Control
 
         private void btnLammoi_Click(object sender, EventArgs e)
         {
-            // txbMasinhvien.Text = "";
-            // txbHovaten.Text = "";
-            // cbxLop.SelectedIndex = -1;
-            // dtpNgaySinh.Value = DateTime.Today.Date;
-            // rbtnNam.Checked = true;
-            // cbxChuyennganh.SelectedIndex = -1;
-            // cbxTinhtrang.SelectedIndex = -1;
+            tbMasinhvien.Text = "";
+            tbHovaten.Text = "";
+            cbMalop.SelectedIndex = -1;
+            dtpNgaysinh.Value = DateTime.Today.Date;
+            rbNam.Checked = true;
+            cbManganh.SelectedIndex = -1;
+            cbTinhtrang.SelectedIndex = -1;
         }
     }
 }

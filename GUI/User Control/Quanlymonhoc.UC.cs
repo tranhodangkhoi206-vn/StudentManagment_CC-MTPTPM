@@ -17,13 +17,13 @@ namespace StudentManagment.GUI.User_Control
 
         private void Quanlymonhoc_Load(object sender, EventArgs e)
         {
-            cbxChuyennganh.DisplayMember = "TENNGANH";
-            cbxChuyennganh.ValueMember = "MANGANH";
-            cbxChuyennganh.DataSource = quanlymonhocBLL.HienThiDanhSachNganhHocChoComboBox();
-            dgvDanhsachmonhoc.DataSource = quanlymonhocBLL.HienThiDanhSachMonHoc();
+            cbManganh.DisplayMember = "TENNGANH";
+            cbManganh.ValueMember = "MANGANH";
+            cbManganh.DataSource = quanlymonhocBLL.HienThiDanhSachNganhHocChoComboBox();
+            dgvMonhoc.DataSource = quanlymonhocBLL.HienThiDanhSachMonHoc();
             nudLythuyet.Value = 1;
             nudThuchanh.Value = 1;
-            cbxChuyennganh.SelectedIndex = -1;
+            cbManganh.SelectedIndex = -1;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -32,18 +32,18 @@ namespace StudentManagment.GUI.User_Control
             {
                 MonhocDTO monhocDTO = new MonhocDTO()
                 {
-                    Mamon = txbMamonhoc.Text.Trim(),
-                    Tenmon = txbTenmonhoc.Text.Trim(),
-                    Manganh = cbxChuyennganh.SelectedValue != null ? cbxChuyennganh.SelectedValue.ToString().Trim() : "",
+                    Mamon = tbMamonhoc.Text.Trim(),
+                    Tenmon = tbTenmonhoc.Text.Trim(),
+                    Manganh = cbManganh.SelectedValue != null ? cbManganh.SelectedValue.ToString().Trim() : "",
                     Sotietlythuyet = (int)nudLythuyet.Value,
                     Sotietthuchanh = (int)nudThuchanh.Value,
-                    Giangvien = txbGiangvien.Text.Trim(),
-                    Tinhtrang = cbxTinhtrang.Text.Trim()
+                    Giangvien = tbGiangvien.Text.Trim(),
+                    Tinhtrang = cbTinhtrang.Text.Trim()
                 };
                 DataTable dt = quanlymonhocBLL.ThemmonhocMoi(monhocDTO);
                 if (dt.Rows.Count != 0)
                 {
-                    dgvDanhsachmonhoc.DataSource = dt;
+                    dgvMonhoc.DataSource = dt;
                 }
             }
             catch (SqlException)
@@ -66,18 +66,18 @@ namespace StudentManagment.GUI.User_Control
             {
                 MonhocDTO monhocDTO = new MonhocDTO()
                 {
-                    Mamon = txbMamonhoc.Text.Trim(),
-                    Tenmon = txbTenmonhoc.Text.Trim(),
-                    Manganh = cbxChuyennganh.SelectedValue != null ? cbxChuyennganh.SelectedValue.ToString().Trim() : "",
+                    Mamon = tbMamonhoc.Text.Trim(),
+                    Tenmon = tbTenmonhoc.Text.Trim(),
+                    Manganh = cbManganh.SelectedValue != null ? cbManganh.SelectedValue.ToString().Trim() : "",
                     Sotietlythuyet = (int)nudLythuyet.Value,
                     Sotietthuchanh = (int)nudThuchanh.Value,
-                    Giangvien = txbGiangvien.Text.Trim(),
-                    Tinhtrang = cbxTinhtrang.Text.Trim()
+                    Giangvien = tbGiangvien.Text.Trim(),
+                    Tinhtrang = cbTinhtrang.Text.Trim()
                 };
                 DataTable dt = quanlymonhocBLL.SuaMonHocTheoMaMonHoc(monhocDTO);
                 if (dt.Rows.Count != 0)
                 {
-                    dgvDanhsachmonhoc.DataSource = dt;
+                    dgvMonhoc.DataSource = dt;
                 }
             }
             catch (SqlException)
@@ -98,11 +98,11 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
-                string maMon = txbMamonhoc.Text.ToString().Trim();
+                string maMon = tbMamonhoc.Text.ToString().Trim();
                 DataTable dt = quanlymonhocBLL.XoaMonHocTheoMaMonHoc(maMon);
                 if (dt.Rows.Count != 0)
                 {
-                    dgvDanhsachmonhoc.DataSource = dt;
+                    dgvMonhoc.DataSource = dt;
                 }
             }
 	        catch (SqlException)
@@ -121,13 +121,13 @@ namespace StudentManagment.GUI.User_Control
 
         private void btnLammoi_Click(object sender, EventArgs e)
         {
-            txbMamonhoc.Text = "";
-            txbTenmonhoc.Text = "";
-            cbxChuyennganh.SelectedIndex = -1;
+            tbMamonhoc.Text = "";
+            tbTenmonhoc.Text = "";
+            cbManganh.SelectedIndex = -1;
             nudLythuyet.Value = 1;
             nudThuchanh.Value = 1;
-            txbGiangvien.Text = "";
-            cbxTinhtrang.SelectedIndex = -1;
+            tbGiangvien.Text = "";
+            cbTinhtrang.SelectedIndex = -1;
         }
     }
 }

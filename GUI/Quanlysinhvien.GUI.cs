@@ -46,10 +46,10 @@ namespace StudentManagment
         {
             btnQuanlymonhoc.BackColor = ColorTranslator.FromHtml("#2471C9");
             pUserControl.Controls.Clear();
-            Quanlymonhoc quanlymonhoc = new Quanlymonhoc(_loggerFactory);
-            quanlymonhoc.Dock = DockStyle.Fill;
-            pUserControl.Controls.Add(quanlymonhoc);
-            quanlymonhoc.BringToFront();
+            Quanlymonhoc quanLyMonHoc = new Quanlymonhoc(_loggerFactory);
+            quanLyMonHoc.Dock = DockStyle.Fill;
+            pUserControl.Controls.Add(quanLyMonHoc);
+            quanLyMonHoc.BringToFront();
         }
 
         private void btnQuanlymonhoc_Leave(object sender, EventArgs e)
@@ -60,6 +60,11 @@ namespace StudentManagment
         private void btnQuanlychuyennganh_Click(object sender, EventArgs e)
         {
             btnQuanlychuyennganh.BackColor = ColorTranslator.FromHtml("#2471C9");
+            pUserControl.Controls.Clear();
+            Quanlynganhhoc quanLyNganhHoc = new Quanlynganhhoc(_loggerFactory);
+            quanLyNganhHoc.Dock = DockStyle.Fill;
+            pUserControl.Controls.Add(quanLyNganhHoc);
+            quanLyNganhHoc.BringToFront();
         }
 
         private void btnQuanlychuyennganh_Leave(object sender, EventArgs e)
@@ -70,6 +75,11 @@ namespace StudentManagment
         private void btnQuanlydiem_Click(object sender, EventArgs e)
         {
             btnQuanlydiem.BackColor = ColorTranslator.FromHtml("#2471C9");
+            pUserControl.Controls.Clear();
+            Quanlydiem quanLyDiem = new Quanlydiem(_loggerFactory);
+            quanLyDiem.Dock = DockStyle.Fill;
+            pUserControl.Controls.Add(quanLyDiem);
+            quanLyDiem.BringToFront();
         }
 
         private void btnQuanlydiem_Leave(object sender, EventArgs e)

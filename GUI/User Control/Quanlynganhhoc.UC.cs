@@ -1,5 +1,4 @@
 ﻿using System.Data;
-using System.Runtime.CompilerServices;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
 using StudentManagment.BLL;
@@ -24,14 +23,14 @@ namespace StudentManagment.GUI.User_Control
             {
                 NganhhocDTO nganhhoc = new NganhhocDTO()
                 {
-                    // Manganh = txbManganh.Text.ToString().Trim(),
-                    // Tennganh = txbTennganh.Text.ToString().Trim(),
-                    // Khoaquanly = txbKhoa.Text.ToString().Trim()
+                    Manganh = tbManganh.Text.ToString().Trim(),
+                    Tennganh = tbTennganh.Text.ToString().Trim(),
+                    Khoaquanly = cbKhoaquanly.Text.ToString().Trim()
                 };
                 DataTable dt = quanlynganhhocBLL.ThemNganhMoi(nganhhoc);
                 if (dt.Rows.Count != 0)
                 {
-                    // dgvDanhsachnganhoc.DataSource = dt;
+                    dgvNganh.DataSource = dt;
                 }
             }
             catch (SqlException)
@@ -52,12 +51,12 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
-                // string maNganh = txbManganh.Text.Trim();
-                // DataTable dt = quanlynganhhocBLL.XoaThongTinNganhTheoMaNganh(maNganh);
-                // if (dt.Rows.Count != 0)
-                // {
-                //     dgvDanhsachnganhoc.DataSource = dt;
-                // }
+                string maNganh = tbManganh.Text.Trim();
+                DataTable dt = quanlynganhhocBLL.XoaThongTinNganhTheoMaNganh(maNganh);
+                if (dt.Rows.Count != 0)
+                {
+                    dgvNganh.DataSource = dt;
+                }
             }
             catch (SqlException)
             {
@@ -79,9 +78,9 @@ namespace StudentManagment.GUI.User_Control
             {
                 NganhhocDTO nganhhoc = new NganhhocDTO()
                 {
-                    // Manganh = txbManganh.Text.ToString().Trim(),
-                    // Tennganh = txbTennganh.Text.ToString().Trim(),
-                    // Khoaquanly = txbKhoa.Text.ToString().Trim()
+                    Manganh = tbManganh.Text.ToString().Trim(),
+                    Tennganh = tbTennganh.Text.ToString().Trim(),
+                    Khoaquanly = cbKhoaquanly.Text.ToString().Trim()
                 };
                 DataTable dt = quanlynganhhocBLL.SuaThongTinNganhTheoMaNganh(nganhhoc);
                 if (dt.Rows.Count != 0)
@@ -106,7 +105,7 @@ namespace StudentManagment.GUI.User_Control
 
         private void Quanlynganhhoc_Load(object sender, EventArgs e)
         {
-            // dgvDanhsachnganhoc.DataSource = quanlynganhhocBLL.HienThiToanBoNganhHoc();
+            dgvNganh.DataSource = quanlynganhhocBLL.HienThiToanBoNganhHoc();
         }
     }
 }
