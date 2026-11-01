@@ -7,14 +7,14 @@ using StudentManagment.DTO;
 
 namespace StudentManagment.GUI.User_Control
 {
-    public partial class Quanlinganhhoc : UserControl
+    public partial class Quanlynganhhoc : UserControl
     {
-        private readonly ILogger<Quanlinganhhoc> logger;
+        private readonly ILogger<Quanlynganhhoc> logger;
         private QuanlynganhhocBLL quanlynganhhocBLL;
-        public Quanlinganhhoc(ILoggerFactory loggerFactory)
+        public Quanlynganhhoc(ILoggerFactory loggerFactory)
         {
             InitializeComponent();
-            logger = loggerFactory.CreateLogger<Quanlinganhhoc>();
+            logger = loggerFactory.CreateLogger<Quanlynganhhoc>();
             quanlynganhhocBLL = new QuanlynganhhocBLL(loggerFactory);
         }
 
@@ -24,14 +24,14 @@ namespace StudentManagment.GUI.User_Control
             {
                 NganhhocDTO nganhhoc = new NganhhocDTO()
                 {
-                    Manganh = txbManganh.Text.ToString().Trim(),
-                    Tennganh = txbTennganh.Text.ToString().Trim(),
-                    Khoaquanly = txbKhoa.Text.ToString().Trim()
+                    // Manganh = txbManganh.Text.ToString().Trim(),
+                    // Tennganh = txbTennganh.Text.ToString().Trim(),
+                    // Khoaquanly = txbKhoa.Text.ToString().Trim()
                 };
                 DataTable dt = quanlynganhhocBLL.ThemNganhMoi(nganhhoc);
                 if (dt.Rows.Count != 0)
                 {
-                    dgvDanhsachnganhoc.DataSource = dt;
+                    // dgvDanhsachnganhoc.DataSource = dt;
                 }
             }
             catch (SqlException)
@@ -52,12 +52,12 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
-                string maNganh = txbManganh.Text.Trim();
-                DataTable dt = quanlynganhhocBLL.XoaThongTinNganhTheoMaNganh(maNganh);
-                if (dt.Rows.Count != 0)
-                {
-                    dgvDanhsachnganhoc.DataSource = dt;
-                }
+                // string maNganh = txbManganh.Text.Trim();
+                // DataTable dt = quanlynganhhocBLL.XoaThongTinNganhTheoMaNganh(maNganh);
+                // if (dt.Rows.Count != 0)
+                // {
+                //     dgvDanhsachnganhoc.DataSource = dt;
+                // }
             }
             catch (SqlException)
             {
@@ -79,14 +79,14 @@ namespace StudentManagment.GUI.User_Control
             {
                 NganhhocDTO nganhhoc = new NganhhocDTO()
                 {
-                    Manganh = txbManganh.Text.ToString().Trim(),
-                    Tennganh = txbTennganh.Text.ToString().Trim(),
-                    Khoaquanly = txbKhoa.Text.ToString().Trim()
+                    // Manganh = txbManganh.Text.ToString().Trim(),
+                    // Tennganh = txbTennganh.Text.ToString().Trim(),
+                    // Khoaquanly = txbKhoa.Text.ToString().Trim()
                 };
                 DataTable dt = quanlynganhhocBLL.SuaThongTinNganhTheoMaNganh(nganhhoc);
                 if (dt.Rows.Count != 0)
                 {
-                    dgvDanhsachnganhoc.DataSource = dt;
+                    // dgvDanhsachnganhoc.DataSource = dt;
                 }
             }
 	        catch(SqlException)
@@ -104,9 +104,9 @@ namespace StudentManagment.GUI.User_Control
             }
         }
 
-        private void Quanlinganhhoc_Load(object sender, EventArgs e)
+        private void Quanlynganhhoc_Load(object sender, EventArgs e)
         {
-            dgvDanhsachnganhoc.DataSource = quanlynganhhocBLL.HienThiToanBoNganhHoc();
+            // dgvDanhsachnganhoc.DataSource = quanlynganhhocBLL.HienThiToanBoNganhHoc();
         }
     }
 }

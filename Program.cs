@@ -1,6 +1,7 @@
 using StudentManagment.GUI;
 using Microsoft.Extensions.Logging;
 using StudentManagment.Helper;
+using StudentManagment.GUI.User_Control;
 
 namespace StudentManagment
 {
@@ -12,6 +13,7 @@ namespace StudentManagment
         [STAThread]
         static void Main()
         {
+            Application.SetHighDpiMode(HighDpiMode.PerMonitorV2);
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();

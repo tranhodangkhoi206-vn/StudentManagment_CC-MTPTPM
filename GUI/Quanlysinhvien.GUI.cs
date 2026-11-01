@@ -10,103 +10,81 @@ namespace StudentManagment
         {
             InitializeComponent();
             _loggerFactory = loggerFactory;
-            lbTen.Text = tenHienThi;
         }
 
         private void frmQuanLySinhVien_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
-
-        private void btnTracuusinhvien_Click(object sender, EventArgs e)
+        private void btnTrangchu_Click(object sender, EventArgs e)
         {
-            btnTracuusinhvien.BackColor = ColorTranslator.FromHtml("#0094ff");
-            btnTracuusinhvien.ForeColor = Color.White;
+            btnTrangchu.BackColor = ColorTranslator.FromHtml("#2471C9");
+        }
 
+        private void btnTrangchu_Leave(object sender, EventArgs e)
+        {
+            btnTrangchu.BackColor = ColorTranslator.FromHtml("#1A385A");
+        }
+
+
+        private void btnQuanlysinhvien_Click(object sender, EventArgs e)
+        {
+            btnQuanlysinhvien.BackColor = ColorTranslator.FromHtml("#2471C9");
             pUserControl.Controls.Clear();
-            Tracuusinhvien ucTracuusinhvien = new Tracuusinhvien(_loggerFactory);
-            ucTracuusinhvien.Dock = DockStyle.Fill;
-            pUserControl.Controls.Add(ucTracuusinhvien);
-            ucTracuusinhvien.BringToFront();
+            Quanlysinhvien quanLySinhVien = new Quanlysinhvien(_loggerFactory);
+            quanLySinhVien.Dock = DockStyle.Fill;
+            pUserControl.Controls.Add(quanLySinhVien);
+            quanLySinhVien.BringToFront();
         }
 
-        private void btnTracuusinhvien_Leave(object sender, EventArgs e)
+        private void btnQuanlysinhvien_Leave(object sender, EventArgs e)
         {
-            btnTracuusinhvien.BackColor = SystemColors.Highlight;
-            btnTracuusinhvien.ForeColor = Color.White;
+            btnQuanlysinhvien.BackColor = ColorTranslator.FromHtml("#1a385a");
         }
 
-        private void btnQuanlisinhvien_Click(object sender, EventArgs e)
+        private void btnQuanlymonhoc_Click(object sender, EventArgs e)
         {
-            btnQuanlisinhvien.BackColor = ColorTranslator.FromHtml("#0094ff");
-            btnQuanlisinhvien.ForeColor = Color.White;
-
+            btnQuanlymonhoc.BackColor = ColorTranslator.FromHtml("#2471C9");
             pUserControl.Controls.Clear();
-            Quanlisinhvien ucQuanlisinhvien = new Quanlisinhvien(_loggerFactory);
-            ucQuanlisinhvien.Dock = DockStyle.Fill;
-            pUserControl.Controls.Add(ucQuanlisinhvien);
-            ucQuanlisinhvien.BringToFront();
+            Quanlymonhoc quanlymonhoc = new Quanlymonhoc(_loggerFactory);
+            quanlymonhoc.Dock = DockStyle.Fill;
+            pUserControl.Controls.Add(quanlymonhoc);
+            quanlymonhoc.BringToFront();
         }
 
-        private void btnQuanlisinhvien_Leave(object sender, EventArgs e)
+        private void btnQuanlymonhoc_Leave(object sender, EventArgs e)
         {
-            btnQuanlisinhvien.BackColor = SystemColors.Highlight;
-            btnQuanlisinhvien.ForeColor = Color.White;
+            btnQuanlymonhoc.BackColor = ColorTranslator.FromHtml("#1a385a");
         }
 
-        private void btnQuanlimonhoc_Click(object sender, EventArgs e)
+        private void btnQuanlychuyennganh_Click(object sender, EventArgs e)
         {
-            btnQuanlimonhoc.BackColor = ColorTranslator.FromHtml("#0094ff");
-            btnQuanlimonhoc.ForeColor = Color.White;
-
-            pUserControl.Controls.Clear();
-            Quanlimonhoc ucQuanlimonhoc = new Quanlimonhoc(_loggerFactory);
-            ucQuanlimonhoc.Dock = DockStyle.Fill;
-            pUserControl.Controls.Add(ucQuanlimonhoc);
-            ucQuanlimonhoc.BringToFront();
+            btnQuanlychuyennganh.BackColor = ColorTranslator.FromHtml("#2471C9");
         }
 
-        private void btnQuanlimonhoc_Leave(object sender, EventArgs e)
+        private void btnQuanlychuyennganh_Leave(object sender, EventArgs e)
         {
-            btnQuanlimonhoc.BackColor = SystemColors.Highlight;
-            btnQuanlimonhoc.ForeColor = Color.White;
+            btnQuanlychuyennganh.BackColor = ColorTranslator.FromHtml("#1a385a");
         }
 
-        private void btnQuanlichuyennganh_Click(object sender, EventArgs e)
+        private void btnQuanlydiem_Click(object sender, EventArgs e)
         {
-            btnQuanlichuyennganh.BackColor = ColorTranslator.FromHtml("#0094ff");
-            btnQuanlichuyennganh.ForeColor = Color.White;
-
-            pUserControl.Controls.Clear();
-            Quanlinganhhoc ucQuanlinganhhoc = new Quanlinganhhoc(_loggerFactory);
-            ucQuanlinganhhoc.Dock = DockStyle.Fill;
-            pUserControl.Controls.Add(ucQuanlinganhhoc);
-            ucQuanlinganhhoc.BringToFront();
+            btnQuanlydiem.BackColor = ColorTranslator.FromHtml("#2471C9");
         }
 
-        private void btnQuanlichuyennganh_Leave(object sender, EventArgs e)
+        private void btnQuanlydiem_Leave(object sender, EventArgs e)
         {
-            btnQuanlichuyennganh.BackColor = SystemColors.Highlight;
-            btnQuanlichuyennganh.ForeColor = Color.White;
+            btnQuanlydiem.BackColor = ColorTranslator.FromHtml("#1a385a");
         }
 
-        private void btnQuanlidiem_Click(object sender, EventArgs e)
+        private void btnQuanlylophoc_Click(object sender, EventArgs e)
         {
-
-            btnQuanlidiem.BackColor = ColorTranslator.FromHtml("#0094ff");
-            btnQuanlidiem.ForeColor = Color.White;
-
-            pUserControl.Controls.Clear();
-            Quanlidiem ucQuanlidiem = new Quanlidiem(_loggerFactory);
-            ucQuanlidiem.Dock = DockStyle.Fill;
-            pUserControl.Controls.Add(ucQuanlidiem);
-            ucQuanlidiem.BringToFront();
+            btnQuanlylophoc.BackColor = ColorTranslator.FromHtml("#2471C9");
         }
 
-        private void btnQuanlidiem_Leave(object sender, EventArgs e)
+        private void btnQuanlylophoc_Leave(object sender, EventArgs e)
         {
-            btnQuanlidiem.BackColor = SystemColors.Highlight;
-            btnQuanlidiem.ForeColor = Color.White;
+            btnQuanlylophoc.BackColor = ColorTranslator.FromHtml("#1a385a");
         }
     }
 }

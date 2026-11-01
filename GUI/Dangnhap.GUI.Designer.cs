@@ -44,7 +44,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.BackColor = SystemColors.Highlight;
+            label1.BackColor = Color.FromArgb(26, 56, 90);
             tableLayoutPanel1.SetColumnSpan(label1, 2);
             label1.Dock = DockStyle.Fill;
             label1.Font = new Font("Roboto Condensed", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -86,7 +86,7 @@
             txbMatkhau.Location = new Point(186, 148);
             txbMatkhau.Name = "txbMatkhau";
             txbMatkhau.Size = new Size(357, 36);
-            txbMatkhau.TabIndex = 5;
+            txbMatkhau.TabIndex = 1;
             // 
             // label4
             // 
@@ -120,7 +120,7 @@
             txbTennguoidung.Location = new Point(186, 78);
             txbTennguoidung.Name = "txbTennguoidung";
             txbTennguoidung.Size = new Size(357, 36);
-            txbTennguoidung.TabIndex = 4;
+            txbTennguoidung.TabIndex = 0;
             // 
             // tableLayoutPanel2
             // 
@@ -144,7 +144,7 @@
             btnThoat.Location = new Point(184, 3);
             btnThoat.Name = "btnThoat";
             btnThoat.Size = new Size(123, 50);
-            btnThoat.TabIndex = 1;
+            btnThoat.TabIndex = 3;
             btnThoat.Text = "Thoát";
             btnThoat.UseVisualStyleBackColor = true;
             btnThoat.Click += btnThoat_Click;
@@ -155,7 +155,7 @@
             btnDangnhap.Location = new Point(3, 3);
             btnDangnhap.Name = "btnDangnhap";
             btnDangnhap.Size = new Size(123, 50);
-            btnDangnhap.TabIndex = 0;
+            btnDangnhap.TabIndex = 2;
             btnDangnhap.Text = "Đăng nhập";
             btnDangnhap.UseVisualStyleBackColor = true;
             btnDangnhap.Click += btnDangnhap_Click;

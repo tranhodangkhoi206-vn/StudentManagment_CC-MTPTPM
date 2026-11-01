@@ -6,16 +6,16 @@ using StudentManagment.DTO;
 
 namespace StudentManagment.GUI.User_Control
 {
-    public partial class Quanlimonhoc : UserControl
+    public partial class Quanlymonhoc : UserControl
     {
         private QuanlymonhocBLL quanlymonhocBLL;
-        public Quanlimonhoc(ILoggerFactory loggerFactory)
+        public Quanlymonhoc(ILoggerFactory loggerFactory)
         {
             InitializeComponent();
             quanlymonhocBLL = new QuanlymonhocBLL(loggerFactory);
         }
 
-        private void Quanlimonhoc_Load(object sender, EventArgs e)
+        private void Quanlymonhoc_Load(object sender, EventArgs e)
         {
             cbxChuyennganh.DisplayMember = "TENNGANH";
             cbxChuyennganh.ValueMember = "MANGANH";

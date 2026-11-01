@@ -28,237 +28,235 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            tableLayoutPanel2 = new TableLayoutPanel();
-            lbTen = new Label();
-            tableLayoutPanel3 = new TableLayoutPanel();
-            btnQuanlichuyennganh = new Button();
-            btnQuanlidiem = new Button();
-            btnQuanlimonhoc = new Button();
-            btnQuanlisinhvien = new Button();
-            btnTracuusinhvien = new Button();
             pUserControl = new Panel();
-            panel1.SuspendLayout();
+            btnQuanlydiem = new Button();
+            btnQuanlymonhoc = new Button();
+            btnQuanlysinhvien = new Button();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            btnTrangchu = new Button();
+            button1 = new Button();
+            btnQuanlylophoc = new Button();
+            btnQuanlychuyennganh = new Button();
+            tableLayoutPanel2 = new TableLayoutPanel();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
-            tableLayoutPanel3.SuspendLayout();
             SuspendLayout();
-            // 
-            // panel1
-            // 
-            panel1.BackColor = SystemColors.ActiveCaption;
-            panel1.Controls.Add(tableLayoutPanel1);
-            panel1.Dock = DockStyle.Left;
-            panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(220, 682);
-            panel1.TabIndex = 0;
-            // 
-            // tableLayoutPanel1
-            // 
-            tableLayoutPanel1.BackColor = SystemColors.Highlight;
-            tableLayoutPanel1.ColumnCount = 1;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 0, 0);
-            tableLayoutPanel1.Controls.Add(tableLayoutPanel3, 0, 1);
-            tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(0, 0);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 2;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 515F));
-            tableLayoutPanel1.Size = new Size(220, 682);
-            tableLayoutPanel1.TabIndex = 0;
-            // 
-            // tableLayoutPanel2
-            // 
-            tableLayoutPanel2.ColumnCount = 1;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Controls.Add(lbTen, 0, 0);
-            tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(3, 3);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 1;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel2.Size = new Size(214, 161);
-            tableLayoutPanel2.TabIndex = 0;
-            // 
-            // lbTen
-            // 
-            lbTen.AutoSize = true;
-            lbTen.Dock = DockStyle.Fill;
-            lbTen.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lbTen.ForeColor = SystemColors.ButtonHighlight;
-            lbTen.Location = new Point(3, 0);
-            lbTen.Name = "lbTen";
-            lbTen.Size = new Size(208, 161);
-            lbTen.TabIndex = 1;
-            lbTen.Text = "Nguyễn Văn A";
-            lbTen.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // tableLayoutPanel3
-            // 
-            tableLayoutPanel3.ColumnCount = 1;
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel3.Controls.Add(btnQuanlichuyennganh, 0, 3);
-            tableLayoutPanel3.Controls.Add(btnQuanlidiem, 0, 4);
-            tableLayoutPanel3.Controls.Add(btnQuanlimonhoc, 0, 2);
-            tableLayoutPanel3.Controls.Add(btnQuanlisinhvien, 0, 1);
-            tableLayoutPanel3.Controls.Add(btnTracuusinhvien, 0, 0);
-            tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(0, 167);
-            tableLayoutPanel3.Margin = new Padding(0);
-            tableLayoutPanel3.Name = "tableLayoutPanel3";
-            tableLayoutPanel3.RowCount = 6;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            tableLayoutPanel3.Size = new Size(220, 515);
-            tableLayoutPanel3.TabIndex = 1;
-            // 
-            // btnQuanlichuyennganh
-            // 
-            btnQuanlichuyennganh.BackgroundImageLayout = ImageLayout.None;
-            btnQuanlichuyennganh.Cursor = Cursors.Hand;
-            btnQuanlichuyennganh.Dock = DockStyle.Fill;
-            btnQuanlichuyennganh.FlatAppearance.BorderColor = SystemColors.Highlight;
-            btnQuanlichuyennganh.FlatStyle = FlatStyle.Flat;
-            btnQuanlichuyennganh.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnQuanlichuyennganh.ForeColor = SystemColors.ButtonHighlight;
-            btnQuanlichuyennganh.Location = new Point(0, 150);
-            btnQuanlichuyennganh.Margin = new Padding(0);
-            btnQuanlichuyennganh.Name = "btnQuanlichuyennganh";
-            btnQuanlichuyennganh.Size = new Size(220, 50);
-            btnQuanlichuyennganh.TabIndex = 9;
-            btnQuanlichuyennganh.Text = "QL.Ngành học";
-            btnQuanlichuyennganh.UseVisualStyleBackColor = false;
-            btnQuanlichuyennganh.Click += btnQuanlichuyennganh_Click;
-            btnQuanlichuyennganh.Leave += btnQuanlichuyennganh_Leave;
-            // 
-            // btnQuanlidiem
-            // 
-            btnQuanlidiem.BackgroundImageLayout = ImageLayout.None;
-            btnQuanlidiem.Cursor = Cursors.Hand;
-            btnQuanlidiem.Dock = DockStyle.Fill;
-            btnQuanlidiem.FlatAppearance.BorderColor = SystemColors.Highlight;
-            btnQuanlidiem.FlatStyle = FlatStyle.Flat;
-            btnQuanlidiem.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnQuanlidiem.ForeColor = SystemColors.ButtonHighlight;
-            btnQuanlidiem.Location = new Point(0, 200);
-            btnQuanlidiem.Margin = new Padding(0);
-            btnQuanlidiem.Name = "btnQuanlidiem";
-            btnQuanlidiem.Size = new Size(220, 50);
-            btnQuanlidiem.TabIndex = 8;
-            btnQuanlidiem.Text = "Quản lý điểm";
-            btnQuanlidiem.UseVisualStyleBackColor = false;
-            btnQuanlidiem.Click += btnQuanlidiem_Click;
-            btnQuanlidiem.Leave += btnQuanlidiem_Leave;
-            // 
-            // btnQuanlimonhoc
-            // 
-            btnQuanlimonhoc.BackgroundImageLayout = ImageLayout.None;
-            btnQuanlimonhoc.Cursor = Cursors.Hand;
-            btnQuanlimonhoc.Dock = DockStyle.Fill;
-            btnQuanlimonhoc.FlatAppearance.BorderColor = SystemColors.Highlight;
-            btnQuanlimonhoc.FlatStyle = FlatStyle.Flat;
-            btnQuanlimonhoc.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnQuanlimonhoc.ForeColor = SystemColors.ButtonHighlight;
-            btnQuanlimonhoc.Location = new Point(0, 100);
-            btnQuanlimonhoc.Margin = new Padding(0);
-            btnQuanlimonhoc.Name = "btnQuanlimonhoc";
-            btnQuanlimonhoc.Size = new Size(220, 50);
-            btnQuanlimonhoc.TabIndex = 2;
-            btnQuanlimonhoc.Text = "Quản lý môn học";
-            btnQuanlimonhoc.UseVisualStyleBackColor = false;
-            btnQuanlimonhoc.Click += btnQuanlimonhoc_Click;
-            btnQuanlimonhoc.Leave += btnQuanlimonhoc_Leave;
-            // 
-            // btnQuanlisinhvien
-            // 
-            btnQuanlisinhvien.BackgroundImageLayout = ImageLayout.None;
-            btnQuanlisinhvien.Cursor = Cursors.Hand;
-            btnQuanlisinhvien.Dock = DockStyle.Fill;
-            btnQuanlisinhvien.FlatAppearance.BorderColor = SystemColors.Highlight;
-            btnQuanlisinhvien.FlatStyle = FlatStyle.Flat;
-            btnQuanlisinhvien.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnQuanlisinhvien.ForeColor = SystemColors.ButtonHighlight;
-            btnQuanlisinhvien.Location = new Point(0, 50);
-            btnQuanlisinhvien.Margin = new Padding(0);
-            btnQuanlisinhvien.Name = "btnQuanlisinhvien";
-            btnQuanlisinhvien.Size = new Size(220, 50);
-            btnQuanlisinhvien.TabIndex = 1;
-            btnQuanlisinhvien.Text = "Quản lý sinh viên";
-            btnQuanlisinhvien.UseVisualStyleBackColor = false;
-            btnQuanlisinhvien.Click += btnQuanlisinhvien_Click;
-            btnQuanlisinhvien.Leave += btnQuanlisinhvien_Leave;
-            // 
-            // btnTracuusinhvien
-            // 
-            btnTracuusinhvien.BackgroundImageLayout = ImageLayout.None;
-            btnTracuusinhvien.CausesValidation = false;
-            btnTracuusinhvien.Cursor = Cursors.Hand;
-            btnTracuusinhvien.Dock = DockStyle.Fill;
-            btnTracuusinhvien.FlatAppearance.BorderColor = SystemColors.Highlight;
-            btnTracuusinhvien.FlatStyle = FlatStyle.Flat;
-            btnTracuusinhvien.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnTracuusinhvien.ForeColor = SystemColors.ButtonHighlight;
-            btnTracuusinhvien.Location = new Point(0, 0);
-            btnTracuusinhvien.Margin = new Padding(0);
-            btnTracuusinhvien.Name = "btnTracuusinhvien";
-            btnTracuusinhvien.Size = new Size(220, 50);
-            btnTracuusinhvien.TabIndex = 0;
-            btnTracuusinhvien.Text = "Tra cứu sinh viên";
-            btnTracuusinhvien.UseVisualStyleBackColor = false;
-            btnTracuusinhvien.Click += btnTracuusinhvien_Click;
-            btnTracuusinhvien.Leave += btnTracuusinhvien_Leave;
             // 
             // pUserControl
             // 
             pUserControl.Dock = DockStyle.Fill;
-            pUserControl.Location = new Point(220, 0);
+            pUserControl.Location = new Point(194, 0);
             pUserControl.Margin = new Padding(0);
             pUserControl.Name = "pUserControl";
-            pUserControl.Size = new Size(1046, 682);
+            pUserControl.Size = new Size(790, 611);
             pUserControl.TabIndex = 1;
+            // 
+            // btnQuanlydiem
+            // 
+            btnQuanlydiem.BackColor = Color.FromArgb(26, 56, 90);
+            btnQuanlydiem.BackgroundImageLayout = ImageLayout.None;
+            btnQuanlydiem.Cursor = Cursors.Hand;
+            btnQuanlydiem.Dock = DockStyle.Fill;
+            btnQuanlydiem.FlatAppearance.BorderSize = 0;
+            btnQuanlydiem.FlatStyle = FlatStyle.Flat;
+            btnQuanlydiem.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            btnQuanlydiem.ForeColor = SystemColors.ButtonHighlight;
+            btnQuanlydiem.Location = new Point(0, 300);
+            btnQuanlydiem.Margin = new Padding(0);
+            btnQuanlydiem.Name = "btnQuanlydiem";
+            btnQuanlydiem.Size = new Size(194, 50);
+            btnQuanlydiem.TabIndex = 8;
+            btnQuanlydiem.Text = "Quản lý điểm";
+            btnQuanlydiem.UseVisualStyleBackColor = false;
+            btnQuanlydiem.Click += btnQuanlydiem_Click;
+            btnQuanlydiem.Leave += btnQuanlydiem_Leave;
+            // 
+            // btnQuanlymonhoc
+            // 
+            btnQuanlymonhoc.BackgroundImageLayout = ImageLayout.None;
+            btnQuanlymonhoc.Cursor = Cursors.Hand;
+            btnQuanlymonhoc.Dock = DockStyle.Fill;
+            btnQuanlymonhoc.FlatAppearance.BorderSize = 0;
+            btnQuanlymonhoc.FlatStyle = FlatStyle.Flat;
+            btnQuanlymonhoc.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            btnQuanlymonhoc.ForeColor = SystemColors.ButtonHighlight;
+            btnQuanlymonhoc.Location = new Point(0, 150);
+            btnQuanlymonhoc.Margin = new Padding(0);
+            btnQuanlymonhoc.Name = "btnQuanlymonhoc";
+            btnQuanlymonhoc.Size = new Size(194, 50);
+            btnQuanlymonhoc.TabIndex = 2;
+            btnQuanlymonhoc.Text = "Quản lý môn học";
+            btnQuanlymonhoc.UseVisualStyleBackColor = false;
+            btnQuanlymonhoc.Click += btnQuanlymonhoc_Click;
+            btnQuanlymonhoc.Leave += btnQuanlymonhoc_Leave;
+            // 
+            // btnQuanlysinhvien
+            // 
+            btnQuanlysinhvien.BackgroundImageLayout = ImageLayout.None;
+            btnQuanlysinhvien.Cursor = Cursors.Hand;
+            btnQuanlysinhvien.Dock = DockStyle.Fill;
+            btnQuanlysinhvien.FlatAppearance.BorderSize = 0;
+            btnQuanlysinhvien.FlatStyle = FlatStyle.Flat;
+            btnQuanlysinhvien.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            btnQuanlysinhvien.ForeColor = SystemColors.ButtonHighlight;
+            btnQuanlysinhvien.Location = new Point(0, 100);
+            btnQuanlysinhvien.Margin = new Padding(0);
+            btnQuanlysinhvien.Name = "btnQuanlysinhvien";
+            btnQuanlysinhvien.Size = new Size(194, 50);
+            btnQuanlysinhvien.TabIndex = 1;
+            btnQuanlysinhvien.Text = "Quản lý sinh viên";
+            btnQuanlysinhvien.UseVisualStyleBackColor = false;
+            btnQuanlysinhvien.Click += btnQuanlysinhvien_Click;
+            btnQuanlysinhvien.Leave += btnQuanlysinhvien_Leave;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.BackColor = Color.FromArgb(26, 56, 90);
+            tableLayoutPanel1.ColumnCount = 1;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 30F));
+            tableLayoutPanel1.Controls.Add(btnTrangchu, 0, 1);
+            tableLayoutPanel1.Controls.Add(button1, 0, 7);
+            tableLayoutPanel1.Controls.Add(btnQuanlylophoc, 0, 5);
+            tableLayoutPanel1.Controls.Add(btnQuanlychuyennganh, 0, 4);
+            tableLayoutPanel1.Controls.Add(btnQuanlysinhvien, 0, 2);
+            tableLayoutPanel1.Controls.Add(btnQuanlymonhoc, 0, 3);
+            tableLayoutPanel1.Controls.Add(btnQuanlydiem, 0, 6);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Margin = new Padding(0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 9;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.Size = new Size(194, 611);
+            tableLayoutPanel1.TabIndex = 0;
+            // 
+            // btnTrangchu
+            // 
+            btnTrangchu.BackColor = Color.FromArgb(26, 56, 90);
+            btnTrangchu.BackgroundImageLayout = ImageLayout.None;
+            btnTrangchu.Cursor = Cursors.Hand;
+            btnTrangchu.Dock = DockStyle.Fill;
+            btnTrangchu.FlatAppearance.BorderSize = 0;
+            btnTrangchu.FlatStyle = FlatStyle.Flat;
+            btnTrangchu.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            btnTrangchu.ForeColor = SystemColors.ButtonHighlight;
+            btnTrangchu.Location = new Point(0, 50);
+            btnTrangchu.Margin = new Padding(0);
+            btnTrangchu.Name = "btnTrangchu";
+            btnTrangchu.Size = new Size(194, 50);
+            btnTrangchu.TabIndex = 13;
+            btnTrangchu.Text = "Trang chủ";
+            btnTrangchu.UseVisualStyleBackColor = false;
+            btnTrangchu.Click += btnTrangchu_Click;
+            btnTrangchu.Leave += btnTrangchu_Leave;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(31, 73, 120);
+            button1.BackgroundImageLayout = ImageLayout.None;
+            button1.Cursor = Cursors.Hand;
+            button1.Dock = DockStyle.Fill;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            button1.ForeColor = SystemColors.ButtonHighlight;
+            button1.Location = new Point(0, 350);
+            button1.Margin = new Padding(0);
+            button1.Name = "button1";
+            button1.Size = new Size(194, 50);
+            button1.TabIndex = 12;
+            button1.Text = "Quản lý lớp học";
+            button1.UseVisualStyleBackColor = false;
+            // 
+            // btnQuanlylophoc
+            // 
+            btnQuanlylophoc.BackColor = Color.FromArgb(26, 56, 90);
+            btnQuanlylophoc.BackgroundImageLayout = ImageLayout.None;
+            btnQuanlylophoc.Cursor = Cursors.Hand;
+            btnQuanlylophoc.Dock = DockStyle.Fill;
+            btnQuanlylophoc.FlatAppearance.BorderSize = 0;
+            btnQuanlylophoc.FlatStyle = FlatStyle.Flat;
+            btnQuanlylophoc.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            btnQuanlylophoc.ForeColor = SystemColors.ButtonHighlight;
+            btnQuanlylophoc.Location = new Point(0, 250);
+            btnQuanlylophoc.Margin = new Padding(0);
+            btnQuanlylophoc.Name = "btnQuanlylophoc";
+            btnQuanlylophoc.Size = new Size(194, 50);
+            btnQuanlylophoc.TabIndex = 11;
+            btnQuanlylophoc.Text = "Quản lý lớp học";
+            btnQuanlylophoc.UseVisualStyleBackColor = false;
+            btnQuanlylophoc.Click += btnQuanlylophoc_Click;
+            btnQuanlylophoc.Leave += btnQuanlylophoc_Leave;
+            // 
+            // btnQuanlychuyennganh
+            // 
+            btnQuanlychuyennganh.BackColor = Color.FromArgb(26, 56, 90);
+            btnQuanlychuyennganh.BackgroundImageLayout = ImageLayout.None;
+            btnQuanlychuyennganh.Cursor = Cursors.Hand;
+            btnQuanlychuyennganh.Dock = DockStyle.Fill;
+            btnQuanlychuyennganh.FlatAppearance.BorderSize = 0;
+            btnQuanlychuyennganh.FlatStyle = FlatStyle.Flat;
+            btnQuanlychuyennganh.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            btnQuanlychuyennganh.ForeColor = SystemColors.ButtonHighlight;
+            btnQuanlychuyennganh.Location = new Point(0, 200);
+            btnQuanlychuyennganh.Margin = new Padding(0);
+            btnQuanlychuyennganh.Name = "btnQuanlychuyennganh";
+            btnQuanlychuyennganh.Size = new Size(194, 50);
+            btnQuanlychuyennganh.TabIndex = 9;
+            btnQuanlychuyennganh.Text = "Quản lý ngành";
+            btnQuanlychuyennganh.UseVisualStyleBackColor = false;
+            btnQuanlychuyennganh.Click += btnQuanlychuyennganh_Click;
+            btnQuanlychuyennganh.Leave += btnQuanlychuyennganh_Leave;
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 2;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19.7154465F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80.28455F));
+            tableLayoutPanel2.Controls.Add(pUserControl, 1, 0);
+            tableLayoutPanel2.Controls.Add(tableLayoutPanel1, 0, 0);
+            tableLayoutPanel2.Dock = DockStyle.Fill;
+            tableLayoutPanel2.Location = new Point(0, 0);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 1;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Size = new Size(984, 611);
+            tableLayoutPanel2.TabIndex = 2;
             // 
             // frmQuanLySinhVien
             // 
-            AutoScaleDimensions = new SizeF(6F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1266, 682);
-            Controls.Add(pUserControl);
-            Controls.Add(panel1);
-            Font = new Font("Roboto Condensed", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
+            ClientSize = new Size(984, 611);
+            Controls.Add(tableLayoutPanel2);
+            Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Name = "frmQuanLySinhVien";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Quản lý sinh viên";
             FormClosed += frmQuanLySinhVien_FormClosed;
-            panel1.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
-            tableLayoutPanel2.PerformLayout();
-            tableLayoutPanel3.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Panel panel1;
-        private TableLayoutPanel tableLayoutPanel1;
-        private TableLayoutPanel tableLayoutPanel2;
-        private Label lbTen;
-        private TableLayoutPanel tableLayoutPanel3;
-        private Button btnTracuusinhvien;
-        private Button btnQuanlimonhoc;
-        private Button btnQuanlisinhvien;
-        private Button btnQuanlichuyennganh;
-        private Button btnQuanlidiem;
         private Panel pUserControl;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Button btnQuanlysinhvien;
+        private Button btnQuanlymonhoc;
+        private Button btnQuanlydiem;
+        private TableLayoutPanel tableLayoutPanel2;
+        private Button btnQuanlychuyennganh;
+        private Button btnQuanlylophoc;
+        private Button button1;
+        private Button btnTrangchu;
     }
 }
