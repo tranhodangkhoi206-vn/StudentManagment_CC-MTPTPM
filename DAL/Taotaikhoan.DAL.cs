@@ -43,21 +43,21 @@ namespace StudentManagment.DAL
                 throw;
             }
         }
-	    public DataTable SuaThongTinTaiKhoanTheoUsername(TaikhoanDTO taiKhoan)
+        public DataTable SuaThongTinTaiKhoanTheoUsername(TaikhoanDTO taiKhoan)
         {
             try
             {
                 using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
                 {
                     SqlCommand cmd = new SqlCommand("UPDATE TAIKHOAN SET HASHEDPASSWORD=@HASEDPASSWORD, HOVATEN=@HOVATEN WHERE USERNAME=@USERNAME", conn);
-                    cmd.Parameters.AddWithValue("@HASHEDPASSWORD",taiKhoan.HashedPassword);
+                    cmd.Parameters.AddWithValue("@HASHEDPASSWORD", taiKhoan.HashedPassword);
                     cmd.Parameters.AddWithValue("@HOVATEN", taiKhoan.Hovaten);
                     cmd.Parameters.AddWithValue("@USERNAME", taiKhoan.Username);
                     cmd.ExecuteNonQuery();
 
                     logger.LogInformation("Sửa tài khoản trong danh sách tài khoản.\nHọ và tên: {0}", taiKhoan.Hovaten);
 
-                    return taiKhoanDAL.LayToanBoTaiKhoan(); 
+                    return taiKhoanDAL.LayToanBoTaiKhoan();
                 }
             }
             catch (SqlException sqlEx)
@@ -68,6 +68,33 @@ namespace StudentManagment.DAL
             catch (Exception ex)
             {
                 logger.LogError(ex, "Xảy ra lỗi khi sửa tài khoản.\nHọ và tên: {0}", taiKhoan.Hovaten);
+                throw;
+            }
+        }
+        public DataTable LayDanhSachTaiKhoanTheoDieuKienUsername(string username)
+        {
+            try
+            {
+                using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
+                {
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter adapter = new SqlDataAdapter();
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM TAIKHOAN WHERE USERNAME=@USERNAME", conn);
+                    cmd.Parameters.AddWithValue("@USERNAME",username);
+                    adapter.SelectCommand = cmd;
+                    logger.LogInformation("Lấy danh sách tài khoản theo điều kiện Username.\nUsername: {0}", username);
+                    adapter.Fill(dt);
+                    return dt;
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi lấy danh sách tài khoản theo điều kiên Username.\nUsername: {0}", username);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Xảy ra lỗi khi lấy danh sách tài khoản theo điều kiện Username.\nUsername: {0}",username);
                 throw;
             }
         }

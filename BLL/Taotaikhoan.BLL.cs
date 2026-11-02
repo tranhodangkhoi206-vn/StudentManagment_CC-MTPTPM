@@ -37,5 +37,14 @@ namespace StudentManagment.BLL
             taiKhoan.HashedPassword = hashedPassword;
             return taoTaiKhoanDAL.ThemTaiKhoanMoi(taiKhoan);
         }
+	    public DataTable LayDanhSachTaiKhoanTheoDieuKienUsername(string username)
+        {
+            if(string.IsNullOrEmpty(username))
+            {
+                logger.LogWarning("Người dùng chưa nhập username trước khi lấy danh sách tài khoản.");
+                throw new ArgumentException();
+            }
+	        return taoTaiKhoanDAL.LayDanhSachTaiKhoanTheoDieuKienUsername(username);
+        }
     }
 }

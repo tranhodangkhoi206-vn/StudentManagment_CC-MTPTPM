@@ -108,7 +108,17 @@ namespace StudentManagment.GUI
 
         private void btnTimkiem_Click(object sender, EventArgs e)
         {
-
+            string username = tbTennguoidung.Text.ToString().Trim();
+	        DataTable dt = taoTaiKhoanBLL.LayDanhSachTaiKhoanTheoDieuKienUsername(username);
+		    if (dt.Rows.Count != 0)
+            {
+                dgvTaikhoan.DataSource = dt;
+            }
+            else
+            {
+                dgvTaikhoan.DataSource = taiKhoanDAL.LayToanBoTaiKhoan();
+                MessageBox.Show("Tài khoản không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnDangxuat_Click(object sender, EventArgs e)
