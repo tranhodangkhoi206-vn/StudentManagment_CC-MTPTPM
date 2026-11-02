@@ -72,14 +72,14 @@ namespace StudentManagment.DAL
                 throw;
             }
         }
-	    public DataTable XoaTaiKhoanTheoUsername(string username)
+        public DataTable XoaTaiKhoanTheoUsername(string username)
         {
             try
             {
                 using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
                 {
                     SqlCommand cmd = new SqlCommand("DELETE TAIKHOAN WHERE USERNAME=@USERNAME", conn);
-                    cmd.Parameters.AddWithValue("@USERNAME",username);
+                    cmd.Parameters.AddWithValue("@USERNAME", username);
                     cmd.ExecuteNonQuery();
 
                     logger.LogInformation("Xóa tài khoản khỏi danh sách tài khoản.\nUsername: {0}", username);
@@ -89,12 +89,12 @@ namespace StudentManagment.DAL
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi xóa tài khoản.\nUsername: {0}",username);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi xóa tài khoản.\nUsername: {0}", username);
                 throw;
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Xảy ra lỗi khi xóa tài khoản.\nUsername: {0}",username);
+                logger.LogError(ex, "Xảy ra lỗi khi xóa tài khoản.\nUsername: {0}", username);
                 throw;
             }
 
@@ -107,8 +107,8 @@ namespace StudentManagment.DAL
                 {
                     DataTable dt = new DataTable();
                     SqlDataAdapter adapter = new SqlDataAdapter();
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM TAIKHOAN WHERE USERNAME=@USERNAME", conn);
-                    cmd.Parameters.AddWithValue("@USERNAME",username);
+                    SqlCommand cmd = new SqlCommand("SELECT HOVATEN,USERNAME FROM TAIKHOAN WHERE USERNAME LIKE @USERNAME", conn);
+                    cmd.Parameters.AddWithValue("@USERNAME", "%" + username + "%");
                     adapter.SelectCommand = cmd;
                     logger.LogInformation("Lấy danh sách tài khoản theo điều kiện Username.\nUsername: {0}", username);
                     adapter.Fill(dt);
@@ -122,7 +122,7 @@ namespace StudentManagment.DAL
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Xảy ra lỗi khi lấy danh sách tài khoản theo điều kiện Username.\nUsername: {0}",username);
+                logger.LogError(ex, "Xảy ra lỗi khi lấy danh sách tài khoản theo điều kiện Username.\nUsername: {0}", username);
                 throw;
             }
         }
