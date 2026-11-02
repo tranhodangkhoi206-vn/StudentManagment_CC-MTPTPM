@@ -17,6 +17,7 @@ namespace StudentManagment.GUI
 {
     public partial class frmTaotaikhoan : Form
     {
+        private readonly ILoggerFactory _loggerFactory;
         private readonly ILogger<frmTaotaikhoan> logger;
         private TaotaikhoanBLL taoTaiKhoanBLL;
         private TaikhoanDAL taiKhoanDAL;
@@ -24,6 +25,7 @@ namespace StudentManagment.GUI
         {
             InitializeComponent();
             logger = loggerFactory.CreateLogger<frmTaotaikhoan>();
+            _loggerFactory = loggerFactory;
             taoTaiKhoanBLL = new TaotaikhoanBLL(loggerFactory);
             taiKhoanDAL = new TaikhoanDAL(loggerFactory);
         }
@@ -123,7 +125,9 @@ namespace StudentManagment.GUI
 
         private void btnDondep_Click(object sender, EventArgs e)
         {
-
+            tbHovaten.Text = "";
+            tbMatkhau.Text = "";
+            tbTennguoidung.Text = "";
         }
 
         private void btnTimkiem_Click(object sender, EventArgs e)
@@ -143,9 +147,10 @@ namespace StudentManagment.GUI
 
         private void btnDangxuat_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            frmDangnhap frmDangnhap = new frmDangnhap(_loggerFactory);
+            frmDangnhap.Show();
+            logger.LogInformation("Chuyển sang form Đăng nhập chính.");
         }
-
-
     }
 }
