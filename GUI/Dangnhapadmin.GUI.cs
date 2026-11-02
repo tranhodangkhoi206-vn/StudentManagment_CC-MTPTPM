@@ -6,7 +6,7 @@ namespace StudentManagment.GUI
 {
     public partial class frmDangnhapadmin : Form
     {
-        private readonly ILogger logger;
+        private readonly ILogger<frmDangnhapadmin> logger;
         private readonly ILoggerFactory _loggerFactory;
         private DangnhapBLL dangnhapBLL;
         public frmDangnhapadmin(ILoggerFactory loggerFactory)
@@ -27,9 +27,9 @@ namespace StudentManagment.GUI
                 if (taiKhoan != null)
                 {
                     this.Hide();
-                    frmTaotaikhoan frmTaotaikhoan = new frmTaotaikhoan();
+                    frmTaotaikhoan frmTaotaikhoan = new frmTaotaikhoan(_loggerFactory,taiKhoan.Hovaten);
                     frmTaotaikhoan.Show();
-                    logger.LogInformation("Chuyển sang form Quản lý sinh viên.");
+                    logger.LogInformation("Chuyển sang form Tạo tài khoản.");
                 }
             }
             catch (ArgumentException)

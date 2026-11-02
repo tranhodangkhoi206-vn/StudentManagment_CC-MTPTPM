@@ -7,7 +7,6 @@ namespace StudentManagment.GUI
     public partial class frmDangnhap : Form
     {
         private readonly ILoggerFactory _loggerFactory;
-        // Khởi tạo một logger cho form đăng nhập
         private readonly ILogger<frmDangnhap> logger;
         private DangnhapBLL dangnhapBLL;
         public frmDangnhap(ILoggerFactory loggerFactory)
@@ -56,7 +55,7 @@ namespace StudentManagment.GUI
             this.Hide();
             frmDangnhapadmin frmDangnhapadmin = new frmDangnhapadmin(_loggerFactory);
             frmDangnhapadmin.Show();
-            logger.LogInformation("Chuyển sang form đăng nhập quyền Admin.");
+            logger.LogInformation("Chuyển sang form Đăng nhập quyền Admin.");
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
