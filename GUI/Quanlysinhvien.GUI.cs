@@ -90,6 +90,11 @@ namespace StudentManagment
         private void btnQuanlylophoc_Click(object sender, EventArgs e)
         {
             btnQuanlylophoc.BackColor = ColorTranslator.FromHtml("#2471C9");
+            pUserControl.Controls.Clear();
+            Quanlylophoc quanLyLopHoc = new Quanlylophoc();
+            quanLyLopHoc.Dock = DockStyle.Fill;
+            pUserControl.Controls.Add(quanLyLopHoc);
+            quanLyLopHoc.BringToFront();
         }
 
         private void btnQuanlylophoc_Leave(object sender, EventArgs e)
