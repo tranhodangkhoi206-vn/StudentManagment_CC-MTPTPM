@@ -43,5 +43,33 @@ namespace StudentManagment.DAL
                 throw;
             }
         }
+	    public DataTable SuaThongTinTaiKhoanTheoUsername(TaikhoanDTO taiKhoan)
+        {
+            try
+            {
+                using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
+                {
+                    SqlCommand cmd = new SqlCommand("UPDATE TAIKHOAN SET HASHEDPASSWORD=@HASEDPASSWORD, HOVATEN=@HOVATEN WHERE USERNAME=@USERNAME", conn);
+                    cmd.Parameters.AddWithValue("@HASHEDPASSWORD",taiKhoan.HashedPassword);
+                    cmd.Parameters.AddWithValue("@HOVATEN", taiKhoan.Hovaten);
+                    cmd.Parameters.AddWithValue("@USERNAME", taiKhoan.Username);
+                    cmd.ExecuteNonQuery();
+
+                    logger.LogInformation("Sửa tài khoản trong danh sách tài khoản.\nHọ và tên: {0}", taiKhoan.Hovaten);
+
+                    return taiKhoanDAL.LayToanBoTaiKhoan(); 
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi sửa tài khoản.\nHọ và tên: {0}", taiKhoan.Hovaten);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Xảy ra lỗi khi sửa tài khoản.\nHọ và tên: {0}", taiKhoan.Hovaten);
+                throw;
+            }
+        }
     }
 }

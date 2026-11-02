@@ -73,7 +73,32 @@ namespace StudentManagment.GUI
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                TaikhoanDTO taiKhoan = new TaikhoanDTO()
+                {
+                    Hovaten = tbHovaten.Text.ToString().Trim(),
+                    Username = tbTennguoidung.Text.ToString().Trim(),
+                    HashedPassword = tbMatkhau.Text.ToString().Trim(),
+                };
+                DataTable dt = taoTaiKhoanBLL.SuaTaiKhoan(taiKhoan);
+                if (dt.Rows.Count != 0)
+                {
+                    dgvTaikhoan.DataSource = dt;
+                }
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Xảy ra lỗi cơ sở dữ liệu khi sửa tài khoản.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Bạn phải nhập đầy đủ username trước khi sửa tài khoản.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Xảy ra lỗi khi sửa tài khoản.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnDondep_Click(object sender, EventArgs e)

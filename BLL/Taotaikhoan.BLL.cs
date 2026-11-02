@@ -26,5 +26,16 @@ namespace StudentManagment.BLL
             taiKhoan.Admin = false;
             return taoTaiKhoanDAL.ThemTaiKhoanMoi(taiKhoan);
         }
+        public DataTable SuaTaiKhoan(TaikhoanDTO taiKhoan)
+        {
+            if (string.IsNullOrEmpty(taiKhoan.Username))
+            {
+                logger.LogWarning("Người dùng chưa nhập username trước khi sửa tài khoản.");
+                throw new ArgumentException();
+            }
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(taiKhoan.HashedPassword, 12);
+            taiKhoan.HashedPassword = hashedPassword;
+            return taoTaiKhoanDAL.ThemTaiKhoanMoi(taiKhoan);
+        }
     }
 }
