@@ -6,62 +6,34 @@ namespace StudentManagment.BLL
 {
     public class DangnhapBLL
     {
-        private TaikhoanDTO _taikhoan;
         private readonly ILogger<DangnhapBLL> logger;
         private DangnhapDAL dangnhapDAL;
-        // Khởi tạo constructor để lấy logger factory từ form
         public DangnhapBLL(ILoggerFactory loggerFactory)
         {
             logger = loggerFactory.CreateLogger<DangnhapBLL>();
             dangnhapDAL = new DangnhapDAL(loggerFactory);
         }
-        public string LayTenHienThi()
+        public TaikhoanDTO KiemTraDangNhap(string username, string password, bool admin)
         {
-            return _taikhoan.Hovaten;
-        }
-        public bool KiemTraDangNhapRong(string username, string password)
-        {
-            try
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                bool kiemTraUsername = string.IsNullOrEmpty(username);
-                bool kiemTraPassword = string.IsNullOrEmpty(password);
-                if (kiemTraUsername || kiemTraPassword)
-                {
-                    logger.LogInformation("Người dùng chưa nhập đầy đủ thông tin đăng nhập.");
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            } catch (Exception ex)
-            {
-                logger.LogError(ex, "Có lỗi xảy ra khi kiểm tra form đăng nhập có rỗng hay không. Với Username: {username}", username);
-                throw;
+                logger.LogWarning("Người dùng chưa nhập đầy đủ thông tin đăng nhập.");
+                throw new ArgumentException();
             }
-        }
-        public bool KiemTraDangNhap(string username, string password)
-        {
-            try
+            TaikhoanDTO taiKhoan = dangnhapDAL.LayTaiKhoanCoDieuKien(username, admin);
+            if (taiKhoan == null)
             {
-                TaikhoanDTO taikhoan = dangnhapDAL.LayTaiKhoanCoDieuKien(username, password);
-                if (username == taikhoan.Username && password == taikhoan.Matkhau)
-                {
-                    logger.LogInformation("Người dùng đã đăng nhập thành công vào hệ thống. Với username: {username}", username);
-                    _taikhoan = taikhoan;
-                    return true;
-                }
-                else
-                {
-                    logger.LogWarning("Người dùng nhập sai tài khoản hoặc mật khẩu đăng nhập. Với Username: {username}", username);
-                    return false;
-                }
+                logger.LogWarning("Người dùng đăng nhập với tài khoản không tồn tại trong hệ thống.");
+                throw new InvalidOperationException();
             }
-            catch (Exception ex)
+            bool xetMatKhau = BCrypt.Net.BCrypt.Verify(password, taiKhoan.HashedPassword);
+            if (!xetMatKhau)
             {
-                logger.LogError(ex, "Có lỗi xảy ra khi người dùng cố gắng đăng nhập vào hệ thống. Với Username: {username}", username);
-                throw;
+                logger.LogWarning("Người dùng nhập sai mật khẩu.");
+                throw new InvalidOperationException();
             }
+            logger.LogInformation("Người dùng đã đăng nhập thành công. Username: {username}", username);
+            return taiKhoan;
         }
     }
 }
