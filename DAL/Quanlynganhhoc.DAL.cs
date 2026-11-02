@@ -27,18 +27,18 @@ namespace StudentManagment.DAL
                     cmd.Parameters.AddWithValue("@KHOAQUANLY", nganhMoi.Khoaquanly);
                     cmd.ExecuteNonQuery();
 
-                    logger.LogInformation("Đang thêm ngành mới vào danh sách ngành. Với dữ liệu:\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhMoi.Manganh, nganhMoi.Tennganh, nganhMoi.Khoaquanly);
+                    logger.LogInformation("Thêm ngành học mới vào danh sách ngành học.\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhMoi.Manganh, nganhMoi.Tennganh, nganhMoi.Khoaquanly);
                     return nganhhocDAL.LayToanBoNganhHoc();
                 }
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi thêm ngành mới. Với thông tin:\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhMoi.Manganh, nganhMoi.Tennganh, nganhMoi.Khoaquanly);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi thêm ngành học mới.\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhMoi.Manganh, nganhMoi.Tennganh, nganhMoi.Khoaquanly);
                 throw;
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Xảy ra lỗi khi thêm ngành có mã ngành {0} vào danh sách ngành. Với dữ liệu:\nTên ngành: {1},\nKhoa quản lý: {2}", nganhMoi.Manganh, nganhMoi.Tennganh, nganhMoi.Khoaquanly);
+                logger.LogError(ex, "Xảy ra lỗi khi thêm ngành học mới.\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhMoi.Manganh, nganhMoi.Tennganh, nganhMoi.Khoaquanly);
                 throw;
             }
         }
@@ -55,19 +55,19 @@ namespace StudentManagment.DAL
                     cmd.Parameters.AddWithValue("@KHOAQUANLY", nganhSua.Khoaquanly);
                     cmd.ExecuteNonQuery();
 
-                    logger.LogInformation("Đang sửa ngành có mã ngành {0} trong danh sách ngành. Với dữ liệu:\nTên ngành: {1},\nKhoa quản lý: {2}", nganhSua.Manganh, nganhSua.Tennganh, nganhSua.Khoaquanly);
+                    logger.LogInformation("Sửa ngành học trong danh sách ngành học.\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhSua.Manganh, nganhSua.Tennganh, nganhSua.Khoaquanly);
 
                     return nganhhocDAL.LayToanBoNganhHoc();
                 }
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi sửa ngành có mã ngành {0} trong danh sách ngành. Với dữ liệu:\nTên ngành: {1},\nKhoa quản lý: {2}", nganhSua.Manganh, nganhSua.Tennganh, nganhSua.Khoaquanly);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi sửa ngành học.\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhSua.Manganh, nganhSua.Tennganh, nganhSua.Khoaquanly);
                 throw;
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Xảy ra lỗi khi sửa ngành có mã ngành {0} trong danh sách ngành. Với dữ liệu:\nTên ngành: {1},\nKhoa quản lý: {2}", nganhSua.Manganh, nganhSua.Tennganh, nganhSua.Khoaquanly);
+                logger.LogError(ex, "Xảy ra lỗi khi sửa ngành học.\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhSua.Manganh, nganhSua.Tennganh, nganhSua.Khoaquanly);
                 throw;
             }
         }
@@ -82,19 +82,19 @@ namespace StudentManagment.DAL
                     cmd.Parameters.AddWithValue("@MANGANH", maNganh);
                     cmd.ExecuteNonQuery();
 
-                    logger.LogInformation("Đang xóa ngành với mã ngành {0} khỏi danh sách ngành.", maNganh);
+                    logger.LogInformation("Xóa ngành học khỏi danh sách ngành học.\nMã ngành: {0}", maNganh);
 
                     return nganhhocDAL.LayToanBoNganhHoc();
                 }
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi xóa ngành có mã ngành {0} khỏi danh sách ngành.", maNganh);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi xóa ngành học.\nMã ngành: {0}", maNganh);
                 throw;
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Lỗi xảy ra khi xóa ngành với mã ngành {0}.", maNganh);
+                logger.LogError(ex, "Xảy ra lỗi khi xóa ngành học.\nMã ngành: {0}", maNganh);
                 throw;
             }
         }
@@ -109,19 +109,19 @@ namespace StudentManagment.DAL
                     SqlCommand cmd = new SqlCommand("SELECT * FROM NGANH WHERE MANGANH=@MANGANH", conn);
                     cmd.Parameters.AddWithValue("@MANGANH", maNganh);
                     adater.SelectCommand = cmd;
-                    logger.LogInformation("Đang tìm kiếm ngành với mã ngành {0}.", maNganh);
+                    logger.LogInformation("Lấy danh sách ngành học theo Mã ngành.\nMã ngành: {0}", maNganh);
                     adater.Fill(dt);
                     return dt;
                 }
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi tìm kiếm ngành có mã ngành {0}.", maNganh);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi lấy danh sách ngành học theo Mã ngành.\nMã ngành: {0}", maNganh);
                 throw;
             }
             catch (Exception ex)
             {
-                logger.LogWarning(ex, "Lỗi xảy ra khi tìm kiếm ngành với mã ngành {0}.",maNganh);
+                logger.LogWarning(ex, "Xảy ra lỗi khi lấy danh sách ngành hoc theo Mã ngành.\nMã ngành: {0}",maNganh);
 			    throw;
             }
         }
