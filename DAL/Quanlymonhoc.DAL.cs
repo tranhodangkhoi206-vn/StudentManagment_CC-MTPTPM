@@ -60,7 +60,7 @@ namespace StudentManagment.DAL
                     cmd.Parameters.AddWithValue("@GIANGVIEN", monHocMoi.Giangvien);
                     cmd.Parameters.AddWithValue("@TINHTRANG", monHocMoi.Tinhtrang);
                     cmd.ExecuteNonQuery();
-                    logger.LogInformation("Sửa môn học mới trong danh sách môn học.\nMã môn: {0},\nTên môn: {1},\nMã ngành: {2},\nSố tiết lý thuyết: {3},\nSố tiết thực hành: {4},\nGiảng viên: {5},\nTình trạng: {6}", monHocMoi.Mamon, monHocMoi.Tenmon, monHocMoi.Manganh, monHocMoi.Sotietlythuyet, monHocMoi.Sotietthuchanh, monHocMoi.Giangvien, monHocMoi.Tinhtrang);
+                    logger.LogInformation("Sửa môn học trong danh sách môn học.\nMã môn: {0},\nTên môn: {1},\nMã ngành: {2},\nSố tiết lý thuyết: {3},\nSố tiết thực hành: {4},\nGiảng viên: {5},\nTình trạng: {6}", monHocMoi.Mamon, monHocMoi.Tenmon, monHocMoi.Manganh, monHocMoi.Sotietlythuyet, monHocMoi.Sotietthuchanh, monHocMoi.Giangvien, monHocMoi.Tinhtrang);
                     return monhocDAL.LayToanBoMonHoc();
                 }
             }
