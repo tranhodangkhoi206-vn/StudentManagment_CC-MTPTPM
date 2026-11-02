@@ -108,7 +108,6 @@ namespace StudentManagment.DAL
         }
         public DataTable LaySinhVienTheoDieuKienMaSinhVienVaMaMon(string maSinhVien, string maMon)
         {
-
             try
             {
                 using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
@@ -119,19 +118,19 @@ namespace StudentManagment.DAL
                     cmd.Parameters.AddWithValue("@MASINHVIEN", maSinhVien);
                     cmd.Parameters.AddWithValue("@MAMON", maMon);
                     adapter.SelectCommand = cmd;
-                    logger.LogInformation("Lấy sinh viên theo điều kiện Mã sinh viên và Mã môn học.\nMã sinh viên: {0},\nMã môn học: {1}", maSinhVien, maMon);
+                    logger.LogInformation("Lấy danh sách điểm theo điều kiện Mã sinh viên và Mã môn học.\nMã sinh viên: {0},\nMã môn học: {1}", maSinhVien, maMon);
                     adapter.Fill(dt);
                     return dt;
                 }
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi lấy sinh viên theo điều khiên Mã sin viên và Mã môn học.\nMã sinh viên: {0},\nMã môn học: {1}", maSinhVien, maMon);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi lấy danh sách điểm theo điều khiên Mã sin viên và Mã môn học.\nMã sinh viên: {0},\nMã môn học: {1}", maSinhVien, maMon);
                 throw;
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Xảy ra lỗi khi lấy sinh viên theo điều kiện Mã sinh viên và Mã môn học.\nMã sinh viên: {0},\nMã môn học: {1}", maSinhVien, maMon);
+                logger.LogError(ex, "Xảy ra lỗi khi danh sách lấy điểm theo điều kiện Mã sinh viên và Mã môn học.\nMã sinh viên: {0},\nMã môn học: {1}", maSinhVien, maMon);
                 throw;
             }
         }
