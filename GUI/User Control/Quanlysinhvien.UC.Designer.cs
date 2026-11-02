@@ -198,6 +198,7 @@
             btnTimkiem.TabIndex = 1;
             btnTimkiem.Text = "Tìm kiếm";
             btnTimkiem.UseVisualStyleBackColor = true;
+            btnTimkiem.Click += btnTimkiem_Click;
             // 
             // label9
             // 
@@ -271,9 +272,9 @@
             cbTinhtrang.DropDownStyle = ComboBoxStyle.DropDownList;
             cbTinhtrang.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cbTinhtrang.FormattingEnabled = true;
-            cbTinhtrang.Location = new Point(123, 9);
+            cbTinhtrang.Location = new Point(123, 6);
             cbTinhtrang.Name = "cbTinhtrang";
-            cbTinhtrang.Size = new Size(205, 32);
+            cbTinhtrang.Size = new Size(205, 38);
             cbTinhtrang.TabIndex = 2;
             // 
             // label8
@@ -311,9 +312,9 @@
             cbManganh.DropDownStyle = ComboBoxStyle.DropDownList;
             cbManganh.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cbManganh.FormattingEnabled = true;
-            cbManganh.Location = new Point(123, 9);
+            cbManganh.Location = new Point(123, 6);
             cbManganh.Name = "cbManganh";
-            cbManganh.Size = new Size(205, 32);
+            cbManganh.Size = new Size(205, 38);
             cbManganh.TabIndex = 2;
             // 
             // label7
@@ -362,9 +363,9 @@
             cbMalop.DropDownStyle = ComboBoxStyle.DropDownList;
             cbMalop.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cbMalop.FormattingEnabled = true;
-            cbMalop.Location = new Point(123, 9);
+            cbMalop.Location = new Point(123, 6);
             cbMalop.Name = "cbMalop";
-            cbMalop.Size = new Size(205, 32);
+            cbMalop.Size = new Size(205, 38);
             cbMalop.TabIndex = 1;
             // 
             // tableLayoutPanel7
@@ -402,9 +403,9 @@
             dtpNgaysinh.CalendarFont = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dtpNgaysinh.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dtpNgaysinh.Format = DateTimePickerFormat.Short;
-            dtpNgaysinh.Location = new Point(123, 9);
+            dtpNgaysinh.Location = new Point(123, 6);
             dtpNgaysinh.Name = "dtpNgaysinh";
-            dtpNgaysinh.Size = new Size(205, 32);
+            dtpNgaysinh.Size = new Size(205, 38);
             dtpNgaysinh.TabIndex = 1;
             // 
             // tableLayoutPanel6
@@ -509,9 +510,9 @@
             tbHovaten.Anchor = AnchorStyles.Left;
             tbHovaten.BorderStyle = BorderStyle.FixedSingle;
             tbHovaten.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbHovaten.Location = new Point(103, 9);
+            tbHovaten.Location = new Point(103, 6);
             tbHovaten.Name = "tbHovaten";
-            tbHovaten.Size = new Size(225, 32);
+            tbHovaten.Size = new Size(225, 38);
             tbHovaten.TabIndex = 1;
             // 
             // tableLayoutPanel4
@@ -547,9 +548,9 @@
             tbMasinhvien.Anchor = AnchorStyles.Left;
             tbMasinhvien.BorderStyle = BorderStyle.FixedSingle;
             tbMasinhvien.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbMasinhvien.Location = new Point(128, 9);
+            tbMasinhvien.Location = new Point(128, 6);
             tbMasinhvien.Name = "tbMasinhvien";
-            tbMasinhvien.Size = new Size(200, 32);
+            tbMasinhvien.Size = new Size(200, 38);
             tbMasinhvien.TabIndex = 1;
             // 
             // tableLayoutPanel12
@@ -617,6 +618,7 @@
             dgvSinhvien.Margin = new Padding(0);
             dgvSinhvien.Name = "dgvSinhvien";
             dgvSinhvien.ReadOnly = true;
+            dgvSinhvien.RowHeadersWidth = 51;
             dgvSinhvien.Size = new Size(447, 533);
             dgvSinhvien.TabIndex = 1;
             // 
@@ -625,66 +627,74 @@
             MASV.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             MASV.DataPropertyName = "MASV";
             MASV.HeaderText = "Mã sinh viên";
+            MASV.MinimumWidth = 6;
             MASV.Name = "MASV";
             MASV.ReadOnly = true;
-            MASV.Width = 116;
+            MASV.Width = 141;
             // 
             // HOVATEN
             // 
             HOVATEN.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             HOVATEN.DataPropertyName = "HOVATEN";
             HOVATEN.HeaderText = "Họ và tên";
+            HOVATEN.MinimumWidth = 6;
             HOVATEN.Name = "HOVATEN";
             HOVATEN.ReadOnly = true;
-            HOVATEN.Width = 96;
+            HOVATEN.Width = 115;
             // 
             // GIOITINH
             // 
             GIOITINH.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             GIOITINH.DataPropertyName = "GIOITINH";
             GIOITINH.HeaderText = "Giới tính";
+            GIOITINH.MinimumWidth = 6;
             GIOITINH.Name = "GIOITINH";
             GIOITINH.ReadOnly = true;
-            GIOITINH.Width = 88;
+            GIOITINH.Width = 107;
             // 
             // NGAYSINH
             // 
             NGAYSINH.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             NGAYSINH.DataPropertyName = "NGAYSINH";
             NGAYSINH.HeaderText = "Ngày sinh";
+            NGAYSINH.MinimumWidth = 6;
             NGAYSINH.Name = "NGAYSINH";
             NGAYSINH.ReadOnly = true;
-            NGAYSINH.Width = 98;
+            NGAYSINH.Width = 118;
             // 
             // MALOP
             // 
             MALOP.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             MALOP.DataPropertyName = "MALOP";
             MALOP.HeaderText = "Mã lớp";
+            MALOP.MinimumWidth = 6;
             MALOP.Name = "MALOP";
             MALOP.ReadOnly = true;
-            MALOP.Width = 78;
+            MALOP.Width = 94;
             // 
             // MANGANH
             // 
             MANGANH.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             MANGANH.DataPropertyName = "MANGANH";
             MANGANH.HeaderText = "Mã ngành";
+            MANGANH.MinimumWidth = 6;
             MANGANH.Name = "MANGANH";
             MANGANH.ReadOnly = true;
-            MANGANH.Width = 98;
+            MANGANH.Width = 119;
             // 
             // TINHTRANG
             // 
             TINHTRANG.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             TINHTRANG.DataPropertyName = "TINHTRANG";
             TINHTRANG.HeaderText = "Tình trạng";
+            TINHTRANG.MinimumWidth = 6;
             TINHTRANG.Name = "TINHTRANG";
             TINHTRANG.ReadOnly = true;
+            TINHTRANG.Width = 121;
             // 
             // Quanlysinhvien
             // 
-            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleDimensions = new SizeF(120F, 120F);
             AutoScaleMode = AutoScaleMode.Dpi;
             Controls.Add(tableLayoutPanel1);
             Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);

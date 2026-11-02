@@ -69,5 +69,15 @@ namespace StudentManagment.BLL
             }
             return quanlysinhvienDAL.XoaThongTinSinhVienTheoMaSinhVien(maSinhVien);
         }
+        public DataTable TimKiemSinhVien(string maSinhVien)
+        {
+            if (string.IsNullOrEmpty(maSinhVien))
+            {
+                logger.LogWarning("Người dùng chưa nhập mã sinh viên khi tìm kiếm sinh viên ra khỏi danh sách.");
+                throw new ArgumentException();
+            }
+            return quanlysinhvienDAL.LaySinhVienTheoDieuKienMaSinhVien(maSinhVien); 
+        }
+		    
     }
 }

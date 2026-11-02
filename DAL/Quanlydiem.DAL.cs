@@ -102,7 +102,36 @@ namespace StudentManagment.DAL
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Lỗi xảy ra khi xóa điểm của sinh viên có mã sinh viên {0} môn {1}", maSinhVien, maMon);
+                logger.LogError(ex, "Xảy ra lỗi khi xóa điểm của sinh viên có mã sinh viên {0} môn {1}", maSinhVien, maMon);
+                throw;
+            }
+        }
+        public DataTable LaySinhVienTheoDieuKienMaSinhVienVaMaMon(string maSinhVien, string maMon)
+        {
+
+            try
+            {
+                using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
+                {
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter adapter = new SqlDataAdapter();
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM DIEM WHERE MASINHVIEN=@MASINHVIEN AND MAMON=@MAMON", conn);
+                    cmd.Parameters.AddWithValue("@MASINHVIEN", maSinhVien);
+                    cmd.Parameters.AddWithValue("@MAMON", maMon);
+                    adapter.SelectCommand = cmd;
+                    logger.LogInformation("Đang lấy danh sách điểm theo điều kiện mã sinh viên và mã môn học...");
+                    adapter.Fill(dt);
+                    return dt;
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi tìm kiếm điểm có mã sinh viên {0} và mã môn học {1}.", maSinhVien, maMon);
+                throw;
+            }
+	        catch (Exception ex)
+            {
+                logger.LogError(ex, "Xảy ra lỗi khi tìm kiếm điểm theo điều kiện mã sinh viên {0} và mã môn học {1}.", maSinhVien, maMon);
                 throw;
             }
         }

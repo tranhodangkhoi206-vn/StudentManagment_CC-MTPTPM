@@ -52,8 +52,8 @@ namespace StudentManagment.GUI.User_Control
             catch (ArgumentException)
             {
                 MessageBox.Show("Bạn phải nhập đầy đủ thông tin trước khi thêm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } 
-	        catch (SqlException)
+            }
+            catch (SqlException)
             {
                 MessageBox.Show("Lỗi khi kết nối cơ sở dữ liệu khi thêm sinh viên mới.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -71,11 +71,11 @@ namespace StudentManagment.GUI.User_Control
                 DataTable dt = quanlysinhvienBLL.XoaSinhVienTheoMaSinhVien(maSinhVien);
                 dgvSinhvien.DataSource = dt;
             }
-	        catch (ArgumentException)
+            catch (ArgumentException)
             {
                 MessageBox.Show("Bạn phải nhập mã sinh viên trước khi xóa.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-		    catch (SqlException)
+            catch (SqlException)
             {
                 MessageBox.Show("Lỗi kết nối cơ sở dữ liệu khi xóa sinh viên.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -105,11 +105,11 @@ namespace StudentManagment.GUI.User_Control
                     dgvSinhvien.DataSource = dt;
                 }
             }
-	        catch(ArgumentException)
+            catch (ArgumentException)
             {
                 MessageBox.Show("Bạn phải nhập mã sinh viên trước khi sửa.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-		    catch(SqlException)
+            catch (SqlException)
             {
                 MessageBox.Show("Lỗi kết nối cơ sở dữ liệu khi sửa thông tin sinh viên.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -128,6 +128,12 @@ namespace StudentManagment.GUI.User_Control
             rbNam.Checked = true;
             cbManganh.SelectedIndex = -1;
             cbTinhtrang.SelectedIndex = -1;
+        }
+
+        private void btnTimkiem_Click(object sender, EventArgs e)
+        {
+            string maSinhVien = tbMasinhvien.Text.ToString().Trim();
+
         }
     }
 }

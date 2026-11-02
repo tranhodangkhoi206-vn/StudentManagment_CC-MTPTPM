@@ -101,5 +101,33 @@ namespace StudentManagment.DAL
                 throw;
             }
         }
+        public DataTable LaySinhVienTheoDieuKienMaSinhVien(string maSinhVien)
+        {
+
+            try
+            {
+                using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
+                {
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter adapter = new SqlDataAdapter();
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM SINHVIEN WHERE MASINHVIEN=@MASINHVIEN", conn);
+                    cmd.Parameters.AddWithValue("@MASINHVIEN", maSinhVien);
+                    adapter.SelectCommand = cmd;
+                    logger.LogInformation("Đang lấy danh sách sinh viên theo điều kiện mã sinh viên...");
+                    adapter.Fill(dt);
+                    return dt;
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi lấy danh sách sinh viên theo điều kiện mã sinh viên.");
+                throw;
+            }
+	        catch (Exception ex)
+            {
+                logger.LogError(ex, "Xảy ra lỗi khi hiển thị danh sách sinh viên theo điều khiện tên.");
+                throw;
+            }
+        }
     }
 }

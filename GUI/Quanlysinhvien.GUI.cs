@@ -19,6 +19,11 @@ namespace StudentManagment
         private void btnTrangchu_Click(object sender, EventArgs e)
         {
             btnTrangchu.BackColor = ColorTranslator.FromHtml("#2471C9");
+            pUserControl.Controls.Clear();
+            Trangchu trangChu = new Trangchu();
+            trangChu.Dock = DockStyle.Fill;
+            pUserControl.Controls.Add(trangChu);
+            trangChu.BringToFront();
         }
 
         private void btnTrangchu_Leave(object sender, EventArgs e)

@@ -99,5 +99,32 @@ namespace StudentManagment.DAL
                 throw;
             }
         }
+        public DataTable LayDanhSachMonHocTheoDieuKienMaMon(string maMon)
+        {
+            try
+            {
+                using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
+                {
+                    SqlDataAdapter adater = new SqlDataAdapter();
+                    DataTable dt = new DataTable();
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM MONHOC WHERE MAMON=@MAMON", conn);
+                    cmd.Parameters.AddWithValue("@MAMON", maMon);
+                    adater.SelectCommand = cmd;
+                    logger.LogInformation("Đang tìm kiếm môn học với mã môn {0}.", maMon);
+                    adater.Fill(dt);
+                    return dt;
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi tìm kiếm môn học có mã môn {0}.", maMon);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                logger.LogWarning(ex, "Lỗi xảy ra khi tìm kiếm môn học với mã môn {0}.",maMon);
+			    throw;
+            }
+        }
     }
 }

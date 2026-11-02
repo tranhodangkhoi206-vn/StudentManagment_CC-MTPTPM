@@ -89,13 +89,40 @@ namespace StudentManagment.DAL
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi xóa ngành có mã ngành {0} khỏi danh sách ngành", maNganh);
+                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi xóa ngành có mã ngành {0} khỏi danh sách ngành.", maNganh);
                 throw;
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Lỗi xảy ra khi xóa ngành với mã ngành {0}", maNganh);
+                logger.LogError(ex, "Lỗi xảy ra khi xóa ngành với mã ngành {0}.", maNganh);
                 throw;
+            }
+        }
+        public DataTable LayDanhSachNganhHocTheoDieuKienMaNganh(string maNganh)
+        {
+            try
+            {
+                using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
+                {
+                    SqlDataAdapter adater = new SqlDataAdapter();
+                    DataTable dt = new DataTable();
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM NGANH WHERE MANGANH=@MANGANH", conn);
+                    cmd.Parameters.AddWithValue("@MANGANH", maNganh);
+                    adater.SelectCommand = cmd;
+                    logger.LogInformation("Đang tìm kiếm ngành với mã ngành {0}.", maNganh);
+                    adater.Fill(dt);
+                    return dt;
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi tìm kiếm ngành có mã ngành {0}.", maNganh);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                logger.LogWarning(ex, "Lỗi xảy ra khi tìm kiếm ngành với mã ngành {0}.",maNganh);
+			    throw;
             }
         }
     }
