@@ -103,7 +103,6 @@ namespace StudentManagment.DAL
         }
         public DataTable LaySinhVienTheoDieuKienMaSinhVien(string maSinhVien)
         {
-
             try
             {
                 using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())

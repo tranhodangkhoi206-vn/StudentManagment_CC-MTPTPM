@@ -37,6 +37,13 @@
             label2 = new Label();
             tbMamonhoc = new TextBox();
             dgvMonhoc = new DataGridView();
+            MAMON = new DataGridViewTextBoxColumn();
+            TENMON = new DataGridViewTextBoxColumn();
+            SOTIETLYTHUYET = new DataGridViewTextBoxColumn();
+            SOTIETTHUCHANH = new DataGridViewTextBoxColumn();
+            MANGANH = new DataGridViewTextBoxColumn();
+            GIANGVIEN = new DataGridViewTextBoxColumn();
+            TINHTRANG = new DataGridViewTextBoxColumn();
             tableLayoutPanel1 = new TableLayoutPanel();
             label1 = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
@@ -66,13 +73,6 @@
             tableLayoutPanel11 = new TableLayoutPanel();
             label4 = new Label();
             nudLythuyet = new NumericUpDown();
-            MAMON = new DataGridViewTextBoxColumn();
-            TENMON = new DataGridViewTextBoxColumn();
-            SOTIETLYTHUYET = new DataGridViewTextBoxColumn();
-            SOTIETTHUCHANH = new DataGridViewTextBoxColumn();
-            MANGANH = new DataGridViewTextBoxColumn();
-            GIANGVIEN = new DataGridViewTextBoxColumn();
-            TINHTRANG = new DataGridViewTextBoxColumn();
             tableLayoutPanel5.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMonhoc).BeginInit();
@@ -198,6 +198,69 @@
             dgvMonhoc.Size = new Size(447, 533);
             dgvMonhoc.TabIndex = 1;
             // 
+            // MAMON
+            // 
+            MAMON.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            MAMON.DataPropertyName = "MAMON";
+            MAMON.HeaderText = "Mã môn học";
+            MAMON.Name = "MAMON";
+            MAMON.ReadOnly = true;
+            MAMON.Width = 104;
+            // 
+            // TENMON
+            // 
+            TENMON.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            TENMON.DataPropertyName = "TENMON";
+            TENMON.HeaderText = "Tên môn học";
+            TENMON.Name = "TENMON";
+            TENMON.ReadOnly = true;
+            TENMON.Width = 106;
+            // 
+            // SOTIETLYTHUYET
+            // 
+            SOTIETLYTHUYET.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            SOTIETLYTHUYET.DataPropertyName = "SOTIETLYTHUYET";
+            SOTIETLYTHUYET.HeaderText = "Số tiết lý thuyết";
+            SOTIETLYTHUYET.Name = "SOTIETLYTHUYET";
+            SOTIETLYTHUYET.ReadOnly = true;
+            SOTIETLYTHUYET.Width = 124;
+            // 
+            // SOTIETTHUCHANH
+            // 
+            SOTIETTHUCHANH.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            SOTIETTHUCHANH.DataPropertyName = "SOTIETTHUCHANH";
+            SOTIETTHUCHANH.HeaderText = "Số tiết thực hành";
+            SOTIETTHUCHANH.Name = "SOTIETTHUCHANH";
+            SOTIETTHUCHANH.ReadOnly = true;
+            SOTIETTHUCHANH.Width = 104;
+            // 
+            // MANGANH
+            // 
+            MANGANH.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            MANGANH.DataPropertyName = "MANGANH";
+            MANGANH.HeaderText = "Mã ngành";
+            MANGANH.Name = "MANGANH";
+            MANGANH.ReadOnly = true;
+            MANGANH.Width = 90;
+            // 
+            // GIANGVIEN
+            // 
+            GIANGVIEN.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            GIANGVIEN.DataPropertyName = "GIANGVIEN";
+            GIANGVIEN.HeaderText = "Giảng viên";
+            GIANGVIEN.Name = "GIANGVIEN";
+            GIANGVIEN.ReadOnly = true;
+            GIANGVIEN.Width = 94;
+            // 
+            // TINHTRANG
+            // 
+            TINHTRANG.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            TINHTRANG.DataPropertyName = "TINHTRANG";
+            TINHTRANG.HeaderText = "Tình trạng";
+            TINHTRANG.Name = "TINHTRANG";
+            TINHTRANG.ReadOnly = true;
+            TINHTRANG.Width = 92;
+            // 
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 1;
@@ -303,6 +366,7 @@
             btnTimkiem.TabIndex = 1;
             btnTimkiem.Text = "Tìm kiếm";
             btnTimkiem.UseVisualStyleBackColor = true;
+            btnTimkiem.Click += btnTimkiem_Click;
             // 
             // label9
             // 
@@ -342,6 +406,7 @@
             btnDondep.TabIndex = 2;
             btnDondep.Text = "Dọn dẹp";
             btnDondep.UseVisualStyleBackColor = true;
+            btnDondep.Click += btnDondep_Click;
             // 
             // btnSua
             // 
@@ -353,6 +418,7 @@
             btnSua.TabIndex = 1;
             btnSua.Text = "Sửa";
             btnSua.UseVisualStyleBackColor = true;
+            btnSua.Click += btnSua_Click;
             // 
             // tableLayoutPanel12
             // 
@@ -380,6 +446,7 @@
             btnXoa.TabIndex = 1;
             btnXoa.Text = "Xóa";
             btnXoa.UseVisualStyleBackColor = true;
+            btnXoa.Click += btnXoa_Click;
             // 
             // btnThem
             // 
@@ -391,6 +458,7 @@
             btnThem.TabIndex = 0;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = true;
+            btnThem.Click += btnThem_Click;
             // 
             // tableLayoutPanel10
             // 
@@ -602,69 +670,6 @@
             nudLythuyet.Name = "nudLythuyet";
             nudLythuyet.Size = new Size(77, 28);
             nudLythuyet.TabIndex = 1;
-            // 
-            // MAMON
-            // 
-            MAMON.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            MAMON.DataPropertyName = "MAMON";
-            MAMON.HeaderText = "Mã môn học";
-            MAMON.Name = "MAMON";
-            MAMON.ReadOnly = true;
-            MAMON.Width = 113;
-            // 
-            // TENMON
-            // 
-            TENMON.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            TENMON.DataPropertyName = "TENMON";
-            TENMON.HeaderText = "Tên môn học";
-            TENMON.Name = "TENMON";
-            TENMON.ReadOnly = true;
-            TENMON.Width = 116;
-            // 
-            // SOTIETLYTHUYET
-            // 
-            SOTIETLYTHUYET.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            SOTIETLYTHUYET.DataPropertyName = "SOTIETLYTHUYET";
-            SOTIETLYTHUYET.HeaderText = "Số tiết lý thuyết";
-            SOTIETLYTHUYET.Name = "SOTIETLYTHUYET";
-            SOTIETLYTHUYET.ReadOnly = true;
-            SOTIETLYTHUYET.Width = 136;
-            // 
-            // SOTIETTHUCHANH
-            // 
-            SOTIETTHUCHANH.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            SOTIETTHUCHANH.DataPropertyName = "SOTIETTHUCHANH";
-            SOTIETTHUCHANH.HeaderText = "Số tiết thực hành";
-            SOTIETTHUCHANH.Name = "SOTIETTHUCHANH";
-            SOTIETTHUCHANH.ReadOnly = true;
-            SOTIETTHUCHANH.Width = 104;
-            // 
-            // MANGANH
-            // 
-            MANGANH.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            MANGANH.DataPropertyName = "MANGANH";
-            MANGANH.HeaderText = "Mã ngành";
-            MANGANH.Name = "MANGANH";
-            MANGANH.ReadOnly = true;
-            MANGANH.Width = 90;
-            // 
-            // GIANGVIEN
-            // 
-            GIANGVIEN.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            GIANGVIEN.DataPropertyName = "GIANGVIEN";
-            GIANGVIEN.HeaderText = "Giảng viên";
-            GIANGVIEN.Name = "GIANGVIEN";
-            GIANGVIEN.ReadOnly = true;
-            GIANGVIEN.Width = 94;
-            // 
-            // TINHTRANG
-            // 
-            TINHTRANG.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            TINHTRANG.DataPropertyName = "TINHTRANG";
-            TINHTRANG.HeaderText = "Tình trạng";
-            TINHTRANG.Name = "TINHTRANG";
-            TINHTRANG.ReadOnly = true;
-            TINHTRANG.Width = 92;
             // 
             // Quanlymonhoc
             // 

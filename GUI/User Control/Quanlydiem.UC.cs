@@ -112,13 +112,45 @@ namespace StudentManagment.GUI.User_Control
             }
         }
 
-        private void btnLammoi_Click(object sender, EventArgs e)
+        private void btnDondep_Click(object sender, EventArgs e)
         {
             tbMasinhvien.Text = "";
             tbMamonhoc.Text = "";
             tbDiemchuyencan.Text = "";
             tbDiemgiuaky.Text = "";
             tbDiemcuoiky.Text = "";
+        }
+
+        private void btnTimkiem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string maSinhVien = tbMasinhvien.Text.ToString().Trim();
+                string maMonHoc = tbMamonhoc.Text.ToString().Trim();
+                DataTable dt = quanlydiemBLL.TimKiemDiemTheoMaSinhVienVaMaMon(maSinhVien,maMonHoc);
+                if (dt.Rows.Count != 0)
+                {
+                    dgvDiem.DataSource = dt;
+                }
+                else
+                {
+                    dgvDiem.DataSource = quanlydiemBLL.HienThiToanBoDiem();
+                    MessageBox.Show("Điểm không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Xảy ra lỗi cơ sở dữ liệu khi tìm kiếm điểm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Bạn phải nhập username trước khi tìm kiếm điểm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Xảy ra lỗi khi tìm kiếm điểm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }

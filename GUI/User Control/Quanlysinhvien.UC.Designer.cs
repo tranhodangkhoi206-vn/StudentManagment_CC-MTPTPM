@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             tableLayoutPanel1 = new TableLayoutPanel();
             label1 = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
@@ -238,6 +238,7 @@
             btnDondep.TabIndex = 2;
             btnDondep.Text = "Dọn dẹp";
             btnDondep.UseVisualStyleBackColor = true;
+            btnDondep.Click += btnDondep_Click;
             // 
             // btnSua
             // 
@@ -249,6 +250,7 @@
             btnSua.TabIndex = 1;
             btnSua.Text = "Sửa";
             btnSua.UseVisualStyleBackColor = true;
+            btnSua.Click += btnSua_Click;
             // 
             // tableLayoutPanel10
             // 
@@ -272,9 +274,9 @@
             cbTinhtrang.DropDownStyle = ComboBoxStyle.DropDownList;
             cbTinhtrang.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cbTinhtrang.FormattingEnabled = true;
-            cbTinhtrang.Location = new Point(123, 6);
+            cbTinhtrang.Location = new Point(123, 9);
             cbTinhtrang.Name = "cbTinhtrang";
-            cbTinhtrang.Size = new Size(205, 38);
+            cbTinhtrang.Size = new Size(205, 32);
             cbTinhtrang.TabIndex = 2;
             // 
             // label8
@@ -312,9 +314,9 @@
             cbManganh.DropDownStyle = ComboBoxStyle.DropDownList;
             cbManganh.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cbManganh.FormattingEnabled = true;
-            cbManganh.Location = new Point(123, 6);
+            cbManganh.Location = new Point(123, 9);
             cbManganh.Name = "cbManganh";
-            cbManganh.Size = new Size(205, 38);
+            cbManganh.Size = new Size(205, 32);
             cbManganh.TabIndex = 2;
             // 
             // label7
@@ -363,9 +365,9 @@
             cbMalop.DropDownStyle = ComboBoxStyle.DropDownList;
             cbMalop.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cbMalop.FormattingEnabled = true;
-            cbMalop.Location = new Point(123, 6);
+            cbMalop.Location = new Point(123, 9);
             cbMalop.Name = "cbMalop";
-            cbMalop.Size = new Size(205, 38);
+            cbMalop.Size = new Size(205, 32);
             cbMalop.TabIndex = 1;
             // 
             // tableLayoutPanel7
@@ -403,9 +405,9 @@
             dtpNgaysinh.CalendarFont = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dtpNgaysinh.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dtpNgaysinh.Format = DateTimePickerFormat.Short;
-            dtpNgaysinh.Location = new Point(123, 6);
+            dtpNgaysinh.Location = new Point(123, 9);
             dtpNgaysinh.Name = "dtpNgaysinh";
-            dtpNgaysinh.Size = new Size(205, 38);
+            dtpNgaysinh.Size = new Size(205, 32);
             dtpNgaysinh.TabIndex = 1;
             // 
             // tableLayoutPanel6
@@ -510,9 +512,9 @@
             tbHovaten.Anchor = AnchorStyles.Left;
             tbHovaten.BorderStyle = BorderStyle.FixedSingle;
             tbHovaten.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbHovaten.Location = new Point(103, 6);
+            tbHovaten.Location = new Point(103, 9);
             tbHovaten.Name = "tbHovaten";
-            tbHovaten.Size = new Size(225, 38);
+            tbHovaten.Size = new Size(225, 32);
             tbHovaten.TabIndex = 1;
             // 
             // tableLayoutPanel4
@@ -548,9 +550,9 @@
             tbMasinhvien.Anchor = AnchorStyles.Left;
             tbMasinhvien.BorderStyle = BorderStyle.FixedSingle;
             tbMasinhvien.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbMasinhvien.Location = new Point(128, 6);
+            tbMasinhvien.Location = new Point(128, 9);
             tbMasinhvien.Name = "tbMasinhvien";
-            tbMasinhvien.Size = new Size(200, 38);
+            tbMasinhvien.Size = new Size(200, 32);
             tbMasinhvien.TabIndex = 1;
             // 
             // tableLayoutPanel12
@@ -579,6 +581,7 @@
             btnXoa.TabIndex = 1;
             btnXoa.Text = "Xóa";
             btnXoa.UseVisualStyleBackColor = true;
+            btnXoa.Click += btnXoa_Click;
             // 
             // btnThem
             // 
@@ -590,29 +593,30 @@
             btnThem.TabIndex = 0;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = true;
+            btnThem.Click += btnThem_Click;
             // 
             // dgvSinhvien
             // 
             dgvSinhvien.AllowUserToAddRows = false;
             dgvSinhvien.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvSinhvien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = SystemColors.Control;
+            dataGridViewCellStyle7.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dgvSinhvien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dgvSinhvien.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvSinhvien.Columns.AddRange(new DataGridViewColumn[] { MASV, HOVATEN, GIOITINH, NGAYSINH, MALOP, MANGANH, TINHTRANG });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvSinhvien.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = SystemColors.Window;
+            dataGridViewCellStyle8.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            dgvSinhvien.DefaultCellStyle = dataGridViewCellStyle8;
             dgvSinhvien.Dock = DockStyle.Fill;
             dgvSinhvien.Location = new Point(337, 6);
             dgvSinhvien.Margin = new Padding(0);
@@ -630,7 +634,7 @@
             MASV.MinimumWidth = 6;
             MASV.Name = "MASV";
             MASV.ReadOnly = true;
-            MASV.Width = 141;
+            MASV.Width = 116;
             // 
             // HOVATEN
             // 
@@ -640,7 +644,7 @@
             HOVATEN.MinimumWidth = 6;
             HOVATEN.Name = "HOVATEN";
             HOVATEN.ReadOnly = true;
-            HOVATEN.Width = 115;
+            HOVATEN.Width = 96;
             // 
             // GIOITINH
             // 
@@ -650,7 +654,7 @@
             GIOITINH.MinimumWidth = 6;
             GIOITINH.Name = "GIOITINH";
             GIOITINH.ReadOnly = true;
-            GIOITINH.Width = 107;
+            GIOITINH.Width = 88;
             // 
             // NGAYSINH
             // 
@@ -660,7 +664,7 @@
             NGAYSINH.MinimumWidth = 6;
             NGAYSINH.Name = "NGAYSINH";
             NGAYSINH.ReadOnly = true;
-            NGAYSINH.Width = 118;
+            NGAYSINH.Width = 98;
             // 
             // MALOP
             // 
@@ -670,7 +674,7 @@
             MALOP.MinimumWidth = 6;
             MALOP.Name = "MALOP";
             MALOP.ReadOnly = true;
-            MALOP.Width = 94;
+            MALOP.Width = 78;
             // 
             // MANGANH
             // 
@@ -680,7 +684,7 @@
             MANGANH.MinimumWidth = 6;
             MANGANH.Name = "MANGANH";
             MANGANH.ReadOnly = true;
-            MANGANH.Width = 119;
+            MANGANH.Width = 98;
             // 
             // TINHTRANG
             // 
@@ -690,11 +694,10 @@
             TINHTRANG.MinimumWidth = 6;
             TINHTRANG.Name = "TINHTRANG";
             TINHTRANG.ReadOnly = true;
-            TINHTRANG.Width = 121;
             // 
             // Quanlysinhvien
             // 
-            AutoScaleDimensions = new SizeF(120F, 120F);
+            AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             Controls.Add(tableLayoutPanel1);
             Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);

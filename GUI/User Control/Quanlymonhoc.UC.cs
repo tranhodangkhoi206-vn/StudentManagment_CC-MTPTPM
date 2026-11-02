@@ -105,11 +105,11 @@ namespace StudentManagment.GUI.User_Control
                     dgvMonhoc.DataSource = dt;
                 }
             }
-	        catch (SqlException)
+            catch (SqlException)
             {
                 MessageBox.Show("Lỗi kết nối đến cơ sở dữ liệu khi xóa thông tin môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-		    catch (ArgumentException)
+            catch (ArgumentException)
             {
                 MessageBox.Show("Bạn phải nhập mã môn học trước khi xóa môn học khỏi danh sách.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -119,7 +119,7 @@ namespace StudentManagment.GUI.User_Control
             }
         }
 
-        private void btnLammoi_Click(object sender, EventArgs e)
+        private void btnDondep_Click(object sender, EventArgs e)
         {
             tbMamonhoc.Text = "";
             tbTenmonhoc.Text = "";
@@ -128,6 +128,37 @@ namespace StudentManagment.GUI.User_Control
             nudThuchanh.Value = 1;
             tbGiangvien.Text = "";
             cbTinhtrang.SelectedIndex = -1;
+        }
+
+        private void btnTimkiem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string maMon = tbMamonhoc.Text.ToString().Trim();
+                DataTable dt = quanlymonhocBLL.TimKiemMonHocTheoMaMon(maMon);
+                if (dt.Rows.Count != 0)
+                {
+                    dgvMonhoc.DataSource = dt;
+                }
+                else
+                {
+                    dgvMonhoc.DataSource = quanlymonhocBLL.HienThiDanhSachMonHoc();
+                    MessageBox.Show("Môn học không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Xảy ra lỗi cơ sở dữ liệu khi tìm kiếm môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Bạn phải nhập username trước khi tìm kiếm môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Xảy ra lỗi khi tìm kiếm môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }

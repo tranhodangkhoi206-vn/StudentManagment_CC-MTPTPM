@@ -28,12 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             tableLayoutPanel4 = new TableLayoutPanel();
             label2 = new Label();
             tbMasinhvien = new TextBox();
             dgvSinhvien = new DataGridView();
+            MALOP = new DataGridViewTextBoxColumn();
+            MANGANH = new DataGridViewTextBoxColumn();
+            TENLOP = new DataGridViewTextBoxColumn();
+            GIANGVIENPHUTRACH = new DataGridViewTextBoxColumn();
             tableLayoutPanel2 = new TableLayoutPanel();
             tableLayoutPanel3 = new TableLayoutPanel();
             tableLayoutPanel14 = new TableLayoutPanel();
@@ -56,10 +60,6 @@
             textBox1 = new TextBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             label1 = new Label();
-            MALOP = new DataGridViewTextBoxColumn();
-            MANGANH = new DataGridViewTextBoxColumn();
-            TENLOP = new DataGridViewTextBoxColumn();
-            GIANGVIENPHUTRACH = new DataGridViewTextBoxColumn();
             tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSinhvien).BeginInit();
             tableLayoutPanel2.SuspendLayout();
@@ -115,24 +115,24 @@
             // 
             dgvSinhvien.AllowUserToAddRows = false;
             dgvSinhvien.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvSinhvien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvSinhvien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvSinhvien.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvSinhvien.Columns.AddRange(new DataGridViewColumn[] { MALOP, MANGANH, TENLOP, GIANGVIENPHUTRACH });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvSinhvien.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dgvSinhvien.DefaultCellStyle = dataGridViewCellStyle4;
             dgvSinhvien.Dock = DockStyle.Fill;
             dgvSinhvien.Location = new Point(337, 6);
             dgvSinhvien.Margin = new Padding(0);
@@ -140,6 +140,42 @@
             dgvSinhvien.ReadOnly = true;
             dgvSinhvien.Size = new Size(447, 533);
             dgvSinhvien.TabIndex = 1;
+            // 
+            // MALOP
+            // 
+            MALOP.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            MALOP.DataPropertyName = "MALOP";
+            MALOP.HeaderText = "Mã lớp";
+            MALOP.Name = "MALOP";
+            MALOP.ReadOnly = true;
+            MALOP.Width = 54;
+            // 
+            // MANGANH
+            // 
+            MANGANH.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            MANGANH.DataPropertyName = "MANGANH";
+            MANGANH.HeaderText = "Mã ngành";
+            MANGANH.Name = "MANGANH";
+            MANGANH.ReadOnly = true;
+            MANGANH.Width = 90;
+            // 
+            // TENLOP
+            // 
+            TENLOP.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            TENLOP.DataPropertyName = "TENLOP";
+            TENLOP.HeaderText = "Tên lớp";
+            TENLOP.Name = "TENLOP";
+            TENLOP.ReadOnly = true;
+            TENLOP.Width = 57;
+            // 
+            // GIANGVIENPHUTRACH
+            // 
+            GIANGVIENPHUTRACH.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            GIANGVIENPHUTRACH.DataPropertyName = "GIANGVIENPHUTRACH";
+            GIANGVIENPHUTRACH.HeaderText = "Giảng viên phụ trách";
+            GIANGVIENPHUTRACH.Name = "GIANGVIENPHUTRACH";
+            GIANGVIENPHUTRACH.ReadOnly = true;
+            GIANGVIENPHUTRACH.Width = 123;
             // 
             // tableLayoutPanel2
             // 
@@ -162,9 +198,9 @@
             // 
             tableLayoutPanel3.ColumnCount = 1;
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel3.Controls.Add(tableLayoutPanel14, 0, 4);
+            tableLayoutPanel3.Controls.Add(tableLayoutPanel14, 0, 6);
             tableLayoutPanel3.Controls.Add(tableLayoutPanel13, 0, 5);
-            tableLayoutPanel3.Controls.Add(tableLayoutPanel12, 0, 6);
+            tableLayoutPanel3.Controls.Add(tableLayoutPanel12, 0, 4);
             tableLayoutPanel3.Controls.Add(tableLayoutPanel7, 0, 3);
             tableLayoutPanel3.Controls.Add(tableLayoutPanel6, 0, 2);
             tableLayoutPanel3.Controls.Add(tableLayoutPanel5, 0, 1);
@@ -196,7 +232,7 @@
             tableLayoutPanel14.Controls.Add(btnTimkiem, 0, 0);
             tableLayoutPanel14.Controls.Add(label9, 1, 0);
             tableLayoutPanel14.Dock = DockStyle.Fill;
-            tableLayoutPanel14.Location = new Point(0, 200);
+            tableLayoutPanel14.Location = new Point(0, 300);
             tableLayoutPanel14.Margin = new Padding(0);
             tableLayoutPanel14.Name = "tableLayoutPanel14";
             tableLayoutPanel14.RowCount = 1;
@@ -273,7 +309,7 @@
             tableLayoutPanel12.Controls.Add(btnXoa, 1, 0);
             tableLayoutPanel12.Controls.Add(btnThem, 0, 0);
             tableLayoutPanel12.Dock = DockStyle.Fill;
-            tableLayoutPanel12.Location = new Point(0, 300);
+            tableLayoutPanel12.Location = new Point(0, 200);
             tableLayoutPanel12.Margin = new Padding(0);
             tableLayoutPanel12.Name = "tableLayoutPanel12";
             tableLayoutPanel12.RowCount = 1;
@@ -447,42 +483,6 @@
             label1.TabIndex = 0;
             label1.Text = "QUẢN LÝ LỚP HỌC";
             label1.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // MALOP
-            // 
-            MALOP.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            MALOP.DataPropertyName = "MALOP";
-            MALOP.HeaderText = "Mã lớp";
-            MALOP.Name = "MALOP";
-            MALOP.ReadOnly = true;
-            MALOP.Width = 78;
-            // 
-            // MANGANH
-            // 
-            MANGANH.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            MANGANH.DataPropertyName = "MANGANH";
-            MANGANH.HeaderText = "Mã ngành";
-            MANGANH.Name = "MANGANH";
-            MANGANH.ReadOnly = true;
-            MANGANH.Width = 98;
-            // 
-            // TENLOP
-            // 
-            TENLOP.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            TENLOP.DataPropertyName = "TENLOP";
-            TENLOP.HeaderText = "Tên lớp";
-            TENLOP.Name = "TENLOP";
-            TENLOP.ReadOnly = true;
-            TENLOP.Width = 81;
-            // 
-            // GIANGVIENPHUTRACH
-            // 
-            GIANGVIENPHUTRACH.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            GIANGVIENPHUTRACH.DataPropertyName = "GIANGVIENPHUTRACH";
-            GIANGVIENPHUTRACH.HeaderText = "Giảng viên phụ trách";
-            GIANGVIENPHUTRACH.Name = "GIANGVIENPHUTRACH";
-            GIANGVIENPHUTRACH.ReadOnly = true;
-            GIANGVIENPHUTRACH.Width = 123;
             // 
             // Quanlylophoc
             // 

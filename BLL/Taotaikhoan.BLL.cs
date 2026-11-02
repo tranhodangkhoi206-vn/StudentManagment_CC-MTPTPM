@@ -2,6 +2,7 @@
 using System.Security.Policy;
 using Microsoft.Extensions.Logging;
 using StudentManagment.DAL;
+using StudentManagment.DAL.Util;
 using StudentManagment.DTO;
 
 namespace StudentManagment.BLL
@@ -10,10 +11,16 @@ namespace StudentManagment.BLL
     {
         private readonly ILogger<TaotaikhoanBLL> logger;
         private TaotaikhoanDAL taoTaiKhoanDAL;
+        private TaikhoanDAL taiKhoanDAL;
         public TaotaikhoanBLL(ILoggerFactory loggerFactory)
         {
             logger = loggerFactory.CreateLogger<TaotaikhoanBLL>();
+            taiKhoanDAL = new TaikhoanDAL(loggerFactory);
             taoTaiKhoanDAL = new TaotaikhoanDAL(loggerFactory);
+        }
+        public DataTable HienThiDanhSachTaiKhoan()
+        {
+            return taiKhoanDAL.LayToanBoTaiKhoan();
         }
         public DataTable ThemTaiKhoanMoi(TaikhoanDTO taiKhoan)
         {
@@ -38,23 +45,23 @@ namespace StudentManagment.BLL
             taiKhoan.HashedPassword = hashedPassword;
             return taoTaiKhoanDAL.ThemTaiKhoanMoi(taiKhoan);
         }
-	    public DataTable XoaTaiKhoan(string username)
+        public DataTable XoaTaiKhoan(string username)
         {
-		    if(string.IsNullOrEmpty(username))
+            if (string.IsNullOrEmpty(username))
             {
                 logger.LogWarning("Người dùng chưa nhập username trước khi xóa tài khoản.");
                 throw new ArgumentException();
             }
             return taoTaiKhoanDAL.XoaTaiKhoanTheoUsername(username);
         }
-	    public DataTable LayDanhSachTaiKhoanTheoDieuKienUsername(string username)
+        public DataTable LayDanhSachTaiKhoanTheoDieuKienUsername(string username)
         {
-            if(string.IsNullOrEmpty(username))
+            if (string.IsNullOrEmpty(username))
             {
                 logger.LogWarning("Người dùng chưa nhập username trước khi lấy danh sách tài khoản.");
                 throw new ArgumentException();
             }
-	        return taoTaiKhoanDAL.LayDanhSachTaiKhoanTheoDieuKienUsername(username);
+            return taoTaiKhoanDAL.LayDanhSachTaiKhoanTheoDieuKienUsername(username);
         }
     }
 }

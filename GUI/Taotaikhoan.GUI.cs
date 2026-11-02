@@ -142,7 +142,7 @@ namespace StudentManagment.GUI
                 }
                 else
                 {
-                    dgvTaikhoan.DataSource = taiKhoanDAL.LayToanBoTaiKhoan();
+                    dgvTaikhoan.DataSource = taoTaiKhoanBLL.HienThiDanhSachTaiKhoan();
                     MessageBox.Show("Tài khoản không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

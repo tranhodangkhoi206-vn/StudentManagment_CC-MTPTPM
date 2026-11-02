@@ -31,6 +31,9 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             dgvNganh = new DataGridView();
+            MANGANH = new DataGridViewTextBoxColumn();
+            TENNGANH = new DataGridViewTextBoxColumn();
+            KHOAQUANLY = new DataGridViewTextBoxColumn();
             label2 = new Label();
             tbManganh = new TextBox();
             tableLayoutPanel4 = new TableLayoutPanel();
@@ -53,9 +56,6 @@
             label1 = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
             tableLayoutPanel1 = new TableLayoutPanel();
-            MANGANH = new DataGridViewTextBoxColumn();
-            TENNGANH = new DataGridViewTextBoxColumn();
-            KHOAQUANLY = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvNganh).BeginInit();
             tableLayoutPanel4.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
@@ -97,6 +97,33 @@
             dgvNganh.ReadOnly = true;
             dgvNganh.Size = new Size(447, 533);
             dgvNganh.TabIndex = 1;
+            // 
+            // MANGANH
+            // 
+            MANGANH.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            MANGANH.DataPropertyName = "MANGANH";
+            MANGANH.HeaderText = "Mã ngành";
+            MANGANH.Name = "MANGANH";
+            MANGANH.ReadOnly = true;
+            MANGANH.Width = 98;
+            // 
+            // TENNGANH
+            // 
+            TENNGANH.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            TENNGANH.DataPropertyName = "TENNGANH";
+            TENNGANH.HeaderText = "Tên ngành";
+            TENNGANH.Name = "TENNGANH";
+            TENNGANH.ReadOnly = true;
+            TENNGANH.Width = 101;
+            // 
+            // KHOAQUANLY
+            // 
+            KHOAQUANLY.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            KHOAQUANLY.DataPropertyName = "KHOAQUANLY";
+            KHOAQUANLY.HeaderText = "Khoa quản lý";
+            KHOAQUANLY.Name = "KHOAQUANLY";
+            KHOAQUANLY.ReadOnly = true;
+            KHOAQUANLY.Width = 118;
             // 
             // label2
             // 
@@ -187,6 +214,7 @@
             btnTimkiem.TabIndex = 1;
             btnTimkiem.Text = "Tìm kiếm";
             btnTimkiem.UseVisualStyleBackColor = true;
+            btnTimkiem.Click += btnTimkiem_Click;
             // 
             // label9
             // 
@@ -226,6 +254,7 @@
             btnDondep.TabIndex = 2;
             btnDondep.Text = "Dọn dẹp";
             btnDondep.UseVisualStyleBackColor = true;
+            btnDondep.Click += btnDondep_Click;
             // 
             // btnSua
             // 
@@ -237,6 +266,7 @@
             btnSua.TabIndex = 1;
             btnSua.Text = "Sửa";
             btnSua.UseVisualStyleBackColor = true;
+            btnSua.Click += btnSua_Click;
             // 
             // tableLayoutPanel12
             // 
@@ -264,6 +294,7 @@
             btnXoa.TabIndex = 1;
             btnXoa.Text = "Xóa";
             btnXoa.UseVisualStyleBackColor = true;
+            btnXoa.Click += btnXoa_Click;
             // 
             // btnThem
             // 
@@ -275,6 +306,7 @@
             btnThem.TabIndex = 0;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = true;
+            btnThem.Click += btnThem_Click;
             // 
             // tableLayoutPanel6
             // 
@@ -400,33 +432,6 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.Size = new Size(790, 611);
             tableLayoutPanel1.TabIndex = 1;
-            // 
-            // MANGANH
-            // 
-            MANGANH.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            MANGANH.DataPropertyName = "MANGANH";
-            MANGANH.HeaderText = "Mã ngành";
-            MANGANH.Name = "MANGANH";
-            MANGANH.ReadOnly = true;
-            MANGANH.Width = 98;
-            // 
-            // TENNGANH
-            // 
-            TENNGANH.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            TENNGANH.DataPropertyName = "TENNGANH";
-            TENNGANH.HeaderText = "Tên ngành";
-            TENNGANH.Name = "TENNGANH";
-            TENNGANH.ReadOnly = true;
-            TENNGANH.Width = 101;
-            // 
-            // KHOAQUANLY
-            // 
-            KHOAQUANLY.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            KHOAQUANLY.DataPropertyName = "KHOAQUANLY";
-            KHOAQUANLY.HeaderText = "Khoa quản lý";
-            KHOAQUANLY.Name = "KHOAQUANLY";
-            KHOAQUANLY.ReadOnly = true;
-            KHOAQUANLY.Width = 118;
             // 
             // Quanlynganhhoc
             // 

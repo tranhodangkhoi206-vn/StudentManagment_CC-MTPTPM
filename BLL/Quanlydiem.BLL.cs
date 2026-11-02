@@ -59,5 +59,14 @@ namespace StudentManagment.BLL
             }
             return quanlydiemDAL.XoaThongTinDiemTheoMaSinhVienVaMaMon(maSinhVien, maMon);
         }
+	    public DataTable TimKiemDiemTheoMaSinhVienVaMaMon(string maSinhVien, string maMonHoc)
+        {
+		    if(string.IsNullOrEmpty(maSinhVien)||string.IsNullOrEmpty(maMonHoc))
+            {
+                logger.LogWarning("Người dùng chưa nhập mã môn và mã sinh viên khi tìm kiếm.");
+                throw new ArgumentException();
+            }
+            return quanlydiemDAL.LaySinhVienTheoDieuKienMaSinhVienVaMaMon(maSinhVien,maMonHoc);
+        }
     }
 }

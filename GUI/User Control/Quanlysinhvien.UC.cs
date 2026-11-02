@@ -8,6 +8,7 @@ namespace StudentManagment.GUI.User_Control
 {
     public partial class Quanlysinhvien : UserControl
     {
+        private readonly ILogger<Quanlysinhvien> logger;
         private QuanlysinhvienBLL quanlysinhvienBLL;
         public Quanlysinhvien(ILoggerFactory loggerFactory)
         {
@@ -119,7 +120,7 @@ namespace StudentManagment.GUI.User_Control
             }
         }
 
-        private void btnLammoi_Click(object sender, EventArgs e)
+        private void btnDondep_Click(object sender, EventArgs e)
         {
             tbMasinhvien.Text = "";
             tbHovaten.Text = "";
@@ -132,7 +133,32 @@ namespace StudentManagment.GUI.User_Control
 
         private void btnTimkiem_Click(object sender, EventArgs e)
         {
-            string maSinhVien = tbMasinhvien.Text.ToString().Trim();
+            try
+            {
+                string maSinhVien = tbMasinhvien.Text.ToString().Trim();
+                DataTable dt = quanlysinhvienBLL.TimKiemSinhVien(maSinhVien);
+		        if (dt.Rows.Count != 0)
+                {
+                    dgvSinhvien.DataSource = dt;
+                }
+                else
+                {
+                    dgvSinhvien.DataSource = quanlysinhvienBLL.HienThiDanhSachSinhVien(); 
+                    MessageBox.Show("Sinh viên không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Xảy ra lỗi cơ sở dữ liệu khi tìm kiếm sinh viên.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Bạn phải nhập username trước khi tìm kiếm sinh viên.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Xảy ra lỗi khi tìm kiếm sinh viên.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
     }

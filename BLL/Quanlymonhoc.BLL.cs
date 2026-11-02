@@ -61,5 +61,14 @@ namespace StudentManagment.BLL
             }
             return quanlymonhocDAL.XoaThongTinMonHocTheoMaMon(maMonHoc);
         }
+	public DataTable TimKiemMonHocTheoMaMon(string maMon)
+        {
+		    if(string.IsNullOrEmpty(maMon))
+            {
+                logger.LogWarning("Người dùng chưa nhập mã môn khi tìm kiếm môn học.");
+                throw new ArgumentException();
+            }
+            return quanlymonhocDAL.LayDanhSachMonHocTheoDieuKienMaMon(maMon);
+        }
     }
 }

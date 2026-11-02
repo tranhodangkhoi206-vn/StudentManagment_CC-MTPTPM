@@ -53,5 +53,14 @@ namespace StudentManagment.BLL
             }
             return quanlynganhhocDAL.XoaThongTinNganhTheoMaNganh(maNganh);
         }
+        public DataTable TimKiemNganhHoc(string maNganh)
+        {
+            if (string.IsNullOrEmpty(maNganh))
+            {
+                logger.LogWarning("Người dùng hưa nhập mã ngành khi tìm kiếm ngành học.");
+                throw new ArgumentException();
+            }
+            return quanlynganhhocDAL.LayDanhSachNganhHocTheoDieuKienMaNganh(maNganh);
+        }
     }
 }
