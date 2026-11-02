@@ -132,16 +132,31 @@ namespace StudentManagment.GUI
 
         private void btnTimkiem_Click(object sender, EventArgs e)
         {
-            string username = tbTennguoidung.Text.ToString().Trim();
-	        DataTable dt = taoTaiKhoanBLL.LayDanhSachTaiKhoanTheoDieuKienUsername(username);
-		    if (dt.Rows.Count != 0)
+            try
             {
-                dgvTaikhoan.DataSource = dt;
+                string username = tbTennguoidung.Text.ToString().Trim();
+                DataTable dt = taoTaiKhoanBLL.LayDanhSachTaiKhoanTheoDieuKienUsername(username);
+                if (dt.Rows.Count != 0)
+                {
+                    dgvTaikhoan.DataSource = dt;
+                }
+                else
+                {
+                    dgvTaikhoan.DataSource = taiKhoanDAL.LayToanBoTaiKhoan();
+                    MessageBox.Show("Tài khoản không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            catch (SqlException)
             {
-                dgvTaikhoan.DataSource = taiKhoanDAL.LayToanBoTaiKhoan();
-                MessageBox.Show("Tài khoản không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Xảy ra lỗi cơ sở dữ liệu khi tìm kiếm tài khoản.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Bạn phải nhập username trước khi tìm kiếm tài khoản.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Xảy ra lỗi khi tìm kiếm tài khoản.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
