@@ -30,19 +30,19 @@ namespace StudentManagment.DAL
                     cmd.Parameters.AddWithValue("@DIEMTONG", diemMoi.Diemtong);
                     cmd.ExecuteNonQuery();
 
-                    logger.LogInformation("Đang thêm điểm mới vào danh sách điểm. Với dữ liệu:\nMã sinh viên: {0},\nMã môn: {1},\nĐiểm chuyên cần: {2},\nĐiểm giữa kỳ: {3},\nĐiểm cuối kỳ: {4},\nĐiểm tổng: {5}", diemMoi.Masinhvien, diemMoi.Mamon, diemMoi.Diemchuyencan, diemMoi.Diemgiuaky, diemMoi.Diemcuoiky, diemMoi.Diemtong);
+                    logger.LogInformation("Thêm điểm mới vào danh sách điểm.\nMã sinh viên: {0},\nMã môn: {1},\nĐiểm chuyên cần: {2},\nĐiểm giữa kỳ: {3},\nĐiểm cuối kỳ: {4},\nĐiểm tổng: {5}", diemMoi.Masinhvien, diemMoi.Mamon, diemMoi.Diemchuyencan, diemMoi.Diemgiuaky, diemMoi.Diemcuoiky, diemMoi.Diemtong);
 
                     return diemDAL.LayToanBoDiem();
                 }
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi thêm điểm mới. Với thông tin:\nMã sinh viên: {0},\nMã môn: {1},\nĐiểm chuyên cần: {2},\nĐiểm giữa kỳ: {3},\nĐiểm cuối kỳ: {4},\nĐiểm tổng: {5}", diemMoi.Masinhvien, diemMoi.Mamon, diemMoi.Diemchuyencan, diemMoi.Diemgiuaky, diemMoi.Diemcuoiky, diemMoi.Diemtong);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi thêm điểm.\nMã sinh viên: {0},\nMã môn: {1},\nĐiểm chuyên cần: {2},\nĐiểm giữa kỳ: {3},\nĐiểm cuối kỳ: {4},\nĐiểm tổng: {5}", diemMoi.Masinhvien, diemMoi.Mamon, diemMoi.Diemchuyencan, diemMoi.Diemgiuaky, diemMoi.Diemcuoiky, diemMoi.Diemtong);
                 throw;
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Xảy ra lỗi khi thêm điểm của sinh viên có mã sinh viên {0} môn {1} vào danh sách điểm. Với dữ liệu:\nĐiểm chuyên cần: {2},\nĐiểm giữa kỳ: {3},\nĐiểm cuối kỳ: {4},\nĐiểm tổng: {5}", diemMoi.Masinhvien, diemMoi.Mamon, diemMoi.Diemchuyencan, diemMoi.Diemgiuaky, diemMoi.Diemcuoiky, diemMoi.Diemtong);
+                logger.LogError(ex, "Xảy ra lỗi khi thêm điểm.\nMã sinh viên: {0},\nMã môn: {1},\nĐiểm chuyên cần: {2},\nĐiểm giữa kỳ: {3},\nĐiểm cuối kỳ: {4},\nĐiểm tổng: {5}", diemMoi.Masinhvien, diemMoi.Mamon, diemMoi.Diemchuyencan, diemMoi.Diemgiuaky, diemMoi.Diemcuoiky, diemMoi.Diemtong);
                 throw;
             }
         }
@@ -62,19 +62,19 @@ namespace StudentManagment.DAL
                     cmd.Parameters.AddWithValue("@DIEMTONG", diemSua.Diemtong);
                     cmd.ExecuteNonQuery();
 
-                    logger.LogInformation("Đang sửa điểm của sinh viên có mã sinh viên {0} môn {1} trong danh sách điểm. Với dữ liệu:\nĐiểm chuyên cần: {2},\nĐiểm giữa kỳ: {3},\nĐiểm cuối kỳ: {4},\nĐiểm tổng: {5}", diemSua.Masinhvien, diemSua.Mamon, diemSua.Diemchuyencan, diemSua.Diemgiuaky, diemSua.Diemcuoiky, diemSua.Diemtong);
+                    logger.LogInformation("Sửa điểm trong danh sách điểm.\nMã sinh viên: {0},\nMã môn: {1},\nĐiểm chuyên cần: {2},\nĐiểm giữa kỳ: {3},\nĐiểm cuối kỳ: {4},\nĐiểm tổng: {5}", diemSua.Masinhvien, diemSua.Mamon, diemSua.Diemchuyencan, diemSua.Diemgiuaky, diemSua.Diemcuoiky, diemSua.Diemtong);
 
                     return diemDAL.LayToanBoDiem();
                 }
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi sửa điểm của sinh viên có mã sinh viên {0} môn {1} trong danh sách điểm. Với dữ liệu:\nĐiểm chuyên cần: {2},\nĐiểm giữa kỳ: {3},\nĐiểm cuối kỳ: {4},\nĐiểm tổng: {5}", diemSua.Masinhvien, diemSua.Mamon, diemSua.Diemchuyencan, diemSua.Diemgiuaky, diemSua.Diemcuoiky, diemSua.Diemtong);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi sửa điểm.\nMã sinh viên: {0},\nMã môn: {1},\nĐiểm chuyên cần: {2},\nĐiểm giữa kỳ: {3},\nĐiểm cuối kỳ: {4},\nĐiểm tổng: {5}", diemSua.Masinhvien, diemSua.Mamon, diemSua.Diemchuyencan, diemSua.Diemgiuaky, diemSua.Diemcuoiky, diemSua.Diemtong);
                 throw;
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Xảy ra lỗi khi sửa điểm của sinh viên có mã sinh viên {0} môn {1} trong danh sách điểm. Với dữ liệu:\nĐiểm chuyên cần: {2},\nĐiểm giữa kỳ: {3},\nĐiểm cuối kỳ: {4},\nĐiểm tổng: {5}", diemSua.Masinhvien, diemSua.Mamon, diemSua.Diemchuyencan, diemSua.Diemgiuaky, diemSua.Diemcuoiky, diemSua.Diemtong);
+                logger.LogError(ex, "Xảy ra lỗi khi sửa điểm.\nMã sinh viên: {0},\nMã môn: {1},\nĐiểm chuyên cần: {2},\nĐiểm giữa kỳ: {3},\nĐiểm cuối kỳ: {4},\nĐiểm tổng: {5}", diemSua.Masinhvien, diemSua.Mamon, diemSua.Diemchuyencan, diemSua.Diemgiuaky, diemSua.Diemcuoiky, diemSua.Diemtong);
                 throw;
             }
         }
@@ -90,19 +90,19 @@ namespace StudentManagment.DAL
                     cmd.Parameters.AddWithValue("@MAMON", maMon);
                     cmd.ExecuteNonQuery();
 
-                    logger.LogInformation("Đang xóa điểm của sinh viên có mã sinh viên {0} môn {1} khỏi danh sách điểm.", maSinhVien, maMon);
+                    logger.LogInformation("Xóa điểm khỏi danh sách điểm.\nMã sinh viên: {0},\nMã môn: {1}", maSinhVien, maMon);
 
                     return diemDAL.LayToanBoDiem();
                 }
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi xóa điểm của sinh viên có mã sinh viên {0} môn {1} khỏi danh sách điểm", maSinhVien, maMon);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi xóa điểm.\nMã sinh viên: {0},\nMã môn: {1},", maSinhVien, maMon);
                 throw;
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Xảy ra lỗi khi xóa điểm của sinh viên có mã sinh viên {0} môn {1}", maSinhVien, maMon);
+                logger.LogError(ex, "Xảy ra lỗi khi xóa điểm.\nMã sinh viên: {0},\nMã môn: {1}", maSinhVien, maMon);
                 throw;
             }
         }
@@ -119,19 +119,19 @@ namespace StudentManagment.DAL
                     cmd.Parameters.AddWithValue("@MASINHVIEN", maSinhVien);
                     cmd.Parameters.AddWithValue("@MAMON", maMon);
                     adapter.SelectCommand = cmd;
-                    logger.LogInformation("Đang lấy danh sách điểm theo điều kiện mã sinh viên và mã môn học...");
+                    logger.LogInformation("Lấy sinh viên theo điều kiện Mã sinh viên và Mã môn học.\nMã sinh viên: {0},\nMã môn học: {1}", maSinhVien, maMon);
                     adapter.Fill(dt);
                     return dt;
                 }
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi tìm kiếm điểm có mã sinh viên {0} và mã môn học {1}.", maSinhVien, maMon);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi lấy sinh viên theo điều khiên Mã sin viên và Mã môn học.\nMã sinh viên: {0},\nMã môn học: {1}", maSinhVien, maMon);
                 throw;
             }
-	        catch (Exception ex)
+            catch (Exception ex)
             {
-                logger.LogError(ex, "Xảy ra lỗi khi tìm kiếm điểm theo điều kiện mã sinh viên {0} và mã môn học {1}.", maSinhVien, maMon);
+                logger.LogError(ex, "Xảy ra lỗi khi lấy sinh viên theo điều kiện Mã sinh viên và Mã môn học.\nMã sinh viên: {0},\nMã môn học: {1}", maSinhVien, maMon);
                 throw;
             }
         }
