@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Security.Policy;
 using Microsoft.Extensions.Logging;
 using StudentManagment.DAL;
 using StudentManagment.DTO;
@@ -36,6 +37,15 @@ namespace StudentManagment.BLL
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(taiKhoan.HashedPassword, 12);
             taiKhoan.HashedPassword = hashedPassword;
             return taoTaiKhoanDAL.ThemTaiKhoanMoi(taiKhoan);
+        }
+	    public DataTable XoaTaiKhoan(string username)
+        {
+		    if(string.IsNullOrEmpty(username))
+            {
+                logger.LogWarning("Người dùng chưa nhập username trước khi xóa tài khoản.");
+                throw new ArgumentException();
+            }
+            return taoTaiKhoanDAL.XoaTaiKhoanTheoUsername(username);
         }
 	    public DataTable LayDanhSachTaiKhoanTheoDieuKienUsername(string username)
         {

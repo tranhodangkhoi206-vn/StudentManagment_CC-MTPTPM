@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System.Configuration;
+using System.Data;
 using System.Reflection.Metadata;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
@@ -70,6 +71,33 @@ namespace StudentManagment.DAL
                 logger.LogError(ex, "Xảy ra lỗi khi sửa tài khoản.\nHọ và tên: {0}", taiKhoan.Hovaten);
                 throw;
             }
+        }
+	    public DataTable XoaTaiKhoanTheoUsername(string username)
+        {
+            try
+            {
+                using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
+                {
+                    SqlCommand cmd = new SqlCommand("DELETE TAIKHOAN WHERE USERNAME=@USERNAME", conn);
+                    cmd.Parameters.AddWithValue("@USERNAME",username);
+                    cmd.ExecuteNonQuery();
+
+                    logger.LogInformation("Xóa tài khoản khỏi danh sách tài khoản.\nUsername: {0}", username);
+
+                    return taiKhoanDAL.LayToanBoTaiKhoan();
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi xóa tài khoản.\nUsername: {0}",username);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Xảy ra lỗi khi xóa tài khoản.\nUsername: {0}",username);
+                throw;
+            }
+
         }
         public DataTable LayDanhSachTaiKhoanTheoDieuKienUsername(string username)
         {

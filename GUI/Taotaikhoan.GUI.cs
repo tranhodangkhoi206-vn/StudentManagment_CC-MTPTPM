@@ -68,7 +68,27 @@ namespace StudentManagment.GUI
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                string username = tbTennguoidung.Text.ToString().Trim();
+                DataTable dt = taoTaiKhoanBLL.XoaTaiKhoan(username);
+                if (dt.Rows.Count != 0)
+                {
+                    dgvTaikhoan.DataSource = dt;
+                }
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Xảy ra lỗi cơ sở dữ liệu khi thêm tài khoản mới.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Bạn phải nhập đầy đủ thông tin trước khi thêm tài khoản mới.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Xảy ra lỗi khi thêm tài khoản mới.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
