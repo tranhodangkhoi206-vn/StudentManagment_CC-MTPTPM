@@ -30,6 +30,7 @@
         {
             label1 = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
+            btnTaotaikhoan = new Button();
             txbMatkhau = new TextBox();
             label4 = new Label();
             label2 = new Label();
@@ -51,7 +52,7 @@
             label1.ForeColor = SystemColors.ButtonHighlight;
             label1.Location = new Point(3, 0);
             label1.Name = "label1";
-            label1.Size = new Size(540, 61);
+            label1.Size = new Size(567, 61);
             label1.TabIndex = 0;
             label1.Text = "Phần mền quản lý Sinh viên";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -61,6 +62,7 @@
             tableLayoutPanel1.ColumnCount = 2;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 363F));
+            tableLayoutPanel1.Controls.Add(btnTaotaikhoan, 0, 3);
             tableLayoutPanel1.Controls.Add(txbMatkhau, 1, 2);
             tableLayoutPanel1.Controls.Add(label4, 0, 2);
             tableLayoutPanel1.Controls.Add(label1, 0, 0);
@@ -75,15 +77,26 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 70F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 70F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 70F));
-            tableLayoutPanel1.Size = new Size(546, 288);
+            tableLayoutPanel1.Size = new Size(573, 288);
             tableLayoutPanel1.TabIndex = 1;
+            // 
+            // btnTaotaikhoan
+            // 
+            btnTaotaikhoan.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnTaotaikhoan.Location = new Point(3, 204);
+            btnTaotaikhoan.Name = "btnTaotaikhoan";
+            btnTaotaikhoan.Size = new Size(160, 50);
+            btnTaotaikhoan.TabIndex = 7;
+            btnTaotaikhoan.Text = "Tạo tài khoản";
+            btnTaotaikhoan.UseVisualStyleBackColor = true;
+            btnTaotaikhoan.Click += btnTaotaikhoan_Click;
             // 
             // txbMatkhau
             // 
             txbMatkhau.Anchor = AnchorStyles.Left;
             txbMatkhau.BorderStyle = BorderStyle.FixedSingle;
             txbMatkhau.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbMatkhau.Location = new Point(186, 148);
+            txbMatkhau.Location = new Point(213, 148);
             txbMatkhau.Name = "txbMatkhau";
             txbMatkhau.Size = new Size(357, 36);
             txbMatkhau.TabIndex = 1;
@@ -92,10 +105,10 @@
             // 
             label4.AutoSize = true;
             label4.Dock = DockStyle.Fill;
-            label4.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.Location = new Point(3, 131);
             label4.Name = "label4";
-            label4.Size = new Size(177, 70);
+            label4.Size = new Size(204, 70);
             label4.TabIndex = 3;
             label4.Text = "Mật khẩu:";
             label4.TextAlign = ContentAlignment.MiddleLeft;
@@ -104,10 +117,10 @@
             // 
             label2.AutoSize = true;
             label2.Dock = DockStyle.Fill;
-            label2.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.Location = new Point(3, 61);
             label2.Name = "label2";
-            label2.Size = new Size(177, 70);
+            label2.Size = new Size(204, 70);
             label2.TabIndex = 1;
             label2.Text = "Tên người dùng: ";
             label2.TextAlign = ContentAlignment.MiddleLeft;
@@ -117,7 +130,7 @@
             txbTennguoidung.Anchor = AnchorStyles.Left;
             txbTennguoidung.BorderStyle = BorderStyle.FixedSingle;
             txbTennguoidung.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbTennguoidung.Location = new Point(186, 78);
+            txbTennguoidung.Location = new Point(213, 78);
             txbTennguoidung.Name = "txbTennguoidung";
             txbTennguoidung.Size = new Size(357, 36);
             txbTennguoidung.TabIndex = 0;
@@ -130,7 +143,7 @@
             tableLayoutPanel2.Controls.Add(btnThoat, 1, 0);
             tableLayoutPanel2.Controls.Add(btnDangnhap, 0, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(183, 201);
+            tableLayoutPanel2.Location = new Point(210, 201);
             tableLayoutPanel2.Margin = new Padding(0);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
@@ -140,10 +153,10 @@
             // 
             // btnThoat
             // 
-            btnThoat.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnThoat.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnThoat.Location = new Point(184, 3);
             btnThoat.Name = "btnThoat";
-            btnThoat.Size = new Size(123, 50);
+            btnThoat.Size = new Size(141, 50);
             btnThoat.TabIndex = 3;
             btnThoat.Text = "Thoát";
             btnThoat.UseVisualStyleBackColor = true;
@@ -151,10 +164,10 @@
             // 
             // btnDangnhap
             // 
-            btnDangnhap.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDangnhap.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDangnhap.Location = new Point(3, 3);
             btnDangnhap.Name = "btnDangnhap";
-            btnDangnhap.Size = new Size(123, 50);
+            btnDangnhap.Size = new Size(141, 50);
             btnDangnhap.TabIndex = 2;
             btnDangnhap.Text = "Đăng nhập";
             btnDangnhap.UseVisualStyleBackColor = true;
@@ -162,14 +175,15 @@
             // 
             // frmDangnhap
             // 
-            AutoScaleDimensions = new SizeF(6F, 14F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(546, 288);
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
+            ClientSize = new Size(573, 288);
             Controls.Add(tableLayoutPanel1);
             Font = new Font("Roboto Condensed", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Name = "frmDangnhap";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Đăng nhập";
+            FormClosed += frmDangnhap_FormClosed;
             Load += frmDangnhap_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
@@ -188,5 +202,6 @@
         private TableLayoutPanel tableLayoutPanel2;
         private Button btnThoat;
         private Button btnDangnhap;
+        private Button btnTaotaikhoan;
     }
 }
