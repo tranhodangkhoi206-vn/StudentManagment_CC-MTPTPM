@@ -16,7 +16,7 @@ namespace StudentManagment.DAL
         {
             logger = loggerFactory.CreateLogger<DangnhapDAL>();
         }
-        public TaikhoanDTO LayTaiKhoanCoDieuKien(string username, string password, bool admin)
+        public TaikhoanDTO LayTaiKhoanCoDieuKien(string username, bool admin)
         {
             try
             {
@@ -28,7 +28,7 @@ namespace StudentManagment.DAL
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.Read())
                     {
-                        logger.LogInformation("Lấy thông tin tài khoản từ cơ sở dữ liệu. Username: {0}.", username);
+                        logger.LogInformation("Lấy tài khoản theo điều kiện Username và Admin.\nUsername: {0},\nAdmin: {1}.", username, admin);
                         return new TaikhoanDTO
                         {
                             Hovaten = reader["HOVATEN"].ToString().Trim(),
@@ -36,18 +36,18 @@ namespace StudentManagment.DAL
                             HashedPassword = reader["HASHEDPASSWORD"].ToString().Trim()
                         };
                     }
-                    logger.LogWarning("Không tìm thấy thông tin tài khoản từ cơ sở dữ liệu. Username: {0}.", username);
+                    logger.LogWarning("Không tìm thấy tài khoản.\nUsername: {0},\nAdmin: {1}.", username, admin);
                     return null;
                 }
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Lỗi kết nối cơ sỡ dữ liệu khi đang lấy thông tin tài khoản. Username: {0}.", username);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi lấy tài khoản theo điều kiện Username và Admin.\nUsername: {0},\nAdmin: {1}", username, admin);
                 throw;
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Lỗi xảy ra khi lấy thông tin khoản. Username: {0}", username);
+                logger.LogError(ex, "Xảy ra lỗi khi lấy tài khoản theo điều kiện Username và Admin.\nUsername: {0},\nAdmin: {1}", username, admin);
                 throw;
             }
         }
