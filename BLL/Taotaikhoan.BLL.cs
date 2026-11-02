@@ -1,0 +1,30 @@
+﻿using System.Data;
+using Microsoft.Extensions.Logging;
+using StudentManagment.DAL;
+using StudentManagment.DTO;
+
+namespace StudentManagment.BLL
+{
+    public class TaotaikhoanBLL
+    {
+        private readonly ILogger<TaotaikhoanBLL> logger;
+        private TaotaikhoanDAL taoTaiKhoanDAL;
+        public TaotaikhoanBLL(ILoggerFactory loggerFactory)
+        {
+            logger = loggerFactory.CreateLogger<TaotaikhoanBLL>();
+            taoTaiKhoanDAL = new TaotaikhoanDAL(loggerFactory);
+        }
+        public DataTable ThemTaiKhoanMoi(TaikhoanDTO taiKhoan)
+        {
+            if (string.IsNullOrEmpty(taiKhoan.Hovaten) || string.IsNullOrEmpty(taiKhoan.Username) || string.IsNullOrEmpty(taiKhoan.HashedPassword))
+            {
+                logger.LogWarning("Người dùng chưa nhập đầy đủ thông tin trước khi thêm tài khoản.");
+                throw new ArgumentException();
+            }
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(taiKhoan.HashedPassword, 12);
+            taiKhoan.HashedPassword = hashedPassword;
+            taiKhoan.Admin = false;
+            return taoTaiKhoanDAL.ThemTaiKhoanMoi(taiKhoan);
+        }
+    }
+}

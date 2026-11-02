@@ -36,7 +36,6 @@
             dgvTaikhoan = new DataGridView();
             HOVATEN = new DataGridViewTextBoxColumn();
             USERNAME = new DataGridViewTextBoxColumn();
-            HASHEDPASSWORD = new DataGridViewTextBoxColumn();
             tableLayoutPanel1 = new TableLayoutPanel();
             label1 = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
@@ -123,7 +122,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvTaikhoan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvTaikhoan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvTaikhoan.Columns.AddRange(new DataGridViewColumn[] { HOVATEN, USERNAME, HASHEDPASSWORD });
+            dgvTaikhoan.Columns.AddRange(new DataGridViewColumn[] { HOVATEN, USERNAME });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -143,33 +142,21 @@
             // 
             // HOVATEN
             // 
-            HOVATEN.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            HOVATEN.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             HOVATEN.DataPropertyName = "HOVATEN";
             HOVATEN.HeaderText = "Họ và tên";
             HOVATEN.MinimumWidth = 6;
             HOVATEN.Name = "HOVATEN";
             HOVATEN.ReadOnly = true;
-            HOVATEN.Width = 88;
             // 
             // USERNAME
             // 
-            USERNAME.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            USERNAME.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             USERNAME.DataPropertyName = "USERNAME";
             USERNAME.HeaderText = "Tên người dùng";
             USERNAME.MinimumWidth = 6;
             USERNAME.Name = "USERNAME";
             USERNAME.ReadOnly = true;
-            USERNAME.Width = 123;
-            // 
-            // HASHEDPASSWORD
-            // 
-            HASHEDPASSWORD.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            HASHEDPASSWORD.DataPropertyName = "HASHEDPASSWORD";
-            HASHEDPASSWORD.HeaderText = "Mật khẩu mã hóa";
-            HASHEDPASSWORD.MinimumWidth = 6;
-            HASHEDPASSWORD.Name = "HASHEDPASSWORD";
-            HASHEDPASSWORD.ReadOnly = true;
-            HASHEDPASSWORD.Width = 112;
             // 
             // tableLayoutPanel1
             // 
@@ -276,6 +263,7 @@
             btnTimkiem.TabIndex = 1;
             btnTimkiem.Text = "Tìm kiếm";
             btnTimkiem.UseVisualStyleBackColor = true;
+            btnTimkiem.Click += btnTimkiem_Click;
             // 
             // label9
             // 
@@ -315,6 +303,7 @@
             btnDondep.TabIndex = 2;
             btnDondep.Text = "Dọn dẹp";
             btnDondep.UseVisualStyleBackColor = true;
+            btnDondep.Click += btnDondep_Click;
             // 
             // btnSua
             // 
@@ -326,6 +315,7 @@
             btnSua.TabIndex = 1;
             btnSua.Text = "Sửa";
             btnSua.UseVisualStyleBackColor = true;
+            btnSua.Click += btnSua_Click;
             // 
             // tableLayoutPanel12
             // 
@@ -353,6 +343,7 @@
             btnXoa.TabIndex = 1;
             btnXoa.Text = "Xóa";
             btnXoa.UseVisualStyleBackColor = true;
+            btnXoa.Click += btnXoa_Click;
             // 
             // btnThem
             // 
@@ -364,6 +355,7 @@
             btnThem.TabIndex = 0;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = true;
+            btnThem.Click += btnThem_Click;
             // 
             // tableLayoutPanel5
             // 
@@ -467,6 +459,7 @@
             btnDangxuat.TabIndex = 2;
             btnDangxuat.Text = "Đăng xuất";
             btnDangxuat.UseVisualStyleBackColor = true;
+            btnDangxuat.Click += btnDangxuat_Click;
             // 
             // label5
             // 
@@ -489,6 +482,7 @@
             Name = "frmTaotaikhoan";
             Text = "Tạo tài khoản";
             FormClosed += frmTaotaikhoan_FormClosed;
+            Load += frmTaotaikhoan_Load;
             tableLayoutPanel4.ResumeLayout(false);
             tableLayoutPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvTaikhoan).EndInit();
@@ -533,11 +527,10 @@
         private TableLayoutPanel tableLayoutPanel12;
         private Button btnXoa;
         private Button btnThem;
-        private DataGridViewTextBoxColumn HOVATEN;
-        private DataGridViewTextBoxColumn USERNAME;
-        private DataGridViewTextBoxColumn HASHEDPASSWORD;
         private TableLayoutPanel tableLayoutPanel7;
         private Label label5;
         private Button btnDangxuat;
+        private DataGridViewTextBoxColumn HOVATEN;
+        private DataGridViewTextBoxColumn USERNAME;
     }
 }

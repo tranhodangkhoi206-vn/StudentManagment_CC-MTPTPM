@@ -7,19 +7,90 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Logging;
+using StudentManagment.BLL;
+using StudentManagment.DAL.Util;
+using StudentManagment.DTO;
 
 namespace StudentManagment.GUI
 {
     public partial class frmTaotaikhoan : Form
     {
-        public frmTaotaikhoan()
+        private readonly ILogger<frmTaotaikhoan> logger;
+        private TaotaikhoanBLL taoTaiKhoanBLL;
+        private TaikhoanDAL taiKhoanDAL;
+        public frmTaotaikhoan(ILoggerFactory loggerFactory, string tenHienThi)
         {
             InitializeComponent();
+            logger = loggerFactory.CreateLogger<frmTaotaikhoan>();
+            taoTaiKhoanBLL = new TaotaikhoanBLL(loggerFactory);
+            taiKhoanDAL = new TaikhoanDAL(loggerFactory);
         }
 
         private void frmTaotaikhoan_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
+        private void frmTaotaikhoan_Load(object sender, EventArgs e)
+        {
+            dgvTaikhoan.DataSource = taiKhoanDAL.LayToanBoTaiKhoan();
+        }
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TaikhoanDTO taiKhoan = new TaikhoanDTO()
+                {
+                    Hovaten = tbHovaten.Text.ToString().Trim(),
+                    Username = tbTennguoidung.Text.ToString().Trim(),
+                    HashedPassword = tbMatkhau.Text.ToString().Trim(),
+                };
+                DataTable dt = taoTaiKhoanBLL.ThemTaiKhoanMoi(taiKhoan);
+                if (dt.Rows.Count != 0)
+                {
+                    dgvTaikhoan.DataSource = dt;
+                }
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Xảy ra lỗi cơ sở dữ liệu khi thêm tài khoản mới.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Bạn phải nhập đầy đủ thông tin trước khi thêm tài khoản mới.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Xảy ra lỗi khi thêm tài khoản mới.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDondep_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTimkiem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDangxuat_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }
