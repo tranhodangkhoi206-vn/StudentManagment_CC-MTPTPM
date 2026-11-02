@@ -31,19 +31,19 @@ namespace StudentManagment.DAL
                     cmd.Parameters.AddWithValue("@TINHTRANG", sinhVienSua.TinhTrang);
                     cmd.ExecuteNonQuery();
 
-                    logger.LogInformation("Đang thêm sinh viên mới vào danh sách sinh viên. Với dữ liệu:\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVienSua.MaSinhVien, sinhVienSua.HoVaTen, sinhVienSua.MaLop, sinhVienSua.NgaySinh, sinhVienSua.GioiTinh, sinhVienSua.MaNganh, sinhVienSua.TinhTrang);
+                    logger.LogInformation("Thêm sinh viên mới vào danh sách sinh viên.\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVienSua.MaSinhVien, sinhVienSua.HoVaTen, sinhVienSua.MaLop, sinhVienSua.NgaySinh, sinhVienSua.GioiTinh, sinhVienSua.MaNganh, sinhVienSua.TinhTrang);
 
                     return sinhvienDAL.LayToanBoSinhVien();
                 }
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi thêm sinh viên mới. Với thông tin:\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVienSua.MaSinhVien, sinhVienSua.HoVaTen, sinhVienSua.MaLop, sinhVienSua.NgaySinh, sinhVienSua.GioiTinh, sinhVienSua.MaNganh, sinhVienSua.TinhTrang);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi thêm sinh viên mới.\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVienSua.MaSinhVien, sinhVienSua.HoVaTen, sinhVienSua.MaLop, sinhVienSua.NgaySinh, sinhVienSua.GioiTinh, sinhVienSua.MaNganh, sinhVienSua.TinhTrang);
                 throw;
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Xảy ra lỗi khi thêm sinh viên có mã sinh viên {0} vào danh sách sinh viên. Với dữ liệu:\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVienSua.MaSinhVien, sinhVienSua.HoVaTen, sinhVienSua.MaLop, sinhVienSua.NgaySinh, sinhVienSua.GioiTinh, sinhVienSua.MaNganh, sinhVienSua.TinhTrang);
+                logger.LogError(ex, "Xảy ra lỗi khi thêm sinh viên mới.\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVienSua.MaSinhVien, sinhVienSua.HoVaTen, sinhVienSua.MaLop, sinhVienSua.NgaySinh, sinhVienSua.GioiTinh, sinhVienSua.MaNganh, sinhVienSua.TinhTrang);
                 throw;
             }
         }
@@ -62,18 +62,18 @@ namespace StudentManagment.DAL
                     cmd.Parameters.AddWithValue("@MANGANH", sinhVienSua.MaNganh);
                     cmd.Parameters.AddWithValue("@TINHTRANG", sinhVienSua.TinhTrang);
                     cmd.ExecuteNonQuery();
-                    logger.LogInformation("Đang sửa sinh viên có mã sinh viên {0} vào danh sách sinh viên. Với dữ liệu:\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVienSua.MaSinhVien, sinhVienSua.HoVaTen, sinhVienSua.MaLop, sinhVienSua.NgaySinh, sinhVienSua.GioiTinh, sinhVienSua.MaNganh, sinhVienSua.TinhTrang);
+                    logger.LogInformation("Sửa sinh viên trong danh sách sinh viên.\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVienSua.MaSinhVien, sinhVienSua.HoVaTen, sinhVienSua.MaLop, sinhVienSua.NgaySinh, sinhVienSua.GioiTinh, sinhVienSua.MaNganh, sinhVienSua.TinhTrang);
                     return sinhvienDAL.LayToanBoSinhVien();
                 }
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi sửa sinh viên có mã sinh viên {0} vào danh sách sinh viên. Với dữ liệu:\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVienSua.MaSinhVien, sinhVienSua.HoVaTen, sinhVienSua.MaLop, sinhVienSua.NgaySinh, sinhVienSua.GioiTinh, sinhVienSua.MaNganh, sinhVienSua.TinhTrang);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi sửa sinh viên.\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVienSua.MaSinhVien, sinhVienSua.HoVaTen, sinhVienSua.MaLop, sinhVienSua.NgaySinh, sinhVienSua.GioiTinh, sinhVienSua.MaNganh, sinhVienSua.TinhTrang);
                 throw;
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Xảy ra lỗi khi sửa sinh viên có mã sinh viên {0} vào danh sách sinh viên. Với dữ liệu:\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVienSua.MaSinhVien, sinhVienSua.HoVaTen, sinhVienSua.MaLop, sinhVienSua.NgaySinh, sinhVienSua.GioiTinh, sinhVienSua.MaNganh, sinhVienSua.TinhTrang);
+                logger.LogError(ex, "Xảy ra lỗi khi sủa sinh viên.\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVienSua.MaSinhVien, sinhVienSua.HoVaTen, sinhVienSua.MaLop, sinhVienSua.NgaySinh, sinhVienSua.GioiTinh, sinhVienSua.MaNganh, sinhVienSua.TinhTrang);
                 throw;
             }
         }
@@ -86,18 +86,18 @@ namespace StudentManagment.DAL
                     SqlCommand cmd = new SqlCommand("DELETE SINHVIEN WHERE MASV=@MASV", conn);
                     cmd.Parameters.AddWithValue("@MASV", maSinhVien);
                     cmd.ExecuteNonQuery();
-                    logger.LogInformation("Đang xóa sinh viên với mã sinh viên {0} khỏi danh sách sinh viên.", maSinhVien);
+                    logger.LogInformation("Xóa sinh viên ra khỏi danh sách sinh viên.\nMã sinh viên: {0}.", maSinhVien);
                     return sinhvienDAL.LayToanBoSinhVien();
                 }
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi xóa sinh viên có mã sinh viên {0} khỏi danh sách sinh viên", maSinhVien);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi xóa sinh viên.\nMã sinh viên: {0}.", maSinhVien);
                 throw;
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Xảy ra lỗi khi xóa sinh viên có mã sinh viên {0} khỏi danh sách sinh viên.", maSinhVien);
+                logger.LogError(ex, "Xảy ra lỗi khi xóa sinh viên.\nMã sinh viên: {0}", maSinhVien);
                 throw;
             }
         }
@@ -113,19 +113,19 @@ namespace StudentManagment.DAL
                     SqlCommand cmd = new SqlCommand("SELECT * FROM SINHVIEN WHERE MASINHVIEN=@MASINHVIEN", conn);
                     cmd.Parameters.AddWithValue("@MASINHVIEN", maSinhVien);
                     adapter.SelectCommand = cmd;
-                    logger.LogInformation("Đang lấy danh sách sinh viên theo điều kiện mã sinh viên...");
+                    logger.LogInformation("Lấy danh sách sinh viên theo điều kiện mã sinh viên.\nMã sinh viên: {0}",maSinhVien);
                     adapter.Fill(dt);
                     return dt;
                 }
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi lấy danh sách sinh viên theo điều kiện mã sinh viên.");
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi lấy dữ liệu danh sách sinh viên theo Mã sinh viên.\nMã sinh viên: {0}.", maSinhVien);
                 throw;
             }
 	        catch (Exception ex)
             {
-                logger.LogError(ex, "Xảy ra lỗi khi hiển thị danh sách sinh viên theo điều khiện tên.");
+                logger.LogError(ex, "Xảy ra lỗi khi lấy dữ liệu danh sách sinh viên theo Mã sinh viên.\nMã sinh viên: {0}.", maSinhVien);
                 throw;
             }
         }
