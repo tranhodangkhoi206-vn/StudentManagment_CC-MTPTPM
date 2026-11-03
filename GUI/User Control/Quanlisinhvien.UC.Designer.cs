@@ -75,11 +75,11 @@
             // 
             label1.Anchor = AnchorStyles.Left;
             label1.AutoSize = true;
-            label1.Font = new Font("Roboto Condensed", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Microsoft Sans Serif", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ButtonHighlight;
             label1.Location = new Point(21, 14);
             label1.Name = "label1";
-            label1.Size = new Size(404, 58);
+            label1.Size = new Size(624, 69);
             label1.TabIndex = 0;
             label1.Text = "QUẢN LÝ SINH VIÊN";
             // 
@@ -148,19 +148,19 @@
             // 
             cbxTinhtrang.Anchor = AnchorStyles.Left;
             cbxTinhtrang.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbxTinhtrang.Font = new Font("Roboto Condensed", 14F);
+            cbxTinhtrang.Font = new Font("Microsoft Sans Serif", 14F);
             cbxTinhtrang.FormattingEnabled = true;
             cbxTinhtrang.Items.AddRange(new object[] { "Đang học", "Đang bảo lưu", "Đã tốt nghiệp" });
-            cbxTinhtrang.Location = new Point(161, 130);
+            cbxTinhtrang.Location = new Point(161, 127);
             cbxTinhtrang.Name = "cbxTinhtrang";
-            cbxTinhtrang.Size = new Size(170, 31);
+            cbxTinhtrang.Size = new Size(170, 37);
             cbxTinhtrang.TabIndex = 13;
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Dock = DockStyle.Fill;
-            label8.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label8.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label8.ForeColor = SystemColors.ControlText;
             label8.Location = new Point(3, 116);
             label8.Name = "label8";
@@ -173,7 +173,7 @@
             // 
             label7.AutoSize = true;
             label7.Dock = DockStyle.Fill;
-            label7.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.ForeColor = SystemColors.ControlText;
             label7.Location = new Point(675, 58);
             label7.Name = "label7";
@@ -186,7 +186,7 @@
             // 
             label6.AutoSize = true;
             label6.Dock = DockStyle.Fill;
-            label6.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label6.ForeColor = SystemColors.ControlText;
             label6.Location = new Point(337, 58);
             label6.Name = "label6";
@@ -199,7 +199,7 @@
             // 
             label5.AutoSize = true;
             label5.Dock = DockStyle.Fill;
-            label5.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.ForeColor = SystemColors.ControlText;
             label5.Location = new Point(3, 58);
             label5.Name = "label5";
@@ -212,7 +212,7 @@
             // 
             label4.AutoSize = true;
             label4.Dock = DockStyle.Fill;
-            label4.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.ForeColor = SystemColors.ControlText;
             label4.Location = new Point(675, 0);
             label4.Name = "label4";
@@ -225,17 +225,17 @@
             // 
             txbHovaten.Anchor = AnchorStyles.Left;
             txbHovaten.BorderStyle = BorderStyle.FixedSingle;
-            txbHovaten.Font = new Font("Roboto Condensed", 14F);
-            txbHovaten.Location = new Point(455, 14);
+            txbHovaten.Font = new Font("Microsoft Sans Serif", 14F);
+            txbHovaten.Location = new Point(455, 12);
             txbHovaten.Name = "txbHovaten";
-            txbHovaten.Size = new Size(214, 30);
+            txbHovaten.Size = new Size(214, 34);
             txbHovaten.TabIndex = 3;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Dock = DockStyle.Fill;
-            label3.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = SystemColors.ControlText;
             label3.Location = new Point(337, 0);
             label3.Name = "label3";
@@ -248,7 +248,7 @@
             // 
             label2.AutoSize = true;
             label2.Dock = DockStyle.Fill;
-            label2.Font = new Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ControlText;
             label2.Location = new Point(3, 0);
             label2.Name = "label2";
@@ -261,21 +261,21 @@
             // 
             txbMasinhvien.Anchor = AnchorStyles.Left;
             txbMasinhvien.BorderStyle = BorderStyle.FixedSingle;
-            txbMasinhvien.Font = new Font("Roboto Condensed", 14F);
-            txbMasinhvien.Location = new Point(161, 14);
+            txbMasinhvien.Font = new Font("Microsoft Sans Serif", 14F);
+            txbMasinhvien.Location = new Point(161, 12);
             txbMasinhvien.Name = "txbMasinhvien";
-            txbMasinhvien.Size = new Size(168, 30);
+            txbMasinhvien.Size = new Size(168, 34);
             txbMasinhvien.TabIndex = 1;
             // 
             // dtpNgaySinh
             // 
             dtpNgaySinh.Anchor = AnchorStyles.Left;
-            dtpNgaySinh.Font = new Font("Roboto Condensed", 14F);
+            dtpNgaySinh.Font = new Font("Microsoft Sans Serif", 14F);
             dtpNgaySinh.Format = DateTimePickerFormat.Short;
-            dtpNgaySinh.Location = new Point(158, 72);
+            dtpNgaySinh.Location = new Point(158, 70);
             dtpNgaySinh.Margin = new Padding(0);
             dtpNgaySinh.Name = "dtpNgaySinh";
-            dtpNgaySinh.Size = new Size(168, 30);
+            dtpNgaySinh.Size = new Size(168, 34);
             dtpNgaySinh.TabIndex = 7;
             // 
             // tableLayoutPanel3
@@ -298,7 +298,7 @@
             // 
             tbtnNu.AutoSize = true;
             tbtnNu.Dock = DockStyle.Fill;
-            tbtnNu.Font = new Font("Roboto Condensed", 14F);
+            tbtnNu.Font = new Font("Microsoft Sans Serif", 14F);
             tbtnNu.Location = new Point(113, 3);
             tbtnNu.Name = "tbtnNu";
             tbtnNu.Size = new Size(104, 52);
@@ -311,7 +311,7 @@
             // 
             rbtnNam.AutoSize = true;
             rbtnNam.Dock = DockStyle.Fill;
-            rbtnNam.Font = new Font("Roboto Condensed", 14F);
+            rbtnNam.Font = new Font("Microsoft Sans Serif", 14F);
             rbtnNam.Location = new Point(3, 3);
             rbtnNam.Name = "rbtnNam";
             rbtnNam.Size = new Size(104, 52);
@@ -336,7 +336,7 @@
             // 
             // btnThem
             // 
-            btnThem.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnThem.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnThem.Location = new Point(0, 0);
             btnThem.Margin = new Padding(0);
             btnThem.Name = "btnThem";
@@ -348,7 +348,7 @@
             // 
             // btnXoa
             // 
-            btnXoa.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnXoa.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnXoa.Location = new Point(180, 0);
             btnXoa.Margin = new Padding(0);
             btnXoa.Name = "btnXoa";
@@ -360,7 +360,7 @@
             // 
             // btnSua
             // 
-            btnSua.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSua.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSua.Location = new Point(360, 0);
             btnSua.Margin = new Padding(0);
             btnSua.Name = "btnSua";
@@ -372,7 +372,7 @@
             // 
             // btnLammoi
             // 
-            btnLammoi.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnLammoi.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnLammoi.Location = new Point(531, 0);
             btnLammoi.Margin = new Padding(0);
             btnLammoi.Name = "btnLammoi";
@@ -386,21 +386,21 @@
             // 
             cbxChuyennganh.Anchor = AnchorStyles.Left;
             cbxChuyennganh.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbxChuyennganh.Font = new Font("Roboto Condensed", 14F);
-            cbxChuyennganh.Location = new Point(809, 71);
+            cbxChuyennganh.Font = new Font("Microsoft Sans Serif", 14F);
+            cbxChuyennganh.Location = new Point(809, 68);
             cbxChuyennganh.Name = "cbxChuyennganh";
-            cbxChuyennganh.Size = new Size(248, 31);
+            cbxChuyennganh.Size = new Size(248, 37);
             cbxChuyennganh.TabIndex = 15;
             // 
             // cbxLop
             // 
             cbxLop.Anchor = AnchorStyles.Left;
             cbxLop.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbxLop.Font = new Font("Roboto Condensed", 14F);
+            cbxLop.Font = new Font("Microsoft Sans Serif", 14F);
             cbxLop.FormattingEnabled = true;
-            cbxLop.Location = new Point(809, 13);
+            cbxLop.Location = new Point(809, 10);
             cbxLop.Name = "cbxLop";
-            cbxLop.Size = new Size(248, 31);
+            cbxLop.Size = new Size(248, 37);
             cbxLop.TabIndex = 16;
             // 
             // drvDanhsachsinhvien
@@ -409,7 +409,7 @@
             drvDanhsachsinhvien.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Roboto Condensed", 12F);
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 12F);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
@@ -419,7 +419,7 @@
             drvDanhsachsinhvien.Columns.AddRange(new DataGridViewColumn[] { MASV, HOVATEN, MALOP, NGAYSINH, GIOITINH, MANGANH, TINHTRANG });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Roboto Condensed", 12F);
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 12F);
             dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
@@ -429,14 +429,17 @@
             drvDanhsachsinhvien.Location = new Point(3, 178);
             drvDanhsachsinhvien.Name = "drvDanhsachsinhvien";
             drvDanhsachsinhvien.ReadOnly = true;
+            drvDanhsachsinhvien.RowHeadersWidth = 51;
             drvDanhsachsinhvien.Size = new Size(1054, 449);
             drvDanhsachsinhvien.TabIndex = 1;
+            drvDanhsachsinhvien.CellClick += drvDanhsachsinhvien_CellClick;
             // 
             // MASV
             // 
             MASV.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             MASV.DataPropertyName = "MASV";
             MASV.HeaderText = "Mã sinh viên";
+            MASV.MinimumWidth = 6;
             MASV.Name = "MASV";
             MASV.ReadOnly = true;
             // 
@@ -445,6 +448,7 @@
             HOVATEN.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             HOVATEN.DataPropertyName = "HOVATEN";
             HOVATEN.HeaderText = "Họ và tên";
+            HOVATEN.MinimumWidth = 6;
             HOVATEN.Name = "HOVATEN";
             HOVATEN.ReadOnly = true;
             // 
@@ -453,6 +457,7 @@
             MALOP.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             MALOP.DataPropertyName = "MALOP";
             MALOP.HeaderText = "Mã lớp";
+            MALOP.MinimumWidth = 6;
             MALOP.Name = "MALOP";
             MALOP.ReadOnly = true;
             // 
@@ -461,6 +466,7 @@
             NGAYSINH.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             NGAYSINH.DataPropertyName = "NGAYSINH";
             NGAYSINH.HeaderText = "Ngày sinh";
+            NGAYSINH.MinimumWidth = 6;
             NGAYSINH.Name = "NGAYSINH";
             NGAYSINH.ReadOnly = true;
             // 
@@ -469,6 +475,7 @@
             GIOITINH.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             GIOITINH.DataPropertyName = "GIOITINH";
             GIOITINH.HeaderText = "Giới tính";
+            GIOITINH.MinimumWidth = 6;
             GIOITINH.Name = "GIOITINH";
             GIOITINH.ReadOnly = true;
             // 
@@ -477,6 +484,7 @@
             MANGANH.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             MANGANH.DataPropertyName = "MANGANH";
             MANGANH.HeaderText = "Mã ngành";
+            MANGANH.MinimumWidth = 6;
             MANGANH.Name = "MANGANH";
             MANGANH.ReadOnly = true;
             // 
@@ -485,16 +493,17 @@
             TINHTRANG.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             TINHTRANG.DataPropertyName = "TINHTRANG";
             TINHTRANG.HeaderText = "Tình trạng";
+            TINHTRANG.MinimumWidth = 6;
             TINHTRANG.Name = "TINHTRANG";
             TINHTRANG.ReadOnly = true;
             // 
             // Quanlisinhvien
             // 
-            AutoScaleDimensions = new SizeF(6F, 14F);
+            AutoScaleDimensions = new SizeF(9F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(tableLayoutPanel1);
             Controls.Add(panel1);
-            Font = new Font("Roboto Condensed", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Name = "Quanlisinhvien";
             Size = new Size(1060, 721);
             Load += Quanlisinhvien_Load;
