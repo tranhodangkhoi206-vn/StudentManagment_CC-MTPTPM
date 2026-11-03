@@ -48,15 +48,15 @@ namespace StudentManagment.GUI.User_Control
             }
             catch (SqlException)
             {
-                MessageBox.Show("Lỗi kết nối đến cơ sở dữ liệu khi thêm môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Xảy ra lỗi cơ sở dữ liệu khi thêm môn học mới.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Bạn phải nhập đầy đủ thông tin môn học trước khi thêm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Bạn chưa nhập đầy đủ thông tin môn học khi thêm môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch
+            catch (Exception)
             {
-                MessageBox.Show("Lỗi khi thêm môn học mới.\nVui lòng thử lại sau.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Xảy ra lỗi khi thêm môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -82,15 +82,15 @@ namespace StudentManagment.GUI.User_Control
             }
             catch (SqlException)
             {
-                MessageBox.Show("Lỗi kết nối đến cơ sở dữ liệu khi sửa thông tin môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Xảy ra lỗi cơ sở dữ liệu khi sửa môn học mới.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Bạn phải nhập mã môn học trước khi sửa thông tin môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Bạn chưa nhập đầy đủ thông tin môn học khi sửa môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {
-                MessageBox.Show("Lỗi khi sửa môn học mới.\nVui lòng thử lại sau.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Xảy ra lỗi khi sửa môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -107,15 +107,15 @@ namespace StudentManagment.GUI.User_Control
             }
             catch (SqlException)
             {
-                MessageBox.Show("Lỗi kết nối đến cơ sở dữ liệu khi xóa thông tin môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Xảy ra lỗi cơ sở dữ liệu khi xóa môn học mới.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Bạn phải nhập mã môn học trước khi xóa môn học khỏi danh sách.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Bạn chưa nhập đầy đủ thông tin môn học khi xóa môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {
-                MessageBox.Show("Lỗi khi xóa môn học.\nVui lòng thử lại sau.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Xảy ra lỗi khi xóa môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -152,7 +152,7 @@ namespace StudentManagment.GUI.User_Control
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Bạn phải nhập username trước khi tìm kiếm môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Bạn phải nhập mã môn học trước khi tìm kiếm môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {

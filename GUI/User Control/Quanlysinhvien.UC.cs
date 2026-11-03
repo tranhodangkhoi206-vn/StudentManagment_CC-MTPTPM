@@ -52,15 +52,15 @@ namespace StudentManagment.GUI.User_Control
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Bạn phải nhập đầy đủ thông tin trước khi thêm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Bạn phải nhập đầy đủ thông tin trước khi thêm sinh viên mới.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (SqlException)
             {
-                MessageBox.Show("Lỗi khi kết nối cơ sở dữ liệu khi thêm sinh viên mới.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Xảy ra lỗi cơ sở dữ liệu khi thêm sinh viên mới.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {
-                MessageBox.Show("Lỗi khi thêm sinh viên mới.\nVui lòng thử lại sau.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Xảy ra lỗi khi thêm sinh viên mới.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -78,11 +78,11 @@ namespace StudentManagment.GUI.User_Control
             }
             catch (SqlException)
             {
-                MessageBox.Show("Lỗi kết nối cơ sở dữ liệu khi xóa sinh viên.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Xảy ra lỗi cơ sở dữ liệu khi xóa sinh viên.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {
-                MessageBox.Show("Lỗi khi xóa sinh viên.\nVui lòng thử lại sau.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Xảy ra lỗi khi xóa sinh viên.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -108,15 +108,15 @@ namespace StudentManagment.GUI.User_Control
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Bạn phải nhập mã sinh viên trước khi sửa.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Bạn phải nhập mã sinh viên trước khi sửa thông tin sinh viên.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (SqlException)
             {
-                MessageBox.Show("Lỗi kết nối cơ sở dữ liệu khi sửa thông tin sinh viên.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Xảy ra lỗi cơ sở dữ liệu khi sửa thông tin sinh viên.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {
-                MessageBox.Show("Lỗi khi sửa sinh viên.\nVui lòng thử lại sau.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Xảy ra lỗi khi sửa thông tin sinh viên", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -153,7 +153,7 @@ namespace StudentManagment.GUI.User_Control
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Bạn phải nhập username trước khi tìm kiếm sinh viên.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Bạn phải nhập mã sinh viên trước khi tìm kiếm sinh viên.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {

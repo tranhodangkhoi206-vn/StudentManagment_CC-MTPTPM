@@ -41,16 +41,15 @@ namespace StudentManagment.GUI.User_Control
             }
             catch (SqlException)
             {
-                MessageBox.Show("Lỗi kết nối cơ sở dữ liệu khi thêm điểm mới.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Xảy ra lỗi cơ sở dữ liệu khi thêm điểm mới.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Bạn phải nhập đầy đủ thông tin trước khi thêm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Bạn chưa nhập đầy đủ thông tin điểm khi thêm điểm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("" + ex);
-                MessageBox.Show("Lỗi khi thêm điểm mới.\nVui lòng thử lại sau.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Xảy ra lỗi khi thêm điểm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -68,15 +67,15 @@ namespace StudentManagment.GUI.User_Control
             }
             catch (SqlException)
             {
-                MessageBox.Show("Lỗi kết nối đến cơ sở dữ liệu khi xóa thông tin điểm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Xảy ra lỗi cơ sở dữ liệu khi xóa điểm mới.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Bạn phải nhập mã môn và mã sinh viên trước khi xóa.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Bạn chưa nhập đầy đủ thông tin điểm khi xóa điểm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {
-                MessageBox.Show("Lỗi khi xóa điểm.\nVui lòng thử lại sau.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Xảy ra lỗi khi xóa điểm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -100,15 +99,15 @@ namespace StudentManagment.GUI.User_Control
             }
             catch (SqlException)
             {
-                MessageBox.Show("Lỗi kết nối đến cơ sở dữ liệu khi mà sửa thông tin điểm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Xảy ra lỗi cơ sở dữ liệu khi sửa điểm mới.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Bạn phải nhập mã điểm và mã sinh viên trước khi sửa thông tin điểm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Bạn chưa nhập đầy đủ thông tin điểm khi sửa điểm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {
-                MessageBox.Show("Lỗi khi sửa điểm.\nVui lòng thử lại sau.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Xảy ra lỗi khi sửa điểm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -144,7 +143,7 @@ namespace StudentManagment.GUI.User_Control
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Bạn phải nhập username trước khi tìm kiếm điểm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Bạn phải nhập mã sinh viên và mã môn học trước khi tìm kiếm điểm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {
