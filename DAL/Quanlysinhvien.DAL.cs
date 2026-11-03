@@ -131,7 +131,7 @@ namespace StudentManagment.DAL
 		            if (dt.Rows.Count == 0)
                     {
                         logger.LogWarning("Mã sinh viên không tồn tại.\nMã sinh viên: {0}", maSinhVien);
-                        throw new InvalidOperationException();
+                        throw new KeyNotFoundException();
                     }
                     return dt;
                 }

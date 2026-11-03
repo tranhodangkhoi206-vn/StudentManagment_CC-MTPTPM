@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Logging;
 using StudentManagment.DAL;
 using StudentManagment.DTO;
 
@@ -15,25 +16,40 @@ namespace StudentManagment.BLL
         }
         public TaikhoanDTO KiemTraDangNhap(string username, string password, bool admin)
         {
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            try
             {
-                logger.LogWarning("Người dùng chưa nhập đầy đủ thông tin đăng nhập.");
-                throw new ArgumentException();
+                if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+                {
+                    logger.LogWarning("Người dùng chưa nhập đầy đủ thông tin đăng nhập.");
+                    throw new ArgumentException("Bạn phải nhập đầy đủ thông tin trước khi đăng nhập.");
+                }
+                TaikhoanDTO taiKhoan = dangnhapDAL.LayTaiKhoanCoDieuKien(username, admin);
+                if (taiKhoan != null)
+                {
+                    bool xetMatKhau = BCrypt.Net.BCrypt.Verify(password, taiKhoan.HashedPassword);
+                    if (!xetMatKhau)
+                    {
+                        logger.LogWarning("Người dùng nhập sai mật khẩu.");
+                        throw new UnauthorizedAccessException("Bạn nhập mật khẩu chưa chính xác.");
+                    }
+                    logger.LogInformation("Người dùng đã đăng nhập thành công. Username: {username}", username);
+                    return taiKhoan;
+                }
+                return null;
             }
-            TaikhoanDTO taiKhoan = dangnhapDAL.LayTaiKhoanCoDieuKien(username, admin);
-            if (taiKhoan == null)
+            catch (SqlException)
             {
-                logger.LogWarning("Người dùng đăng nhập với tài khoản không tồn tại trong hệ thống.");
-                throw new InvalidOperationException();
+                throw;
             }
-            bool xetMatKhau = BCrypt.Net.BCrypt.Verify(password, taiKhoan.HashedPassword);
-            if (!xetMatKhau)
+            catch (KeyNotFoundException)
             {
-                logger.LogWarning("Người dùng nhập sai mật khẩu.");
-                throw new InvalidOperationException();
+                throw new KeyNotFoundException("Tên tài khoản hoặc mật khẩu chưa chính xác.");
             }
-            logger.LogInformation("Người dùng đã đăng nhập thành công. Username: {username}", username);
-            return taiKhoan;
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Xảy ra lỗi không xác định.");
+                throw;
+            }
         }
     }
 }

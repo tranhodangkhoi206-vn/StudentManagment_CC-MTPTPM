@@ -1,6 +1,7 @@
 ﻿using StudentManagment.DTO;
 using Microsoft.Extensions.Logging;
 using StudentManagment.BLL;
+using Microsoft.Data.SqlClient;
 
 namespace StudentManagment.GUI
 {
@@ -27,22 +28,30 @@ namespace StudentManagment.GUI
                 if (taiKhoan != null)
                 {
                     this.Hide();
-                    frmTaotaikhoan frmTaotaikhoan = new frmTaotaikhoan(_loggerFactory,taiKhoan.Hovaten);
+                    frmTaotaikhoan frmTaotaikhoan = new frmTaotaikhoan(_loggerFactory, taiKhoan.Hovaten);
                     frmTaotaikhoan.Show();
                     logger.LogInformation("Chuyển sang form Tạo tài khoản.");
                 }
             }
-            catch (ArgumentException)
+            catch (ArgumentException agEx)
             {
-                MessageBox.Show("Bạn phải nhập đầy đủ thông tin trước khi đăng nhập.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(agEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (InvalidOperationException)
+            catch (KeyNotFoundException knfEx)
             {
-                MessageBox.Show("Tên tài khoản hoặc mật khẩu chưa chính xác.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(knfEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (UnauthorizedAccessException uaEx)
+            {
+                MessageBox.Show(uaEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Có lỗi xảy ra với cơ sở dữ liệu.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {
-                MessageBox.Show("Có lỗi xảy ra khi bạn đăng nhập.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Có lỗi xảy ra.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

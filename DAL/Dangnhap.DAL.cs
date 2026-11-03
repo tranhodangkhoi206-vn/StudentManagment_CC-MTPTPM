@@ -37,7 +37,7 @@ namespace StudentManagment.DAL
                         };
                     }
                     logger.LogWarning("Không tìm thấy tài khoản.\nUsername: {0},\nAdmin: {1}.", username, admin);
-                    return null;
+                    throw new KeyNotFoundException();
                 }
             }
             catch (SqlException sqlEx)

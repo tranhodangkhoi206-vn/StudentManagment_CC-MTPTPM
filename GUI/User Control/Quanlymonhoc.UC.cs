@@ -32,7 +32,7 @@ namespace StudentManagment.GUI.User_Control
             {
                 MonhocDTO monhocDTO = new MonhocDTO()
                 {
-                    Mamon = tbMamonhoc.Text.Trim(),
+                    Mamon = tbMamonhoc.Text.Trim().ToUpper(),
                     Tenmon = tbTenmonhoc.Text.Trim(),
                     Manganh = cbManganh.SelectedValue != null ? cbManganh.SelectedValue.ToString().Trim() : "",
                     Sotietlythuyet = (int)nudLythuyet.Value,
@@ -46,21 +46,21 @@ namespace StudentManagment.GUI.User_Control
                     dgvMonhoc.DataSource = dt;
                 }
             }
+            catch (ArgumentException agEx)
+            {
+                MessageBox.Show(agEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (InvalidOperationException ioEx)
+            {
+                MessageBox.Show(ioEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (SqlException)
             {
-                MessageBox.Show("Xảy ra lỗi cơ sở dữ liệu khi thêm môn học mới.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (ArgumentException)
-            {
-                MessageBox.Show("Bạn chưa nhập đầy đủ thông tin môn học khi thêm môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (InvalidOperationException)
-            {
-                MessageBox.Show("Thêm không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Có lỗi xảy ra với cơ sở dữ liệu.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {
-                MessageBox.Show("Xảy ra lỗi khi thêm môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Có lỗi xảy ra.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -88,21 +88,21 @@ namespace StudentManagment.GUI.User_Control
                     }
                 }
             }
+            catch (ArgumentException agEx)
+            {
+                MessageBox.Show(agEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (InvalidOperationException ioEx)
+            {
+                MessageBox.Show(ioEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (SqlException)
             {
-                MessageBox.Show("Xảy ra lỗi cơ sở dữ liệu khi sửa môn học mới.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (ArgumentException)
-            {
-                MessageBox.Show("Bạn chưa nhập đầy đủ thông tin môn học khi sửa môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (InvalidOperationException)
-            {
-                MessageBox.Show("Mã môn học không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Có lỗi xảy ra với cơ sở dữ liệu.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {
-                MessageBox.Show("Xảy ra lỗi khi sửa môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Có lỗi xảy ra.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -117,21 +117,21 @@ namespace StudentManagment.GUI.User_Control
                     dgvMonhoc.DataSource = dt;
                 }
             }
+            catch (ArgumentException agEx)
+            {
+                MessageBox.Show(agEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (InvalidOperationException ioEx)
+            {
+                MessageBox.Show(ioEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (SqlException)
             {
-                MessageBox.Show("Xảy ra lỗi cơ sở dữ liệu khi xóa môn học mới.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (ArgumentException)
-            {
-                MessageBox.Show("Bạn chưa nhập đầy đủ thông tin môn học khi xóa môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (InvalidOperationException)
-            {
-                MessageBox.Show("Mã môn học không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Có lỗi xảy ra với cơ sở dữ liệu.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {
-                MessageBox.Show("Xảy ra lỗi khi xóa môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Có lỗi xảy ra.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -163,21 +163,21 @@ namespace StudentManagment.GUI.User_Control
                     MessageBox.Show("Môn học không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            catch (ArgumentException agEx)
+            {
+                MessageBox.Show(agEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (KeyNotFoundException knfEx)
+            {
+                MessageBox.Show(knfEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (SqlException)
             {
-                MessageBox.Show("Xảy ra lỗi cơ sở dữ liệu khi tìm kiếm môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (ArgumentException)
-            {
-                MessageBox.Show("Bạn phải nhập mã môn học trước khi tìm kiếm môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (InvalidOperationException)
-            {
-                MessageBox.Show("Mã môn học không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Có lỗi xảy ra với cơ sở dữ liệu.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {
-                MessageBox.Show("Xảy ra lỗi khi tìm kiếm môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Có lỗi xảy ra.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }

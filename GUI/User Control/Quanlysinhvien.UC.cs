@@ -36,7 +36,7 @@ namespace StudentManagment.GUI.User_Control
             {
                 SinhvienDTO sinhvienMoi = new SinhvienDTO()
                 {
-                    MaSinhVien = tbMasinhvien.Text.ToString(),
+                    MaSinhVien = tbMasinhvien.Text.ToString().ToUpper(),
                     HoVaTen = tbHovaten.Text.ToString(),
                     MaLop = cbMalop.SelectedValue != null ? cbMalop.SelectedValue.ToString().Trim() : "",
                     NgaySinh = dtpNgaysinh.Value.Date,
@@ -51,21 +51,21 @@ namespace StudentManagment.GUI.User_Control
                     MessageBox.Show("Thêm sinh viên thành công.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+            catch (ArgumentException agEx)
+            {
+                MessageBox.Show(agEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (InvalidOperationException ioEx)
+            {
+                MessageBox.Show(ioEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (SqlException)
             {
-                MessageBox.Show("Xảy ra lỗi cơ sở dữ liệu khi thêm sinh viên mới.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (ArgumentException)
-            {
-                MessageBox.Show("Bạn phải nhập đầy đủ thông tin trước khi thêm sinh viên mới.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-	        catch(InvalidOperationException)
-            {
-                MessageBox.Show("Thêm sinh viên không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Có lỗi xảy ra với cơ sở dữ liệu.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {
-                MessageBox.Show("Xảy ra lỗi khi thêm sinh viên mới.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Có lỗi xảy ra.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -76,7 +76,7 @@ namespace StudentManagment.GUI.User_Control
                 DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa chứ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
-                    string maSinhVien = tbMasinhvien.Text.ToString();
+                    string maSinhVien = tbMasinhvien.Text.ToString().ToUpper();
                     DataTable dt = quanlysinhvienBLL.XoaSinhVienTheoMaSinhVien(maSinhVien);
                     if (dt.Rows.Count != 0)
                     {
@@ -85,21 +85,21 @@ namespace StudentManagment.GUI.User_Control
                     }
                 }
             }
+            catch (ArgumentException agEx)
+            {
+                MessageBox.Show(agEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (InvalidOperationException ioEx)
+            {
+                MessageBox.Show(ioEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (SqlException)
             {
-                MessageBox.Show("Xảy ra lỗi cơ sở dữ liệu khi xóa sinh viên.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (ArgumentException)
-            {
-                MessageBox.Show("Bạn phải nhập mã sinh viên trước khi xóa.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-	        catch(InvalidOperationException)
-            {
-                MessageBox.Show("Mã sinh viên không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Có lỗi xảy ra với cơ sở dữ liệu.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {
-                MessageBox.Show("Xảy ra lỗi khi xóa sinh viên.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Có lỗi xảy ra.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -109,7 +109,7 @@ namespace StudentManagment.GUI.User_Control
             {
                 SinhvienDTO sinhvienSua = new SinhvienDTO()
                 {
-                    MaSinhVien = tbMasinhvien.Text.ToString(),
+                    MaSinhVien = tbMasinhvien.Text.ToString().ToUpper(),
                     HoVaTen = tbHovaten.Text.ToString(),
                     MaLop = cbMalop.SelectedValue != null ? cbMalop.SelectedValue.ToString().Trim() : "",
                     NgaySinh = dtpNgaysinh.Value.Date,
@@ -123,21 +123,21 @@ namespace StudentManagment.GUI.User_Control
                     dgvSinhvien.DataSource = dt;
                 }
             }
+            catch (ArgumentException agEx)
+            {
+                MessageBox.Show(agEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (InvalidOperationException ioEx)
+            {
+                MessageBox.Show(ioEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (SqlException)
             {
-                MessageBox.Show("Xảy ra lỗi cơ sở dữ liệu khi sửa thông tin sinh viên.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (ArgumentException)
-            {
-                MessageBox.Show("Bạn phải nhập mã sinh viên trước khi sửa thông tin sinh viên.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-	        catch(InvalidOperationException)
-            {
-                MessageBox.Show("Mã sinh viên không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Có lỗi xảy ra với cơ sở dữ liệu.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {
-                MessageBox.Show("Xảy ra lỗi khi sửa thông tin sinh viên", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Có lỗi xảy ra.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -168,21 +168,21 @@ namespace StudentManagment.GUI.User_Control
                     dgvSinhvien.DataSource = quanlysinhvienBLL.HienThiDanhSachSinhVien();
                 }
             }
+            catch (ArgumentException agEx)
+            {
+                MessageBox.Show(agEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (KeyNotFoundException knfEx)
+            {
+                MessageBox.Show(knfEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (SqlException)
             {
-                MessageBox.Show("Xảy ra lỗi cơ sở dữ liệu khi tìm kiếm sinh viên.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (ArgumentException)
-            {
-                MessageBox.Show("Bạn phải nhập mã sinh viên trước khi tìm kiếm sinh viên.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-	        catch(InvalidOperationException)
-            {
-                MessageBox.Show("Mã sinh viên không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Có lỗi xảy ra với cơ sở dữ liệu.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {
-                MessageBox.Show("Xảy ra lỗi khi tìm kiếm sinh viên.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Có lỗi xảy ra.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
