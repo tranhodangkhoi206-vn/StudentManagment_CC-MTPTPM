@@ -31,21 +31,21 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             label1 = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
+            tableLayoutPanel5 = new TableLayoutPanel();
+            lb0001 = new Label();
+            lbTongmonhoc = new Label();
+            tableLayoutPanel4 = new TableLayoutPanel();
+            lb0002 = new Label();
+            lbTonglophoc = new Label();
             tableLayoutPanel3 = new TableLayoutPanel();
             label2 = new Label();
             lbTongsinhvien = new Label();
-            tableLayoutPanel4 = new TableLayoutPanel();
-            llbTonglophoc = new Label();
-            label5 = new Label();
-            tableLayoutPanel5 = new TableLayoutPanel();
-            lbTongmonhoc = new Label();
-            label7 = new Label();
             pictureBox1 = new PictureBox();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
-            tableLayoutPanel3.SuspendLayout();
-            tableLayoutPanel4.SuspendLayout();
             tableLayoutPanel5.SuspendLayout();
+            tableLayoutPanel4.SuspendLayout();
+            tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -103,6 +103,91 @@
             tableLayoutPanel2.Size = new Size(790, 545);
             tableLayoutPanel2.TabIndex = 1;
             // 
+            // tableLayoutPanel5
+            // 
+            tableLayoutPanel5.ColumnCount = 1;
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.Controls.Add(lb0001, 0, 0);
+            tableLayoutPanel5.Controls.Add(lbTongmonhoc, 0, 1);
+            tableLayoutPanel5.Dock = DockStyle.Fill;
+            tableLayoutPanel5.Location = new Point(524, 6);
+            tableLayoutPanel5.Margin = new Padding(0);
+            tableLayoutPanel5.Name = "tableLayoutPanel5";
+            tableLayoutPanel5.RowCount = 2;
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 23.45679F));
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 76.54321F));
+            tableLayoutPanel5.Size = new Size(260, 162);
+            tableLayoutPanel5.TabIndex = 2;
+            // 
+            // lb0001
+            // 
+            lb0001.AutoSize = true;
+            lb0001.BackColor = SystemColors.ControlDark;
+            lb0001.Dock = DockStyle.Fill;
+            lb0001.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lb0001.Location = new Point(0, 0);
+            lb0001.Margin = new Padding(0);
+            lb0001.Name = "lb0001";
+            lb0001.Size = new Size(260, 38);
+            lb0001.TabIndex = 0;
+            lb0001.Text = "Tổng số môn học";
+            lb0001.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lbTongmonhoc
+            // 
+            lbTongmonhoc.AutoSize = true;
+            lbTongmonhoc.Dock = DockStyle.Fill;
+            lbTongmonhoc.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbTongmonhoc.Location = new Point(3, 38);
+            lbTongmonhoc.Name = "lbTongmonhoc";
+            lbTongmonhoc.Size = new Size(254, 124);
+            lbTongmonhoc.TabIndex = 1;
+            lbTongmonhoc.Text = "0";
+            lbTongmonhoc.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // tableLayoutPanel4
+            // 
+            tableLayoutPanel4.ColumnCount = 1;
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.Controls.Add(lb0002, 0, 0);
+            tableLayoutPanel4.Controls.Add(lbTonglophoc, 0, 1);
+            tableLayoutPanel4.Dock = DockStyle.Fill;
+            tableLayoutPanel4.Location = new Point(265, 6);
+            tableLayoutPanel4.Margin = new Padding(0);
+            tableLayoutPanel4.Name = "tableLayoutPanel4";
+            tableLayoutPanel4.RowCount = 2;
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 23.45679F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 76.54321F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel4.Size = new Size(259, 162);
+            tableLayoutPanel4.TabIndex = 1;
+            // 
+            // lb0002
+            // 
+            lb0002.AutoSize = true;
+            lb0002.BackColor = SystemColors.ControlDark;
+            lb0002.Dock = DockStyle.Fill;
+            lb0002.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lb0002.Location = new Point(0, 0);
+            lb0002.Margin = new Padding(0);
+            lb0002.Name = "lb0002";
+            lb0002.Size = new Size(259, 38);
+            lb0002.TabIndex = 0;
+            lb0002.Text = "Tổng số lớp học";
+            lb0002.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lbTonglophoc
+            // 
+            lbTonglophoc.AutoSize = true;
+            lbTonglophoc.Dock = DockStyle.Fill;
+            lbTonglophoc.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbTonglophoc.Location = new Point(3, 38);
+            lbTonglophoc.Name = "lbTonglophoc";
+            lbTonglophoc.Size = new Size(253, 124);
+            lbTonglophoc.TabIndex = 1;
+            lbTonglophoc.Text = "0";
+            lbTonglophoc.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // tableLayoutPanel3
             // 
             tableLayoutPanel3.ColumnCount = 1;
@@ -146,91 +231,6 @@
             lbTongsinhvien.Text = "0";
             lbTongsinhvien.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // tableLayoutPanel4
-            // 
-            tableLayoutPanel4.ColumnCount = 1;
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.Controls.Add(llbTonglophoc, 0, 0);
-            tableLayoutPanel4.Controls.Add(label5, 0, 1);
-            tableLayoutPanel4.Dock = DockStyle.Fill;
-            tableLayoutPanel4.Location = new Point(265, 6);
-            tableLayoutPanel4.Margin = new Padding(0);
-            tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.RowCount = 2;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 23.45679F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 76.54321F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel4.Size = new Size(259, 162);
-            tableLayoutPanel4.TabIndex = 1;
-            // 
-            // llbTonglophoc
-            // 
-            llbTonglophoc.AutoSize = true;
-            llbTonglophoc.BackColor = SystemColors.ControlDark;
-            llbTonglophoc.Dock = DockStyle.Fill;
-            llbTonglophoc.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            llbTonglophoc.Location = new Point(0, 0);
-            llbTonglophoc.Margin = new Padding(0);
-            llbTonglophoc.Name = "llbTonglophoc";
-            llbTonglophoc.Size = new Size(259, 38);
-            llbTonglophoc.TabIndex = 0;
-            llbTonglophoc.Text = "Tổng số lớp học";
-            llbTonglophoc.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Dock = DockStyle.Fill;
-            label5.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(3, 38);
-            label5.Name = "label5";
-            label5.Size = new Size(253, 124);
-            label5.TabIndex = 1;
-            label5.Text = "0";
-            label5.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // tableLayoutPanel5
-            // 
-            tableLayoutPanel5.ColumnCount = 1;
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.Controls.Add(lbTongmonhoc, 0, 0);
-            tableLayoutPanel5.Controls.Add(label7, 0, 1);
-            tableLayoutPanel5.Dock = DockStyle.Fill;
-            tableLayoutPanel5.Location = new Point(524, 6);
-            tableLayoutPanel5.Margin = new Padding(0);
-            tableLayoutPanel5.Name = "tableLayoutPanel5";
-            tableLayoutPanel5.RowCount = 2;
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 23.45679F));
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 76.54321F));
-            tableLayoutPanel5.Size = new Size(260, 162);
-            tableLayoutPanel5.TabIndex = 2;
-            // 
-            // lbTongmonhoc
-            // 
-            lbTongmonhoc.AutoSize = true;
-            lbTongmonhoc.BackColor = SystemColors.ControlDark;
-            lbTongmonhoc.Dock = DockStyle.Fill;
-            lbTongmonhoc.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbTongmonhoc.Location = new Point(0, 0);
-            lbTongmonhoc.Margin = new Padding(0);
-            lbTongmonhoc.Name = "lbTongmonhoc";
-            lbTongmonhoc.Size = new Size(260, 38);
-            lbTongmonhoc.TabIndex = 0;
-            lbTongmonhoc.Text = "Tổng số môn học";
-            lbTongmonhoc.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Dock = DockStyle.Fill;
-            label7.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(3, 38);
-            label7.Name = "label7";
-            label7.Size = new Size(254, 124);
-            label7.TabIndex = 1;
-            label7.Text = "0";
-            label7.TextAlign = ContentAlignment.MiddleCenter;
-            // 
             // pictureBox1
             // 
             tableLayoutPanel2.SetColumnSpan(pictureBox1, 3);
@@ -251,15 +251,16 @@
             Controls.Add(tableLayoutPanel1);
             Name = "Trangchu";
             Size = new Size(790, 611);
+            Load += Trangchu_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
-            tableLayoutPanel3.ResumeLayout(false);
-            tableLayoutPanel3.PerformLayout();
-            tableLayoutPanel4.ResumeLayout(false);
-            tableLayoutPanel4.PerformLayout();
             tableLayoutPanel5.ResumeLayout(false);
             tableLayoutPanel5.PerformLayout();
+            tableLayoutPanel4.ResumeLayout(false);
+            tableLayoutPanel4.PerformLayout();
+            tableLayoutPanel3.ResumeLayout(false);
+            tableLayoutPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
@@ -273,11 +274,11 @@
         private Label label2;
         private Label lbTongsinhvien;
         private TableLayoutPanel tableLayoutPanel5;
+        private Label lb0001;
         private Label lbTongmonhoc;
-        private Label label7;
         private TableLayoutPanel tableLayoutPanel4;
-        private Label llbTonglophoc;
-        private Label label5;
+        private Label lb0002;
+        private Label lbTonglophoc;
         private PictureBox pictureBox1;
     }
 }

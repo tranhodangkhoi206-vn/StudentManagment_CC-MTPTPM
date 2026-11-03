@@ -35,5 +35,28 @@ namespace StudentManagment.DAL.Util
                 throw;
             }
         }
+	    public DataTable LayToanBoLopHoc()
+        {
+            try
+            {
+                using(SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter();
+                    adapter.SelectCommand = new SqlCommand("SELECT * FROM LOP",conn);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    logger.LogInformation("Lấy toàn bộ lớp học.");
+                    return dt;
+                }			
+            } catch(SqlException sqlEx)
+            {
+                logger.LogCritical(sqlEx,"Xảy ra lỗi cơ sở dữ liệu khi lấy toàn bộ lớp học.");
+                throw;
+            } catch(Exception ex)
+            {
+                logger.LogWarning(ex,"Xảy ra lỗi khi lấy toàn bộ ngành học.");
+                throw;
+            }
+        }
     }
 }

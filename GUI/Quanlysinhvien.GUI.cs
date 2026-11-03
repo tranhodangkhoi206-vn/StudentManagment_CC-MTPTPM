@@ -22,7 +22,7 @@ namespace StudentManagment
         {
             btnTrangchu.BackColor = ColorTranslator.FromHtml("#2471C9");
             pUserControl.Controls.Clear();
-            Trangchu trangChu = new Trangchu();
+            Trangchu trangChu = new Trangchu(_loggerFactory);
             trangChu.Dock = DockStyle.Fill;
             pUserControl.Controls.Add(trangChu);
             trangChu.BringToFront();
