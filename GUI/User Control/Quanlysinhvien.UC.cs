@@ -48,15 +48,20 @@ namespace StudentManagment.GUI.User_Control
                 if (dt.Rows.Count != 0)
                 {
                     dgvSinhvien.DataSource = dt;
+                    MessageBox.Show("Thêm sinh viên thành công.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Xảy ra lỗi cơ sở dữ liệu khi thêm sinh viên mới.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (ArgumentException)
             {
                 MessageBox.Show("Bạn phải nhập đầy đủ thông tin trước khi thêm sinh viên mới.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (SqlException)
+	        catch(InvalidOperationException)
             {
-                MessageBox.Show("Xảy ra lỗi cơ sở dữ liệu khi thêm sinh viên mới.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Thêm sinh viên không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {
@@ -68,17 +73,29 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
-                string maSinhVien = tbMasinhvien.Text.ToString();
-                DataTable dt = quanlysinhvienBLL.XoaSinhVienTheoMaSinhVien(maSinhVien);
-                dgvSinhvien.DataSource = dt;
+                DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa chứ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    string maSinhVien = tbMasinhvien.Text.ToString();
+                    DataTable dt = quanlysinhvienBLL.XoaSinhVienTheoMaSinhVien(maSinhVien);
+                    if (dt.Rows.Count != 0)
+                    {
+                        dgvSinhvien.DataSource = dt;
+                        MessageBox.Show("Xóa sinh viên thành công.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Xảy ra lỗi cơ sở dữ liệu khi xóa sinh viên.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (ArgumentException)
             {
                 MessageBox.Show("Bạn phải nhập mã sinh viên trước khi xóa.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (SqlException)
+	        catch(InvalidOperationException)
             {
-                MessageBox.Show("Xảy ra lỗi cơ sở dữ liệu khi xóa sinh viên.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Mã sinh viên không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {
@@ -106,13 +123,17 @@ namespace StudentManagment.GUI.User_Control
                     dgvSinhvien.DataSource = dt;
                 }
             }
+            catch (SqlException)
+            {
+                MessageBox.Show("Xảy ra lỗi cơ sở dữ liệu khi sửa thông tin sinh viên.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (ArgumentException)
             {
                 MessageBox.Show("Bạn phải nhập mã sinh viên trước khi sửa thông tin sinh viên.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (SqlException)
+	        catch(InvalidOperationException)
             {
-                MessageBox.Show("Xảy ra lỗi cơ sở dữ liệu khi sửa thông tin sinh viên.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Mã sinh viên không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {
@@ -129,6 +150,7 @@ namespace StudentManagment.GUI.User_Control
             rbNam.Checked = true;
             cbManganh.SelectedIndex = -1;
             cbTinhtrang.SelectedIndex = -1;
+            dgvSinhvien.DataSource = quanlysinhvienBLL.HienThiDanhSachSinhVien();
         }
 
         private void btnTimkiem_Click(object sender, EventArgs e)
@@ -137,14 +159,13 @@ namespace StudentManagment.GUI.User_Control
             {
                 string maSinhVien = tbMasinhvien.Text.ToString().Trim();
                 DataTable dt = quanlysinhvienBLL.TimKiemSinhVien(maSinhVien);
-		        if (dt.Rows.Count != 0)
+                if (dt.Rows.Count != 0)
                 {
                     dgvSinhvien.DataSource = dt;
                 }
                 else
                 {
-                    dgvSinhvien.DataSource = quanlysinhvienBLL.HienThiDanhSachSinhVien(); 
-                    MessageBox.Show("Sinh viên không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dgvSinhvien.DataSource = quanlysinhvienBLL.HienThiDanhSachSinhVien();
                 }
             }
             catch (SqlException)
@@ -154,6 +175,10 @@ namespace StudentManagment.GUI.User_Control
             catch (ArgumentException)
             {
                 MessageBox.Show("Bạn phải nhập mã sinh viên trước khi tìm kiếm sinh viên.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+	        catch(InvalidOperationException)
+            {
+                MessageBox.Show("Mã sinh viên không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {

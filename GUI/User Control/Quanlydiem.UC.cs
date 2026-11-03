@@ -47,6 +47,10 @@ namespace StudentManagment.GUI.User_Control
             {
                 MessageBox.Show("Bạn chưa nhập đầy đủ thông tin điểm khi thêm điểm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            catch (InvalidOperationException)
+            {
+                MessageBox.Show("Thêm không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception)
             {
                 MessageBox.Show("Xảy ra lỗi khi thêm điểm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -72,6 +76,10 @@ namespace StudentManagment.GUI.User_Control
             catch (ArgumentException)
             {
                 MessageBox.Show("Bạn chưa nhập đầy đủ thông tin điểm khi xóa điểm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (InvalidOperationException)
+            {
+                MessageBox.Show("Mã sinh viên hoặc mã môn học không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {
@@ -105,6 +113,10 @@ namespace StudentManagment.GUI.User_Control
             {
                 MessageBox.Show("Bạn chưa nhập đầy đủ thông tin điểm khi sửa điểm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            catch (InvalidOperationException)
+            {
+                MessageBox.Show("Mã sinh viên hoặc mã môn học không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception)
             {
                 MessageBox.Show("Xảy ra lỗi khi sửa điểm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -118,6 +130,7 @@ namespace StudentManagment.GUI.User_Control
             tbDiemchuyencan.Text = "";
             tbDiemgiuaky.Text = "";
             tbDiemcuoiky.Text = "";
+            dgvDiem.DataSource = quanlydiemBLL.HienThiToanBoDiem();
         }
 
         private void btnTimkiem_Click(object sender, EventArgs e)
@@ -143,7 +156,11 @@ namespace StudentManagment.GUI.User_Control
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Bạn phải nhập mã sinh viên và mã môn học trước khi tìm kiếm điểm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Bạn phải nhập mã sinh viên và mã sinh viên hoặc mã môn học trước khi tìm kiếm điểm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (InvalidOperationException)
+            {
+                MessageBox.Show("Mã sinh viên hoặc mã môn học không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {

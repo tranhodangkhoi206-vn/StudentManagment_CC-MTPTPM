@@ -41,6 +41,10 @@ namespace StudentManagment.GUI.User_Control
             {
                 MessageBox.Show("Bạn chưa nhập đầy đủ thông tin ngành học khi thêm ngành học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            catch (InvalidOperationException)
+            {
+                MessageBox.Show("Thêm không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception)
             {
                 MessageBox.Show("Xảy ra lỗi khi thêm ngành học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -65,6 +69,10 @@ namespace StudentManagment.GUI.User_Control
             catch (ArgumentException)
             {
                 MessageBox.Show("Bạn chưa nhập mã ngành trước khi xóa ngành học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (InvalidOperationException)
+            {
+                MessageBox.Show("Mã ngành không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {
@@ -96,6 +104,10 @@ namespace StudentManagment.GUI.User_Control
             {
                 MessageBox.Show("Bạn chưa nhập mã ngành trước khi sửa ngành học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            catch (InvalidOperationException)
+            {
+                MessageBox.Show("Mã ngành không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception)
             {
                 MessageBox.Show("Xảy ra lôi khi sửa ngành học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -113,6 +125,7 @@ namespace StudentManagment.GUI.User_Control
             tbManganh.Text = "";
             tbTennganh.Text = "";
             cbKhoaquanly.SelectedIndex = -1;
+            dgvNganh.DataSource = quanlynganhhocBLL.HienThiToanBoNganhHoc();
         }
 
         private void btnTimkiem_Click(object sender, EventArgs e)
@@ -138,6 +151,10 @@ namespace StudentManagment.GUI.User_Control
             catch (ArgumentException)
             {
                 MessageBox.Show("Bạn phải nhập mã ngành trước khi tìm kiếm ngành học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (InvalidOperationException)
+            {
+                MessageBox.Show("Mã ngành không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {

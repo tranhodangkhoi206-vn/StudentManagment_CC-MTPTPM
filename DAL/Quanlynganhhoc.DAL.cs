@@ -25,9 +25,13 @@ namespace StudentManagment.DAL
                     cmd.Parameters.AddWithValue("@MANGANH", nganhMoi.Manganh);
                     cmd.Parameters.AddWithValue("@TENNGANH", nganhMoi.Tennganh);
                     cmd.Parameters.AddWithValue("@KHOAQUANLY", nganhMoi.Khoaquanly);
-                    cmd.ExecuteNonQuery();
-
                     logger.LogInformation("Thêm ngành học mới vào danh sách ngành học.\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhMoi.Manganh, nganhMoi.Tennganh, nganhMoi.Khoaquanly);
+                    int thucThi = cmd.ExecuteNonQuery();
+		            if(thucThi == 0)
+                    {
+                        logger.LogWarning("Thêm ngành không thành công.");
+                        throw new InvalidOperationException();
+                    }
                     return nganhhocDAL.LayToanBoNganhHoc();
                 }
             }
@@ -43,31 +47,34 @@ namespace StudentManagment.DAL
             }
         }
 
-        public DataTable SuaThongTinNganhTheoMaNganh(NganhhocDTO nganhSua)
+        public DataTable SuaThongTinNganhTheoMaNganh(NganhhocDTO nganhHoc)
         {
             try
             {
                 using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
                 {
                     SqlCommand cmd = new SqlCommand("UPDATE NGANHHOC SET TENNGANH = @TENNGANH, KHOAQUANLY = @KHOAQUANLY WHERE MANGANH = @MANGANH", conn);
-                    cmd.Parameters.AddWithValue("@MANGANH", nganhSua.Manganh);
-                    cmd.Parameters.AddWithValue("@TENNGANH", nganhSua.Tennganh);
-                    cmd.Parameters.AddWithValue("@KHOAQUANLY", nganhSua.Khoaquanly);
-                    cmd.ExecuteNonQuery();
-
-                    logger.LogInformation("Sửa ngành học trong danh sách ngành học.\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhSua.Manganh, nganhSua.Tennganh, nganhSua.Khoaquanly);
-
+                    cmd.Parameters.AddWithValue("@MANGANH", nganhHoc.Manganh);
+                    cmd.Parameters.AddWithValue("@TENNGANH", nganhHoc.Tennganh);
+                    cmd.Parameters.AddWithValue("@KHOAQUANLY", nganhHoc.Khoaquanly);
+                    logger.LogInformation("Sửa ngành học trong danh sách ngành học.\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhHoc.Manganh, nganhHoc.Tennganh, nganhHoc.Khoaquanly);
+                    int thucThi = cmd.ExecuteNonQuery();
+		            if (thucThi == 0)
+                    {
+                        logger.LogWarning("Mã ngành không tồn tại.\nMã ngành: {0}", nganhHoc.Manganh);
+                        throw new InvalidOperationException();
+                    }
                     return nganhhocDAL.LayToanBoNganhHoc();
                 }
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi sửa ngành học.\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhSua.Manganh, nganhSua.Tennganh, nganhSua.Khoaquanly);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi sửa ngành học.\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhHoc.Manganh, nganhHoc.Tennganh, nganhHoc.Khoaquanly);
                 throw;
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Xảy ra lỗi khi sửa ngành học.\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhSua.Manganh, nganhSua.Tennganh, nganhSua.Khoaquanly);
+                logger.LogError(ex, "Xảy ra lỗi khi sửa ngành học.\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhHoc.Manganh, nganhHoc.Tennganh, nganhHoc.Khoaquanly);
                 throw;
             }
         }
@@ -78,12 +85,15 @@ namespace StudentManagment.DAL
             {
                 using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
                 {
-                    SqlCommand cmd = new SqlCommand("DELETE NGANHHOC WHERE MANGANH = @MANGANH", conn);
+                    SqlCommand cmd = new SqlCommand("DELETE FROM NGANHHOC WHERE MANGANH = @MANGANH", conn);
                     cmd.Parameters.AddWithValue("@MANGANH", maNganh);
-                    cmd.ExecuteNonQuery();
-
                     logger.LogInformation("Xóa ngành học khỏi danh sách ngành học.\nMã ngành: {0}", maNganh);
-
+                    int thucThi = cmd.ExecuteNonQuery();
+		            if (thucThi == 0)
+                    {
+                        logger.LogWarning("Mã ngành không tồn tại.\nMã ngành: {0}", maNganh);
+                        throw new InvalidOperationException();
+                    }
                     return nganhhocDAL.LayToanBoNganhHoc();
                 }
             }
@@ -111,6 +121,11 @@ namespace StudentManagment.DAL
                     adater.SelectCommand = cmd;
                     logger.LogInformation("Lấy danh sách ngành học theo Mã ngành.\nMã ngành: {0}", maNganh);
                     adater.Fill(dt);
+		            if (dt.Rows.Count == 0)
+                    {
+                        logger.LogWarning("Mã ngành không tồn tại.\nMã ngành: {0}", maNganh);
+                        throw new InvalidOperationException();
+                    }
                     return dt;
                 }
             }

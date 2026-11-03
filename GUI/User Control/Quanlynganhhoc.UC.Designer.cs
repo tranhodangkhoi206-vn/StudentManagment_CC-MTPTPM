@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             dgvNganh = new DataGridView();
             MANGANH = new DataGridViewTextBoxColumn();
             TENNGANH = new DataGridViewTextBoxColumn();
@@ -72,24 +72,24 @@
             // 
             dgvNganh.AllowUserToAddRows = false;
             dgvNganh.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvNganh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = SystemColors.Control;
+            dataGridViewCellStyle7.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dgvNganh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dgvNganh.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvNganh.Columns.AddRange(new DataGridViewColumn[] { MANGANH, TENNGANH, KHOAQUANLY });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvNganh.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = SystemColors.Window;
+            dataGridViewCellStyle8.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            dgvNganh.DefaultCellStyle = dataGridViewCellStyle8;
             dgvNganh.Dock = DockStyle.Fill;
             dgvNganh.Location = new Point(337, 6);
             dgvNganh.Margin = new Padding(0);
@@ -339,11 +339,13 @@
             // cbKhoaquanly
             // 
             cbKhoaquanly.Anchor = AnchorStyles.Left;
-            cbKhoaquanly.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cbKhoaquanly.DropDownWidth = 250;
+            cbKhoaquanly.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cbKhoaquanly.FormattingEnabled = true;
-            cbKhoaquanly.Location = new Point(132, 9);
+            cbKhoaquanly.Items.AddRange(new object[] { "Khoa Kinh tế biển – Logistics", "Khoa Du lịch – Sức khỏe", "Khoa Quản trị – Luật", "Khoa Ngôn ngữ – Văn hóa Quốc tế", "Khoa Công nghệ – Kỹ thuật" });
+            cbKhoaquanly.Location = new Point(132, 11);
             cbKhoaquanly.Name = "cbKhoaquanly";
-            cbKhoaquanly.Size = new Size(196, 32);
+            cbKhoaquanly.Size = new Size(196, 27);
             cbKhoaquanly.TabIndex = 1;
             // 
             // tableLayoutPanel5

@@ -54,6 +54,10 @@ namespace StudentManagment.GUI.User_Control
             {
                 MessageBox.Show("Bạn chưa nhập đầy đủ thông tin môn học khi thêm môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            catch (InvalidOperationException)
+            {
+                MessageBox.Show("Thêm không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception)
             {
                 MessageBox.Show("Xảy ra lỗi khi thêm môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -88,6 +92,10 @@ namespace StudentManagment.GUI.User_Control
             {
                 MessageBox.Show("Bạn chưa nhập đầy đủ thông tin môn học khi sửa môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            catch (InvalidOperationException)
+            {
+                MessageBox.Show("Mã môn học không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception)
             {
                 MessageBox.Show("Xảy ra lỗi khi sửa môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -113,6 +121,10 @@ namespace StudentManagment.GUI.User_Control
             {
                 MessageBox.Show("Bạn chưa nhập đầy đủ thông tin môn học khi xóa môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            catch (InvalidOperationException)
+            {
+                MessageBox.Show("Mã môn học không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception)
             {
                 MessageBox.Show("Xảy ra lỗi khi xóa môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -128,6 +140,7 @@ namespace StudentManagment.GUI.User_Control
             nudThuchanh.Value = 1;
             tbGiangvien.Text = "";
             cbTinhtrang.SelectedIndex = -1;
+            dgvMonhoc.DataSource = quanlymonhocBLL.HienThiDanhSachMonHoc();
         }
 
         private void btnTimkiem_Click(object sender, EventArgs e)
@@ -153,6 +166,10 @@ namespace StudentManagment.GUI.User_Control
             catch (ArgumentException)
             {
                 MessageBox.Show("Bạn phải nhập mã môn học trước khi tìm kiếm môn học.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (InvalidOperationException)
+            {
+                MessageBox.Show("Mã môn học không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {

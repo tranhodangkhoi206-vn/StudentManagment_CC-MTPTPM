@@ -15,65 +15,74 @@ namespace StudentManagment.DAL
             logger = loggerFactory.CreateLogger<QuanlysinhvienDAL>();
             sinhvienDAL = new SinhvienDAL(loggerFactory);
         }
-        public DataTable ThemsinhVienMoi(SinhvienDTO sinhVienSua)
+        public DataTable ThemsinhVienMoi(SinhvienDTO sinhVien)
         {
             try
             {
                 using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
                 {
                     SqlCommand cmd = new SqlCommand("INSERT INTO SinhVien VALUES (@MASV, @HOVATEN, @MALOP, @NGAYSINH, @GIOITINH, @MANGANH, @TINHTRANG)", conn);
-                    cmd.Parameters.AddWithValue("@MASV", sinhVienSua.MaSinhVien);
-                    cmd.Parameters.AddWithValue("@HOVATEN", sinhVienSua.HoVaTen);
-                    cmd.Parameters.AddWithValue("@MALOP", sinhVienSua.MaLop);
-                    cmd.Parameters.AddWithValue("@NGAYSINH", sinhVienSua.NgaySinh);
-                    cmd.Parameters.AddWithValue("@GIOITINH", sinhVienSua.GioiTinh);
-                    cmd.Parameters.AddWithValue("@MANGANH", sinhVienSua.MaNganh);
-                    cmd.Parameters.AddWithValue("@TINHTRANG", sinhVienSua.TinhTrang);
-                    cmd.ExecuteNonQuery();
-
-                    logger.LogInformation("Thêm sinh viên mới vào danh sách sinh viên.\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVienSua.MaSinhVien, sinhVienSua.HoVaTen, sinhVienSua.MaLop, sinhVienSua.NgaySinh, sinhVienSua.GioiTinh, sinhVienSua.MaNganh, sinhVienSua.TinhTrang);
+                    cmd.Parameters.AddWithValue("@MASV", sinhVien.MaSinhVien);
+                    cmd.Parameters.AddWithValue("@HOVATEN", sinhVien.HoVaTen);
+                    cmd.Parameters.AddWithValue("@MALOP", sinhVien.MaLop);
+                    cmd.Parameters.AddWithValue("@NGAYSINH", sinhVien.NgaySinh);
+                    cmd.Parameters.AddWithValue("@GIOITINH", sinhVien.GioiTinh);
+                    cmd.Parameters.AddWithValue("@MANGANH", sinhVien.MaNganh);
+                    cmd.Parameters.AddWithValue("@TINHTRANG", sinhVien.TinhTrang);
+                    logger.LogInformation("Thêm sinh viên mới vào danh sách sinh viên.\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVien.MaSinhVien, sinhVien.HoVaTen, sinhVien.MaLop, sinhVien.NgaySinh, sinhVien.GioiTinh, sinhVien.MaNganh, sinhVien.TinhTrang);
+                    int thucThi = cmd.ExecuteNonQuery();
+		            if(thucThi == 0)
+                    {
+                        logger.LogWarning("Thêm sinh viên không thành công.");
+                        throw new InvalidOperationException();
+                    }
 
                     return sinhvienDAL.LayToanBoSinhVien();
                 }
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi thêm sinh viên mới.\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVienSua.MaSinhVien, sinhVienSua.HoVaTen, sinhVienSua.MaLop, sinhVienSua.NgaySinh, sinhVienSua.GioiTinh, sinhVienSua.MaNganh, sinhVienSua.TinhTrang);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi thêm sinh viên mới.\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVien.MaSinhVien, sinhVien.HoVaTen, sinhVien.MaLop, sinhVien.NgaySinh, sinhVien.GioiTinh, sinhVien.MaNganh, sinhVien.TinhTrang);
                 throw;
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Xảy ra lỗi khi thêm sinh viên mới.\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVienSua.MaSinhVien, sinhVienSua.HoVaTen, sinhVienSua.MaLop, sinhVienSua.NgaySinh, sinhVienSua.GioiTinh, sinhVienSua.MaNganh, sinhVienSua.TinhTrang);
+                logger.LogError(ex, "Xảy ra lỗi khi thêm sinh viên mới.\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVien.MaSinhVien, sinhVien.HoVaTen, sinhVien.MaLop, sinhVien.NgaySinh, sinhVien.GioiTinh, sinhVien.MaNganh, sinhVien.TinhTrang);
                 throw;
             }
         }
-        public DataTable SuaThongTinSinhVienTheoMaSinhVien(SinhvienDTO sinhVienSua)
+        public DataTable SuaThongTinSinhVienTheoMaSinhVien(SinhvienDTO sinhVien)
         {
             try
             {
                 using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
                 {
                     SqlCommand cmd = new SqlCommand("UPDATE SinhVien SET HOVATEN   = @HOVATEN, MALOP     = @MALOP, NGAYSINH  = @NGAYSINH, GIOITINH  = @GIOITINH, MANGANH   = @MANGANH, TINHTRANG = @TINHTRANG WHERE MASV = @MASV", conn);
-                    cmd.Parameters.AddWithValue("@MASV", sinhVienSua.MaSinhVien);
-                    cmd.Parameters.AddWithValue("@HOVATEN", sinhVienSua.HoVaTen);
-                    cmd.Parameters.AddWithValue("@MALOP", sinhVienSua.MaLop);
-                    cmd.Parameters.AddWithValue("@NGAYSINH", sinhVienSua.NgaySinh);
-                    cmd.Parameters.AddWithValue("@GIOITINH", sinhVienSua.GioiTinh);
-                    cmd.Parameters.AddWithValue("@MANGANH", sinhVienSua.MaNganh);
-                    cmd.Parameters.AddWithValue("@TINHTRANG", sinhVienSua.TinhTrang);
-                    cmd.ExecuteNonQuery();
-                    logger.LogInformation("Sửa sinh viên trong danh sách sinh viên.\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVienSua.MaSinhVien, sinhVienSua.HoVaTen, sinhVienSua.MaLop, sinhVienSua.NgaySinh, sinhVienSua.GioiTinh, sinhVienSua.MaNganh, sinhVienSua.TinhTrang);
+                    cmd.Parameters.AddWithValue("@MASV", sinhVien.MaSinhVien);
+                    cmd.Parameters.AddWithValue("@HOVATEN", sinhVien.HoVaTen);
+                    cmd.Parameters.AddWithValue("@MALOP", sinhVien.MaLop);
+                    cmd.Parameters.AddWithValue("@NGAYSINH", sinhVien.NgaySinh);
+                    cmd.Parameters.AddWithValue("@GIOITINH", sinhVien.GioiTinh);
+                    cmd.Parameters.AddWithValue("@MANGANH", sinhVien.MaNganh);
+                    cmd.Parameters.AddWithValue("@TINHTRANG", sinhVien.TinhTrang);
+                    logger.LogInformation("Sửa sinh viên trong danh sách sinh viên.\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVien.MaSinhVien, sinhVien.HoVaTen, sinhVien.MaLop, sinhVien.NgaySinh, sinhVien.GioiTinh, sinhVien.MaNganh, sinhVien.TinhTrang);
+                    int thucThi = cmd.ExecuteNonQuery();
+		            if (thucThi == 0)
+                    {
+                        logger.LogWarning("Mã sinh viên không tồn tại.\nMã sinh viên: {0}", sinhVien.MaSinhVien);
+                        throw new InvalidOperationException();
+                    }
                     return sinhvienDAL.LayToanBoSinhVien();
                 }
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi sửa sinh viên.\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVienSua.MaSinhVien, sinhVienSua.HoVaTen, sinhVienSua.MaLop, sinhVienSua.NgaySinh, sinhVienSua.GioiTinh, sinhVienSua.MaNganh, sinhVienSua.TinhTrang);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi sửa sinh viên.\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVien.MaSinhVien, sinhVien.HoVaTen, sinhVien.MaLop, sinhVien.NgaySinh, sinhVien.GioiTinh, sinhVien.MaNganh, sinhVien.TinhTrang);
                 throw;
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Xảy ra lỗi khi sủa sinh viên.\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVienSua.MaSinhVien, sinhVienSua.HoVaTen, sinhVienSua.MaLop, sinhVienSua.NgaySinh, sinhVienSua.GioiTinh, sinhVienSua.MaNganh, sinhVienSua.TinhTrang);
+                logger.LogError(ex, "Xảy ra lỗi khi sủa sinh viên.\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVien.MaSinhVien, sinhVien.HoVaTen, sinhVien.MaLop, sinhVien.NgaySinh, sinhVien.GioiTinh, sinhVien.MaNganh, sinhVien.TinhTrang);
                 throw;
             }
         }
@@ -83,10 +92,15 @@ namespace StudentManagment.DAL
             {
                 using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
                 {
-                    SqlCommand cmd = new SqlCommand("DELETE SINHVIEN WHERE MASV=@MASV", conn);
+                    SqlCommand cmd = new SqlCommand("DELETE FROM SINHVIEN WHERE MASV=@MASV", conn);
                     cmd.Parameters.AddWithValue("@MASV", maSinhVien);
-                    cmd.ExecuteNonQuery();
                     logger.LogInformation("Xóa sinh viên ra khỏi danh sách sinh viên.\nMã sinh viên: {0}.", maSinhVien);
+                    int thucThi = cmd.ExecuteNonQuery();
+		            if (thucThi == 0)
+                    {
+                        logger.LogWarning("Mã sinh viên không tồn tại.\nMã sinh viên: {0}", maSinhVien);
+                        throw new InvalidOperationException();
+                    }
                     return sinhvienDAL.LayToanBoSinhVien();
                 }
             }
@@ -114,6 +128,11 @@ namespace StudentManagment.DAL
                     adapter.SelectCommand = cmd;
                     logger.LogInformation("Lấy danh sách sinh viên theo điều kiện mã sinh viên.\nMã sinh viên: {0}",maSinhVien);
                     adapter.Fill(dt);
+		            if (dt.Rows.Count == 0)
+                    {
+                        logger.LogWarning("Mã sinh viên không tồn tại.\nMã sinh viên: {0}", maSinhVien);
+                        throw new InvalidOperationException();
+                    }
                     return dt;
                 }
             }
