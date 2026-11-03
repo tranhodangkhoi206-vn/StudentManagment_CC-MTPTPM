@@ -195,7 +195,7 @@
             btnTimkiem.Location = new Point(3, 3);
             btnTimkiem.Name = "btnTimkiem";
             btnTimkiem.Size = new Size(114, 44);
-            btnTimkiem.TabIndex = 1;
+            btnTimkiem.TabIndex = 12;
             btnTimkiem.Text = "Tìm kiếm";
             btnTimkiem.UseVisualStyleBackColor = true;
             btnTimkiem.Click += btnTimkiem_Click;
@@ -235,7 +235,7 @@
             btnDondep.Location = new Point(168, 3);
             btnDondep.Name = "btnDondep";
             btnDondep.Size = new Size(114, 44);
-            btnDondep.TabIndex = 2;
+            btnDondep.TabIndex = 11;
             btnDondep.Text = "Dọn dẹp";
             btnDondep.UseVisualStyleBackColor = true;
             btnDondep.Click += btnDondep_Click;
@@ -247,7 +247,7 @@
             btnSua.Location = new Point(3, 3);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(114, 44);
-            btnSua.TabIndex = 1;
+            btnSua.TabIndex = 10;
             btnSua.Text = "Sửa";
             btnSua.UseVisualStyleBackColor = true;
             btnSua.Click += btnSua_Click;
@@ -278,7 +278,7 @@
             cbTinhtrang.Location = new Point(123, 9);
             cbTinhtrang.Name = "cbTinhtrang";
             cbTinhtrang.Size = new Size(205, 32);
-            cbTinhtrang.TabIndex = 2;
+            cbTinhtrang.TabIndex = 7;
             // 
             // label8
             // 
@@ -318,7 +318,7 @@
             cbManganh.Location = new Point(123, 9);
             cbManganh.Name = "cbManganh";
             cbManganh.Size = new Size(205, 32);
-            cbManganh.TabIndex = 2;
+            cbManganh.TabIndex = 6;
             // 
             // label7
             // 
@@ -369,7 +369,7 @@
             cbMalop.Location = new Point(123, 9);
             cbMalop.Name = "cbMalop";
             cbMalop.Size = new Size(205, 32);
-            cbMalop.TabIndex = 1;
+            cbMalop.TabIndex = 5;
             // 
             // tableLayoutPanel7
             // 
@@ -409,7 +409,7 @@
             dtpNgaysinh.Location = new Point(123, 9);
             dtpNgaysinh.Name = "dtpNgaysinh";
             dtpNgaysinh.Size = new Size(205, 32);
-            dtpNgaysinh.TabIndex = 1;
+            dtpNgaysinh.TabIndex = 4;
             // 
             // tableLayoutPanel6
             // 
@@ -463,7 +463,7 @@
             rbNu.Location = new Point(108, 3);
             rbNu.Name = "rbNu";
             rbNu.Size = new Size(100, 44);
-            rbNu.TabIndex = 1;
+            rbNu.TabIndex = 3;
             rbNu.TabStop = true;
             rbNu.Text = "Nữ";
             rbNu.UseVisualStyleBackColor = true;
@@ -475,7 +475,7 @@
             rbNam.Location = new Point(3, 3);
             rbNam.Name = "rbNam";
             rbNam.Size = new Size(99, 44);
-            rbNam.TabIndex = 0;
+            rbNam.TabIndex = 2;
             rbNam.TabStop = true;
             rbNam.Text = "Nam";
             rbNam.UseVisualStyleBackColor = true;
@@ -554,7 +554,7 @@
             tbMasinhvien.Location = new Point(128, 9);
             tbMasinhvien.Name = "tbMasinhvien";
             tbMasinhvien.Size = new Size(200, 32);
-            tbMasinhvien.TabIndex = 1;
+            tbMasinhvien.TabIndex = 0;
             // 
             // tableLayoutPanel12
             // 
@@ -579,7 +579,7 @@
             btnXoa.Location = new Point(168, 3);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(114, 44);
-            btnXoa.TabIndex = 1;
+            btnXoa.TabIndex = 9;
             btnXoa.Text = "Xóa";
             btnXoa.UseVisualStyleBackColor = true;
             btnXoa.Click += btnXoa_Click;
@@ -591,7 +591,7 @@
             btnThem.Location = new Point(3, 3);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(114, 44);
-            btnThem.TabIndex = 0;
+            btnThem.TabIndex = 8;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = true;
             btnThem.Click += btnThem_Click;
@@ -625,7 +625,7 @@
             dgvSinhvien.ReadOnly = true;
             dgvSinhvien.RowHeadersWidth = 51;
             dgvSinhvien.Size = new Size(447, 533);
-            dgvSinhvien.TabIndex = 1;
+            dgvSinhvien.TabIndex = 0;
             // 
             // MASV
             // 

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
             tableLayoutPanel4 = new TableLayoutPanel();
             label2 = new Label();
             tbMasinhvien = new TextBox();
@@ -109,30 +109,30 @@
             tbMasinhvien.Location = new Point(125, 9);
             tbMasinhvien.Name = "tbMasinhvien";
             tbMasinhvien.Size = new Size(200, 32);
-            tbMasinhvien.TabIndex = 1;
+            tbMasinhvien.TabIndex = 0;
             // 
             // dgvSinhvien
             // 
             dgvSinhvien.AllowUserToAddRows = false;
             dgvSinhvien.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvSinhvien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = SystemColors.Control;
+            dataGridViewCellStyle15.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle15.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = DataGridViewTriState.True;
+            dgvSinhvien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             dgvSinhvien.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvSinhvien.Columns.AddRange(new DataGridViewColumn[] { MALOP, MANGANH, TENLOP, GIANGVIENPHUTRACH });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvSinhvien.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = SystemColors.Window;
+            dataGridViewCellStyle16.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle16.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle16.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = DataGridViewTriState.False;
+            dgvSinhvien.DefaultCellStyle = dataGridViewCellStyle16;
             dgvSinhvien.Dock = DockStyle.Fill;
             dgvSinhvien.Location = new Point(337, 6);
             dgvSinhvien.Margin = new Padding(0);
@@ -247,7 +247,7 @@
             btnTimkiem.Location = new Point(3, 3);
             btnTimkiem.Name = "btnTimkiem";
             btnTimkiem.Size = new Size(114, 44);
-            btnTimkiem.TabIndex = 1;
+            btnTimkiem.TabIndex = 8;
             btnTimkiem.Text = "Tìm kiếm";
             btnTimkiem.UseVisualStyleBackColor = true;
             // 
@@ -286,7 +286,7 @@
             btnDondep.Location = new Point(168, 3);
             btnDondep.Name = "btnDondep";
             btnDondep.Size = new Size(114, 44);
-            btnDondep.TabIndex = 2;
+            btnDondep.TabIndex = 7;
             btnDondep.Text = "Dọn dẹp";
             btnDondep.UseVisualStyleBackColor = true;
             // 
@@ -297,7 +297,7 @@
             btnSua.Location = new Point(3, 3);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(114, 44);
-            btnSua.TabIndex = 1;
+            btnSua.TabIndex = 6;
             btnSua.Text = "Sửa";
             btnSua.UseVisualStyleBackColor = true;
             // 
@@ -324,7 +324,7 @@
             btnXoa.Location = new Point(168, 3);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(114, 44);
-            btnXoa.TabIndex = 1;
+            btnXoa.TabIndex = 5;
             btnXoa.Text = "Xóa";
             btnXoa.UseVisualStyleBackColor = true;
             // 
@@ -335,7 +335,7 @@
             btnThem.Location = new Point(3, 3);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(114, 44);
-            btnThem.TabIndex = 0;
+            btnThem.TabIndex = 4;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = true;
             // 
@@ -375,7 +375,7 @@
             textBox3.Location = new Point(126, 9);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(200, 32);
-            textBox3.TabIndex = 1;
+            textBox3.TabIndex = 3;
             // 
             // tableLayoutPanel6
             // 
@@ -413,7 +413,7 @@
             textBox2.Location = new Point(126, 9);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(200, 32);
-            textBox2.TabIndex = 1;
+            textBox2.TabIndex = 2;
             // 
             // tableLayoutPanel5
             // 

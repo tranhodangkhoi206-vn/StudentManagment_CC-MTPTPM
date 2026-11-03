@@ -107,7 +107,7 @@
             tbHovaten.Location = new Point(125, 9);
             tbHovaten.Name = "tbHovaten";
             tbHovaten.Size = new Size(196, 32);
-            tbHovaten.TabIndex = 1;
+            tbHovaten.TabIndex = 0;
             // 
             // dgvTaikhoan
             // 
@@ -138,7 +138,7 @@
             dgvTaikhoan.ReadOnly = true;
             dgvTaikhoan.RowHeadersWidth = 51;
             dgvTaikhoan.Size = new Size(438, 494);
-            dgvTaikhoan.TabIndex = 1;
+            dgvTaikhoan.TabIndex = 0;
             // 
             // HOVATEN
             // 
@@ -260,7 +260,7 @@
             btnTimkiem.Location = new Point(3, 3);
             btnTimkiem.Name = "btnTimkiem";
             btnTimkiem.Size = new Size(114, 44);
-            btnTimkiem.TabIndex = 1;
+            btnTimkiem.TabIndex = 7;
             btnTimkiem.Text = "Tìm kiếm";
             btnTimkiem.UseVisualStyleBackColor = true;
             btnTimkiem.Click += btnTimkiem_Click;
@@ -300,7 +300,7 @@
             btnDondep.Location = new Point(165, 3);
             btnDondep.Name = "btnDondep";
             btnDondep.Size = new Size(114, 44);
-            btnDondep.TabIndex = 2;
+            btnDondep.TabIndex = 6;
             btnDondep.Text = "Dọn dẹp";
             btnDondep.UseVisualStyleBackColor = true;
             btnDondep.Click += btnDondep_Click;
@@ -312,7 +312,7 @@
             btnSua.Location = new Point(3, 3);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(114, 44);
-            btnSua.TabIndex = 1;
+            btnSua.TabIndex = 5;
             btnSua.Text = "Sửa";
             btnSua.UseVisualStyleBackColor = true;
             btnSua.Click += btnSua_Click;
@@ -340,7 +340,7 @@
             btnXoa.Location = new Point(165, 3);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(114, 44);
-            btnXoa.TabIndex = 1;
+            btnXoa.TabIndex = 4;
             btnXoa.Text = "Xóa";
             btnXoa.UseVisualStyleBackColor = true;
             btnXoa.Click += btnXoa_Click;
@@ -352,7 +352,7 @@
             btnThem.Location = new Point(3, 3);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(114, 44);
-            btnThem.TabIndex = 0;
+            btnThem.TabIndex = 3;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = true;
             btnThem.Click += btnThem_Click;
@@ -431,7 +431,7 @@
             tbMatkhau.Location = new Point(125, 9);
             tbMatkhau.Name = "tbMatkhau";
             tbMatkhau.Size = new Size(196, 32);
-            tbMatkhau.TabIndex = 1;
+            tbMatkhau.TabIndex = 2;
             // 
             // tableLayoutPanel7
             // 
@@ -456,7 +456,7 @@
             btnDangxuat.Location = new Point(208, 3);
             btnDangxuat.Name = "btnDangxuat";
             btnDangxuat.Size = new Size(113, 50);
-            btnDangxuat.TabIndex = 2;
+            btnDangxuat.TabIndex = 8;
             btnDangxuat.Text = "Đăng xuất";
             btnDangxuat.UseVisualStyleBackColor = true;
             btnDangxuat.Click += btnDangxuat_Click;

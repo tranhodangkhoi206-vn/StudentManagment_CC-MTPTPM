@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle17 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle18 = new DataGridViewCellStyle();
             tableLayoutPanel4 = new TableLayoutPanel();
             label2 = new Label();
             tbMasinhvien = new TextBox();
@@ -119,30 +119,30 @@
             tbMasinhvien.Location = new Point(128, 9);
             tbMasinhvien.Name = "tbMasinhvien";
             tbMasinhvien.Size = new Size(200, 32);
-            tbMasinhvien.TabIndex = 1;
+            tbMasinhvien.TabIndex = 0;
             // 
             // dgvDiem
             // 
             dgvDiem.AllowUserToAddRows = false;
             dgvDiem.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvDiem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle17.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = SystemColors.Control;
+            dataGridViewCellStyle17.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle17.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle17.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = DataGridViewTriState.True;
+            dgvDiem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             dgvDiem.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvDiem.Columns.AddRange(new DataGridViewColumn[] { MASV, MAMON, DIEMCHUYENCAN, DIEMGIUAKY, DIEMCUOIKY, DIEMTONG });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvDiem.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle18.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = SystemColors.Window;
+            dataGridViewCellStyle18.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle18.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle18.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = DataGridViewTriState.False;
+            dgvDiem.DefaultCellStyle = dataGridViewCellStyle18;
             dgvDiem.Dock = DockStyle.Fill;
             dgvDiem.Location = new Point(337, 6);
             dgvDiem.Margin = new Padding(0);
@@ -349,7 +349,7 @@
             button4.Location = new Point(168, 3);
             button4.Name = "button4";
             button4.Size = new Size(114, 44);
-            button4.TabIndex = 1;
+            button4.TabIndex = 6;
             button4.Text = "Xóa";
             button4.UseVisualStyleBackColor = true;
             button4.Click += btnXoa_Click;
@@ -361,7 +361,7 @@
             button5.Location = new Point(3, 3);
             button5.Name = "button5";
             button5.Size = new Size(114, 44);
-            button5.TabIndex = 0;
+            button5.TabIndex = 5;
             button5.Text = "Thêm";
             button5.UseVisualStyleBackColor = true;
             button5.Click += btnThem_Click;
@@ -389,7 +389,7 @@
             btnDondep.Location = new Point(168, 3);
             btnDondep.Name = "btnDondep";
             btnDondep.Size = new Size(114, 44);
-            btnDondep.TabIndex = 2;
+            btnDondep.TabIndex = 8;
             btnDondep.Text = "Dọn dẹp";
             btnDondep.UseVisualStyleBackColor = true;
             btnDondep.Click += btnDondep_Click;
@@ -401,7 +401,7 @@
             button3.Location = new Point(3, 3);
             button3.Name = "button3";
             button3.Size = new Size(114, 44);
-            button3.TabIndex = 1;
+            button3.TabIndex = 7;
             button3.Text = "Sửa";
             button3.UseVisualStyleBackColor = true;
             button3.Click += btnSua_Click;
@@ -430,7 +430,7 @@
             btnTimkiem.Location = new Point(3, 3);
             btnTimkiem.Name = "btnTimkiem";
             btnTimkiem.Size = new Size(114, 44);
-            btnTimkiem.TabIndex = 1;
+            btnTimkiem.TabIndex = 9;
             btnTimkiem.Text = "Tìm kiếm";
             btnTimkiem.UseVisualStyleBackColor = true;
             btnTimkiem.Click += btnTimkiem_Click;
@@ -483,7 +483,7 @@
             tbDiemcuoiky.Location = new Point(163, 9);
             tbDiemcuoiky.Name = "tbDiemcuoiky";
             tbDiemcuoiky.Size = new Size(165, 32);
-            tbDiemcuoiky.TabIndex = 1;
+            tbDiemcuoiky.TabIndex = 4;
             tbDiemcuoiky.TextChanged += tbDiemcuoiky_TextChanged;
             // 
             // tableLayoutPanel7
@@ -522,7 +522,7 @@
             tbDiemgiuaky.Location = new Point(163, 9);
             tbDiemgiuaky.Name = "tbDiemgiuaky";
             tbDiemgiuaky.Size = new Size(165, 32);
-            tbDiemgiuaky.TabIndex = 1;
+            tbDiemgiuaky.TabIndex = 3;
             tbDiemgiuaky.TextChanged += tbDiemgiuaky_TextChanged;
             // 
             // tableLayoutPanel6
@@ -561,7 +561,7 @@
             tbDiemchuyencan.Location = new Point(163, 9);
             tbDiemchuyencan.Name = "tbDiemchuyencan";
             tbDiemchuyencan.Size = new Size(165, 32);
-            tbDiemchuyencan.TabIndex = 1;
+            tbDiemchuyencan.TabIndex = 2;
             tbDiemchuyencan.TextChanged += tbDiemchuyencan_TextChanged;
             // 
             // tableLayoutPanel5

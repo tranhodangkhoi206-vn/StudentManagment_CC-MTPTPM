@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
             dgvNganh = new DataGridView();
             MANGANH = new DataGridViewTextBoxColumn();
             TENNGANH = new DataGridViewTextBoxColumn();
@@ -72,24 +72,24 @@
             // 
             dgvNganh.AllowUserToAddRows = false;
             dgvNganh.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = SystemColors.Control;
-            dataGridViewCellStyle7.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            dgvNganh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = SystemColors.Control;
+            dataGridViewCellStyle13.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle13.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = DataGridViewTriState.True;
+            dgvNganh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             dgvNganh.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvNganh.Columns.AddRange(new DataGridViewColumn[] { MANGANH, TENNGANH, KHOAQUANLY });
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = SystemColors.Window;
-            dataGridViewCellStyle8.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
-            dgvNganh.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = SystemColors.Window;
+            dataGridViewCellStyle14.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle14.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = DataGridViewTriState.False;
+            dgvNganh.DefaultCellStyle = dataGridViewCellStyle14;
             dgvNganh.Dock = DockStyle.Fill;
             dgvNganh.Location = new Point(337, 6);
             dgvNganh.Margin = new Padding(0);
@@ -145,7 +145,7 @@
             tbManganh.Location = new Point(107, 9);
             tbManganh.Name = "tbManganh";
             tbManganh.Size = new Size(221, 32);
-            tbManganh.TabIndex = 1;
+            tbManganh.TabIndex = 0;
             // 
             // tableLayoutPanel4
             // 
@@ -211,7 +211,7 @@
             btnTimkiem.Location = new Point(3, 3);
             btnTimkiem.Name = "btnTimkiem";
             btnTimkiem.Size = new Size(114, 44);
-            btnTimkiem.TabIndex = 1;
+            btnTimkiem.TabIndex = 7;
             btnTimkiem.Text = "Tìm kiếm";
             btnTimkiem.UseVisualStyleBackColor = true;
             btnTimkiem.Click += btnTimkiem_Click;
@@ -251,7 +251,7 @@
             btnDondep.Location = new Point(168, 3);
             btnDondep.Name = "btnDondep";
             btnDondep.Size = new Size(114, 44);
-            btnDondep.TabIndex = 2;
+            btnDondep.TabIndex = 6;
             btnDondep.Text = "Dọn dẹp";
             btnDondep.UseVisualStyleBackColor = true;
             btnDondep.Click += btnDondep_Click;
@@ -263,7 +263,7 @@
             btnSua.Location = new Point(3, 3);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(114, 44);
-            btnSua.TabIndex = 1;
+            btnSua.TabIndex = 5;
             btnSua.Text = "Sửa";
             btnSua.UseVisualStyleBackColor = true;
             btnSua.Click += btnSua_Click;
@@ -291,7 +291,7 @@
             btnXoa.Location = new Point(168, 3);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(114, 44);
-            btnXoa.TabIndex = 1;
+            btnXoa.TabIndex = 4;
             btnXoa.Text = "Xóa";
             btnXoa.UseVisualStyleBackColor = true;
             btnXoa.Click += btnXoa_Click;
@@ -303,7 +303,7 @@
             btnThem.Location = new Point(3, 3);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(114, 44);
-            btnThem.TabIndex = 0;
+            btnThem.TabIndex = 3;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = true;
             btnThem.Click += btnThem_Click;
@@ -346,7 +346,7 @@
             cbKhoaquanly.Location = new Point(132, 11);
             cbKhoaquanly.Name = "cbKhoaquanly";
             cbKhoaquanly.Size = new Size(196, 27);
-            cbKhoaquanly.TabIndex = 1;
+            cbKhoaquanly.TabIndex = 2;
             // 
             // tableLayoutPanel5
             // 

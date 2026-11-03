@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle21 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle22 = new DataGridViewCellStyle();
             tableLayoutPanel5 = new TableLayoutPanel();
             label3 = new Label();
             tbTenmonhoc = new TextBox();
@@ -166,30 +166,30 @@
             tbMamonhoc.Location = new Point(128, 9);
             tbMamonhoc.Name = "tbMamonhoc";
             tbMamonhoc.Size = new Size(200, 32);
-            tbMamonhoc.TabIndex = 1;
+            tbMamonhoc.TabIndex = 0;
             // 
             // dgvMonhoc
             // 
             dgvMonhoc.AllowUserToAddRows = false;
             dgvMonhoc.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvMonhoc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle21.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = SystemColors.Control;
+            dataGridViewCellStyle21.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle21.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle21.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = DataGridViewTriState.True;
+            dgvMonhoc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
             dgvMonhoc.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvMonhoc.Columns.AddRange(new DataGridViewColumn[] { MAMON, TENMON, SOTIETLYTHUYET, SOTIETTHUCHANH, MANGANH, GIANGVIEN, TINHTRANG });
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Roboto Condensed", 12F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dgvMonhoc.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle22.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = SystemColors.Window;
+            dataGridViewCellStyle22.Font = new Font("Roboto Condensed", 12F);
+            dataGridViewCellStyle22.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle22.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = DataGridViewTriState.False;
+            dgvMonhoc.DefaultCellStyle = dataGridViewCellStyle22;
             dgvMonhoc.Dock = DockStyle.Fill;
             dgvMonhoc.Location = new Point(337, 6);
             dgvMonhoc.Margin = new Padding(0);
@@ -363,7 +363,7 @@
             btnTimkiem.Location = new Point(3, 3);
             btnTimkiem.Name = "btnTimkiem";
             btnTimkiem.Size = new Size(114, 44);
-            btnTimkiem.TabIndex = 1;
+            btnTimkiem.TabIndex = 11;
             btnTimkiem.Text = "Tìm kiếm";
             btnTimkiem.UseVisualStyleBackColor = true;
             btnTimkiem.Click += btnTimkiem_Click;
@@ -403,7 +403,7 @@
             btnDondep.Location = new Point(168, 3);
             btnDondep.Name = "btnDondep";
             btnDondep.Size = new Size(114, 44);
-            btnDondep.TabIndex = 2;
+            btnDondep.TabIndex = 10;
             btnDondep.Text = "Dọn dẹp";
             btnDondep.UseVisualStyleBackColor = true;
             btnDondep.Click += btnDondep_Click;
@@ -415,7 +415,7 @@
             btnSua.Location = new Point(3, 3);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(114, 44);
-            btnSua.TabIndex = 1;
+            btnSua.TabIndex = 9;
             btnSua.Text = "Sửa";
             btnSua.UseVisualStyleBackColor = true;
             btnSua.Click += btnSua_Click;
@@ -443,7 +443,7 @@
             btnXoa.Location = new Point(168, 3);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(114, 44);
-            btnXoa.TabIndex = 1;
+            btnXoa.TabIndex = 8;
             btnXoa.Text = "Xóa";
             btnXoa.UseVisualStyleBackColor = true;
             btnXoa.Click += btnXoa_Click;
@@ -455,7 +455,7 @@
             btnThem.Location = new Point(3, 3);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(114, 44);
-            btnThem.TabIndex = 0;
+            btnThem.TabIndex = 7;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = true;
             btnThem.Click += btnThem_Click;
@@ -486,7 +486,7 @@
             cbTinhtrang.Location = new Point(123, 9);
             cbTinhtrang.Name = "cbTinhtrang";
             cbTinhtrang.Size = new Size(205, 32);
-            cbTinhtrang.TabIndex = 2;
+            cbTinhtrang.TabIndex = 6;
             // 
             // label8
             // 
@@ -536,7 +536,7 @@
             tbGiangvien.Location = new Point(124, 9);
             tbGiangvien.Name = "tbGiangvien";
             tbGiangvien.Size = new Size(204, 32);
-            tbGiangvien.TabIndex = 1;
+            tbGiangvien.TabIndex = 5;
             // 
             // tableLayoutPanel9
             // 
@@ -564,7 +564,7 @@
             cbManganh.Location = new Point(123, 9);
             cbManganh.Name = "cbManganh";
             cbManganh.Size = new Size(205, 32);
-            cbManganh.TabIndex = 2;
+            cbManganh.TabIndex = 4;
             // 
             // label7
             // 
@@ -618,7 +618,7 @@
             nudThuchanh.Location = new Point(86, 11);
             nudThuchanh.Name = "nudThuchanh";
             nudThuchanh.Size = new Size(77, 28);
-            nudThuchanh.TabIndex = 2;
+            nudThuchanh.TabIndex = 3;
             // 
             // label10
             // 
@@ -670,7 +670,7 @@
             nudLythuyet.Location = new Point(85, 11);
             nudLythuyet.Name = "nudLythuyet";
             nudLythuyet.Size = new Size(77, 28);
-            nudLythuyet.TabIndex = 1;
+            nudLythuyet.TabIndex = 2;
             // 
             // Quanlymonhoc
             // 
