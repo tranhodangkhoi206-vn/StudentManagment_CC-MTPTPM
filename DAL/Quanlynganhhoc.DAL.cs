@@ -106,7 +106,7 @@ namespace StudentManagment.DAL
                 {
                     SqlDataAdapter adater = new SqlDataAdapter();
                     DataTable dt = new DataTable();
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM NGANH WHERE MANGANH=@MANGANH", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM NGANHHOC WHERE MANGANH=@MANGANH", conn);
                     cmd.Parameters.AddWithValue("@MANGANH", maNganh);
                     adater.SelectCommand = cmd;
                     logger.LogInformation("Lấy danh sách ngành học theo Mã ngành.\nMã ngành: {0}", maNganh);

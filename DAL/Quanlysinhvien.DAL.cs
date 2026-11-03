@@ -109,8 +109,8 @@ namespace StudentManagment.DAL
                 {
                     DataTable dt = new DataTable();
                     SqlDataAdapter adapter = new SqlDataAdapter();
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM SINHVIEN WHERE MASINHVIEN=@MASINHVIEN", conn);
-                    cmd.Parameters.AddWithValue("@MASINHVIEN", maSinhVien);
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM SINHVIEN WHERE MASV=@MASV", conn);
+                    cmd.Parameters.AddWithValue("@MASV", maSinhVien);
                     adapter.SelectCommand = cmd;
                     logger.LogInformation("Lấy danh sách sinh viên theo điều kiện mã sinh viên.\nMã sinh viên: {0}",maSinhVien);
                     adapter.Fill(dt);

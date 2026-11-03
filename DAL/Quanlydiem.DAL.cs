@@ -114,8 +114,8 @@ namespace StudentManagment.DAL
                 {
                     DataTable dt = new DataTable();
                     SqlDataAdapter adapter = new SqlDataAdapter();
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM DIEM WHERE MASINHVIEN=@MASINHVIEN AND MAMON=@MAMON", conn);
-                    cmd.Parameters.AddWithValue("@MASINHVIEN", maSinhVien);
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM DIEM WHERE MASV=@MASV AND MAMON=@MAMON", conn);
+                    cmd.Parameters.AddWithValue("@MASV", maSinhVien);
                     cmd.Parameters.AddWithValue("@MAMON", maMon);
                     adapter.SelectCommand = cmd;
                     logger.LogInformation("Lấy danh sách điểm theo điều kiện Mã sinh viên và Mã môn học.\nMã sinh viên: {0},\nMã môn học: {1}", maSinhVien, maMon);
