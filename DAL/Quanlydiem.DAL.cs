@@ -33,7 +33,7 @@ namespace StudentManagment.DAL
                     if (thucThi == 0)
                     {
                         logger.LogWarning("Thêm điểm không thành công.");
-                        throw new InvalidOperationException();
+                        return null;
                     }
                     return diemDAL.LayToanBoDiem();
                 }
@@ -41,11 +41,6 @@ namespace StudentManagment.DAL
             catch (SqlException sqlEx)
             {
                 logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi thêm điểm.\nMã sinh viên: {0},\nMã môn: {1},\nĐiểm chuyên cần: {2},\nĐiểm giữa kỳ: {3},\nĐiểm cuối kỳ: {4},\nĐiểm tổng: {5}", diem.Masinhvien, diem.Mamon, diem.Diemchuyencan, diem.Diemgiuaky, diem.Diemcuoiky, diem.Diemtong);
-                throw;
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi khi thêm điểm.\nMã sinh viên: {0},\nMã môn: {1},\nĐiểm chuyên cần: {2},\nĐiểm giữa kỳ: {3},\nĐiểm cuối kỳ: {4},\nĐiểm tổng: {5}", diem.Masinhvien, diem.Mamon, diem.Diemchuyencan, diem.Diemgiuaky, diem.Diemcuoiky, diem.Diemtong);
                 throw;
             }
         }
@@ -67,8 +62,8 @@ namespace StudentManagment.DAL
                     int thucThi = cmd.ExecuteNonQuery();
                     if (thucThi == 0)
                     {
-                        logger.LogWarning("Mã sinh viên hoặc mã môn học không tồn tại.\nMã sinh viên: {0},\nMã môn học: {0}",diem.Masinhvien,diem.Mamon);
-                        throw new InvalidOperationException();
+                        logger.LogWarning("Mã sinh viên hoặc mã môn học không tồn tại.\nMã sinh viên: {0},\nMã môn học: {0}", diem.Masinhvien, diem.Mamon);
+                        return null;
                     }
 
                     return diemDAL.LayToanBoDiem();
@@ -77,11 +72,6 @@ namespace StudentManagment.DAL
             catch (SqlException sqlEx)
             {
                 logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi sửa điểm.\nMã sinh viên: {0},\nMã môn: {1},\nĐiểm chuyên cần: {2},\nĐiểm giữa kỳ: {3},\nĐiểm cuối kỳ: {4},\nĐiểm tổng: {5}", diem.Masinhvien, diem.Mamon, diem.Diemchuyencan, diem.Diemgiuaky, diem.Diemcuoiky, diem.Diemtong);
-                throw;
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi khi sửa điểm.\nMã sinh viên: {0},\nMã môn: {1},\nĐiểm chuyên cần: {2},\nĐiểm giữa kỳ: {3},\nĐiểm cuối kỳ: {4},\nĐiểm tổng: {5}", diem.Masinhvien, diem.Mamon, diem.Diemchuyencan, diem.Diemgiuaky, diem.Diemcuoiky, diem.Diemtong);
                 throw;
             }
         }
@@ -99,8 +89,8 @@ namespace StudentManagment.DAL
                     int thucThi = cmd.ExecuteNonQuery();
                     if (thucThi == 0)
                     {
-                        logger.LogWarning("Mã sinh viên hoặc mã môn học không tồn tại.\nMã sinh viên: {0},\nMã môn học: {0}",maSinhVien,maMon);
-                        throw new InvalidOperationException();
+                        logger.LogWarning("Mã sinh viên hoặc mã môn học không tồn tại.\nMã sinh viên: {0},\nMã môn học: {0}", maSinhVien, maMon);
+                        return null;
                     }
 
                     return diemDAL.LayToanBoDiem();
@@ -109,11 +99,6 @@ namespace StudentManagment.DAL
             catch (SqlException sqlEx)
             {
                 logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi xóa điểm.\nMã sinh viên: {0},\nMã môn: {1},", maSinhVien, maMon);
-                throw;
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi khi xóa điểm.\nMã sinh viên: {0},\nMã môn: {1}", maSinhVien, maMon);
                 throw;
             }
         }
@@ -133,8 +118,8 @@ namespace StudentManagment.DAL
                     adapter.Fill(dt);
                     if (dt.Rows.Count == 0)
                     {
-                        logger.LogWarning("Mã sinh viên hoặc mã môn học không tồn tại.\nMã sinh viên: {0},\nMã môn học: {0}",maSinhVien,maMon);
-                        throw new InvalidOperationException();
+                        logger.LogWarning("Mã sinh viên hoặc mã môn học không tồn tại.\nMã sinh viên: {0},\nMã môn học: {0}", maSinhVien, maMon);
+                        return null;
                     }
                     return dt;
                 }
@@ -144,11 +129,7 @@ namespace StudentManagment.DAL
                 logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi lấy danh sách điểm theo điều khiên Mã sin viên và Mã điểm.\nMã sinh viên: {0},\nMã điểm: {1}", maSinhVien, maMon);
                 throw;
             }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi khi danh sách lấy điểm theo điều kiện Mã sinh viên và Mã điểm.\nMã sinh viên: {0},\nMã điểm: {1}", maSinhVien, maMon);
-                throw;
-            }
+
         }
     }
 }

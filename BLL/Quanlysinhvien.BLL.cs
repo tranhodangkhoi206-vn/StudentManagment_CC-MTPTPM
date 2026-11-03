@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
+using Serilog.Sinks.File;
 using StudentManagment.DAL;
 using StudentManagment.DAL.Util;
 using StudentManagment.DTO;
@@ -50,19 +51,15 @@ namespace StudentManagment.BLL
                     logger.LogWarning("Người dùng chưa nhập đầy đủ thông tin khi thêm sinh viên.");
                     throw new ArgumentException("Bạn phải nhập đầy đủ thông tin trước khi thêm");
                 }
+                DataTable dt = quanlysinhvienDAL.ThemsinhVienMoi(sinhvienSua);
+                if (dt == null)
+                {
+                    throw new InvalidOperationException("Thêm không thành công.");
+                }
                 return quanlysinhvienDAL.ThemsinhVienMoi(sinhvienSua);
             }
             catch (SqlException)
             {
-                throw;
-            }
-            catch (InvalidOperationException)
-            {
-                throw new InvalidOperationException("Thêm không thành công.");
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi không xác định.");
                 throw;
             }
         }
@@ -77,19 +74,15 @@ namespace StudentManagment.BLL
                     logger.LogWarning("Người dùng chưa nhập mã sinh viên khi sửa thông tin sinh viên.");
                     throw new ArgumentException("Bạn phải nhập mã sinh viên trước khi sửa");
                 }
-                return quanlysinhvienDAL.SuaThongTinSinhVienTheoMaSinhVien(sinhvienSua);
+                DataTable dt = quanlysinhvienDAL.SuaThongTinSinhVienTheoMaSinhVien(sinhvienSua);
+                if (dt == null)
+                {
+                    throw new InvalidOperationException("Sửa không thành công.");
+                }
+                return dt;
             }
             catch (SqlException)
             {
-                throw;
-            }
-            catch (InvalidOperationException)
-            {
-                throw new InvalidOperationException("Sửa không thành công.");
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi không xác định.");
                 throw;
             }
         }
@@ -102,19 +95,15 @@ namespace StudentManagment.BLL
                     logger.LogWarning("Người dùng chưa nhập mã sinh viên khi xóa sinh viên ra khỏi danh sách.");
                     throw new ArgumentException("Bạn phải nhập mã sinh viên trước khi xóa");
                 }
-                return quanlysinhvienDAL.XoaThongTinSinhVienTheoMaSinhVien(maSinhVien);
+                DataTable dt = quanlysinhvienDAL.XoaThongTinSinhVienTheoMaSinhVien(maSinhVien);
+                if (dt == null)
+                {
+                    throw new InvalidOperationException("Xóa không thành công.");
+                }
+                return dt;
             }
             catch (SqlException)
             {
-                throw;
-            }
-            catch (InvalidOperationException)
-            {
-                throw new InvalidOperationException("Xóa không thành công.");
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi không xác định.");
                 throw;
             }
         }
@@ -127,22 +116,17 @@ namespace StudentManagment.BLL
                     logger.LogWarning("Người dùng chưa nhập mã sinh viên khi tìm kiếm sinh viên ra khỏi danh sách.");
                     throw new ArgumentException("Bạn phải nhập mã sinh viên trước khi tìm kiếm");
                 }
-                return quanlysinhvienDAL.LaySinhVienTheoDieuKienMaSinhVien(maSinhVien);
+                DataTable dt = quanlysinhvienDAL.LaySinhVienTheoDieuKienMaSinhVien(maSinhVien);
+                if (dt == null)
+                {
+                    throw new KeyNotFoundException("Không tìm thấy sinh viên.");
+                }
+                return dt;
             }
             catch (SqlException)
             {
                 throw;
             }
-            catch (KeyNotFoundException)
-            {
-                throw new KeyNotFoundException("Không tìm thấy sinh viên.");
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi không xác định.");
-                throw;
-            }
         }
-
     }
 }

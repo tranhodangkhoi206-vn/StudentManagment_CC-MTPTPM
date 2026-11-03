@@ -29,84 +29,72 @@ namespace StudentManagment.BLL
         {
             return nganhhocDAL.LayToanBoNganhHocChoComboBox();
         }
-        public DataTable ThemmonhocMoi(MonhocDTO monHocMoi)
+        public DataTable ThemmonhocMoi(MonhocDTO monHoc)
         {
             try
             {
                 if (
-                    string.IsNullOrEmpty(monHocMoi.Mamon) ||
-                    string.IsNullOrEmpty(monHocMoi.Manganh) ||
-                    string.IsNullOrEmpty(monHocMoi.Tenmon) ||
-                    string.IsNullOrEmpty(monHocMoi.Tinhtrang) ||
-                    string.IsNullOrEmpty(monHocMoi.Giangvien)
+                    string.IsNullOrEmpty(monHoc.Mamon) ||
+                    string.IsNullOrEmpty(monHoc.Manganh) ||
+                    string.IsNullOrEmpty(monHoc.Tenmon) ||
+                    string.IsNullOrEmpty(monHoc.Tinhtrang) ||
+                    string.IsNullOrEmpty(monHoc.Giangvien)
                 )
                 {
                     logger.LogWarning("Người dùng chưa nhập đầy đủ thông tin trước khi thêm.");
                     throw new ArgumentException("Bạn phải nhập đầy đủ thông tin trước khi thêm");
                 }
-                return quanlymonhocDAL.ThemMonHocMoi(monHocMoi);
+                DataTable dt = quanlymonhocDAL.ThemMonHocMoi(monHoc);
+                if (dt == null)
+                {
+                    throw new InvalidOperationException("Thêm không thành công.");
+                }
+                return dt;
             }
             catch (SqlException)
             {
                 throw;
             }
-            catch (InvalidOperationException)
-            {
-                throw new InvalidOperationException("Thêm không thành công.");
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi không xác định.");
-                throw;
-            }
         }
-        public DataTable SuaMonHocTheoMaMonHoc(MonhocDTO monHocMoi)
+        public DataTable SuaMonHocTheoMaMonHoc(MonhocDTO monHoc)
         {
             try
             {
-                if (string.IsNullOrEmpty(monHocMoi.Mamon))
+                if (string.IsNullOrEmpty(monHoc.Mamon))
                 {
                     logger.LogWarning("Người dùng chưa nhập mã môn khi sửa môn học.");
                     throw new ArgumentException("Bạn phải nhập mã môn học trước khi sửa");
                 }
-                return quanlymonhocDAL.SuaThongTinMonHocTheoMaMon(monHocMoi);
+                DataTable dt = quanlymonhocDAL.SuaThongTinMonHocTheoMaMon(monHoc);
+                if (dt == null)
+                {
+                    throw new InvalidOperationException("Sửa không thành công.");
+                }
+                return dt;
             }
             catch (SqlException)
             {
                 throw;
             }
-            catch (InvalidOperationException)
-            {
-                throw new InvalidOperationException("Sửa không thành công.");
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi không xác định.");
-                throw;
-            }
         }
-        public DataTable XoaMonHocTheoMaMonHoc(string maMonHoc)
+        public DataTable XoaMonHocTheoMaMonHoc(string maMon)
         {
             try
             {
-                if (string.IsNullOrEmpty(maMonHoc))
+                if (string.IsNullOrEmpty(maMon))
                 {
                     logger.LogWarning("Người dùng chua nhập mã môn học khi xóa môn học.");
                     throw new ArgumentException("Bạn phải nhập mã môn học trước khi xóa");
                 }
-                return quanlymonhocDAL.XoaThongTinMonHocTheoMaMon(maMonHoc);
+                DataTable dt = quanlymonhocDAL.XoaThongTinMonHocTheoMaMon(maMon);
+                if (dt == null)
+                {
+                    throw new InvalidOperationException("Xóa không thành công.");
+                }
+                return dt;
             }
             catch (SqlException)
             {
-                throw;
-            }
-            catch (InvalidOperationException)
-            {
-                throw new InvalidOperationException("Xóa không thành công.");
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi không xác định.");
                 throw;
             }
         }
@@ -119,19 +107,15 @@ namespace StudentManagment.BLL
                     logger.LogWarning("Người dùng chưa nhập mã môn khi tìm kiếm môn học.");
                     throw new ArgumentException("Bạn phải nhập mã môn học trước khi tìm kiếm");
                 }
-                return quanlymonhocDAL.LayDanhSachMonHocTheoDieuKienMaMon(maMon);
+                DataTable dt = quanlymonhocDAL.LayDanhSachMonHocTheoDieuKienMaMon(maMon);
+                if (dt == null)
+                {
+                    throw new KeyNotFoundException("Không tìm thấy môn học.");
+                }
+                return dt;
             }
             catch (SqlException)
             {
-                throw;
-            }
-            catch (KeyNotFoundException)
-            {
-                throw new KeyNotFoundException("Không tìm thấy môn học.");
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi không xác định.");
                 throw;
             }
         }

@@ -34,7 +34,7 @@ namespace StudentManagment.DAL
 		            if(thucThi == 0)
                     {
                         logger.LogWarning("Thêm môn học không thành công.");
-                        throw new InvalidOperationException();
+                        return null;
                     }
                     return monhocDAL.LayToanBoMonHoc();
                 }
@@ -44,11 +44,7 @@ namespace StudentManagment.DAL
                 logger.LogCritical(sqlEx, "Xảy ra lỗi dữ liệu khi thêm môn học mới.\nMã môn: {0},\nTên môn: {1},\nMã môn học: {2},\nSố tiết lý thuyết: {3},\nSố tiết thực hành: {4},\nGiảng viên: {5},\nTình trạng: {6}", monHoc.Mamon, monHoc.Tenmon, monHoc.Manganh, monHoc.Sotietlythuyet, monHoc.Sotietthuchanh, monHoc.Giangvien, monHoc.Tinhtrang);
                 throw;
             }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi khi thêm môn học mới.\nMã môn: {0},\nTên môn học: {1}, Mã môn học: {2}, Số tiết lý thuyết: {3}, Số tiết thực hành: {4}, Giảng viên: {5}, Tình trạng: {6}", monHoc.Mamon, monHoc.Tenmon, monHoc.Manganh, monHoc.Sotietlythuyet, monHoc.Sotietthuchanh, monHoc.Giangvien, monHoc.Tinhtrang);
-                throw;
-            }
+
         }
         public DataTable SuaThongTinMonHocTheoMaMon(MonhocDTO monHoc)
         {
@@ -69,7 +65,7 @@ namespace StudentManagment.DAL
 		            if (thucThi == 0)
                     {
                         logger.LogWarning("Mã môn học không tồn tại.\nMã môn học: {0}", monHoc.Mamon);
-                        throw new InvalidOperationException();
+                        return null;
                     }
                     return monhocDAL.LayToanBoMonHoc();
                 }
@@ -79,11 +75,7 @@ namespace StudentManagment.DAL
                 logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi sửa môn học.Mã môn học: {0},\nTên môn: {1},\nMã môn học: {2},\nSố tiết lý thuyết: {3},\nSố tiết thực hành: {4},\nGiảng viên: {5},\nTình trạng: {6}", monHoc.Mamon, monHoc.Tenmon, monHoc.Manganh, monHoc.Sotietlythuyet, monHoc.Sotietthuchanh, monHoc.Giangvien, monHoc.Tinhtrang);
                 throw;
             }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi khi sửa môn học.Mã môn học: {0},\nTên môn học: {1}, Mã môn học: {2}, Số tiết lý thuyết: {3}, Số tiết thực hành: {4}, Giảng viên: {5}, Tình trạng: {6}", monHoc.Mamon, monHoc.Tenmon, monHoc.Manganh, monHoc.Sotietlythuyet, monHoc.Sotietthuchanh, monHoc.Giangvien, monHoc.Tinhtrang);
-                throw;
-            }
+
         }
         public DataTable XoaThongTinMonHocTheoMaMon(string maMon)
         {
@@ -98,7 +90,7 @@ namespace StudentManagment.DAL
 		            if (thucThi == 0)
                     {
                         logger.LogWarning("Mã môn học không tồn tại.\nMã môn học: {0}", maMon);
-                        throw new InvalidOperationException();
+                        return null;
                     }
                     return monhocDAL.LayToanBoMonHoc();
                 }
@@ -108,11 +100,7 @@ namespace StudentManagment.DAL
                 logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi xóa môn học.\nMã môn học: {0}", maMon);
                 throw;
             }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi khi xóa môn học.\nMã môn học: {0}", maMon);
-                throw;
-            }
+
         }
         public DataTable LayDanhSachMonHocTheoDieuKienMaMon(string maMon)
         {
@@ -130,7 +118,7 @@ namespace StudentManagment.DAL
 		            if (dt.Rows.Count == 0)
                     {
                         logger.LogWarning("Mã môn học không tồn tại.\nMã môn học: {0}", maMon);
-                        throw new InvalidOperationException();
+                        return null;
                     }
                     return dt;
                 }
@@ -140,11 +128,7 @@ namespace StudentManagment.DAL
                 logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi lấy danh sách môn học theo điều kiện Mã môn học.\nMã môn học: {0}", maMon);
                 throw;
             }
-            catch (Exception ex)
-            {
-                logger.LogWarning(ex, "Xảy ra lỗi khi lấy danh sách môn học theo điều kiện Mã môn học.\nMã môn học: {0}",maMon);
-			    throw;
-            }
+
         }
     }
 }

@@ -22,63 +22,55 @@ namespace StudentManagment.BLL
         {
             return diemDAL.LayToanBoDiem();
         }
-        public DataTable ThemDiemMoi(DiemDTO diemMoi)
+        public DataTable ThemDiemMoi(DiemDTO diem)
         {
             try
             {
-                if (string.IsNullOrEmpty(diemMoi.Mamon) ||
-                    string.IsNullOrEmpty(diemMoi.Masinhvien) ||
-                diemMoi.Diemchuyencan == -1 ||
-                diemMoi.Diemgiuaky == -1 ||
-                diemMoi.Diemcuoiky == -1
+                if (string.IsNullOrEmpty(diem.Mamon) ||
+                    string.IsNullOrEmpty(diem.Masinhvien) ||
+                diem.Diemchuyencan == -1 ||
+                diem.Diemgiuaky == -1 ||
+                diem.Diemcuoiky == -1
                     )
                 {
                     logger.LogWarning("Người dùng chưa nhập đầy đủ thông tin điểm khi thêm.");
                     throw new ArgumentException("Bạn phải nhập đầy đủ thông tin trước khi thêm");
                 }
-                diemMoi.Diemtong = (diemMoi.Diemchuyencan + diemMoi.Diemgiuaky + diemMoi.Diemcuoiky) / 3;
-                return quanlydiemDAL.ThemDiemMoi(diemMoi);
+                diem.Diemtong = (diem.Diemchuyencan + diem.Diemgiuaky + diem.Diemcuoiky) / 3;
+                DataTable dt = quanlydiemDAL.ThemDiemMoi(diem);
+                if (dt == null)
+                {
+                    throw new InvalidOperationException("Thêm không thành công.");
+                }
+                return dt;
             }
             catch (SqlException)
             {
                 throw;
             }
-            catch (InvalidOperationException)
-            {
-                throw new InvalidOperationException("Thêm không thành công.");
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi không xác định.");
-                throw;
-            }
         }
 
-        public DataTable SuaThongTinDiemTheoMaSinhVienVaMaMon(DiemDTO diemSua)
+        public DataTable SuaThongTinDiemTheoMaSinhVienVaMaMon(DiemDTO diem)
         {
             try
             {
-                if (string.IsNullOrEmpty(diemSua.Mamon) ||
-                    string.IsNullOrEmpty(diemSua.Masinhvien)
+                if (string.IsNullOrEmpty(diem.Mamon) ||
+                    string.IsNullOrEmpty(diem.Masinhvien)
                     )
                 {
                     logger.LogWarning("Người dùng chưa nhập mã môn và mã sinh viên khi sửa thông tin điểm.");
                     throw new ArgumentException("Bạn phải nhập mã sinh viên và mã môn trước khi sửa");
                 }
-                diemSua.Diemtong = (diemSua.Diemchuyencan + diemSua.Diemgiuaky + diemSua.Diemcuoiky) / 3;
-                return quanlydiemDAL.SuaThongTinDiemTheoMaSinhVienVaMaMon(diemSua);
+                diem.Diemtong = (diem.Diemchuyencan + diem.Diemgiuaky + diem.Diemcuoiky) / 3;
+                DataTable dt = quanlydiemDAL.SuaThongTinDiemTheoMaSinhVienVaMaMon(diem);
+                if (dt == null)
+                {
+                    throw new InvalidOperationException("Sửa không thành công.");
+                }
+                return dt;
             }
             catch (SqlException)
             {
-                throw;
-            }
-            catch (InvalidOperationException)
-            {
-                throw new InvalidOperationException("Sửa không thành công.");
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi không xác định.");
                 throw;
             }
         }
@@ -92,44 +84,36 @@ namespace StudentManagment.BLL
                     logger.LogWarning("Người dùng chưa nhập mã môn và mã sinh viên khi xóa thông tin điểm.");
                     throw new ArgumentException("Bạn phải nhập mã sinh viên và mã môn trước khi xóa");
                 }
-                return quanlydiemDAL.XoaThongTinDiemTheoMaSinhVienVaMaMon(maSinhVien, maMon);
+                DataTable dt = quanlydiemDAL.XoaThongTinDiemTheoMaSinhVienVaMaMon(maSinhVien, maMon);
+                if (dt == null)
+                {
+                    throw new InvalidOperationException("Xóa không thành công.");
+                }
+                return dt;
             }
             catch (SqlException)
             {
                 throw;
             }
-            catch (InvalidOperationException)
-            {
-                throw new InvalidOperationException("Xóa không thành công.");
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi không xác định.");
-                throw;
-            }
         }
-        public DataTable TimKiemDiemTheoMaSinhVienVaMaMon(string maSinhVien, string maMonHoc)
+        public DataTable TimKiemDiemTheoMaSinhVienVaMaMon(string maSinhVien, string maMon)
         {
             try
             {
-                if (string.IsNullOrEmpty(maSinhVien) || string.IsNullOrEmpty(maMonHoc))
+                if (string.IsNullOrEmpty(maSinhVien) || string.IsNullOrEmpty(maMon))
                 {
                     logger.LogWarning("Người dùng chưa nhập mã môn và mã sinh viên khi tìm kiếm.");
                     throw new ArgumentException("Bạn phải nhập mã sinh viên và mã môn trước khi tìm kiếm");
                 }
-                return quanlydiemDAL.LaySinhVienTheoDieuKienMaSinhVienVaMaMon(maSinhVien, maMonHoc);
+                DataTable dt = quanlydiemDAL.LaySinhVienTheoDieuKienMaSinhVienVaMaMon(maSinhVien, maMon);
+                if (dt == null)
+                {
+                    throw new KeyNotFoundException("Không tìm thấy tài khoản.");
+                }
+                return dt;
             }
             catch (SqlException)
             {
-                throw;
-            }
-            catch (KeyNotFoundException)
-            {
-                throw new KeyNotFoundException("Không tìm thấy tài khoản.");
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi không xác định.");
                 throw;
             }
         }

@@ -27,10 +27,10 @@ namespace StudentManagment.DAL
                     cmd.Parameters.AddWithValue("@KHOAQUANLY", nganhMoi.Khoaquanly);
                     logger.LogInformation("Thêm ngành học mới vào danh sách ngành học.\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhMoi.Manganh, nganhMoi.Tennganh, nganhMoi.Khoaquanly);
                     int thucThi = cmd.ExecuteNonQuery();
-		            if(thucThi == 0)
+                    if (thucThi == 0)
                     {
                         logger.LogWarning("Thêm ngành không thành công.");
-                        throw new InvalidOperationException();
+                        return null;
                     }
                     return nganhhocDAL.LayToanBoNganhHoc();
                 }
@@ -40,11 +40,7 @@ namespace StudentManagment.DAL
                 logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi thêm ngành học mới.\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhMoi.Manganh, nganhMoi.Tennganh, nganhMoi.Khoaquanly);
                 throw;
             }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi khi thêm ngành học mới.\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhMoi.Manganh, nganhMoi.Tennganh, nganhMoi.Khoaquanly);
-                throw;
-            }
+
         }
 
         public DataTable SuaThongTinNganhTheoMaNganh(NganhhocDTO nganhHoc)
@@ -59,10 +55,10 @@ namespace StudentManagment.DAL
                     cmd.Parameters.AddWithValue("@KHOAQUANLY", nganhHoc.Khoaquanly);
                     logger.LogInformation("Sửa ngành học trong danh sách ngành học.\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhHoc.Manganh, nganhHoc.Tennganh, nganhHoc.Khoaquanly);
                     int thucThi = cmd.ExecuteNonQuery();
-		            if (thucThi == 0)
+                    if (thucThi == 0)
                     {
                         logger.LogWarning("Mã ngành không tồn tại.\nMã ngành: {0}", nganhHoc.Manganh);
-                        throw new InvalidOperationException();
+                        return null;
                     }
                     return nganhhocDAL.LayToanBoNganhHoc();
                 }
@@ -72,11 +68,7 @@ namespace StudentManagment.DAL
                 logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi sửa ngành học.\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhHoc.Manganh, nganhHoc.Tennganh, nganhHoc.Khoaquanly);
                 throw;
             }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi khi sửa ngành học.\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhHoc.Manganh, nganhHoc.Tennganh, nganhHoc.Khoaquanly);
-                throw;
-            }
+
         }
 
         public DataTable XoaThongTinNganhTheoMaNganh(string maNganh)
@@ -89,10 +81,10 @@ namespace StudentManagment.DAL
                     cmd.Parameters.AddWithValue("@MANGANH", maNganh);
                     logger.LogInformation("Xóa ngành học khỏi danh sách ngành học.\nMã ngành: {0}", maNganh);
                     int thucThi = cmd.ExecuteNonQuery();
-		            if (thucThi == 0)
+                    if (thucThi == 0)
                     {
                         logger.LogWarning("Mã ngành không tồn tại.\nMã ngành: {0}", maNganh);
-                        throw new InvalidOperationException();
+                        return null;
                     }
                     return nganhhocDAL.LayToanBoNganhHoc();
                 }
@@ -102,11 +94,7 @@ namespace StudentManagment.DAL
                 logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi xóa ngành học.\nMã ngành: {0}", maNganh);
                 throw;
             }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi khi xóa ngành học.\nMã ngành: {0}", maNganh);
-                throw;
-            }
+
         }
         public DataTable LayDanhSachNganhHocTheoDieuKienMaNganh(string maNganh)
         {
@@ -121,10 +109,10 @@ namespace StudentManagment.DAL
                     adater.SelectCommand = cmd;
                     logger.LogInformation("Lấy danh sách ngành học theo Mã ngành.\nMã ngành: {0}", maNganh);
                     adater.Fill(dt);
-		            if (dt.Rows.Count == 0)
+                    if (dt.Rows.Count == 0)
                     {
                         logger.LogWarning("Mã ngành không tồn tại.\nMã ngành: {0}", maNganh);
-                        throw new InvalidOperationException();
+                        return null;
                     }
                     return dt;
                 }
@@ -134,11 +122,7 @@ namespace StudentManagment.DAL
                 logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi lấy danh sách ngành học theo Mã ngành.\nMã ngành: {0}", maNganh);
                 throw;
             }
-            catch (Exception ex)
-            {
-                logger.LogWarning(ex, "Xảy ra lỗi khi lấy danh sách ngành hoc theo Mã ngành.\nMã ngành: {0}",maNganh);
-			    throw;
-            }
+
         }
     }
 }

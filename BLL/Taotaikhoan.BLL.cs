@@ -2,6 +2,7 @@
 using System.Security.Policy;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
+using Serilog.Sinks.File;
 using StudentManagment.DAL;
 using StudentManagment.DAL.Util;
 using StudentManagment.DTO;
@@ -32,22 +33,18 @@ namespace StudentManagment.BLL
                     logger.LogWarning("Người dùng chưa nhập đầy đủ thông tin trước khi thêm tài khoản.");
                     throw new ArgumentException("Bạn phải nhập đầy đủ thông tin trước khi thêm");
                 }
+                DataTable dt = taoTaiKhoanDAL.ThemTaiKhoanMoi(taiKhoan);
                 string hashedPassword = BCrypt.Net.BCrypt.HashPassword(taiKhoan.HashedPassword, 12);
                 taiKhoan.HashedPassword = hashedPassword;
                 taiKhoan.Admin = false;
-                return taoTaiKhoanDAL.ThemTaiKhoanMoi(taiKhoan);
+                if (dt == null)
+                {
+                    throw new InvalidOperationException("Thêm không thành công.");
+                }
+                return dt;
             }
             catch (SqlException)
             {
-                throw;
-            }
-            catch (InvalidOperationException)
-            {
-                throw new InvalidOperationException("Thêm không thành công.");
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi không xác định.");
                 throw;
             }
         }
@@ -62,19 +59,15 @@ namespace StudentManagment.BLL
                 }
                 string hashedPassword = BCrypt.Net.BCrypt.HashPassword(taiKhoan.HashedPassword, 12);
                 taiKhoan.HashedPassword = hashedPassword;
-                return taoTaiKhoanDAL.ThemTaiKhoanMoi(taiKhoan);
+                DataTable dt = taoTaiKhoanDAL.ThemTaiKhoanMoi(taiKhoan);
+                if (dt == null)
+                {
+                    throw new InvalidOperationException("Sửa không thành công.");
+                }
+                return dt;
             }
             catch (SqlException)
             {
-                throw;
-            }
-            catch (InvalidOperationException)
-            {
-                throw new InvalidOperationException("Sửa không thành công.");
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi không xác định.");
                 throw;
             }
         }
@@ -87,19 +80,15 @@ namespace StudentManagment.BLL
                     logger.LogWarning("Người dùng chưa nhập username trước khi xóa tài khoản.");
                     throw new ArgumentException("Bạn phải nhập username trước khi xóa");
                 }
-                return taoTaiKhoanDAL.XoaTaiKhoanTheoUsername(username);
+                DataTable dt = taoTaiKhoanDAL.XoaTaiKhoanTheoUsername(username);
+                if (dt == null)
+                {
+                    throw new InvalidOperationException("Xóa không thành công.");
+                }
+                return dt;
             }
             catch (SqlException)
             {
-                throw;
-            }
-            catch (InvalidOperationException)
-            {
-                throw new InvalidOperationException("Xóa không thành công.");
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi không xác định.");
                 throw;
             }
         }
@@ -112,19 +101,15 @@ namespace StudentManagment.BLL
                     logger.LogWarning("Người dùng chưa nhập username trước khi lấy danh sách tài khoản.");
                     throw new ArgumentException("Bạn phải nhập username trước khi tìm kiếm");
                 }
-                return taoTaiKhoanDAL.LayDanhSachTaiKhoanTheoDieuKienUsername(username);
+                DataTable dt = taoTaiKhoanDAL.LayDanhSachTaiKhoanTheoDieuKienUsername(username);
+                if (dt == null)
+                {
+                    throw new KeyNotFoundException("Không tìm thấy tài khoản.");
+                }
+                return dt;
             }
             catch (SqlException)
             {
-                throw;
-            }
-            catch (KeyNotFoundException)
-            {
-                throw new KeyNotFoundException("Không tìm thấy tài khoản.");
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi không xác định.");
                 throw;
             }
         }

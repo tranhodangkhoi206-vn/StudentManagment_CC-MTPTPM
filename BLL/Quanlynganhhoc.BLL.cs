@@ -34,19 +34,15 @@ namespace StudentManagment.BLL
                     logger.LogWarning("Người dùng chưa nhập đầy đủ thông tin ngành học khi thêm.");
                     throw new ArgumentException("Bạn phải nhập đầy đủ thông tin trước khi thêm");
                 }
-                return quanlynganhhocDAL.ThemNganhMoi(nganhMoi);
+                DataTable dt = quanlynganhhocDAL.ThemNganhMoi(nganhMoi);
+                if (dt == null)
+                {
+                    throw new InvalidOperationException("Thêm không thành công.");
+                }
+                return dt;
             }
             catch (SqlException)
             {
-                throw;
-            }
-            catch (InvalidOperationException)
-            {
-                throw new InvalidOperationException("Thêm không thành công.");
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi không xác định.");
                 throw;
             }
         }
@@ -60,19 +56,15 @@ namespace StudentManagment.BLL
                     logger.LogWarning("Người dùng chua nhập mã ngành khi sửa thông tin ngành học.");
                     throw new ArgumentException("Bạn phải nhập mã ngành trước khi sửa");
                 }
-                return quanlynganhhocDAL.SuaThongTinNganhTheoMaNganh(nganhSua);
+                DataTable dt = quanlynganhhocDAL.SuaThongTinNganhTheoMaNganh(nganhSua);
+                if (dt == null)
+                {
+                    throw new InvalidOperationException("Sửa không thành công.");
+                }
+                return dt;
             }
             catch (SqlException)
             {
-                throw;
-            }
-            catch (InvalidOperationException)
-            {
-                throw new InvalidOperationException("Sửa không thành công.");
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi không xác định.");
                 throw;
             }
         }
@@ -86,19 +78,15 @@ namespace StudentManagment.BLL
                     logger.LogWarning("Người dùng chưa nhập mã ngành khi xóa ngành học.");
                     throw new ArgumentException("Bạn phải nhập mã ngành trước khi xóa");
                 }
-                return quanlynganhhocDAL.XoaThongTinNganhTheoMaNganh(maNganh);
+                DataTable dt = quanlynganhhocDAL.XoaThongTinNganhTheoMaNganh(maNganh);
+                if (dt == null)
+                {
+                    throw new InvalidOperationException("Xóa không thành công.");
+                }
+                return dt;
             }
             catch (SqlException)
             {
-                throw;
-            }
-            catch (InvalidOperationException)
-            {
-                throw new InvalidOperationException("Xóa không thành công.");
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi không xác định.");
                 throw;
             }
         }
@@ -111,19 +99,15 @@ namespace StudentManagment.BLL
                     logger.LogWarning("Người dùng hưa nhập mã ngành khi tìm kiếm ngành học.");
                     throw new ArgumentException("Bạn phải nhập mã ngành trước khi tìm kiếm");
                 }
-                return quanlynganhhocDAL.LayDanhSachNganhHocTheoDieuKienMaNganh(maNganh);
+                DataTable dt = quanlynganhhocDAL.LayDanhSachNganhHocTheoDieuKienMaNganh(maNganh);
+                if (dt == null)
+                {
+                    throw new KeyNotFoundException("Không tìm thấy ngành học.");
+                }
+                return dt;
             }
             catch (SqlException)
             {
-                throw;
-            }
-            catch (KeyNotFoundException)
-            {
-                throw new KeyNotFoundException("Không tìm thấy ngành học.");
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi không xác định.");
                 throw;
             }
         }

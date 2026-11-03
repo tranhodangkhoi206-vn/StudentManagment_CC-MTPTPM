@@ -24,30 +24,21 @@ namespace StudentManagment.BLL
                     throw new ArgumentException("Bạn phải nhập đầy đủ thông tin trước khi đăng nhập.");
                 }
                 TaikhoanDTO taiKhoan = dangnhapDAL.LayTaiKhoanCoDieuKien(username, admin);
-                if (taiKhoan != null)
+                if (taiKhoan == null)
                 {
-                    bool xetMatKhau = BCrypt.Net.BCrypt.Verify(password, taiKhoan.HashedPassword);
-                    if (!xetMatKhau)
-                    {
-                        logger.LogWarning("Người dùng nhập sai mật khẩu.");
-                        throw new UnauthorizedAccessException("Bạn nhập mật khẩu chưa chính xác.");
-                    }
-                    logger.LogInformation("Người dùng đã đăng nhập thành công. Username: {username}", username);
-                    return taiKhoan;
+                    throw new KeyNotFoundException("Tên tài khoản hoặc mật khẩu chưa chính xác.");
                 }
-                return null;
+                bool xetMatKhau = BCrypt.Net.BCrypt.Verify(password, taiKhoan.HashedPassword);
+                if (!xetMatKhau)
+                {
+                    logger.LogWarning("Người dùng nhập sai mật khẩu.");
+                    throw new UnauthorizedAccessException("Bạn nhập mật khẩu chưa chính xác.");
+                }
+                logger.LogInformation("Người dùng đã đăng nhập thành công. Username: {username}", username);
+                return taiKhoan;
             }
             catch (SqlException)
             {
-                throw;
-            }
-            catch (KeyNotFoundException)
-            {
-                throw new KeyNotFoundException("Tên tài khoản hoặc mật khẩu chưa chính xác.");
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi không xác định.");
                 throw;
             }
         }

@@ -30,10 +30,10 @@ namespace StudentManagment.DAL
                     cmd.Parameters.AddWithValue("@ADMIN", taiKhoan.Admin);
                     logger.LogInformation("Thêm tài khoản mới vào danh sách tài khoản.\nHọ và tên: {0},\nUsername: {1},\nAdmin: {2}.", taiKhoan.Hovaten, taiKhoan.Username, taiKhoan.Admin);
                     int thucThi = cmd.ExecuteNonQuery();
-		            if(thucThi == 0)
+                    if (thucThi == 0)
                     {
                         logger.LogWarning("Thêm tài khoản không thành công.");
-                        throw new InvalidOperationException();
+                        return null;
                     }
                     return taiKhoanDAL.LayToanBoTaiKhoan();
                 }
@@ -41,11 +41,6 @@ namespace StudentManagment.DAL
             catch (SqlException sqlEx)
             {
                 logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi thêm tài khoản mới.\nHọ và tên: {0},\nUsername: {1},\nAdmin: {2}.", taiKhoan.Hovaten, taiKhoan.Username, taiKhoan.Admin);
-                throw;
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi khi thêm tài khoản mới.\nHọ và tên: {0},\nUsername: {1},\nAdmin: {2}.", taiKhoan.Hovaten, taiKhoan.Username, taiKhoan.Admin);
                 throw;
             }
         }
@@ -61,7 +56,7 @@ namespace StudentManagment.DAL
                     cmd.Parameters.AddWithValue("@USERNAME", taiKhoan.Username);
                     logger.LogInformation("Sửa tài khoản trong danh sách tài khoản.\nHọ và tên: {0}", taiKhoan.Hovaten);
                     int thucThi = cmd.ExecuteNonQuery();
-		            if (thucThi == 0)
+                    if (thucThi == 0)
                     {
                         logger.LogWarning("Username không tồn tại.\nUsername: {0}", taiKhoan.Username);
                         throw new InvalidOperationException();
@@ -75,11 +70,7 @@ namespace StudentManagment.DAL
                 logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi sửa tài khoản.\nHọ và tên: {0}", taiKhoan.Hovaten);
                 throw;
             }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi khi sửa tài khoản.\nHọ và tên: {0}", taiKhoan.Hovaten);
-                throw;
-            }
+
         }
         public DataTable XoaTaiKhoanTheoUsername(string username)
         {
@@ -91,10 +82,10 @@ namespace StudentManagment.DAL
                     cmd.Parameters.AddWithValue("@USERNAME", username);
                     logger.LogInformation("Xóa tài khoản khỏi danh sách tài khoản.\nUsername: {0}", username);
                     int thucThi = cmd.ExecuteNonQuery();
-		            if (thucThi == 0)
+                    if (thucThi == 0)
                     {
                         logger.LogWarning("Username không tồn tại.\nUsername: {0}", username);
-                        throw new InvalidOperationException();
+                        return null;
                     }
 
                     return taiKhoanDAL.LayToanBoTaiKhoan();
@@ -105,11 +96,7 @@ namespace StudentManagment.DAL
                 logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi xóa tài khoản.\nUsername: {0}", username);
                 throw;
             }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi khi xóa tài khoản.\nUsername: {0}", username);
-                throw;
-            }
+
 
         }
         public DataTable LayDanhSachTaiKhoanTheoDieuKienUsername(string username)
@@ -125,10 +112,10 @@ namespace StudentManagment.DAL
                     adapter.SelectCommand = cmd;
                     logger.LogInformation("Lấy danh sách tài khoản theo điều kiện Username.\nUsername: {0}", username);
                     adapter.Fill(dt);
-		            if (dt.Rows.Count == 0)
+                    if (dt.Rows.Count == 0)
                     {
                         logger.LogWarning("Username không tồn tại.\nUsername: {0}", username);
-                        throw new KeyNotFoundException();
+                        return null;
                     }
                     return dt;
                 }
@@ -138,11 +125,7 @@ namespace StudentManagment.DAL
                 logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi lấy danh sách tài khoản theo điều kiên Username.\nUsername: {0}", username);
                 throw;
             }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi khi lấy danh sách tài khoản theo điều kiện Username.\nUsername: {0}", username);
-                throw;
-            }
+
         }
     }
 }
