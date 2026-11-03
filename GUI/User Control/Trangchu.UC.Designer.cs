@@ -246,8 +246,8 @@
             // 
             // Trangchu
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             Controls.Add(tableLayoutPanel1);
             Name = "Trangchu";
             Size = new Size(790, 611);
