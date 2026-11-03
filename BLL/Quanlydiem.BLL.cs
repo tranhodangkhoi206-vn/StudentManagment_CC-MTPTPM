@@ -68,5 +68,14 @@ namespace StudentManagment.BLL
             }
             return quanlydiemDAL.LaySinhVienTheoDieuKienMaSinhVienVaMaMon(maSinhVien,maMonHoc);
         }
+	    public double TinhDiemTongVaHienThi(string diemChuyenCan,string diemGiuaKy,string diemCuoiKy)
+        {
+            if (!string.IsNullOrEmpty(diemChuyenCan) && !string.IsNullOrEmpty(diemGiuaKy) && !string.IsNullOrEmpty(diemCuoiKy))
+            {
+                double diemTong = (double.Parse(diemChuyenCan) + double.Parse(diemGiuaKy) + double.Parse(diemCuoiKy)) / 3;
+                return Math.Round(diemTong,1);
+            }
+            return 0;
+        }
     }
 }

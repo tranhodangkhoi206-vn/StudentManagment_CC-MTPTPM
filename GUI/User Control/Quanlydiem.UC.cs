@@ -127,7 +127,7 @@ namespace StudentManagment.GUI.User_Control
             {
                 string maSinhVien = tbMasinhvien.Text.ToString().Trim();
                 string maMonHoc = tbMamonhoc.Text.ToString().Trim();
-                DataTable dt = quanlydiemBLL.TimKiemDiemTheoMaSinhVienVaMaMon(maSinhVien,maMonHoc);
+                DataTable dt = quanlydiemBLL.TimKiemDiemTheoMaSinhVienVaMaMon(maSinhVien, maMonHoc);
                 if (dt.Rows.Count != 0)
                 {
                     dgvDiem.DataSource = dt;
@@ -151,6 +151,30 @@ namespace StudentManagment.GUI.User_Control
                 MessageBox.Show("Xảy ra lỗi khi tìm kiếm điểm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void tbDiemchuyencan_TextChanged(object sender, EventArgs e)
+        {
+            string diemChyenCan = tbDiemchuyencan.Text.ToString().Trim();
+            string diemGiuaKy = tbDiemgiuaky.Text.ToString().Trim();
+            string diemCuoiKy = tbDiemcuoiky.Text.ToString().Trim();
+            lbDiemtong.Text = quanlydiemBLL.TinhDiemTongVaHienThi(diemChyenCan, diemGiuaKy, diemCuoiKy).ToString().Trim();
+        }
+
+        private void tbDiemgiuaky_TextChanged(object sender, EventArgs e)
+        {
+            string diemChyenCan = tbDiemchuyencan.Text.ToString().Trim();
+            string diemGiuaKy = tbDiemgiuaky.Text.ToString().Trim();
+            string diemCuoiKy = tbDiemcuoiky.Text.ToString().Trim();
+            lbDiemtong.Text = quanlydiemBLL.TinhDiemTongVaHienThi(diemChyenCan, diemGiuaKy, diemCuoiKy).ToString().Trim();
+        }
+
+        private void tbDiemcuoiky_TextChanged(object sender, EventArgs e)
+        {
+            string diemChyenCan = tbDiemchuyencan.Text.ToString().Trim();
+            string diemGiuaKy = tbDiemgiuaky.Text.ToString().Trim();
+            string diemCuoiKy = tbDiemcuoiky.Text.ToString().Trim();
+            lbDiemtong.Text = quanlydiemBLL.TinhDiemTongVaHienThi(diemChyenCan, diemGiuaKy, diemCuoiKy).ToString().Trim();
         }
     }
 }

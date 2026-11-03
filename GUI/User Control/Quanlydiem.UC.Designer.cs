@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             tableLayoutPanel4 = new TableLayoutPanel();
             label2 = new Label();
             tbMasinhvien = new TextBox();
@@ -125,24 +125,24 @@
             // 
             dgvDiem.AllowUserToAddRows = false;
             dgvDiem.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvDiem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvDiem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvDiem.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvDiem.Columns.AddRange(new DataGridViewColumn[] { MASV, MAMON, DIEMCHUYENCAN, DIEMGIUAKY, DIEMCUOIKY, DIEMTONG });
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dgvDiem.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvDiem.DefaultCellStyle = dataGridViewCellStyle2;
             dgvDiem.Dock = DockStyle.Fill;
             dgvDiem.Location = new Point(337, 6);
             dgvDiem.Margin = new Padding(0);
@@ -323,7 +323,7 @@
             lbDiemtong.Name = "lbDiemtong";
             lbDiemtong.Size = new Size(165, 50);
             lbDiemtong.TabIndex = 1;
-            lbDiemtong.Text = "0.0";
+            lbDiemtong.Text = "0";
             lbDiemtong.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel11
@@ -444,7 +444,7 @@
             label7.Name = "label7";
             label7.Size = new Size(201, 50);
             label7.TabIndex = 2;
-            label7.Text = "(Nhập mã sinh viên để tìm kiếm)";
+            label7.Text = "(Nhập mã sinh viên và mã môn để tìm kiếm)";
             label7.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel8
@@ -484,6 +484,7 @@
             tbDiemcuoiky.Name = "tbDiemcuoiky";
             tbDiemcuoiky.Size = new Size(165, 32);
             tbDiemcuoiky.TabIndex = 1;
+            tbDiemcuoiky.TextChanged += tbDiemcuoiky_TextChanged;
             // 
             // tableLayoutPanel7
             // 
@@ -522,6 +523,7 @@
             tbDiemgiuaky.Name = "tbDiemgiuaky";
             tbDiemgiuaky.Size = new Size(165, 32);
             tbDiemgiuaky.TabIndex = 1;
+            tbDiemgiuaky.TextChanged += tbDiemgiuaky_TextChanged;
             // 
             // tableLayoutPanel6
             // 
@@ -560,6 +562,7 @@
             tbDiemchuyencan.Name = "tbDiemchuyencan";
             tbDiemchuyencan.Size = new Size(165, 32);
             tbDiemchuyencan.TabIndex = 1;
+            tbDiemchuyencan.TextChanged += tbDiemchuyencan_TextChanged;
             // 
             // tableLayoutPanel5
             // 
