@@ -34,9 +34,10 @@
             btnQuanlysinhvien = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
             btnTrangchu = new Button();
-            button1 = new Button();
+            btnDangxuat = new Button();
             btnQuanlylophoc = new Button();
             btnQuanlychuyennganh = new Button();
+            lbTenhienthi = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -115,17 +116,18 @@
             tableLayoutPanel1.ColumnCount = 1;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 30F));
             tableLayoutPanel1.Controls.Add(btnTrangchu, 0, 1);
-            tableLayoutPanel1.Controls.Add(button1, 0, 7);
+            tableLayoutPanel1.Controls.Add(btnDangxuat, 0, 9);
             tableLayoutPanel1.Controls.Add(btnQuanlylophoc, 0, 5);
             tableLayoutPanel1.Controls.Add(btnQuanlychuyennganh, 0, 4);
             tableLayoutPanel1.Controls.Add(btnQuanlysinhvien, 0, 2);
             tableLayoutPanel1.Controls.Add(btnQuanlymonhoc, 0, 3);
             tableLayoutPanel1.Controls.Add(btnQuanlydiem, 0, 6);
+            tableLayoutPanel1.Controls.Add(lbTenhienthi, 0, 8);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Margin = new Padding(0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 9;
+            tableLayoutPanel1.RowCount = 10;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
@@ -133,8 +135,9 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 75.90909F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 24.09091F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutPanel1.Size = new Size(194, 611);
             tableLayoutPanel1.TabIndex = 0;
             // 
@@ -158,23 +161,24 @@
             btnTrangchu.Click += btnTrangchu_Click;
             btnTrangchu.Leave += btnTrangchu_Leave;
             // 
-            // button1
+            // btnDangxuat
             // 
-            button1.BackColor = Color.FromArgb(31, 73, 120);
-            button1.BackgroundImageLayout = ImageLayout.None;
-            button1.Cursor = Cursors.Hand;
-            button1.Dock = DockStyle.Fill;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-            button1.ForeColor = SystemColors.ButtonHighlight;
-            button1.Location = new Point(0, 350);
-            button1.Margin = new Padding(0);
-            button1.Name = "button1";
-            button1.Size = new Size(194, 50);
-            button1.TabIndex = 12;
-            button1.Text = "Quản lý lớp học";
-            button1.UseVisualStyleBackColor = false;
+            btnDangxuat.BackColor = Color.FromArgb(16, 163, 33);
+            btnDangxuat.BackgroundImageLayout = ImageLayout.None;
+            btnDangxuat.Cursor = Cursors.Hand;
+            btnDangxuat.Dock = DockStyle.Fill;
+            btnDangxuat.FlatAppearance.BorderSize = 0;
+            btnDangxuat.FlatStyle = FlatStyle.Flat;
+            btnDangxuat.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            btnDangxuat.ForeColor = SystemColors.ButtonHighlight;
+            btnDangxuat.Location = new Point(0, 570);
+            btnDangxuat.Margin = new Padding(0);
+            btnDangxuat.Name = "btnDangxuat";
+            btnDangxuat.Size = new Size(194, 41);
+            btnDangxuat.TabIndex = 12;
+            btnDangxuat.Text = "Đăng xuất";
+            btnDangxuat.UseVisualStyleBackColor = false;
+            btnDangxuat.Click += btnDangxuat_Click;
             // 
             // btnQuanlylophoc
             // 
@@ -216,6 +220,19 @@
             btnQuanlychuyennganh.Click += btnQuanlychuyennganh_Click;
             btnQuanlychuyennganh.Leave += btnQuanlychuyennganh_Leave;
             // 
+            // lbTenhienthi
+            // 
+            lbTenhienthi.AutoSize = true;
+            lbTenhienthi.Dock = DockStyle.Fill;
+            lbTenhienthi.Font = new Font("Roboto Medium", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbTenhienthi.ForeColor = Color.White;
+            lbTenhienthi.Location = new Point(3, 517);
+            lbTenhienthi.Name = "lbTenhienthi";
+            lbTenhienthi.Size = new Size(188, 53);
+            lbTenhienthi.TabIndex = 14;
+            lbTenhienthi.Text = "Nguyễn Văn A";
+            lbTenhienthi.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // tableLayoutPanel2
             // 
             tableLayoutPanel2.ColumnCount = 2;
@@ -242,7 +259,9 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Quản lý sinh viên";
             FormClosed += frmQuanLySinhVien_FormClosed;
+            Load += frmQuanLySinhVien_Load;
             tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -256,7 +275,8 @@
         private TableLayoutPanel tableLayoutPanel2;
         private Button btnQuanlychuyennganh;
         private Button btnQuanlylophoc;
-        private Button button1;
+        private Button btnDangxuat;
         private Button btnTrangchu;
+        private Label lbTenhienthi;
     }
 }

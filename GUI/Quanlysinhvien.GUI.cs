@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Logging;
+using StudentManagment.GUI;
 using StudentManagment.GUI.User_Control;
 
 namespace StudentManagment
@@ -7,16 +8,28 @@ namespace StudentManagment
     {
         private readonly ILogger<frmQuanLySinhVien> logger;
         private readonly ILoggerFactory _loggerFactory;
+        private string _tenHienThi;
         public frmQuanLySinhVien(ILoggerFactory loggerFactory, string tenHienThi)
         {
             InitializeComponent();
             logger = loggerFactory.CreateLogger<frmQuanLySinhVien>();
             _loggerFactory = loggerFactory;
+            _tenHienThi = tenHienThi;
         }
 
         private void frmQuanLySinhVien_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+        private void frmQuanLySinhVien_Load(object sender, EventArgs e)
+        {
+            lbTenhienthi.Text = _tenHienThi;
+            pUserControl.Controls.Clear();
+            Trangchu trangChu = new Trangchu(_loggerFactory);
+            trangChu.Dock = DockStyle.Fill;
+            pUserControl.Controls.Add(trangChu);
+            trangChu.BringToFront();
+            logger.LogInformation("Chuyển sang user control Trang chủ.");
         }
         private void btnTrangchu_Click(object sender, EventArgs e)
         {
@@ -113,6 +126,14 @@ namespace StudentManagment
         private void btnQuanlylophoc_Leave(object sender, EventArgs e)
         {
             btnQuanlylophoc.BackColor = ColorTranslator.FromHtml("#1a385a");
+        }
+
+        private void btnDangxuat_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmDangnhap frmDangnhap = new frmDangnhap(_loggerFactory);
+            frmDangnhap.Show();
+            logger.LogInformation("Chuyển sang form Đăng nhập.");
         }
     }
 }
