@@ -61,12 +61,16 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
-                string maSinhVien = tbMasinhvien.Text.ToString().Trim();
-                string maMon = tbMamonhoc.Text.ToString().Trim();
-                DataTable dt = quanlydiemBLL.XoaThongTinDiemTheoMaSinhVienVaMaMon(maSinhVien, maMon);
-                if (dt.Rows.Count != 0)
+                DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa chứ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
                 {
-                    dgvDiem.DataSource = dt;
+                    string maSinhVien = tbMasinhvien.Text.ToString().Trim();
+                    string maMon = tbMamonhoc.Text.ToString().Trim();
+                    DataTable dt = quanlydiemBLL.XoaThongTinDiemTheoMaSinhVienVaMaMon(maSinhVien, maMon);
+                    if (dt.Rows.Count != 0)
+                    {
+                        dgvDiem.DataSource = dt;
+                    }
                 }
             }
             catch (SqlException)

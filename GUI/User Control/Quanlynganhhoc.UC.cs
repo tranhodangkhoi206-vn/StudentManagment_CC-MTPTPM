@@ -55,11 +55,15 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
-                string maNganh = tbManganh.Text.Trim();
-                DataTable dt = quanlynganhhocBLL.XoaThongTinNganhTheoMaNganh(maNganh);
-                if (dt.Rows.Count != 0)
+                DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa chứ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
                 {
-                    dgvNganh.DataSource = dt;
+                    string maNganh = tbManganh.Text.Trim();
+                    DataTable dt = quanlynganhhocBLL.XoaThongTinNganhTheoMaNganh(maNganh);
+                    if (dt.Rows.Count != 0)
+                    {
+                        dgvNganh.DataSource = dt;
+                    }
                 }
             }
             catch (SqlException)
@@ -134,13 +138,13 @@ namespace StudentManagment.GUI.User_Control
             {
                 string maNganh = tbManganh.Text.ToString().Trim();
                 DataTable dt = quanlynganhhocBLL.TimKiemNganhHoc(maNganh);
-		        if (dt.Rows.Count != 0)
+                if (dt.Rows.Count != 0)
                 {
                     dgvNganh.DataSource = dt;
                 }
                 else
                 {
-                    dgvNganh.DataSource = quanlynganhhocBLL.HienThiToanBoNganhHoc(); 
+                    dgvNganh.DataSource = quanlynganhhocBLL.HienThiToanBoNganhHoc();
                     MessageBox.Show("Ngành học không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

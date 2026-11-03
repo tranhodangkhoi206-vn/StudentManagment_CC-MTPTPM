@@ -68,20 +68,24 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
-                MonhocDTO monhocDTO = new MonhocDTO()
+                DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa chứ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
                 {
-                    Mamon = tbMamonhoc.Text.Trim(),
-                    Tenmon = tbTenmonhoc.Text.Trim(),
-                    Manganh = cbManganh.SelectedValue != null ? cbManganh.SelectedValue.ToString().Trim() : "",
-                    Sotietlythuyet = (int)nudLythuyet.Value,
-                    Sotietthuchanh = (int)nudThuchanh.Value,
-                    Giangvien = tbGiangvien.Text.Trim(),
-                    Tinhtrang = cbTinhtrang.Text.Trim()
-                };
-                DataTable dt = quanlymonhocBLL.SuaMonHocTheoMaMonHoc(monhocDTO);
-                if (dt.Rows.Count != 0)
-                {
-                    dgvMonhoc.DataSource = dt;
+                    MonhocDTO monhocDTO = new MonhocDTO()
+                    {
+                        Mamon = tbMamonhoc.Text.Trim(),
+                        Tenmon = tbTenmonhoc.Text.Trim(),
+                        Manganh = cbManganh.SelectedValue != null ? cbManganh.SelectedValue.ToString().Trim() : "",
+                        Sotietlythuyet = (int)nudLythuyet.Value,
+                        Sotietthuchanh = (int)nudThuchanh.Value,
+                        Giangvien = tbGiangvien.Text.Trim(),
+                        Tinhtrang = cbTinhtrang.Text.Trim()
+                    };
+                    DataTable dt = quanlymonhocBLL.SuaMonHocTheoMaMonHoc(monhocDTO);
+                    if (dt.Rows.Count != 0)
+                    {
+                        dgvMonhoc.DataSource = dt;
+                    }
                 }
             }
             catch (SqlException)
