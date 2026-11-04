@@ -74,8 +74,8 @@ namespace StudentManagment.DAL
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Xảy ra lỗi tìm kiếm lớp học: {0}", sqlEx.Message);
-                throw new Exception("Lỗi cơ sở dữ liệu khi tìm kiếm lớp học!");
+                logger.LogCritical("Xảy ra lỗi cơ sở dữ liệu khi tìm kiếm lớp.\nMã lớp: {0}", maLop);
+                throw;
             }
         }
         public DataTable ThemDuLieuLopMoi(LopDTO lopHoc)
@@ -130,9 +130,8 @@ namespace StudentManagment.DAL
             }
             catch (SqlException sqlEx)
             {
-                string thongBaoLoi = PhanTichLoiSqlLopHoc(sqlEx, lopHoc.Malop);
-                logger.LogCritical(sqlEx, "Lỗi sửa lớp học: {0}", thongBaoLoi);
-                throw new Exception(thongBaoLoi);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi sửa lớp học.\nMã lớp: {0},\nMã ngành: {1},\nTên lớp: {2},\nGiảng viên phụ trách: {3}", lopHoc.Malop, lopHoc.Manganh, lopHoc.Tenlop, lopHoc.Giangvienphutrach);
+                throw;
             }
         }
 
@@ -156,7 +155,7 @@ namespace StudentManagment.DAL
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi xóa lớp học");
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi xóa lớp học.\nMã lớp học: {0}", maLop);
                 throw;
             }
         }

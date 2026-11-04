@@ -51,9 +51,15 @@ namespace StudentManagment.BLL
                 }
                 return dt;
             }
-            catch (SqlException)
+            catch (SqlException sqlEx)
             {
-                throw;
+                string tinNhanThanThien = "Xảy ra lỗi với cơ sở dữ liệu.";
+		        switch (sqlEx.Number)
+                {
+                    case 2627:
+                        tinNhanThanThien = "Môn học đã tồn tại."; break;
+                }
+                throw new DataException(tinNhanThanThien);
             }
         }
         public DataTable SuaMonHocTheoMaMonHoc(MonhocDTO monHoc)

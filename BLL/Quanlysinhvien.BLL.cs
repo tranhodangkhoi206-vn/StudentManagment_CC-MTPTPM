@@ -59,9 +59,15 @@ namespace StudentManagment.BLL
                 }
                 return quanlysinhvienDAL.ThemsinhVienMoi(sinhvienSua);
             }
-            catch (SqlException)
+            catch (SqlException sqlEx)
             {
-                throw;
+                string tinNhanThanThien = "Xảy ra lỗi với cơ sở dữ liệu.";
+		        switch (sqlEx.Number)
+                {
+                    case 2627:
+                        tinNhanThanThien = "Sinh viên đã tồn tại."; break;
+                }
+                throw new DataException(tinNhanThanThien);
             }
         }
         public DataTable SuaSinhVienTheoMaSinhVien(SinhvienDTO sinhvienSua)

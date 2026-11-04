@@ -2,6 +2,7 @@
 using System.Data;
 using Microsoft.Extensions.Logging;
 using StudentManagment.DAL;
+using StudentManagment.DAL.Util;
 using StudentManagment.DTO;
 
 namespace StudentManagment.BLL
@@ -10,23 +11,20 @@ namespace StudentManagment.BLL
     {
         private readonly ILogger logger;
         private readonly QuanlylopDAL quanlylopDAL;
+        private readonly LopDAL lopDAL;
 
-        // Constructor đầy đủ cho ứng dụng có LoggerFactory
         public QuanlylopBLL(ILoggerFactory loggerFactory)
         {
-            this.logger = loggerFactory.CreateLogger<QuanlylopBLL>();
-            this.quanlylopDAL = new QuanlylopDAL(loggerFactory);
+            logger = loggerFactory.CreateLogger<QuanlylopBLL>();
+            quanlylopDAL = new QuanlylopDAL(loggerFactory);
+            lopDAL = new LopDAL(loggerFactory);
         }
 
-        // Constructor không tham số hỗ trợ Unit Test tránh lỗi CS7036
-        public QuanlylopBLL()
-        {
-        }
 
         // 1. Hiển thị toàn bộ danh sách lớp
         public DataTable HienThiToanBoDanhSachLop()
         {
-            return quanlylopDAL.LayToanBoLopHoc();
+            return lopDAL.LayToanBoLopHoc();
         }
 
         // 2. Tìm kiếm lớp học theo Mã lớp
