@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
 using StudentManagment.DTO;
@@ -57,118 +56,118 @@ namespace StudentManagment.DAL
             return "Lỗi cơ sở dữ liệu: " + sqlEx.Message;
         }
 
-        // 1. CHỨC NĂNG THÊM SINH VIÊN MỚI
-        public DataTable ThemsinhVienMoi(SinhvienDTO sinhVienMoi)
+        public DataTable ThemsinhVienMoi(SinhvienDTO sinhVien)
         {
             try
             {
                 using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
                 {
                     SqlCommand cmd = new SqlCommand("INSERT INTO SinhVien VALUES (@MASV, @HOVATEN, @MALOP, @NGAYSINH, @GIOITINH, @MANGANH, @TINHTRANG)", conn);
-                    cmd.Parameters.AddWithValue("@MASV", sinhVienMoi.MaSinhVien);
-                    cmd.Parameters.AddWithValue("@HOVATEN", sinhVienMoi.HoVaTen);
-                    cmd.Parameters.AddWithValue("@MALOP", sinhVienMoi.MaLop);
-                    cmd.Parameters.AddWithValue("@NGAYSINH", sinhVienMoi.NgaySinh);
-                    cmd.Parameters.AddWithValue("@GIOITINH", sinhVienMoi.GioiTinh);
-                    cmd.Parameters.AddWithValue("@MANGANH", sinhVienMoi.MaNganh);
-                    cmd.Parameters.AddWithValue("@TINHTRANG", sinhVienMoi.TinhTrang);
-
-                    cmd.ExecuteNonQuery();
-
-                    logger.LogInformation("Đang thêm sinh viên mới vào danh sách sinh viên. Với dữ liệu:\nMã sinh viên: {0},\nHọ tên: {1}",
-                        sinhVienMoi.MaSinhVien, sinhVienMoi.HoVaTen);
-
+                    cmd.Parameters.AddWithValue("@MASV", sinhVien.MaSinhVien);
+                    cmd.Parameters.AddWithValue("@HOVATEN", sinhVien.HoVaTen);
+                    cmd.Parameters.AddWithValue("@MALOP", sinhVien.MaLop);
+                    cmd.Parameters.AddWithValue("@NGAYSINH", sinhVien.NgaySinh);
+                    cmd.Parameters.AddWithValue("@GIOITINH", sinhVien.GioiTinh);
+                    cmd.Parameters.AddWithValue("@MANGANH", sinhVien.MaNganh);
+                    cmd.Parameters.AddWithValue("@TINHTRANG", sinhVien.TinhTrang);
+                    logger.LogInformation("Thêm sinh viên mới vào danh sách sinh viên.\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVien.MaSinhVien, sinhVien.HoVaTen, sinhVien.MaLop, sinhVien.NgaySinh, sinhVien.GioiTinh, sinhVien.MaNganh, sinhVien.TinhTrang);
+                    int thucThi = cmd.ExecuteNonQuery();
+                    if (thucThi == 0)
+                    {
+                        logger.LogWarning("Thêm sinh viên không thành công.");
+                        return null;
+                    }
                     return sinhvienDAL.LayToanBoSinhVien();
                 }
             }
             catch (SqlException sqlEx)
             {
-                string loiCuThe = PhanTichLoiSql(sqlEx, sinhVienMoi.MaSinhVien);
-                logger.LogCritical(sqlEx, "Lỗi thêm sinh viên: {0}", loiCuThe);
-                throw new Exception(loiCuThe);
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi khi thêm sinh viên {0}: {1}", sinhVienMoi.MaSinhVien, ex.Message);
-                throw new Exception("Lỗi hệ thống khi thêm sinh viên: " + ex.Message);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi thêm sinh viên mới.\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVien.MaSinhVien, sinhVien.HoVaTen, sinhVien.MaLop, sinhVien.NgaySinh, sinhVien.GioiTinh, sinhVien.MaNganh, sinhVien.TinhTrang);
+                throw;
             }
         }
-
-        // 2. CHỨC NĂNG SỬA THÔNG TIN SINH VIÊN
-        public DataTable SuaThongTinSinhVienTheoMaSinhVien(SinhvienDTO sinhVienSua)
+        public DataTable SuaThongTinSinhVienTheoMaSinhVien(SinhvienDTO sinhVien)
         {
             try
             {
                 using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
                 {
-                    SqlCommand cmd = new SqlCommand("UPDATE SinhVien SET HOVATEN = @HOVATEN, MALOP = @MALOP, NGAYSINH = @NGAYSINH, GIOITINH = @GIOITINH, MANGANH = @MANGANH, TINHTRANG = @TINHTRANG WHERE MASV = @MASV", conn);
-                    cmd.Parameters.AddWithValue("@MASV", sinhVienSua.MaSinhVien);
-                    cmd.Parameters.AddWithValue("@HOVATEN", sinhVienSua.HoVaTen);
-                    cmd.Parameters.AddWithValue("@MALOP", sinhVienSua.MaLop);
-                    cmd.Parameters.AddWithValue("@NGAYSINH", sinhVienSua.NgaySinh);
-                    cmd.Parameters.AddWithValue("@GIOITINH", sinhVienSua.GioiTinh);
-                    cmd.Parameters.AddWithValue("@MANGANH", sinhVienSua.MaNganh);
-                    cmd.Parameters.AddWithValue("@TINHTRANG", sinhVienSua.TinhTrang);
-
-                    cmd.ExecuteNonQuery();
-
-                    logger.LogInformation("Đang sửa thông tin sinh viên có mã sinh viên {0}", sinhVienSua.MaSinhVien);
-
+                    SqlCommand cmd = new SqlCommand("UPDATE SinhVien SET HOVATEN   = @HOVATEN, MALOP     = @MALOP, NGAYSINH  = @NGAYSINH, GIOITINH  = @GIOITINH, MANGANH   = @MANGANH, TINHTRANG = @TINHTRANG WHERE MASV = @MASV", conn);
+                    cmd.Parameters.AddWithValue("@MASV", sinhVien.MaSinhVien);
+                    cmd.Parameters.AddWithValue("@HOVATEN", sinhVien.HoVaTen);
+                    cmd.Parameters.AddWithValue("@MALOP", sinhVien.MaLop);
+                    cmd.Parameters.AddWithValue("@NGAYSINH", sinhVien.NgaySinh);
+                    cmd.Parameters.AddWithValue("@GIOITINH", sinhVien.GioiTinh);
+                    cmd.Parameters.AddWithValue("@MANGANH", sinhVien.MaNganh);
+                    cmd.Parameters.AddWithValue("@TINHTRANG", sinhVien.TinhTrang);
+                    logger.LogInformation("Sửa sinh viên trong danh sách sinh viên.\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVien.MaSinhVien, sinhVien.HoVaTen, sinhVien.MaLop, sinhVien.NgaySinh, sinhVien.GioiTinh, sinhVien.MaNganh, sinhVien.TinhTrang);
+                    int thucThi = cmd.ExecuteNonQuery();
+                    if (thucThi == 0)
+                    {
+                        logger.LogWarning("Mã sinh viên không tồn tại.\nMã sinh viên: {0}", sinhVien.MaSinhVien);
+                        return null;
+                    }
                     return sinhvienDAL.LayToanBoSinhVien();
                 }
             }
             catch (SqlException sqlEx)
             {
-                string loiCuThe = PhanTichLoiSql(sqlEx, sinhVienSua.MaSinhVien);
-                logger.LogCritical(sqlEx, "Lỗi cập nhật sinh viên: {0}", loiCuThe);
-                throw new Exception(loiCuThe);
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi khi sửa sinh viên {0}: {1}", sinhVienSua.MaSinhVien, ex.Message);
-                throw new Exception("Lỗi hệ thống khi cập nhật sinh viên: " + ex.Message);
+
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi sửa sinh viên.\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVien.MaSinhVien, sinhVien.HoVaTen, sinhVien.MaLop, sinhVien.NgaySinh, sinhVien.GioiTinh, sinhVien.MaNganh, sinhVien.TinhTrang);
+                throw;
             }
         }
 
-        // 3. CHỨC NĂNG XÓA SINH VIÊN
         public DataTable XoaThongTinSinhVienTheoMaSinhVien(string maSinhVien)
         {
             try
             {
                 using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
                 {
-                    SqlCommand cmd = new SqlCommand("DELETE SinhVien WHERE MASV = @MASV", conn);
+                    SqlCommand cmd = new SqlCommand("DELETE FROM SINHVIEN WHERE MASV=@MASV", conn);
                     cmd.Parameters.AddWithValue("@MASV", maSinhVien);
-
-                    cmd.ExecuteNonQuery();
-
-                    logger.LogInformation("Đang xóa sinh viên có mã sinh viên {0}", maSinhVien);
-
+                    logger.LogInformation("Xóa sinh viên ra khỏi danh sách sinh viên.\nMã sinh viên: {0}.", maSinhVien);
+                    int thucThi = cmd.ExecuteNonQuery();
+                    if (thucThi == 0)
+                    {
+                        logger.LogWarning("Mã sinh viên không tồn tại.\nMã sinh viên: {0}", maSinhVien);
+                        return null;
+                    }
                     return sinhvienDAL.LayToanBoSinhVien();
                 }
             }
             catch (SqlException sqlEx)
             {
-                string thongBaoGoc = sqlEx.Message.ToLower();
-                string loiCuThe;
-
-                // Khi xóa, nếu sinh viên đã có bảng điểm thì SQL sẽ chặn theo ràng buộc khóa ngoại
-                if (thongBaoGoc.Contains("foreign key") || thongBaoGoc.Contains("reference constraint"))
-                {
-                    loiCuThe = $"Không thể xóa sinh viên '{maSinhVien}' vì sinh viên này đã có dữ liệu điểm học tập!";
-                }
-                else
-                {
-                    loiCuThe = PhanTichLoiSql(sqlEx, maSinhVien);
-                }
-
-                logger.LogCritical(sqlEx, "Lỗi xóa sinh viên: {0}", loiCuThe);
-                throw new Exception(loiCuThe);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi xóa sinh viên.\nMã sinh viên: {0}.", maSinhVien);
+                throw;
             }
-            catch (Exception ex)
+
+        }
+        public DataTable LaySinhVienTheoDieuKienMaSinhVien(string maSinhVien)
+        {
+            try
             {
-                logger.LogError(ex, "Xảy ra lỗi khi xóa sinh viên {0}: {1}", maSinhVien, ex.Message);
-                throw new Exception("Lỗi hệ thống khi xóa sinh viên: " + ex.Message);
+                using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
+                {
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter adapter = new SqlDataAdapter();
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM SINHVIEN WHERE MASV=@MASV", conn);
+                    cmd.Parameters.AddWithValue("@MASV", maSinhVien);
+                    adapter.SelectCommand = cmd;
+                    logger.LogInformation("Lấy danh sách sinh viên theo điều kiện mã sinh viên.\nMã sinh viên: {0}", maSinhVien);
+                    adapter.Fill(dt);
+                    if (dt.Rows.Count == 0)
+                    {
+                        logger.LogWarning("Mã sinh viên không tồn tại.\nMã sinh viên: {0}", maSinhVien);
+                        return null;
+                    }
+                    return dt;
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi lấy dữ liệu danh sách sinh viên theo Mã sinh viên.\nMã sinh viên: {0}.", maSinhVien);
+                throw;
             }
         }
     }

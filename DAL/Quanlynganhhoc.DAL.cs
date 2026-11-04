@@ -25,51 +25,50 @@ namespace StudentManagment.DAL
                     cmd.Parameters.AddWithValue("@MANGANH", nganhMoi.Manganh);
                     cmd.Parameters.AddWithValue("@TENNGANH", nganhMoi.Tennganh);
                     cmd.Parameters.AddWithValue("@KHOAQUANLY", nganhMoi.Khoaquanly);
-                    cmd.ExecuteNonQuery();
-
-                    logger.LogInformation("Đang thêm ngành mới vào danh sách ngành. Với dữ liệu:\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhMoi.Manganh, nganhMoi.Tennganh, nganhMoi.Khoaquanly);
+                    logger.LogInformation("Thêm ngành học mới vào danh sách ngành học.\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhMoi.Manganh, nganhMoi.Tennganh, nganhMoi.Khoaquanly);
+                    int thucThi = cmd.ExecuteNonQuery();
+                    if (thucThi == 0)
+                    {
+                        logger.LogWarning("Thêm ngành không thành công.");
+                        return null;
+                    }
                     return nganhhocDAL.LayToanBoNganhHoc();
                 }
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi thêm ngành mới. Với thông tin:\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhMoi.Manganh, nganhMoi.Tennganh, nganhMoi.Khoaquanly);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi thêm ngành học mới.\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhMoi.Manganh, nganhMoi.Tennganh, nganhMoi.Khoaquanly);
                 throw;
             }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi khi thêm ngành có mã ngành {0} vào danh sách ngành. Với dữ liệu:\nTên ngành: {1},\nKhoa quản lý: {2}", nganhMoi.Manganh, nganhMoi.Tennganh, nganhMoi.Khoaquanly);
-                throw;
-            }
+
         }
 
-        public DataTable SuaThongTinNganhTheoMaNganh(NganhhocDTO nganhSua)
+        public DataTable SuaThongTinNganhTheoMaNganh(NganhhocDTO nganhHoc)
         {
             try
             {
                 using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
                 {
                     SqlCommand cmd = new SqlCommand("UPDATE NGANHHOC SET TENNGANH = @TENNGANH, KHOAQUANLY = @KHOAQUANLY WHERE MANGANH = @MANGANH", conn);
-                    cmd.Parameters.AddWithValue("@MANGANH", nganhSua.Manganh);
-                    cmd.Parameters.AddWithValue("@TENNGANH", nganhSua.Tennganh);
-                    cmd.Parameters.AddWithValue("@KHOAQUANLY", nganhSua.Khoaquanly);
-                    cmd.ExecuteNonQuery();
-
-                    logger.LogInformation("Đang sửa ngành có mã ngành {0} trong danh sách ngành. Với dữ liệu:\nTên ngành: {1},\nKhoa quản lý: {2}", nganhSua.Manganh, nganhSua.Tennganh, nganhSua.Khoaquanly);
-
+                    cmd.Parameters.AddWithValue("@MANGANH", nganhHoc.Manganh);
+                    cmd.Parameters.AddWithValue("@TENNGANH", nganhHoc.Tennganh);
+                    cmd.Parameters.AddWithValue("@KHOAQUANLY", nganhHoc.Khoaquanly);
+                    logger.LogInformation("Sửa ngành học trong danh sách ngành học.\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhHoc.Manganh, nganhHoc.Tennganh, nganhHoc.Khoaquanly);
+                    int thucThi = cmd.ExecuteNonQuery();
+                    if (thucThi == 0)
+                    {
+                        logger.LogWarning("Mã ngành không tồn tại.\nMã ngành: {0}", nganhHoc.Manganh);
+                        return null;
+                    }
                     return nganhhocDAL.LayToanBoNganhHoc();
                 }
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi sửa ngành có mã ngành {0} trong danh sách ngành. Với dữ liệu:\nTên ngành: {1},\nKhoa quản lý: {2}", nganhSua.Manganh, nganhSua.Tennganh, nganhSua.Khoaquanly);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi sửa ngành học.\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhHoc.Manganh, nganhHoc.Tennganh, nganhHoc.Khoaquanly);
                 throw;
             }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Xảy ra lỗi khi sửa ngành có mã ngành {0} trong danh sách ngành. Với dữ liệu:\nTên ngành: {1},\nKhoa quản lý: {2}", nganhSua.Manganh, nganhSua.Tennganh, nganhSua.Khoaquanly);
-                throw;
-            }
+
         }
 
         public DataTable XoaThongTinNganhTheoMaNganh(string maNganh)
@@ -78,25 +77,52 @@ namespace StudentManagment.DAL
             {
                 using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
                 {
-                    SqlCommand cmd = new SqlCommand("DELETE NGANHHOC WHERE MANGANH = @MANGANH", conn);
+                    SqlCommand cmd = new SqlCommand("DELETE FROM NGANHHOC WHERE MANGANH = @MANGANH", conn);
                     cmd.Parameters.AddWithValue("@MANGANH", maNganh);
-                    cmd.ExecuteNonQuery();
-
-                    logger.LogInformation("Đang xóa ngành với mã ngành {0} khỏi danh sách ngành.", maNganh);
-
+                    logger.LogInformation("Xóa ngành học khỏi danh sách ngành học.\nMã ngành: {0}", maNganh);
+                    int thucThi = cmd.ExecuteNonQuery();
+                    if (thucThi == 0)
+                    {
+                        logger.LogWarning("Mã ngành không tồn tại.\nMã ngành: {0}", maNganh);
+                        return null;
+                    }
                     return nganhhocDAL.LayToanBoNganhHoc();
                 }
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi xóa ngành có mã ngành {0} khỏi danh sách ngành", maNganh);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi xóa ngành học.\nMã ngành: {0}", maNganh);
                 throw;
             }
-            catch (Exception ex)
+
+        }
+        public DataTable LayDanhSachNganhHocTheoDieuKienMaNganh(string maNganh)
+        {
+            try
             {
-                logger.LogError(ex, "Lỗi xảy ra khi xóa ngành với mã ngành {0}", maNganh);
+                using (SqlConnection conn = CosodulieuDAL.KetNoiCoSoDuLieu())
+                {
+                    SqlDataAdapter adater = new SqlDataAdapter();
+                    DataTable dt = new DataTable();
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM NGANHHOC WHERE MANGANH=@MANGANH", conn);
+                    cmd.Parameters.AddWithValue("@MANGANH", maNganh);
+                    adater.SelectCommand = cmd;
+                    logger.LogInformation("Lấy danh sách ngành học theo Mã ngành.\nMã ngành: {0}", maNganh);
+                    adater.Fill(dt);
+                    if (dt.Rows.Count == 0)
+                    {
+                        logger.LogWarning("Mã ngành không tồn tại.\nMã ngành: {0}", maNganh);
+                        return null;
+                    }
+                    return dt;
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi lấy danh sách ngành học theo Mã ngành.\nMã ngành: {0}", maNganh);
                 throw;
             }
+
         }
     }
 }

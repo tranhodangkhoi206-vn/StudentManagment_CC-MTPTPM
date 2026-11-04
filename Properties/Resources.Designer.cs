@@ -19,7 +19,7 @@ namespace StudentManagment.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -57,6 +57,17 @@ namespace StudentManagment.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap business_dashboard_with_sales_performance_revenue_growth_profit_margin_purchase_activity_charts_439195_114 {
+            get {
+                object obj = ResourceManager.GetObject("business-dashboard-with-sales-performance-revenue-growth-profit-margin-purchase-a" +
+                        "ctivity-charts_439195-114", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

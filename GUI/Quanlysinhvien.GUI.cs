@@ -1,112 +1,139 @@
 using Microsoft.Extensions.Logging;
+using StudentManagment.GUI;
 using StudentManagment.GUI.User_Control;
 
 namespace StudentManagment
 {
     public partial class frmQuanLySinhVien : Form
     {
+        private readonly ILogger<frmQuanLySinhVien> logger;
         private readonly ILoggerFactory _loggerFactory;
+        private string _tenHienThi;
         public frmQuanLySinhVien(ILoggerFactory loggerFactory, string tenHienThi)
         {
             InitializeComponent();
+            logger = loggerFactory.CreateLogger<frmQuanLySinhVien>();
             _loggerFactory = loggerFactory;
-            lbTen.Text = tenHienThi;
+            _tenHienThi = tenHienThi;
         }
 
         private void frmQuanLySinhVien_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
-
-        private void btnTracuusinhvien_Click(object sender, EventArgs e)
+        private void frmQuanLySinhVien_Load(object sender, EventArgs e)
         {
-            btnTracuusinhvien.BackColor = ColorTranslator.FromHtml("#0094ff");
-            btnTracuusinhvien.ForeColor = Color.White;
-
+            lbTenhienthi.Text = _tenHienThi;
             pUserControl.Controls.Clear();
-            Tracuusinhvien ucTracuusinhvien = new Tracuusinhvien(_loggerFactory);
-            ucTracuusinhvien.Dock = DockStyle.Fill;
-            pUserControl.Controls.Add(ucTracuusinhvien);
-            ucTracuusinhvien.BringToFront();
+            Trangchu trangChu = new Trangchu(_loggerFactory);
+            trangChu.Dock = DockStyle.Fill;
+            pUserControl.Controls.Add(trangChu);
+            trangChu.BringToFront();
+            logger.LogInformation("Chuyển sang user control Trang chủ.");
         }
-
-        private void btnTracuusinhvien_Leave(object sender, EventArgs e)
+        private void btnTrangchu_Click(object sender, EventArgs e)
         {
-            btnTracuusinhvien.BackColor = SystemColors.Highlight;
-            btnTracuusinhvien.ForeColor = Color.White;
-        }
-
-        private void btnQuanlisinhvien_Click(object sender, EventArgs e)
-        {
-            btnQuanlisinhvien.BackColor = ColorTranslator.FromHtml("#0094ff");
-            btnQuanlisinhvien.ForeColor = Color.White;
-
+            btnTrangchu.BackColor = ColorTranslator.FromHtml("#2471C9");
             pUserControl.Controls.Clear();
-            Quanlisinhvien ucQuanlisinhvien = new Quanlisinhvien(_loggerFactory);
-            ucQuanlisinhvien.Dock = DockStyle.Fill;
-            pUserControl.Controls.Add(ucQuanlisinhvien);
-            ucQuanlisinhvien.BringToFront();
+            Trangchu trangChu = new Trangchu(_loggerFactory);
+            trangChu.Dock = DockStyle.Fill;
+            pUserControl.Controls.Add(trangChu);
+            trangChu.BringToFront();
+            logger.LogInformation("Chuyển sang user control Trang chủ.");
         }
 
-        private void btnQuanlisinhvien_Leave(object sender, EventArgs e)
+        private void btnTrangchu_Leave(object sender, EventArgs e)
         {
-            btnQuanlisinhvien.BackColor = SystemColors.Highlight;
-            btnQuanlisinhvien.ForeColor = Color.White;
+            btnTrangchu.BackColor = ColorTranslator.FromHtml("#1A385A");
         }
 
-        private void btnQuanlimonhoc_Click(object sender, EventArgs e)
-        {
-            btnQuanlimonhoc.BackColor = ColorTranslator.FromHtml("#0094ff");
-            btnQuanlimonhoc.ForeColor = Color.White;
 
+        private void btnQuanlysinhvien_Click(object sender, EventArgs e)
+        {
+            btnQuanlysinhvien.BackColor = ColorTranslator.FromHtml("#2471C9");
             pUserControl.Controls.Clear();
-            Quanlimonhoc ucQuanlimonhoc = new Quanlimonhoc(_loggerFactory);
-            ucQuanlimonhoc.Dock = DockStyle.Fill;
-            pUserControl.Controls.Add(ucQuanlimonhoc);
-            ucQuanlimonhoc.BringToFront();
+            Quanlysinhvien quanLySinhVien = new Quanlysinhvien(_loggerFactory);
+            quanLySinhVien.Dock = DockStyle.Fill;
+            pUserControl.Controls.Add(quanLySinhVien);
+            quanLySinhVien.BringToFront();
+            logger.LogInformation("Chuyển sang user control Quản lý sinh viên.");
         }
 
-        private void btnQuanlimonhoc_Leave(object sender, EventArgs e)
+        private void btnQuanlysinhvien_Leave(object sender, EventArgs e)
         {
-            btnQuanlimonhoc.BackColor = SystemColors.Highlight;
-            btnQuanlimonhoc.ForeColor = Color.White;
+            btnQuanlysinhvien.BackColor = ColorTranslator.FromHtml("#1a385a");
         }
 
-        private void btnQuanlichuyennganh_Click(object sender, EventArgs e)
+        private void btnQuanlymonhoc_Click(object sender, EventArgs e)
         {
-            btnQuanlichuyennganh.BackColor = ColorTranslator.FromHtml("#0094ff");
-            btnQuanlichuyennganh.ForeColor = Color.White;
-
+            btnQuanlymonhoc.BackColor = ColorTranslator.FromHtml("#2471C9");
             pUserControl.Controls.Clear();
-            Quanlinganhhoc ucQuanlinganhhoc = new Quanlinganhhoc(_loggerFactory);
-            ucQuanlinganhhoc.Dock = DockStyle.Fill;
-            pUserControl.Controls.Add(ucQuanlinganhhoc);
-            ucQuanlinganhhoc.BringToFront();
+            Quanlymonhoc quanLyMonHoc = new Quanlymonhoc(_loggerFactory);
+            quanLyMonHoc.Dock = DockStyle.Fill;
+            pUserControl.Controls.Add(quanLyMonHoc);
+            quanLyMonHoc.BringToFront();
+            logger.LogInformation("Chuyển sang user control Quản lý môn học.");
         }
 
-        private void btnQuanlichuyennganh_Leave(object sender, EventArgs e)
+        private void btnQuanlymonhoc_Leave(object sender, EventArgs e)
         {
-            btnQuanlichuyennganh.BackColor = SystemColors.Highlight;
-            btnQuanlichuyennganh.ForeColor = Color.White;
+            btnQuanlymonhoc.BackColor = ColorTranslator.FromHtml("#1a385a");
         }
 
-        private void btnQuanlidiem_Click(object sender, EventArgs e)
+        private void btnQuanlychuyennganh_Click(object sender, EventArgs e)
         {
-
-            btnQuanlidiem.BackColor = ColorTranslator.FromHtml("#0094ff");
-            btnQuanlidiem.ForeColor = Color.White;
-
+            btnQuanlychuyennganh.BackColor = ColorTranslator.FromHtml("#2471C9");
             pUserControl.Controls.Clear();
-            Quanlidiem ucQuanlidiem = new Quanlidiem(_loggerFactory);
-            ucQuanlidiem.Dock = DockStyle.Fill;
-            pUserControl.Controls.Add(ucQuanlidiem);
-            ucQuanlidiem.BringToFront();
+            Quanlynganhhoc quanLyNganhHoc = new Quanlynganhhoc(_loggerFactory);
+            quanLyNganhHoc.Dock = DockStyle.Fill;
+            pUserControl.Controls.Add(quanLyNganhHoc);
+            quanLyNganhHoc.BringToFront();
+            logger.LogInformation("Chuyển sang user control Quản lý chuyên ngành.");
         }
 
-        private void btnQuanlidiem_Leave(object sender, EventArgs e)
+        private void btnQuanlychuyennganh_Leave(object sender, EventArgs e)
         {
-            btnQuanlidiem.BackColor = SystemColors.Highlight;
-            btnQuanlidiem.ForeColor = Color.White;
+            btnQuanlychuyennganh.BackColor = ColorTranslator.FromHtml("#1a385a");
+        }
+
+        private void btnQuanlydiem_Click(object sender, EventArgs e)
+        {
+            btnQuanlydiem.BackColor = ColorTranslator.FromHtml("#2471C9");
+            pUserControl.Controls.Clear();
+            Quanlydiem quanLyDiem = new Quanlydiem(_loggerFactory);
+            quanLyDiem.Dock = DockStyle.Fill;
+            pUserControl.Controls.Add(quanLyDiem);
+            quanLyDiem.BringToFront();
+            logger.LogInformation("Chuyển sang user control Quản lý điểm.");
+        }
+
+        private void btnQuanlydiem_Leave(object sender, EventArgs e)
+        {
+            btnQuanlydiem.BackColor = ColorTranslator.FromHtml("#1a385a");
+        }
+
+        private void btnQuanlylophoc_Click(object sender, EventArgs e)
+        {
+            btnQuanlylophoc.BackColor = ColorTranslator.FromHtml("#2471C9");
+            pUserControl.Controls.Clear();
+            Quanlylophoc quanLyLopHoc = new Quanlylophoc();
+            quanLyLopHoc.Dock = DockStyle.Fill;
+            pUserControl.Controls.Add(quanLyLopHoc);
+            quanLyLopHoc.BringToFront();
+            logger.LogInformation("Chuyển sang user control Quản lý lớp học.");
+        }
+
+        private void btnQuanlylophoc_Leave(object sender, EventArgs e)
+        {
+            btnQuanlylophoc.BackColor = ColorTranslator.FromHtml("#1a385a");
+        }
+
+        private void btnDangxuat_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmDangnhap frmDangnhap = new frmDangnhap(_loggerFactory);
+            frmDangnhap.Show();
+            logger.LogInformation("Chuyển sang form Đăng nhập.");
         }
     }
 }

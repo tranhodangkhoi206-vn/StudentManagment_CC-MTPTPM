@@ -8,9 +8,9 @@ namespace StudentManagment.DTO
 {
     public class TaikhoanDTO
     {
-	    private string Id { get; set;}
         public string Hovaten { get; set; }
         public string Username { get; set; }
-        public string Matkhau { get; set; }
+        public string HashedPassword { get; set; }
+	    public bool Admin { get; set;}
     }
 }

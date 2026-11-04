@@ -1,163 +1,139 @@
-CREATE DATABASE STUDENTMANAGMENT;
+CREATE DATABASE STUDENTMANAGMENT
 GO
-
-USE STUDENTMANAGMENT;
+USE STUDENTMANAGMENT
 GO
 
 CREATE TABLE TAIKHOAN (
-    ID INT IDENTITY(1,1) PRIMARY KEY,
-    HOVATEN NVARCHAR(50) NOT NULL,
-    USERNAME VARCHAR(50) NOT NULL UNIQUE,
-    PASSWORD VARCHAR(255) NOT NULL
-);
+	HOVATEN NVARCHAR(30) NOT NULL,
+	USERNAME VARCHAR(20) NOT NULL,
+	HASHEDPASSWORD VARCHAR(255) NOT NULL,
+    ADMIN BIT NOT NULL
+)
 
 CREATE TABLE NGANHHOC (
-    MANGANH CHAR(10) PRIMARY KEY,
-    TENNGANH NVARCHAR(100) NOT NULL,
-    KHOAQUANLY NVARCHAR(100) NOT NULL
-);
-
-CREATE TABLE LOP (
-    MALOP CHAR(10) PRIMARY KEY,
     MANGANH CHAR(10) NOT NULL,
-    TENLOP NVARCHAR(50) NOT NULL,
-    GIANGVIENPHUTRACH NVARCHAR(100) NOT NULL
-);
+    TENNGANH NVARCHAR(50) NOT NULL,
+    KHOAQUANLY NVARCHAR(100) NOT NULL
+)
 
 CREATE TABLE SINHVIEN (
-    MASV CHAR(10) PRIMARY KEY,
+    MASV CHAR(10) NOT NULL,
     HOVATEN NVARCHAR(50) NOT NULL,
     MALOP CHAR(10) NOT NULL,
     NGAYSINH DATE NOT NULL,
-    GIOITINH NVARCHAR(5) NOT NULL CHECK (GIOITINH IN (N'Nam', N'Nữ')),
+    GIOITINH NVARCHAR(10) NOT NULL,
     MANGANH CHAR(10) NOT NULL,
-    TINHTRANG NVARCHAR(30) NOT NULL DEFAULT N'Đang học'
-);
+    TINHTRANG NVARCHAR(30) NOT NULL
+)
 
 CREATE TABLE MONHOC (
-    MAMON CHAR(10) PRIMARY KEY,
+    MAMON CHAR(10) NOT NULL,
     TENMON NVARCHAR(100) NOT NULL,
     MANGANH CHAR(10) NOT NULL,
-    SOTIETLYTHUYET INT NOT NULL DEFAULT 0 CHECK (SOTIETLYTHUYET >= 0),
-    SOTIETTHUCHANH INT NOT NULL DEFAULT 0 CHECK (SOTIETTHUCHANH >= 0),
+    SOTIETLYTHUYET INT NOT NULL,
+    SOTIETTHUCHANH INT NOT NULL,
     GIANGVIEN NVARCHAR(100) NOT NULL,
-    TINHTRANG NVARCHAR(30) NOT NULL DEFAULT N'Đang dạy'
-);
+    TINHTRANG NVARCHAR(30) NOT NULL
+)
 
 CREATE TABLE DIEM (
     MASV CHAR(10) NOT NULL,
     MAMON CHAR(10) NOT NULL,
-    DIEMCHUYENCAN DECIMAL(4,2) CHECK (DIEMCHUYENCAN BETWEEN 0 AND 10),
-    DIEMGIUAKY DECIMAL(4,2) CHECK (DIEMGIUAKY BETWEEN 0 AND 10),
-    DIEMCUOIKY DECIMAL(4,2) CHECK (DIEMCUOIKY BETWEEN 0 AND 10),
-    DIEMTONG DECIMAL(4,2) CHECK (DIEMTONG BETWEEN 0 AND 10),
-    PRIMARY KEY (MASV, MAMON)
-);
+    DIEMCHUYENCAN DECIMAL(4,2),
+    DIEMGIUAKY DECIMAL(4,2),
+    DIEMCUOIKY DECIMAL(4,2),
+    DIEMTONG DECIMAL(4,2)
+)
+
+CREATE TABLE LOP (
+    MALOP CHAR(10) NOT NULL,
+    MANGANH CHAR(10) NOT NULL,
+    TENLOP NVARCHAR(50) NOT NULL,
+    GIANGVIENPHUTRACH NVARCHAR(100) NOT NULL
+)
+
+ALTER TABLE LOP ADD CONSTRAINT PK_MALOP_LOP PRIMARY KEY (MALOP)
+
+ALTER TABLE TAIKHOAN ADD CONSTRAINT PK_USERNAME_TAIKHOAN PRIMARY KEY(USERNAME)
+
+ALTER TABLE SINHVIEN ADD CONSTRAINT PK_MASV_SINHVIEN PRIMARY KEY (MASV)
+
+ALTER TABLE DIEM ADD CONSTRAINT PK_MASV_MAMON_DIEM PRIMARY KEY (MASV, MAMON)
+
+ALTER TABLE NGANHHOC ADD CONSTRAINT PK_MANGANH_NGANHHOC PRIMARY KEY (MANGANH)
+
+ALTER TABLE MONHOC ADD CONSTRAINT PK_MAMON_MONHOC PRIMARY KEY (MAMON)
 
 
-ALTER TABLE LOP 
-    ADD CONSTRAINT FK_LOP_NGANHHOC 
-    FOREIGN KEY (MANGANH) REFERENCES NGANHHOC(MANGANH);
 
-ALTER TABLE SINHVIEN 
-    ADD CONSTRAINT FK_SINHVIEN_LOP 
-    FOREIGN KEY (MALOP) REFERENCES LOP(MALOP);
+ALTER TABLE LOP ADD CONSTRAINT FK_MANGANH_LOP FOREIGN KEY (MANGANH) REFERENCES NGANHHOC(MANGANH)
 
-ALTER TABLE SINHVIEN 
-    ADD CONSTRAINT FK_SINHVIEN_NGANHHOC 
-    FOREIGN KEY (MANGANH) REFERENCES NGANHHOC(MANGANH);
+ALTER TABLE SINHVIEN ADD CONSTRAINT FK_MANGANH_SINHVIEN FOREIGN KEY (MANGANH) REFERENCES NGANHHOC(MANGANH)
 
-ALTER TABLE MONHOC 
-    ADD CONSTRAINT FK_MONHOC_NGANHHOC 
-    FOREIGN KEY (MANGANH) REFERENCES NGANHHOC(MANGANH);
+ALTER TABLE MONHOC ADD CONSTRAINT FK_MANGANH_MONHOC FOREIGN KEY (MANGANH) REFERENCES NGANHHOC(MANGANH)
 
-ALTER TABLE DIEM 
-    ADD CONSTRAINT FK_DIEM_SINHVIEN 
-    FOREIGN KEY (MASV) REFERENCES SINHVIEN(MASV) ON DELETE CASCADE;
+ALTER TABLE DIEM ADD CONSTRAINT FK_MASV_DIEM FOREIGN KEY (MASV) REFERENCES SINHVIEN(MASV)
 
-ALTER TABLE DIEM 
-    ADD CONSTRAINT FK_DIEM_MONHOC 
-    FOREIGN KEY (MAMON) REFERENCES MONHOC(MAMON);
+ALTER TABLE DIEM ADD CONSTRAINT FK_MAMON_DIEM FOREIGN KEY (MAMON) REFERENCES MONHOC(MAMON)
+
+ALTER TABLE SINHVIEN ADD CONSTRAINT FK_MALOP_SINHVIEN FOREIGN KEY (MALOP) REFERENCES LOP(MALOP)
 
 
--- 5.1. Tài khoản
-INSERT INTO TAIKHOAN (HOVATEN, USERNAME, PASSWORD) VALUES
-(N'Trần Hồ Đăng Khôi', 'tranhodankhoi', '123');
+INSERT INTO TAIKHOAN VALUES(N'Trần Hồ Đăng Khôi', 'admin', '$2a$12$BIPCXX0GCLl2xQ5FV6P5ZOwOG2gCDs6Vw.2BQi28YgT6Q2m.odgS.', 1)
 
--- 5.2. Ngành học
-INSERT INTO NGANHHOC (MANGANH, TENNGANH, KHOAQUANLY) VALUES
-('CNTT',  N'Công nghệ thông tin', N'Khoa Kỹ thuật - Công nghệ'),
-('QTKD',  N'Quản trị kinh doanh', N'Khoa Kinh tế'),
-('NNANH', N'Ngôn ngữ Anh',        N'Khoa Ngoại ngữ'),
-('DTVT',  N'Điện tử viễn thông',  N'Khoa Kỹ thuật - Công nghệ'),
-('MARK',  N'Marketing',           N'Khoa Kinh tế');
+INSERT INTO NGANHHOC VALUES
+('CNTT', N'Công nghệ thông tin', N'Khoa Kỹ thuật - Công nghệ'),
+('QTKD', N'Quản trị kinh doanh', N'Khoa Kinh tế'),
+('NNANH', N'Ngôn ngữ Anh', N'Khoa Ngoại ngữ'),
+('DTVT', N'Điện tử viễn thông', N'Khoa Kỹ thuật - Công nghệ'),
+('MARK', N'Marketing', N'Khoa Kinh tế')
 
--- 5.3. Lớp học
-INSERT INTO LOP (MALOP, MANGANH, TENLOP, GIANGVIENPHUTRACH) VALUES
-('CNTT01',  'CNTT',  N'Công nghệ thông tin 01', N'Nguyễn Văn An'),
-('CNTT02',  'CNTT',  N'Công nghệ thông tin 02', N'Trần Minh Tuấn'),
-('QTKD01',  'QTKD',  N'Quản trị kinh doanh 01', N'Lê Thị Hồng'),
-('NNANH01', 'NNANH', N'Ngôn ngữ Anh 01',        N'Phạm Quốc Bảo'),
-('DTVT01',  'DTVT',  N'Điện tử viễn thông 01',  N'Nguyễn Thị Mai'),
-('MARK01',  'MARK',  N'Marketing 01',           N'Hoàng Văn Long');
+INSERT INTO SINHVIEN VALUES
+('SV001', N'Trần Hồ Đăng Khôi', 'CNTT01', '2006-05-20', N'Nam', 'CNTT', N'Đang học'),
+('SV002', N'Nguyễn Minh Anh', 'CNTT01', '2006-08-15', N'Nữ', 'CNTT', N'Đang học'),
+('SV003', N'Lê Hoàng Nam', 'CNTT02', '2005-12-10', N'Nam', 'CNTT', N'Đang học'),
+('SV004', N'Phạm Ngọc Lan', 'QTKD01', '2006-03-25', N'Nữ', 'QTKD', N'Đang học'),
+('SV005', N'Võ Thành Đạt', 'DTVT01', '2005-09-12', N'Nam', 'DTVT', N'Bảo lưu'),
+('SV006', N'Đặng Thùy Linh', 'NNANH01', '2006-01-30', N'Nữ', 'NNANH', N'Đang học'),
+('SV007', N'Hoàng Gia Bảo', 'MARK01', '2006-07-18', N'Nam', 'MARK', N'Đang học'),
+('SV008', N'Bùi Khánh Vy', 'CNTT02', '2005-11-05', N'Nữ', 'CNTT', N'Đã tốt nghiệp')
 
--- 5.4. Sinh viên
-INSERT INTO SINHVIEN (MASV, HOVATEN, MALOP, NGAYSINH, GIOITINH, MANGANH, TINHTRANG) VALUES
-('SV001', N'Trần Hồ Đăng Khôi', 'CNTT01',  '2006-05-20', N'Nam', 'CNTT',  N'Đang học'),
-('SV002', N'Nguyễn Minh Anh',    'CNTT01',  '2006-08-15', N'Nữ',  'CNTT',  N'Đang học'),
-('SV003', N'Lê Hoàng Nam',      'CNTT02',  '2005-12-10', N'Nam', 'CNTT',  N'Đang học'),
-('SV004', N'Phạm Ngọc Lan',     'QTKD01',  '2006-03-25', N'Nữ',  'QTKD',  N'Đang học'),
-('SV005', N'Võ Thành Đạt',      'DTVT01',  '2005-09-12', N'Nam', 'DTVT',  N'Bảo lưu'),
-('SV006', N'Đặng Thùy Linh',    'NNANH01', '2006-01-30', N'Nữ',  'NNANH', N'Đang học'),
-('SV007', N'Hoàng Gia Bảo',     'MARK01',  '2006-07-18', N'Nam', 'MARK',  N'Đang học'),
-('SV008', N'Bùi Khánh Vy',      'CNTT02',  '2005-11-05', N'Nữ',  'CNTT',  N'Đã tốt nghiệp');
+INSERT INTO MONHOC VALUES
+('MH001', N'Kỹ thuật lập trình', 'CNTT', 30, 30, N'Nguyễn Văn An', N'Đang dạy'),
+('MH002', N'Lập trình hướng đối tượng', 'CNTT', 30, 30, N'Trần Minh Tuấn', N'Đang dạy'),
+('MH003', N'Cơ sở dữ liệu', 'CNTT', 30, 15, N'Lê Thị Hồng', N'Đang dạy'),
+('MH004', N'Mạng máy tính', 'CNTT', 30, 15, N'Phạm Quốc Bảo', N'Đang dạy'),
+('MH005', N'Toán cao cấp', 'CNTT', 45, 0, N'Nguyễn Thị Mai', N'Đang dạy'),
+('MH006', N'Nguyên lý quản trị', 'QTKD', 30, 15, N'Hoàng Văn Long', N'Đang dạy'),
+('MH007', N'Anh văn giao tiếp', 'NNANH', 30, 30, N'Trần Thu Hà', N'Đang dạy'),
+('MH008', N'Điện tử cơ bản', 'DTVT', 30, 30, N'Nguyễn Quốc Huy', N'Ngừng dạy'),
+('MH009', N'Nguyên lý Marketing', 'MARK', 30, 15, N'Lê Minh Đức', N'Đang dạy'),
+('MH010', N'Cấu trúc dữ liệu và giải thuật', 'CNTT', 30, 30, N'Phạm Hoàng Sơn', N'Đang dạy')
 
--- 5.5. Môn học
-INSERT INTO MONHOC (MAMON, TENMON, MANGANH, SOTIETLYTHUYET, SOTIETTHUCHANH, GIANGVIEN, TINHTRANG) VALUES
-('MH001', N'Kỹ thuật lập trình',           'CNTT',  30, 30, N'Nguyễn Văn An',  N'Đang dạy'),
-('MH002', N'Lập trình hướng đối tượng',    'CNTT',  30, 30, N'Trần Minh Tuấn', N'Đang dạy'),
-('MH003', N'Cơ sở dữ liệu',                'CNTT',  30, 15, N'Lê Thị Hồng',    N'Đang dạy'),
-('MH004', N'Mạng máy tính',                'CNTT',  30, 15, N'Phạm Quốc Bảo',  N'Đang dạy'),
-('MH005', N'Toán cao cấp',                 'CNTT',  45,  0, N'Nguyễn Thị Mai',  N'Đang dạy'),
-('MH006', N'Nguyên lý quản trị',           'QTKD',  30, 15, N'Hoàng Văn Long', N'Đang dạy'),
-('MH007', N'Anh văn giao tiếp',            'NNANH', 30, 30, N'Trần Thu Hà',    N'Đang dạy'),
-('MH008', N'Điện tử cơ bản',               'DTVT',  30, 30, N'Nguyễn Quốc Huy', N'Ngừng dạy'),
-('MH009', N'Nguyên lý Marketing',          'MARK',  30, 15, N'Lê Minh Đức',    N'Đang dạy'),
-('MH010', N'Cấu trúc dữ liệu và giải thuật','CNTT', 30, 30, N'Phạm Hoàng Sơn', N'Đang dạy');
-
--- 5.6. Điểm
-INSERT INTO DIEM (MASV, MAMON, DIEMCHUYENCAN, DIEMGIUAKY, DIEMCUOIKY, DIEMTONG) VALUES
+INSERT INTO DIEM VALUES
 ('SV001', 'MH001', 9.00, 8.00, 9.00, 8.70),
 ('SV001', 'MH002', 8.50, 8.00, 8.50, 8.35),
 ('SV001', 'MH003', 9.50, 9.00, 8.00, 8.50),
 ('SV001', 'MH004', 8.00, 7.50, 8.50, 8.10),
 ('SV001', 'MH005', 9.00, 7.00, 8.00, 7.90),
+
 ('SV002', 'MH001', 8.50, 9.00, 8.00, 8.25),
 ('SV002', 'MH002', 9.00, 8.50, 9.00, 8.85),
 ('SV002', 'MH003', 8.00, 8.50, 9.00, 8.55),
+
 ('SV003', 'MH001', 7.50, 7.00, 8.00, 7.55),
 ('SV003', 'MH003', 8.00, 7.50, 8.00, 7.85),
 ('SV003', 'MH004', 8.50, 8.00, 7.50, 7.80),
+
 ('SV004', 'MH006', 9.00, 8.50, 9.00, 8.85),
 ('SV006', 'MH007', 9.50, 9.00, 9.50, 9.35),
 ('SV007', 'MH009', 8.50, 8.00, 9.00, 8.55),
-('SV005', 'MH008', 7.00, 6.50, 7.50, 7.15);
+('SV005', 'MH008', 7.00, 6.50, 7.50, 7.15)
 
-SELECT 
-    sv.MASV,
-    sv.HOVATEN,
-    l.TENLOP,
-    n.TENNGANH,
-    mh.TENMON,
-    d.DIEMTONG
-FROM SINHVIEN sv
-INNER JOIN LOP l ON sv.MALOP = l.MALOP
-INNER JOIN NGANHHOC n ON sv.MANGANH = n.MANGANH
-INNER JOIN DIEM d ON sv.MASV = d.MASV
-INNER JOIN MONHOC mh ON d.MAMON = mh.MAMON
-ORDER BY sv.MASV, d.DIEMTONG DESC;
-
-SELECT * FROM TAIKHOAN;
-GO
-
-SELECT * FROM SINHVIEN;
+INSERT INTO LOP VALUES
+('CNTT01', 'CNTT', N'Công nghệ thông tin 01', N'Nguyễn Văn An'),
+('CNTT02', 'CNTT', N'Công nghệ thông tin 02', N'Trần Minh Tuấn'),
+('QTKD01', 'QTKD', N'Quản trị kinh doanh 01', N'Lê Thị Hồng'),
+('NNANH01', 'NNANH', N'Ngôn ngữ Anh 01', N'Phạm Quốc Bảo'),
+('DTVT01', 'DTVT', N'Điện tử viễn thông 01', N'Nguyễn Thị Mai'),
+('MARK01', 'MARK', N'Marketing 01', N'Hoàng Văn Long')
