@@ -160,7 +160,6 @@ namespace StudentManagment.GUI.User_Control
                 else
                 {
                     dgvMonhoc.DataSource = quanlymonhocBLL.HienThiDanhSachMonHoc();
-                    MessageBox.Show("Môn học không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (ArgumentException agEx)

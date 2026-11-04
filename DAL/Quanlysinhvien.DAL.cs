@@ -17,45 +17,6 @@ namespace StudentManagment.DAL
             sinhvienDAL = new SinhvienDAL(loggerFactory);
         }
 
-        // Hàm phân tích thông báo lỗi SQL Server 
-        private string PhanTichLoiSql(SqlException sqlEx, string maSinhVien)
-        {
-            string thongBaoGoc = sqlEx.Message.ToLower();
-
-            // 1. Lỗi trùng khóa chính (Mã sinh viên đã có sẵn trong bảng)
-            if (thongBaoGoc.Contains("primary key") || thongBaoGoc.Contains("duplicate key"))
-            {
-                return $"Mã sinh viên '{maSinhVien}' đã tồn tại trong hệ thống. Vui lòng nhập mã sinh viên khác!";
-            }
-
-            // 2. Lỗi khóa ngoại (Mã lớp hoặc Mã ngành không tồn tại trong danh mục)
-            if (thongBaoGoc.Contains("foreign key") || thongBaoGoc.Contains("the conflict occurred"))
-            {
-                return "Mã lớp hoặc Mã ngành học không hợp lệ (không tồn tại trong danh mục hệ thống)!";
-            }
-
-            // 3. Lỗi dữ liệu nhập vượt quá độ dài cột trong database
-            if (thongBaoGoc.Contains("string or binary data would be truncated"))
-            {
-                return "Dữ liệu nhập vào vượt quá độ dài cho phép của hệ thống!";
-            }
-
-            // 4. Lỗi sai định dạng dữ liệu (ví dụ định dạng ngày tháng)
-            if (thongBaoGoc.Contains("conversion failed"))
-            {
-                return "Định dạng ngày sinh hoặc kiểu dữ liệu nhập vào không hợp lệ!";
-            }
-
-            // 5. Lỗi mất kết nối CSDL hoặc máy chủ SQL tắt
-            if (thongBaoGoc.Contains("network-related") || thongBaoGoc.Contains("server was not found") || thongBaoGoc.Contains("cannot open database"))
-            {
-                return "Không thể kết nối đến máy chủ cơ sở dữ liệu. Vui lòng kiểm tra lại dịch vụ SQL Server!";
-            }
-
-            // Trường hợp lỗi khác: lấy nguyên văn thông báo từ SQL Server
-            return "Lỗi cơ sở dữ liệu: " + sqlEx.Message;
-        }
-
         public DataTable ThemsinhVienMoi(SinhvienDTO sinhVien)
         {
             try

@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
 using System.Data;
 using Microsoft.Extensions.Logging;
 using StudentManagment.DAL;
@@ -20,95 +20,102 @@ namespace StudentManagment.BLL
             lopDAL = new LopDAL(loggerFactory);
         }
 
-
-        // 1. Hiển thị toàn bộ danh sách lớp
-        public DataTable HienThiToanBoDanhSachLop()
+        public DataTable HienThiDanhSachLopHoc()
         {
             return lopDAL.LayToanBoLopHoc();
         }
-
-        // 2. Tìm kiếm lớp học theo Mã lớp
         public DataTable TimKiemLopHoc(string maLop)
         {
             if (string.IsNullOrWhiteSpace(maLop))
             {
-                // Nếu ô tìm kiếm để trống thì hiển thị toàn bộ
-                return quanlylopDAL.LayToanBoLopHoc();
+                logger.LogWarning("Người dùng chưa nhập mã lớp học khi tìm kiếm lớp.");
+                throw new ArgumentException("Bạn phải nhập mã lớptrước khi tìm kiếm");
             }
-
-            return quanlylopDAL.TimKiemLopHocTheoMa(maLop.Trim());
+            DataTable dt = quanlylopDAL.TimKiemLopHocTheoMa(maLop);
+            if (dt == null)
+            {
+                throw new KeyNotFoundException("Không tìm thấy lớp học.");
+            }
+            return dt;
         }
 
-        // 3. Thêm lớp học mới (Validate dữ liệu đầu vào)
-        public DataTable ThemLopHocMoi(LopDTO lopDTO)
+        public DataTable ThemLopHocMoi(LopDTO lop)
         {
-            if (lopDTO == null)
+            try
             {
-                throw new ArgumentNullException(nameof(lopDTO), "Dữ liệu lớp học không được để trống!");
+                if (
+                    string.IsNullOrEmpty(lop.Malop) ||
+                    string.IsNullOrEmpty(lop.Manganh) ||
+                    string.IsNullOrEmpty(lop.Tenlop) ||
+                    string.IsNullOrEmpty(lop.Giangvienphutrach)
+                )
+                {
+                    logger.LogWarning("Người dùng chưa nhập đầy đủ thông tin khi thêm sinh viên.");
+                    throw new ArgumentException("Bạn phải nhập đầy đủ thông tin trước khi thêm");
+                }
+                DataTable dt = quanlylopDAL.ThemDuLieuLopMoi(lop);
+                if (dt == null)
+                {
+                    throw new InvalidOperationException("Thêm không thành công.");
+                }
+                return dt;
             }
-
-            if (string.IsNullOrWhiteSpace(lopDTO.Malop))
+            catch (SqlException sqlEx)
             {
-                logger?.LogWarning("Người dùng bỏ trống mã lớp khi thực hiện thêm.");
-                throw new ArgumentException("Mã lớp không được để trống!");
+                string tinNhanThanThien = "Xảy ra lỗi với cơ sở dữ liệu.";
+                switch (sqlEx.Number)
+                {
+                    case 2627:
+                        tinNhanThanThien = "Lớp đã tồn tại."; break;
+                }
+                throw new DataException(tinNhanThanThien);
             }
-
-            if (string.IsNullOrWhiteSpace(lopDTO.Manganh))
-            {
-                logger?.LogWarning("Người dùng bỏ trống mã ngành khi thực hiện thêm lớp.");
-                throw new ArgumentException("Mã ngành không được để trống!");
-            }
-
-            if (string.IsNullOrWhiteSpace(lopDTO.Tenlop))
-            {
-                logger?.LogWarning("Người dùng bỏ trống tên lớp khi thực hiện thêm lớp.");
-                throw new ArgumentException("Tên lớp không được để trống!");
-            }
-
-            if (string.IsNullOrWhiteSpace(lopDTO.Giangvienphutrach))
-            {
-                logger?.LogWarning("Người dùng bỏ trống giảng viên phụ trách khi thực hiện thêm lớp.");
-                throw new ArgumentException("Giảng viên phụ trách không được để trống!");
-            }
-
-            return quanlylopDAL.ThemDuLieuLopMoi(lopDTO);
         }
 
-        // 4. Sửa thông tin lớp học
-        public DataTable SuaThongTinLop(LopDTO lopDTO)
+        public DataTable SuaThongTinLop(LopDTO lop)
         {
-            if (lopDTO == null)
+            try
             {
-                throw new ArgumentNullException(nameof(lopDTO), "Dữ liệu lớp học không được để trống!");
+                if (
+                    string.IsNullOrEmpty(lop.Malop)
+                )
+                {
+                    logger.LogWarning("Người dùng chưa nhập mã lớpkhi sửa thông tin sinh viên.");
+                    throw new ArgumentException("Bạn phải nhập mã lớptrước khi sửa");
+                }
+                DataTable dt = quanlylopDAL.SuaThongTinLopTheoMaLop(lop);
+                if (dt == null)
+                {
+                    throw new InvalidOperationException("Sửa không thành công.");
+                }
+                return dt;
             }
-
-            if (string.IsNullOrWhiteSpace(lopDTO.Malop))
+            catch (SqlException)
             {
-                logger?.LogWarning("Người dùng chưa chọn hoặc chưa nhập mã lớp cần sửa.");
-                throw new ArgumentException("Mã lớp không được để trống khi sửa thông tin!");
+                throw;
             }
-
-            if (string.IsNullOrWhiteSpace(lopDTO.Manganh) ||
-                string.IsNullOrWhiteSpace(lopDTO.Tenlop) ||
-                string.IsNullOrWhiteSpace(lopDTO.Giangvienphutrach))
-            {
-                logger?.LogWarning("Thông tin cập nhật của lớp học còn thiếu trường bắt buộc.");
-                throw new ArgumentException("Vui lòng điền đầy đủ Mã ngành, Tên lớp và Giảng viên phụ trách!");
-            }
-
-            return quanlylopDAL.SuaThongTinLopTheoMaLop(lopDTO);
         }
 
-        // 5. Xóa lớp học
         public DataTable XoaThongTinLop(string maLop)
         {
-            if (string.IsNullOrWhiteSpace(maLop))
+            try
             {
-                logger?.LogWarning("Người dùng chưa chọn hoặc chưa nhập mã lớp để xóa.");
-                throw new ArgumentException("Mã lớp không được để trống khi thực hiện xóa!");
+                if (string.IsNullOrEmpty(maLop))
+                {
+                    logger.LogWarning("Người dùng chưa nhập mã lớpkhi xóa lớpra khỏi danh sách.");
+                    throw new ArgumentException("Bạn phải nhập mã lớptrước khi xóa");
+                }
+                DataTable dt = quanlylopDAL.XoaThongTinLopTheoMaLop(maLop);
+                if (dt == null)
+                {
+                    throw new InvalidOperationException("Xóa không thành công.");
+                }
+                return dt;
             }
-
-            return quanlylopDAL.XoaThongTinLopTheoMaLop(maLop.Trim());
+            catch (SqlException)
+            {
+                throw;
+            }
         }
     }
 }

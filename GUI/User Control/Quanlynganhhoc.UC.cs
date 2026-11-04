@@ -144,7 +144,6 @@ namespace StudentManagment.GUI.User_Control
                 else
                 {
                     dgvNganh.DataSource = quanlynganhhocBLL.HienThiToanBoNganhHoc();
-                    MessageBox.Show("Ngành học không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (ArgumentException agEx)
@@ -163,7 +162,6 @@ namespace StudentManagment.GUI.User_Control
             {
                 MessageBox.Show("Có lỗi xảy ra.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
     }
 }

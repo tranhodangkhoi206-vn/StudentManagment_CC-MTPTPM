@@ -151,7 +151,6 @@ namespace StudentManagment.GUI.User_Control
                 else
                 {
                     dgvDiem.DataSource = quanlydiemBLL.HienThiToanBoDiem();
-                    MessageBox.Show("Điểm không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (ArgumentException agEx)

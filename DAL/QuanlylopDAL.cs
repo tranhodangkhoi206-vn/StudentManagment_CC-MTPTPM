@@ -19,43 +19,6 @@ namespace StudentManagment.DAL
             this.lopDAL = new LopDAL(loggerFactory);
         }
 
-        // Hàm bóc tách lỗi SQL tiếng Việt chuẩn xác
-        private string PhanTichLoiSqlLopHoc(SqlException sqlEx, string maLop)
-        {
-            string thongBaoGoc = sqlEx.Message.ToLower();
-
-            // 1. Trùng khóa chính MALOP
-            if (thongBaoGoc.Contains("primary key") || thongBaoGoc.Contains("duplicate key"))
-            {
-                return $"Mã lớp '{maLop}' đã tồn tại trong hệ thống. Vui lòng nhập mã lớp khác!";
-            }
-
-            // 2. Vi phạm khóa ngoại MANGANH tham chiếu đến bảng NGANHHOC
-            if (thongBaoGoc.Contains("fk_lop_nganhhoc") || (thongBaoGoc.Contains("foreign key") && thongBaoGoc.Contains("manganh")))
-            {
-                return "Mã ngành học không tồn tại trong danh mục ngành học!";
-            }
-
-            // 3. Vi phạm ràng buộc khi xóa lớp (lớp đã có sinh viên đăng ký)
-            if (thongBaoGoc.Contains("foreign key") || thongBaoGoc.Contains("reference constraint"))
-            {
-                return $"Không thể xóa lớp '{maLop}' vì lớp này đang có sinh viên theo học!";
-            }
-
-            // 4. Dữ liệu nhập quá độ dài trường
-            if (thongBaoGoc.Contains("string or binary data would be truncated"))
-            {
-                return "Dữ liệu nhập vào vượt quá độ dài tối đa cho phép của cột trong cơ sở dữ liệu!";
-            }
-
-            // 5. Lỗi kết nối CSDL thực tế
-            if (thongBaoGoc.Contains("network-related") || thongBaoGoc.Contains("server was not found") || thongBaoGoc.Contains("cannot open database"))
-            {
-                return "Không thể kết nối đến máy chủ cơ sở dữ liệu. Vui lòng kiểm tra lại SQL Server!";
-            }
-
-            return "Lỗi cơ sở dữ liệu: " + sqlEx.Message;
-        }
 
         public DataTable TimKiemLopHocTheoMa(string maLop)
         {
