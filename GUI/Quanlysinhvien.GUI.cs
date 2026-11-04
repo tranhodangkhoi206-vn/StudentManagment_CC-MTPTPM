@@ -116,7 +116,7 @@ namespace StudentManagment
         {
             btnQuanlylophoc.BackColor = ColorTranslator.FromHtml("#2471C9");
             pUserControl.Controls.Clear();
-            Quanlylophoc quanLyLopHoc = new Quanlylophoc();
+            Quanlylophoc quanLyLopHoc = new Quanlylophoc(_loggerFactory);
             quanLyLopHoc.Dock = DockStyle.Fill;
             pUserControl.Controls.Add(quanLyLopHoc);
             quanLyLopHoc.BringToFront();

@@ -1,10 +1,10 @@
 ﻿using System.Data;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
-using Serilog.Sinks.File;
 using StudentManagment.DAL;
 using StudentManagment.DAL.Util;
 using StudentManagment.DTO;
+
 
 namespace StudentManagment.BLL
 {
@@ -23,6 +23,7 @@ namespace StudentManagment.BLL
             nganhhocDAL = new NganhhocDAL(loggerFactory);
             lopDAL = new LopDAL(loggerFactory);
         }
+
         public DataTable HienThiDanhSachSinhVien()
         {
             return sinhvienDAL.LayToanBoSinhVien();
@@ -56,11 +57,17 @@ namespace StudentManagment.BLL
                 {
                     throw new InvalidOperationException("Thêm không thành công.");
                 }
-                return quanlysinhvienDAL.ThemsinhVienMoi(sinhvienSua);
+                return dt;
             }
-            catch (SqlException)
+            catch (SqlException sqlEx)
             {
-                throw;
+                string tinNhanThanThien = "Xảy ra lỗi với cơ sở dữ liệu.";
+                switch (sqlEx.Number)
+                {
+                    case 2627:
+                        tinNhanThanThien = "Sinh viên đã tồn tại."; break;
+                }
+                throw new DataException(tinNhanThanThien);
             }
         }
         public DataTable SuaSinhVienTheoMaSinhVien(SinhvienDTO sinhvienSua)
@@ -128,5 +135,35 @@ namespace StudentManagment.BLL
                 throw;
             }
         }
+
+        // public bool KiemTraThongTinSinhVien(string maSV, string hoTen, string lop, string nganh, string gpaStr, out double gpa)
+        // {
+        //     gpa = 0.0;
+        //
+        //     // 1. Kiểm tra Mã sinh viên
+        //     if (string.IsNullOrWhiteSpace(maSV))
+        //     {
+        //         throw new ArgumentException("Mã số sinh viên không được để trống!");
+        //     }
+        //     if (!Regex.IsMatch(maSV.Trim(), @"^SV\d{3}$"))
+        //     {
+        //         throw new ArgumentException("Mã số sinh viên không đúng định dạng (phải bắt đầu bằng SV và 3 chữ số)!");
+        //     }
+        //
+        //     // 6. Xử lý chuẩn hóa số thực (chấp nhận cả dấu phẩy và chấm)
+        //     string gpaFormatted = gpaStr.Trim().Replace(',', '.');
+        //     if (!double.TryParse(gpaFormatted, NumberStyles.Any, CultureInfo.InvariantCulture, out double parsedGpa))
+        //     {
+        //         throw new FormatException("Điểm GPA phải là định dạng số hợp lệ!");
+        //     }
+        //
+        //     // 7. Kiểm tra thang điểm [0.0 - 4.0]
+        //     if (parsedGpa < 0.0 || parsedGpa > 4.0)
+        //     {
+        //         throw new ArgumentOutOfRangeException(nameof(gpaStr), "Điểm GPA phải nằm trong khoảng từ 0.0 đến 4.0!");
+        //     }
+        //
+        //     return true;
+        // }
     }
 }

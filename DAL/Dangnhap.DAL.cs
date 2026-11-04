@@ -42,7 +42,7 @@ namespace StudentManagment.DAL
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi lấy tài khoản theo điều kiện Username và Admin.\nUsername: {0},\nAdmin: {1}", username, admin);
+                logger.LogError(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi lấy tài khoản theo điều kiện Username và Admin.\nUsername: {0},\nAdmin: {1}", username, admin);
                 throw;
             }
         }

@@ -25,6 +25,7 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
+                logger.LogInformation("Người dùng thực hiện thêm điểm.");
                 DiemDTO diemDTO = new DiemDTO()
                 {
                     Masinhvien = tbMasinhvien.Text.ToString().Trim().ToUpper(),
@@ -51,9 +52,9 @@ namespace StudentManagment.GUI.User_Control
             {
                 MessageBox.Show("Có lỗi xảy ra với cơ sở dữ liệu.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (Exception)
+            catch (DataException dEx)
             {
-                MessageBox.Show("Có lỗi xảy ra.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(dEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -61,6 +62,7 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
+                logger.LogInformation("Người dùng thực hiện xóa điểm.");
                 DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa chứ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
@@ -95,6 +97,7 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
+                logger.LogInformation("Người dùng thực hiện sửa điểm.");
                 DiemDTO diemDTO = new DiemDTO()
                 {
                     Masinhvien = tbMasinhvien.Text.ToString().Trim(),
@@ -129,6 +132,7 @@ namespace StudentManagment.GUI.User_Control
 
         private void btnDondep_Click(object sender, EventArgs e)
         {
+            logger.LogInformation("Người dùng thực hiện dọn dẹp.");
             tbMasinhvien.Text = "";
             tbMamonhoc.Text = "";
             tbDiemchuyencan.Text = "";
@@ -141,6 +145,7 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
+                logger.LogInformation("Người dùng thực hiện tìm kiếm điểm");
                 string maSinhVien = tbMasinhvien.Text.ToString().Trim();
                 string maMonHoc = tbMamonhoc.Text.ToString().Trim();
                 DataTable dt = quanlydiemBLL.TimKiemDiemTheoMaSinhVienVaMaMon(maSinhVien, maMonHoc);
@@ -151,7 +156,6 @@ namespace StudentManagment.GUI.User_Control
                 else
                 {
                     dgvDiem.DataSource = quanlydiemBLL.HienThiToanBoDiem();
-                    MessageBox.Show("Điểm không tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (ArgumentException agEx)

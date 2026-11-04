@@ -27,7 +27,7 @@ namespace StudentManagment.DAL.Util
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sỡ dữ liệu khi lấy danh sách điểm.");
+                logger.LogError(sqlEx, "Lỗi kết nối tới cơ sỡ dữ liệu khi lấy danh sách điểm.");
                 throw;
             }
             catch (Exception ex)
