@@ -157,7 +157,7 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
-		        logger.LogInformation("Người dùng tìm kiếm môn học")
+                logger.LogInformation("Người dùng tìm kiếm môn học");
                 string maMon = tbMamonhoc.Text.ToString().Trim();
                 DataTable dt = quanlymonhocBLL.TimKiemMonHocTheoMaMon(maMon);
                 if (dt.Rows.Count != 0)
