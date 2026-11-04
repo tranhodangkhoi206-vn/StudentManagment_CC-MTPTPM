@@ -74,7 +74,7 @@ namespace StudentManagment.DAL
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical("Xảy ra lỗi cơ sở dữ liệu khi tìm kiếm lớp.\nMã lớp: {0}", maLop);
+                logger.LogError("Xảy ra lỗi cơ sở dữ liệu khi tìm kiếm lớp.\nMã lớp: {0}", maLop);
                 throw;
             }
         }
@@ -102,7 +102,7 @@ namespace StudentManagment.DAL
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi thêm lớp học mới.\nMã lớp: {0},\nMã ngành: {1},\nTên lớp: {2},\nGiảng viên phụ trách: {3}", lopHoc.Malop, lopHoc.Manganh, lopHoc.Tenlop, lopHoc.Giangvienphutrach);
+                logger.LogError(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi thêm lớp học mới.\nMã lớp: {0},\nMã ngành: {1},\nTên lớp: {2},\nGiảng viên phụ trách: {3}", lopHoc.Malop, lopHoc.Manganh, lopHoc.Tenlop, lopHoc.Giangvienphutrach);
                 throw;
             }
         }
@@ -130,7 +130,7 @@ namespace StudentManagment.DAL
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi sửa lớp học.\nMã lớp: {0},\nMã ngành: {1},\nTên lớp: {2},\nGiảng viên phụ trách: {3}", lopHoc.Malop, lopHoc.Manganh, lopHoc.Tenlop, lopHoc.Giangvienphutrach);
+                logger.LogError(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi sửa lớp học.\nMã lớp: {0},\nMã ngành: {1},\nTên lớp: {2},\nGiảng viên phụ trách: {3}", lopHoc.Malop, lopHoc.Manganh, lopHoc.Tenlop, lopHoc.Giangvienphutrach);
                 throw;
             }
         }
@@ -155,7 +155,7 @@ namespace StudentManagment.DAL
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi xóa lớp học.\nMã lớp học: {0}", maLop);
+                logger.LogError(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi xóa lớp học.\nMã lớp học: {0}", maLop);
                 throw;
             }
         }

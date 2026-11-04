@@ -40,7 +40,7 @@ namespace StudentManagment.DAL
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi thêm tài khoản mới.\nHọ và tên: {0},\nUsername: {1},\nAdmin: {2}.", taiKhoan.Hovaten, taiKhoan.Username, taiKhoan.Admin);
+                logger.LogError(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi thêm tài khoản mới.\nHọ và tên: {0},\nUsername: {1},\nAdmin: {2}.", taiKhoan.Hovaten, taiKhoan.Username, taiKhoan.Admin);
                 throw;
             }
         }
@@ -67,7 +67,7 @@ namespace StudentManagment.DAL
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi sửa tài khoản.\nHọ và tên: {0}", taiKhoan.Hovaten);
+                logger.LogError(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi sửa tài khoản.\nHọ và tên: {0}", taiKhoan.Hovaten);
                 throw;
             }
 
@@ -93,7 +93,7 @@ namespace StudentManagment.DAL
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi xóa tài khoản.\nUsername: {0}", username);
+                logger.LogError(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi xóa tài khoản.\nUsername: {0}", username);
                 throw;
             }
 
@@ -122,7 +122,7 @@ namespace StudentManagment.DAL
             }
             catch (SqlException sqlEx)
             {
-                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi lấy danh sách tài khoản theo điều kiên Username.\nUsername: {0}", username);
+                logger.LogError(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi lấy danh sách tài khoản theo điều kiên Username.\nUsername: {0}", username);
                 throw;
             }
 
