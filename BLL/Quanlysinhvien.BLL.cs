@@ -62,7 +62,7 @@ namespace StudentManagment.BLL
             catch (SqlException sqlEx)
             {
                 string tinNhanThanThien = "Xảy ra lỗi với cơ sở dữ liệu.";
-		        switch (sqlEx.Number)
+                switch (sqlEx.Number)
                 {
                     case 2627:
                         tinNhanThanThien = "Sinh viên đã tồn tại."; break;

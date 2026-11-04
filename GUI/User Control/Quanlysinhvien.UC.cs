@@ -13,6 +13,7 @@ namespace StudentManagment.GUI.User_Control
         public Quanlysinhvien(ILoggerFactory loggerFactory)
         {
             InitializeComponent();
+            logger = loggerFactory.CreateLogger<Quanlysinhvien>();
             quanlysinhvienBLL = new QuanlysinhvienBLL(loggerFactory);
         }
 
