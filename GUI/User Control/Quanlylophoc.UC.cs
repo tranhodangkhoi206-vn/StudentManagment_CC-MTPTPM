@@ -19,15 +19,19 @@ namespace StudentManagment.GUI.User_Control
         private void Quanlylophoc_Load(object sender, EventArgs e)
         {
             dgvLop.DataSource = quanlylopBLL.HienThiDanhSachLopHoc();
+            cbManganh.DisplayMember = "TENNGANH";
+            cbManganh.ValueMember = "MANGANH";
+            cbManganh.DataSource = quanlylopBLL.HienThiDanhSachNganhLenCombobox();
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
             try
             {
+                logger.LogInformation("Người dùng thêm lớp học mới");
                 LopDTO lop = new LopDTO()
                 {
                     Malop = tbMalop.Text.ToString().Trim(),
-                    Manganh = tbManganh.Text.ToString().Trim(),
+                    Manganh = cbManganh.SelectedValue.ToString().Trim(),
                     Tenlop = tbTenlop.Text.ToString().Trim(),
                     Giangvienphutrach = tbGiangvien.Text.ToString().Trim(),
                 };
@@ -59,6 +63,7 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
+                logger.LogInformation("Người dùng xóa lớp học");
                 string maLop = tbMalop.Text.ToString().Trim();
                 DataTable dt = quanlylopBLL.XoaThongTinLop(maLop);
                 if (dt.Rows.Count != 0)
@@ -88,13 +93,14 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
+                logger.LogInformation("Người dùng sửa lớp học");
                 DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa chứ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
                     LopDTO lop = new LopDTO()
                     {
                         Malop = tbMalop.Text.ToString().Trim(),
-                        Manganh = tbManganh.Text.ToString().Trim(),
+                        Manganh = cbManganh.SelectedValue.ToString().Trim(),
                         Tenlop = tbTenlop.Text.ToString().Trim(),
                         Giangvienphutrach = tbGiangvien.Text.ToString().Trim(),
                     };
@@ -125,8 +131,9 @@ namespace StudentManagment.GUI.User_Control
 
         private void btnDondep_Click(object sender, EventArgs e)
         {
+            logger.LogInformation("Người dùng dọn dẹp");
             tbMalop.Text = "";
-            tbManganh.Text = "";
+            cbManganh.SelectedIndex = -1;
             tbTenlop.Text = "";
             tbGiangvien.Text = "";
             dgvLop.DataSource = quanlylopBLL.HienThiDanhSachLopHoc();
@@ -136,6 +143,7 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
+                logger.LogInformation("Người dùng tìm kiếm lớp học");
                 string maLop = tbMalop.Text.ToString().Trim();
                 DataTable dt = quanlylopBLL.TimKiemLopHoc(maLop);
                 if (dt.Rows.Count != 0)

@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
 using StudentManagment.BLL;
@@ -21,6 +22,7 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
+                logger.LogInformation("Người dùng thêm ngành học mới");
                 NganhhocDTO nganhhoc = new NganhhocDTO()
                 {
                     Manganh = tbManganh.Text.ToString().Trim().ToUpper(),
@@ -55,6 +57,7 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
+                logger.LogInformation("Người dùng xóa ngành học");
                 DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa chứ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
@@ -88,6 +91,7 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
+                logger.LogInformation("Người dùng sửa nghành học");
                 NganhhocDTO nganhhoc = new NganhhocDTO()
                 {
                     Manganh = tbManganh.Text.ToString().Trim(),
@@ -125,6 +129,7 @@ namespace StudentManagment.GUI.User_Control
 
         private void btnDondep_Click(object sender, EventArgs e)
         {
+            logger.LogInformation("Người dùng dọn dẹp");
             tbManganh.Text = "";
             tbTennganh.Text = "";
             cbKhoaquanly.SelectedIndex = -1;
@@ -135,6 +140,7 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
+                logger.LogInformation("Người dùng tìm kiếm ngành học");
                 string maNganh = tbManganh.Text.ToString().Trim();
                 DataTable dt = quanlynganhhocBLL.TimKiemNganhHoc(maNganh);
                 if (dt.Rows.Count != 0)

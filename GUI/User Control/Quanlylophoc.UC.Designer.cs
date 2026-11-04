@@ -57,9 +57,9 @@
             tbTenlop = new TextBox();
             tableLayoutPanel5 = new TableLayoutPanel();
             label3 = new Label();
-            tbManganh = new TextBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             label1 = new Label();
+            cbManganh = new ComboBox();
             tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvLop).BeginInit();
             tableLayoutPanel2.SuspendLayout();
@@ -443,7 +443,7 @@
             tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 37.1601219F));
             tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 62.8398781F));
             tableLayoutPanel5.Controls.Add(label3, 0, 0);
-            tableLayoutPanel5.Controls.Add(tbManganh, 1, 0);
+            tableLayoutPanel5.Controls.Add(cbManganh, 1, 0);
             tableLayoutPanel5.Dock = DockStyle.Fill;
             tableLayoutPanel5.Location = new Point(0, 62);
             tableLayoutPanel5.Margin = new Padding(0);
@@ -465,17 +465,6 @@
             label3.TabIndex = 0;
             label3.Text = "Mã ngành:";
             label3.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // tbManganh
-            // 
-            tbManganh.Anchor = AnchorStyles.Left;
-            tbManganh.BorderStyle = BorderStyle.FixedSingle;
-            tbManganh.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbManganh.Location = new Point(157, 12);
-            tbManganh.Margin = new Padding(4);
-            tbManganh.Name = "tbManganh";
-            tbManganh.Size = new Size(250, 38);
-            tbManganh.TabIndex = 1;
             // 
             // tableLayoutPanel1
             // 
@@ -507,6 +496,16 @@
             label1.TabIndex = 0;
             label1.Text = "QUẢN LÝ LỚP HỌC";
             label1.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // cbManganh
+            // 
+            cbManganh.Anchor = AnchorStyles.Left;
+            cbManganh.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cbManganh.FormattingEnabled = true;
+            cbManganh.Location = new Point(156, 13);
+            cbManganh.Name = "cbManganh";
+            cbManganh.Size = new Size(254, 38);
+            cbManganh.TabIndex = 1;
             // 
             // Quanlylophoc
             // 
@@ -548,7 +547,6 @@
         private Label label1;
         private TableLayoutPanel tableLayoutPanel5;
         private Label label3;
-        private TextBox tbManganh;
         private TableLayoutPanel tableLayoutPanel6;
         private Label label4;
         private TextBox tbTenlop;
@@ -568,5 +566,6 @@
         private DataGridViewTextBoxColumn MANGANH;
         private DataGridViewTextBoxColumn TENLOP;
         private DataGridViewTextBoxColumn GIANGVIENPHUTRACH;
+        private ComboBox cbManganh;
     }
 }

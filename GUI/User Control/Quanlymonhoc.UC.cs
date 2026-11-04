@@ -8,11 +8,13 @@ namespace StudentManagment.GUI.User_Control
 {
     public partial class Quanlymonhoc : UserControl
     {
-        private QuanlymonhocBLL quanlymonhocBLL;
+        private readonly ILogger<Quanlymonhoc> logger;
+        private readonly QuanlymonhocBLL quanlymonhocBLL;
         public Quanlymonhoc(ILoggerFactory loggerFactory)
         {
             InitializeComponent();
             quanlymonhocBLL = new QuanlymonhocBLL(loggerFactory);
+            logger = loggerFactory.CreateLogger<Quanlymonhoc>();
         }
 
         private void Quanlymonhoc_Load(object sender, EventArgs e)
@@ -30,6 +32,7 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
+                logger.LogInformation("Người dùng thêm môn học mới");
                 MonhocDTO monhocDTO = new MonhocDTO()
                 {
                     Mamon = tbMamonhoc.Text.Trim().ToUpper(),
@@ -68,6 +71,7 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
+                logger.LogInformation("Người dùng sửa môn học mới");
                 DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa chứ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
@@ -110,6 +114,7 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
+                logger.LogInformation("Người dùng xóa môn học mới");
                 string maMon = tbMamonhoc.Text.ToString().Trim();
                 DataTable dt = quanlymonhocBLL.XoaMonHocTheoMaMonHoc(maMon);
                 if (dt.Rows.Count != 0)
@@ -137,6 +142,7 @@ namespace StudentManagment.GUI.User_Control
 
         private void btnDondep_Click(object sender, EventArgs e)
         {
+            logger.LogInformation("Người dùng dọn dẹp");
             tbMamonhoc.Text = "";
             tbTenmonhoc.Text = "";
             cbManganh.SelectedIndex = -1;
@@ -151,6 +157,7 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
+		        logger.LogInformation("Người dùng tìm kiếm môn học")
                 string maMon = tbMamonhoc.Text.ToString().Trim();
                 DataTable dt = quanlymonhocBLL.TimKiemMonHocTheoMaMon(maMon);
                 if (dt.Rows.Count != 0)

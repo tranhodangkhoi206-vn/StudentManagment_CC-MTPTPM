@@ -12,17 +12,23 @@ namespace StudentManagment.BLL
         private readonly ILogger logger;
         private readonly QuanlylopDAL quanlylopDAL;
         private readonly LopDAL lopDAL;
+        private readonly NganhhocDAL nganhhocDAL;
 
         public QuanlylopBLL(ILoggerFactory loggerFactory)
         {
             logger = loggerFactory.CreateLogger<QuanlylopBLL>();
             quanlylopDAL = new QuanlylopDAL(loggerFactory);
             lopDAL = new LopDAL(loggerFactory);
+            nganhhocDAL = new NganhhocDAL(loggerFactory);
         }
 
         public DataTable HienThiDanhSachLopHoc()
         {
             return lopDAL.LayToanBoLopHoc();
+        }
+	    public  DataTable HienThiDanhSachNganhLenCombobox()
+        {
+            return nganhhocDAL.LayToanBoNganhHocChoComboBox();
         }
         public DataTable TimKiemLopHoc(string maLop)
         {

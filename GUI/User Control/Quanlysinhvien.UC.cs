@@ -34,6 +34,7 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
+                logger.LogInformation("Người dùng thêm sinh viên mới");
                 SinhvienDTO sinhvienMoi = new SinhvienDTO()
                 {
                     MaSinhVien = tbMasinhvien.Text.ToString().ToUpper(),
@@ -73,6 +74,7 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
+                logger.LogInformation("Người dùng xóa sinh viên");
                 DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa chứ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
@@ -106,7 +108,8 @@ namespace StudentManagment.GUI.User_Control
         private void btnSua_Click(object sender, EventArgs e)
         {
             try
-            {
+            {  
+                logger.LogInformation("Người dùng sửa sinh viên");
                 SinhvienDTO sinhvienSua = new SinhvienDTO()
                 {
                     MaSinhVien = tbMasinhvien.Text.ToString().ToUpper(),
@@ -143,6 +146,7 @@ namespace StudentManagment.GUI.User_Control
 
         private void btnDondep_Click(object sender, EventArgs e)
         {
+            logger.LogInformation("Người dùng dọn dẹp");
             tbMasinhvien.Text = "";
             tbHovaten.Text = "";
             cbMalop.SelectedIndex = -1;
@@ -157,6 +161,7 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
+                logger.LogInformation("Người dùng tìm kiếm sinh viên");
                 string maSinhVien = tbMasinhvien.Text.ToString().Trim();
                 DataTable dt = quanlysinhvienBLL.TimKiemSinhVien(maSinhVien);
                 if (dt.Rows.Count != 0)
