@@ -24,7 +24,10 @@ namespace StudentManagment.Helper
             // Thuc hien luu log vao file
             Log.Logger = new LoggerConfiguration()
                 // Tao moi ngay mot file log
-                .WriteTo.File(Path.Combine(logDirectory, "log-.txt"), rollingInterval: RollingInterval.Day)
+                .WriteTo.File(Path.Combine(logDirectory, "log-.txt"),
+                rollingInterval: RollingInterval.Day,
+                 outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] [{SourceContext}] {Message:lj}{NewLine}{Exception}"
+                )
                 .CreateLogger();
 
             return LoggerFactory.Create(builder =>
