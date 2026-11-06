@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
             tableLayoutPanel4 = new TableLayoutPanel();
             label2 = new Label();
             tbMalop = new TextBox();
@@ -57,9 +57,9 @@
             tbTenlop = new TextBox();
             tableLayoutPanel5 = new TableLayoutPanel();
             label3 = new Label();
+            cbManganh = new ComboBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             label1 = new Label();
-            cbManganh = new ComboBox();
             tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvLop).BeginInit();
             tableLayoutPanel2.SuspendLayout();
@@ -117,24 +117,24 @@
             // 
             dgvLop.AllowUserToAddRows = false;
             dgvLop.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvLop.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = SystemColors.Control;
+            dataGridViewCellStyle9.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            dgvLop.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             dgvLop.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvLop.Columns.AddRange(new DataGridViewColumn[] { MALOP, MANGANH, TENLOP, GIANGVIENPHUTRACH });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvLop.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = SystemColors.Window;
+            dataGridViewCellStyle10.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle10.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.False;
+            dgvLop.DefaultCellStyle = dataGridViewCellStyle10;
             dgvLop.Dock = DockStyle.Fill;
             dgvLop.Location = new Point(421, 8);
             dgvLop.Margin = new Padding(0);
@@ -466,6 +466,17 @@
             label3.Text = "Mã ngành:";
             label3.TextAlign = ContentAlignment.MiddleLeft;
             // 
+            // cbManganh
+            // 
+            cbManganh.Anchor = AnchorStyles.Left;
+            cbManganh.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbManganh.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cbManganh.FormattingEnabled = true;
+            cbManganh.Location = new Point(156, 12);
+            cbManganh.Name = "cbManganh";
+            cbManganh.Size = new Size(254, 38);
+            cbManganh.TabIndex = 1;
+            // 
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 1;
@@ -496,16 +507,6 @@
             label1.TabIndex = 0;
             label1.Text = "QUẢN LÝ LỚP HỌC";
             label1.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // cbManganh
-            // 
-            cbManganh.Anchor = AnchorStyles.Left;
-            cbManganh.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cbManganh.FormattingEnabled = true;
-            cbManganh.Location = new Point(156, 13);
-            cbManganh.Name = "cbManganh";
-            cbManganh.Size = new Size(254, 38);
-            cbManganh.TabIndex = 1;
             // 
             // Quanlylophoc
             // 

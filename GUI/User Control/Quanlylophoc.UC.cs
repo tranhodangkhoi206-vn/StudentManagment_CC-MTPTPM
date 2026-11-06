@@ -21,8 +21,8 @@ namespace StudentManagment.GUI.User_Control
             dgvLop.DataSource = quanlylopBLL.HienThiDanhSachLopHoc();
             cbManganh.DisplayMember = "TENNGANH";
             cbManganh.ValueMember = "MANGANH";
-            cbManganh.SelectedIndex = -1;
             cbManganh.DataSource = quanlylopBLL.HienThiDanhSachNganhLenCombobox();
+            cbManganh.SelectedIndex = -1;
         }
         private void btnThem_Click(object sender, EventArgs e)
         {

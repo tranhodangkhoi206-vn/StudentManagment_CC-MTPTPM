@@ -19,8 +19,9 @@ namespace StudentManagment.GUI
     {
         private readonly ILoggerFactory _loggerFactory;
         private readonly ILogger<frmTaotaikhoan> logger;
-        private TaotaikhoanBLL taoTaiKhoanBLL;
-        private TaikhoanDAL taiKhoanDAL;
+        private readonly TaotaikhoanBLL taoTaiKhoanBLL;
+        private readonly TaikhoanDAL taiKhoanDAL;
+        private string _tenHienThi = "";
         public frmTaotaikhoan(ILoggerFactory loggerFactory, string tenHienThi)
         {
             InitializeComponent();
@@ -28,6 +29,7 @@ namespace StudentManagment.GUI
             _loggerFactory = loggerFactory;
             taoTaiKhoanBLL = new TaotaikhoanBLL(loggerFactory);
             taiKhoanDAL = new TaikhoanDAL(loggerFactory);
+            _tenHienThi = tenHienThi;
         }
 
         private void frmTaotaikhoan_FormClosed(object sender, FormClosedEventArgs e)
@@ -36,6 +38,7 @@ namespace StudentManagment.GUI
         }
         private void frmTaotaikhoan_Load(object sender, EventArgs e)
         {
+            lbTenhienthi.Text = _tenHienThi;
             dgvTaikhoan.DataSource = taiKhoanDAL.LayToanBoTaiKhoan();
         }
         private void btnThem_Click(object sender, EventArgs e)

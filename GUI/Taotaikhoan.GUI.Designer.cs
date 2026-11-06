@@ -57,7 +57,7 @@
             tbMatkhau = new TextBox();
             tableLayoutPanel7 = new TableLayoutPanel();
             btnDangxuat = new Button();
-            label5 = new Label();
+            lbTenhienthi = new Label();
             tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvTaikhoan).BeginInit();
             tableLayoutPanel1.SuspendLayout();
@@ -84,7 +84,7 @@
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 1;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.Size = new Size(324, 50);
+            tableLayoutPanel4.Size = new Size(405, 62);
             tableLayoutPanel4.TabIndex = 0;
             // 
             // label2
@@ -92,9 +92,10 @@
             label2.AutoSize = true;
             label2.Dock = DockStyle.Fill;
             label2.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(3, 0);
+            label2.Location = new Point(4, 0);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(116, 50);
+            label2.Size = new Size(144, 62);
             label2.TabIndex = 0;
             label2.Text = "Họ và tên:";
             label2.TextAlign = ContentAlignment.MiddleLeft;
@@ -104,9 +105,10 @@
             tbHovaten.Anchor = AnchorStyles.Left;
             tbHovaten.BorderStyle = BorderStyle.FixedSingle;
             tbHovaten.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbHovaten.Location = new Point(125, 9);
+            tbHovaten.Location = new Point(156, 12);
+            tbHovaten.Margin = new Padding(4);
             tbHovaten.Name = "tbHovaten";
-            tbHovaten.Size = new Size(196, 32);
+            tbHovaten.Size = new Size(244, 38);
             tbHovaten.TabIndex = 0;
             // 
             // dgvTaikhoan
@@ -132,12 +134,12 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dgvTaikhoan.DefaultCellStyle = dataGridViewCellStyle2;
             dgvTaikhoan.Dock = DockStyle.Fill;
-            dgvTaikhoan.Location = new Point(330, 6);
+            dgvTaikhoan.Location = new Point(413, 8);
             dgvTaikhoan.Margin = new Padding(0);
             dgvTaikhoan.Name = "dgvTaikhoan";
             dgvTaikhoan.ReadOnly = true;
             dgvTaikhoan.RowHeadersWidth = 51;
-            dgvTaikhoan.Size = new Size(438, 494);
+            dgvTaikhoan.Size = new Size(547, 617);
             dgvTaikhoan.TabIndex = 0;
             // 
             // HOVATEN
@@ -169,9 +171,9 @@
             tableLayoutPanel1.Margin = new Padding(0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 66F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 82F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(774, 572);
+            tableLayoutPanel1.Size = new Size(968, 715);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // label1
@@ -184,7 +186,7 @@
             label1.Location = new Point(0, 0);
             label1.Margin = new Padding(0);
             label1.Name = "label1";
-            label1.Size = new Size(774, 66);
+            label1.Size = new Size(968, 82);
             label1.TabIndex = 0;
             label1.Text = "TẠO TÀI KHOẢN";
             label1.TextAlign = ContentAlignment.MiddleLeft;
@@ -197,13 +199,13 @@
             tableLayoutPanel2.Controls.Add(tableLayoutPanel3, 0, 0);
             tableLayoutPanel2.Controls.Add(dgvTaikhoan, 1, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(0, 66);
+            tableLayoutPanel2.Location = new Point(0, 82);
             tableLayoutPanel2.Margin = new Padding(0);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.Padding = new Padding(6);
+            tableLayoutPanel2.Padding = new Padding(8);
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(774, 506);
+            tableLayoutPanel2.Size = new Size(968, 633);
             tableLayoutPanel2.TabIndex = 1;
             // 
             // tableLayoutPanel3
@@ -218,22 +220,22 @@
             tableLayoutPanel3.Controls.Add(tableLayoutPanel4, 0, 0);
             tableLayoutPanel3.Controls.Add(tableLayoutPanel7, 0, 7);
             tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(6, 6);
+            tableLayoutPanel3.Location = new Point(8, 8);
             tableLayoutPanel3.Margin = new Padding(0);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 8;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 138F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 8F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel3.Size = new Size(324, 494);
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 62F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 62F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 62F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 62F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 62F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 62F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 172F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
+            tableLayoutPanel3.Size = new Size(405, 617);
             tableLayoutPanel3.TabIndex = 0;
             // 
             // tableLayoutPanel14
@@ -244,22 +246,23 @@
             tableLayoutPanel14.Controls.Add(btnTimkiem, 0, 0);
             tableLayoutPanel14.Controls.Add(label9, 1, 0);
             tableLayoutPanel14.Dock = DockStyle.Fill;
-            tableLayoutPanel14.Location = new Point(0, 250);
+            tableLayoutPanel14.Location = new Point(0, 310);
             tableLayoutPanel14.Margin = new Padding(0);
             tableLayoutPanel14.Name = "tableLayoutPanel14";
             tableLayoutPanel14.RowCount = 1;
             tableLayoutPanel14.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel14.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel14.Size = new Size(324, 50);
+            tableLayoutPanel14.RowStyles.Add(new RowStyle(SizeType.Absolute, 62F));
+            tableLayoutPanel14.Size = new Size(405, 62);
             tableLayoutPanel14.TabIndex = 16;
             // 
             // btnTimkiem
             // 
             btnTimkiem.Dock = DockStyle.Left;
             btnTimkiem.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnTimkiem.Location = new Point(3, 3);
+            btnTimkiem.Location = new Point(4, 4);
+            btnTimkiem.Margin = new Padding(4);
             btnTimkiem.Name = "btnTimkiem";
-            btnTimkiem.Size = new Size(114, 44);
+            btnTimkiem.Size = new Size(142, 54);
             btnTimkiem.TabIndex = 7;
             btnTimkiem.Text = "Tìm kiếm";
             btnTimkiem.UseVisualStyleBackColor = true;
@@ -270,9 +273,10 @@
             label9.AutoSize = true;
             label9.Dock = DockStyle.Fill;
             label9.Font = new Font("Roboto Condensed", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.Location = new Point(124, 0);
+            label9.Location = new Point(155, 0);
+            label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
-            label9.Size = new Size(197, 50);
+            label9.Size = new Size(246, 62);
             label9.TabIndex = 2;
             label9.Text = "(Nhập tên tài khoản để tìm kiếm)";
             label9.TextAlign = ContentAlignment.MiddleLeft;
@@ -285,21 +289,22 @@
             tableLayoutPanel13.Controls.Add(btnDondep, 1, 0);
             tableLayoutPanel13.Controls.Add(btnSua, 0, 0);
             tableLayoutPanel13.Dock = DockStyle.Fill;
-            tableLayoutPanel13.Location = new Point(0, 200);
+            tableLayoutPanel13.Location = new Point(0, 248);
             tableLayoutPanel13.Margin = new Padding(0);
             tableLayoutPanel13.Name = "tableLayoutPanel13";
             tableLayoutPanel13.RowCount = 1;
             tableLayoutPanel13.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel13.Size = new Size(324, 50);
+            tableLayoutPanel13.Size = new Size(405, 62);
             tableLayoutPanel13.TabIndex = 15;
             // 
             // btnDondep
             // 
             btnDondep.Dock = DockStyle.Left;
             btnDondep.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnDondep.Location = new Point(165, 3);
+            btnDondep.Location = new Point(206, 4);
+            btnDondep.Margin = new Padding(4);
             btnDondep.Name = "btnDondep";
-            btnDondep.Size = new Size(114, 44);
+            btnDondep.Size = new Size(142, 54);
             btnDondep.TabIndex = 6;
             btnDondep.Text = "Dọn dẹp";
             btnDondep.UseVisualStyleBackColor = true;
@@ -309,9 +314,10 @@
             // 
             btnSua.Dock = DockStyle.Left;
             btnSua.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSua.Location = new Point(3, 3);
+            btnSua.Location = new Point(4, 4);
+            btnSua.Margin = new Padding(4);
             btnSua.Name = "btnSua";
-            btnSua.Size = new Size(114, 44);
+            btnSua.Size = new Size(142, 54);
             btnSua.TabIndex = 5;
             btnSua.Text = "Sửa";
             btnSua.UseVisualStyleBackColor = true;
@@ -325,21 +331,22 @@
             tableLayoutPanel12.Controls.Add(btnXoa, 1, 0);
             tableLayoutPanel12.Controls.Add(btnThem, 0, 0);
             tableLayoutPanel12.Dock = DockStyle.Fill;
-            tableLayoutPanel12.Location = new Point(0, 150);
+            tableLayoutPanel12.Location = new Point(0, 186);
             tableLayoutPanel12.Margin = new Padding(0);
             tableLayoutPanel12.Name = "tableLayoutPanel12";
             tableLayoutPanel12.RowCount = 1;
             tableLayoutPanel12.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel12.Size = new Size(324, 50);
+            tableLayoutPanel12.Size = new Size(405, 62);
             tableLayoutPanel12.TabIndex = 14;
             // 
             // btnXoa
             // 
             btnXoa.Dock = DockStyle.Left;
             btnXoa.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnXoa.Location = new Point(165, 3);
+            btnXoa.Location = new Point(206, 4);
+            btnXoa.Margin = new Padding(4);
             btnXoa.Name = "btnXoa";
-            btnXoa.Size = new Size(114, 44);
+            btnXoa.Size = new Size(142, 54);
             btnXoa.TabIndex = 4;
             btnXoa.Text = "Xóa";
             btnXoa.UseVisualStyleBackColor = true;
@@ -349,9 +356,10 @@
             // 
             btnThem.Dock = DockStyle.Left;
             btnThem.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnThem.Location = new Point(3, 3);
+            btnThem.Location = new Point(4, 4);
+            btnThem.Margin = new Padding(4);
             btnThem.Name = "btnThem";
-            btnThem.Size = new Size(114, 44);
+            btnThem.Size = new Size(142, 54);
             btnThem.TabIndex = 3;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = true;
@@ -365,12 +373,12 @@
             tableLayoutPanel5.Controls.Add(label3, 0, 0);
             tableLayoutPanel5.Controls.Add(tbTennguoidung, 1, 0);
             tableLayoutPanel5.Dock = DockStyle.Fill;
-            tableLayoutPanel5.Location = new Point(0, 50);
+            tableLayoutPanel5.Location = new Point(0, 62);
             tableLayoutPanel5.Margin = new Padding(0);
             tableLayoutPanel5.Name = "tableLayoutPanel5";
             tableLayoutPanel5.RowCount = 1;
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.Size = new Size(324, 50);
+            tableLayoutPanel5.Size = new Size(405, 62);
             tableLayoutPanel5.TabIndex = 13;
             // 
             // label3
@@ -378,9 +386,10 @@
             label3.AutoSize = true;
             label3.Dock = DockStyle.Fill;
             label3.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(3, 0);
+            label3.Location = new Point(4, 0);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(116, 50);
+            label3.Size = new Size(144, 62);
             label3.TabIndex = 0;
             label3.Text = "Tên người dùng:";
             label3.TextAlign = ContentAlignment.MiddleLeft;
@@ -390,9 +399,10 @@
             tbTennguoidung.Anchor = AnchorStyles.Left;
             tbTennguoidung.BorderStyle = BorderStyle.FixedSingle;
             tbTennguoidung.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbTennguoidung.Location = new Point(125, 9);
+            tbTennguoidung.Location = new Point(156, 12);
+            tbTennguoidung.Margin = new Padding(4);
             tbTennguoidung.Name = "tbTennguoidung";
-            tbTennguoidung.Size = new Size(196, 32);
+            tbTennguoidung.Size = new Size(244, 38);
             tbTennguoidung.TabIndex = 1;
             // 
             // tableLayoutPanel6
@@ -403,12 +413,12 @@
             tableLayoutPanel6.Controls.Add(label4, 0, 0);
             tableLayoutPanel6.Controls.Add(tbMatkhau, 1, 0);
             tableLayoutPanel6.Dock = DockStyle.Fill;
-            tableLayoutPanel6.Location = new Point(0, 100);
+            tableLayoutPanel6.Location = new Point(0, 124);
             tableLayoutPanel6.Margin = new Padding(0);
             tableLayoutPanel6.Name = "tableLayoutPanel6";
             tableLayoutPanel6.RowCount = 1;
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel6.Size = new Size(324, 50);
+            tableLayoutPanel6.Size = new Size(405, 62);
             tableLayoutPanel6.TabIndex = 12;
             // 
             // label4
@@ -416,9 +426,10 @@
             label4.AutoSize = true;
             label4.Dock = DockStyle.Fill;
             label4.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(3, 0);
+            label4.Location = new Point(4, 0);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(116, 50);
+            label4.Size = new Size(144, 62);
             label4.TabIndex = 0;
             label4.Text = "Mật khẩu:";
             label4.TextAlign = ContentAlignment.MiddleLeft;
@@ -428,9 +439,10 @@
             tbMatkhau.Anchor = AnchorStyles.Left;
             tbMatkhau.BorderStyle = BorderStyle.FixedSingle;
             tbMatkhau.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbMatkhau.Location = new Point(125, 9);
+            tbMatkhau.Location = new Point(156, 12);
+            tbMatkhau.Margin = new Padding(4);
             tbMatkhau.Name = "tbMatkhau";
-            tbMatkhau.Size = new Size(196, 32);
+            tbMatkhau.Size = new Size(244, 38);
             tbMatkhau.TabIndex = 2;
             // 
             // tableLayoutPanel7
@@ -439,47 +451,51 @@
             tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 63.2716064F));
             tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 36.7283936F));
             tableLayoutPanel7.Controls.Add(btnDangxuat, 1, 0);
-            tableLayoutPanel7.Controls.Add(label5, 0, 0);
+            tableLayoutPanel7.Controls.Add(lbTenhienthi, 0, 0);
             tableLayoutPanel7.Dock = DockStyle.Fill;
-            tableLayoutPanel7.Location = new Point(0, 438);
+            tableLayoutPanel7.Location = new Point(0, 544);
             tableLayoutPanel7.Margin = new Padding(0);
             tableLayoutPanel7.Name = "tableLayoutPanel7";
             tableLayoutPanel7.RowCount = 1;
             tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel7.Size = new Size(324, 56);
+            tableLayoutPanel7.Size = new Size(405, 73);
             tableLayoutPanel7.TabIndex = 17;
             // 
             // btnDangxuat
             // 
             btnDangxuat.Dock = DockStyle.Left;
             btnDangxuat.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnDangxuat.Location = new Point(208, 3);
+            btnDangxuat.Location = new Point(260, 4);
+            btnDangxuat.Margin = new Padding(4);
             btnDangxuat.Name = "btnDangxuat";
-            btnDangxuat.Size = new Size(113, 50);
+            btnDangxuat.Size = new Size(141, 65);
             btnDangxuat.TabIndex = 8;
             btnDangxuat.Text = "Đăng xuất";
             btnDangxuat.UseVisualStyleBackColor = true;
             btnDangxuat.Click += btnDangxuat_Click;
             // 
-            // label5
+            // lbTenhienthi
             // 
-            label5.AutoSize = true;
-            label5.Dock = DockStyle.Fill;
-            label5.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(3, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(199, 56);
-            label5.TabIndex = 0;
-            label5.Text = "Nguyễn Văn A";
-            label5.TextAlign = ContentAlignment.MiddleLeft;
+            lbTenhienthi.AutoSize = true;
+            lbTenhienthi.Dock = DockStyle.Fill;
+            lbTenhienthi.Font = new Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbTenhienthi.Location = new Point(4, 0);
+            lbTenhienthi.Margin = new Padding(4, 0, 4, 0);
+            lbTenhienthi.Name = "lbTenhienthi";
+            lbTenhienthi.Size = new Size(248, 73);
+            lbTenhienthi.TabIndex = 0;
+            lbTenhienthi.Text = "Nguyễn Văn A";
+            lbTenhienthi.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // frmTaotaikhoan
             // 
-            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleDimensions = new SizeF(120F, 120F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            ClientSize = new Size(774, 572);
+            ClientSize = new Size(968, 715);
             Controls.Add(tableLayoutPanel1);
+            Margin = new Padding(4);
             Name = "frmTaotaikhoan";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Tạo tài khoản";
             FormClosed += frmTaotaikhoan_FormClosed;
             Load += frmTaotaikhoan_Load;
@@ -528,7 +544,7 @@
         private Button btnXoa;
         private Button btnThem;
         private TableLayoutPanel tableLayoutPanel7;
-        private Label label5;
+        private Label lbTenhienthi;
         private Button btnDangxuat;
         private DataGridViewTextBoxColumn HOVATEN;
         private DataGridViewTextBoxColumn USERNAME;
