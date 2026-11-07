@@ -75,10 +75,10 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
-                logger.LogInformation("Người dùng xóa sinh viên");
                 DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa chứ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
+                logger.LogInformation("Người dùng xóa sinh viên");
                     string maSinhVien = tbMasinhvien.Text.ToString().ToUpper();
                     DataTable dt = quanlysinhvienBLL.XoaSinhVienTheoMaSinhVien(maSinhVien);
                     if (dt.Rows.Count != 0)

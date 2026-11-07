@@ -114,12 +114,16 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
-                logger.LogInformation("Người dùng xóa môn học mới");
-                string maMon = tbMamonhoc.Text.ToString().Trim();
-                DataTable dt = quanlymonhocBLL.XoaMonHocTheoMaMonHoc(maMon);
-                if (dt.Rows.Count != 0)
+                DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa chứ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
                 {
-                    dgvMonhoc.DataSource = dt;
+                    logger.LogInformation("Người dùng xóa môn học mới");
+                    string maMon = tbMamonhoc.Text.ToString().Trim();
+                    DataTable dt = quanlymonhocBLL.XoaMonHocTheoMaMonHoc(maMon);
+                    if (dt.Rows.Count != 0)
+                    {
+                        dgvMonhoc.DataSource = dt;
+                    }
                 }
             }
             catch (ArgumentException agEx)

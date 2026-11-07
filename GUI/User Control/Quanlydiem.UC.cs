@@ -62,10 +62,10 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
-                logger.LogInformation("Người dùng thực hiện xóa điểm.");
                 DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa chứ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
+                logger.LogInformation("Người dùng thực hiện xóa điểm.");
                     string maSinhVien = tbMasinhvien.Text.ToString().Trim();
                     string maMon = tbMamonhoc.Text.ToString().Trim();
                     DataTable dt = quanlydiemBLL.XoaThongTinDiemTheoMaSinhVienVaMaMon(maSinhVien, maMon);

@@ -64,12 +64,16 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
-                logger.LogInformation("Người dùng xóa lớp học");
-                string maLop = tbMalop.Text.ToString().Trim();
-                DataTable dt = quanlylopBLL.XoaThongTinLop(maLop);
-                if (dt.Rows.Count != 0)
+                DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa chứ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
                 {
-                    dgvLop.DataSource = dt;
+                    logger.LogInformation("Người dùng xóa lớp học");
+                    string maLop = tbMalop.Text.ToString().Trim();
+                    DataTable dt = quanlylopBLL.XoaThongTinLop(maLop);
+                    if (dt.Rows.Count != 0)
+                    {
+                        dgvLop.DataSource = dt;
+                    }
                 }
             }
             catch (ArgumentException agEx)

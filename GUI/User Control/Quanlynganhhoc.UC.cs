@@ -57,10 +57,10 @@ namespace StudentManagment.GUI.User_Control
         {
             try
             {
-                logger.LogInformation("Người dùng xóa ngành học");
                 DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa chứ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
+                logger.LogInformation("Người dùng xóa ngành học");
                     string maNganh = tbManganh.Text.Trim();
                     DataTable dt = quanlynganhhocBLL.XoaThongTinNganhTheoMaNganh(maNganh);
                     if (dt.Rows.Count != 0)
