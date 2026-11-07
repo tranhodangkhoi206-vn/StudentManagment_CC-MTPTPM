@@ -37,7 +37,7 @@ namespace StudentManagment.DAL
             }
             catch (SqlException sqlEx)
             {
-                logger.LogError(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi thêm ngành học mới.\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhMoi.Manganh, nganhMoi.Tennganh, nganhMoi.Khoaquanly);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi thêm ngành học mới.\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhMoi.Manganh, nganhMoi.Tennganh, nganhMoi.Khoaquanly);
                 throw;
             }
 
@@ -65,7 +65,7 @@ namespace StudentManagment.DAL
             }
             catch (SqlException sqlEx)
             {
-                logger.LogError(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi sửa ngành học.\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhHoc.Manganh, nganhHoc.Tennganh, nganhHoc.Khoaquanly);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi sửa ngành học.\nMã ngành: {0},\nTên ngành: {1},\nKhoa quản lý: {2}", nganhHoc.Manganh, nganhHoc.Tennganh, nganhHoc.Khoaquanly);
                 throw;
             }
 
@@ -91,7 +91,7 @@ namespace StudentManagment.DAL
             }
             catch (SqlException sqlEx)
             {
-                logger.LogError(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi xóa ngành học.\nMã ngành: {0}", maNganh);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi xóa ngành học.\nMã ngành: {0}", maNganh);
                 throw;
             }
 
@@ -119,7 +119,7 @@ namespace StudentManagment.DAL
             }
             catch (SqlException sqlEx)
             {
-                logger.LogError(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi lấy danh sách ngành học theo Mã ngành.\nMã ngành: {0}", maNganh);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi lấy danh sách ngành học theo Mã ngành.\nMã ngành: {0}", maNganh);
                 throw;
             }
 

@@ -40,7 +40,7 @@ namespace StudentManagment.DAL
             }
             catch (SqlException sqlEx)
             {
-                logger.LogError(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi thêm điểm.\nMã sinh viên: {0},\nMã môn: {1},\nĐiểm chuyên cần: {2},\nĐiểm giữa kỳ: {3},\nĐiểm cuối kỳ: {4},\nĐiểm tổng: {5}", diem.Masinhvien, diem.Mamon, diem.Diemchuyencan, diem.Diemgiuaky, diem.Diemcuoiky, diem.Diemtong);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi thêm điểm.\nMã sinh viên: {0},\nMã môn: {1},\nĐiểm chuyên cần: {2},\nĐiểm giữa kỳ: {3},\nĐiểm cuối kỳ: {4},\nĐiểm tổng: {5}", diem.Masinhvien, diem.Mamon, diem.Diemchuyencan, diem.Diemgiuaky, diem.Diemcuoiky, diem.Diemtong);
                 throw;
             }
         }
@@ -71,7 +71,7 @@ namespace StudentManagment.DAL
             }
             catch (SqlException sqlEx)
             {
-                logger.LogError(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi sửa điểm.\nMã sinh viên: {0},\nMã môn: {1},\nĐiểm chuyên cần: {2},\nĐiểm giữa kỳ: {3},\nĐiểm cuối kỳ: {4},\nĐiểm tổng: {5}", diem.Masinhvien, diem.Mamon, diem.Diemchuyencan, diem.Diemgiuaky, diem.Diemcuoiky, diem.Diemtong);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi sửa điểm.\nMã sinh viên: {0},\nMã môn: {1},\nĐiểm chuyên cần: {2},\nĐiểm giữa kỳ: {3},\nĐiểm cuối kỳ: {4},\nĐiểm tổng: {5}", diem.Masinhvien, diem.Mamon, diem.Diemchuyencan, diem.Diemgiuaky, diem.Diemcuoiky, diem.Diemtong);
                 throw;
             }
         }
@@ -98,7 +98,7 @@ namespace StudentManagment.DAL
             }
             catch (SqlException sqlEx)
             {
-                logger.LogError(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi xóa điểm.\nMã sinh viên: {0},\nMã môn: {1},", maSinhVien, maMon);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi xóa điểm.\nMã sinh viên: {0},\nMã môn: {1},", maSinhVien, maMon);
                 throw;
             }
         }
@@ -126,7 +126,7 @@ namespace StudentManagment.DAL
             }
             catch (SqlException sqlEx)
             {
-                logger.LogError(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi lấy danh sách điểm theo điều khiên Mã sin viên và Mã điểm.\nMã sinh viên: {0},\nMã điểm: {1}", maSinhVien, maMon);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi lấy danh sách điểm theo điều khiên Mã sin viên và Mã điểm.\nMã sinh viên: {0},\nMã điểm: {1}", maSinhVien, maMon);
                 throw;
             }
 

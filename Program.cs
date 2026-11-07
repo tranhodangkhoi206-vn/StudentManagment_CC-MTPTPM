@@ -15,14 +15,10 @@ namespace StudentManagment
             // Khởi tạo factory logger cho dự án
             using ILoggerFactory loggerFactory = Logging.CreateLoggerFactory();
             ILogger logger = loggerFactory.CreateLogger("Global");
+	        // Bắt các lỗi chưa được try catch bắt
             Application.ThreadException += (_, e) =>
             {
                 logger.LogCritical(e.Exception, "Xảy ra lỗi hệ thống.");
-                MessageBox.Show("Xảy ra lỗi hệ thống", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            };
-            AppDomain.CurrentDomain.UnhandledException += (_, e) =>
-            {
-                logger.LogCritical(e.ExceptionObject as Exception, "Xảy ra lỗi không xác đinh");
                 MessageBox.Show("Xảy ra lỗi hệ thống", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             };
             Application.SetHighDpiMode(HighDpiMode.PerMonitorV2);

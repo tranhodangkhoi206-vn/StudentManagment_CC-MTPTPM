@@ -43,7 +43,7 @@ namespace StudentManagment.DAL
             }
             catch (SqlException sqlEx)
             {
-                logger.LogError(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi thêm sinh viên mới.\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVien.MaSinhVien, sinhVien.HoVaTen, sinhVien.MaLop, sinhVien.NgaySinh, sinhVien.GioiTinh, sinhVien.MaNganh, sinhVien.TinhTrang);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi thêm sinh viên mới.\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVien.MaSinhVien, sinhVien.HoVaTen, sinhVien.MaLop, sinhVien.NgaySinh, sinhVien.GioiTinh, sinhVien.MaNganh, sinhVien.TinhTrang);
                 throw;
             }
         }
@@ -74,7 +74,7 @@ namespace StudentManagment.DAL
             catch (SqlException sqlEx)
             {
 
-                logger.LogError(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi sửa sinh viên.\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVien.MaSinhVien, sinhVien.HoVaTen, sinhVien.MaLop, sinhVien.NgaySinh, sinhVien.GioiTinh, sinhVien.MaNganh, sinhVien.TinhTrang);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi sửa sinh viên.\nMã sinh viên: {0},\nTên sinh viên: {1},\nMã lớp: {2},\nNgày sinh: {3},\nGiới tính: {4},\nMã ngành: {5},\nTình trạng: {6}", sinhVien.MaSinhVien, sinhVien.HoVaTen, sinhVien.MaLop, sinhVien.NgaySinh, sinhVien.GioiTinh, sinhVien.MaNganh, sinhVien.TinhTrang);
                 throw;
             }
         }
@@ -99,7 +99,7 @@ namespace StudentManagment.DAL
             }
             catch (SqlException sqlEx)
             {
-                logger.LogError(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi xóa sinh viên.\nMã sinh viên: {0}.", maSinhVien);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi xóa sinh viên.\nMã sinh viên: {0}.", maSinhVien);
                 throw;
             }
 
@@ -127,7 +127,7 @@ namespace StudentManagment.DAL
             }
             catch (SqlException sqlEx)
             {
-                logger.LogError(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi lấy dữ liệu danh sách sinh viên theo Mã sinh viên.\nMã sinh viên: {0}.", maSinhVien);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi lấy dữ liệu danh sách sinh viên theo Mã sinh viên.\nMã sinh viên: {0}.", maSinhVien);
                 throw;
             }
         }

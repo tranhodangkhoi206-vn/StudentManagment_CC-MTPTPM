@@ -30,7 +30,7 @@ namespace StudentManagment.DAL.Util
             }
 	        catch (SqlException sqlEx)
             {
-                logger.LogError(sqlEx,"Xảy ra lỗi cơ sở dữ liệu khi lấy toàn bộ tài khoản.");
+                logger.LogCritical(sqlEx,"Xảy ra lỗi cơ sở dữ liệu khi lấy toàn bộ tài khoản.");
                 throw;
             }
             catch(Exception ex)

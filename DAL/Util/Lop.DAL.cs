@@ -26,12 +26,12 @@ namespace StudentManagment.DAL.Util
             }
             catch (SqlException sqlEx)
             {
-                logger.LogError(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi lấy danh sách lớp cho combo box.");
+                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sở dữ liệu khi lấy danh sách lớp cho combo box.");
                 throw;
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Xảy ra lỗi khi lấy danh sách lớp cho combo boxo");
+                logger.LogCritical(ex, "Xảy ra lỗi khi lấy danh sách lớp cho combo boxo");
                 throw;
             }
         }
@@ -50,7 +50,7 @@ namespace StudentManagment.DAL.Util
                 }			
             } catch(SqlException sqlEx)
             {
-                logger.LogError(sqlEx,"Xảy ra lỗi cơ sở dữ liệu khi lấy toàn bộ lớp học.");
+                logger.LogCritical(sqlEx,"Xảy ra lỗi cơ sở dữ liệu khi lấy toàn bộ lớp học.");
                 throw;
             } catch(Exception ex)
             {

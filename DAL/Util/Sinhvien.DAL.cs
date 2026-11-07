@@ -30,11 +30,11 @@ namespace StudentManagment.DAL.Util
             }
             catch (SqlException sqlEx)
             {
-                logger.LogError(sqlEx, "Lỗi kết nối tới cơ sỡ dữ liệu khi lấy danh sách sinh viên.");
+                logger.LogCritical(sqlEx, "Lỗi kết nối tới cơ sỡ dữ liệu khi lấy danh sách sinh viên.");
                 throw;
             }catch (Exception ex)
             {
-                logger.LogError(ex, "Lỗi xảy ra khi lấy danh sách sinh viên.");
+                logger.LogCritical(ex, "Lỗi xảy ra khi lấy danh sách sinh viên.");
                 throw;
             }
         }

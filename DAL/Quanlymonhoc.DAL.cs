@@ -41,7 +41,7 @@ namespace StudentManagment.DAL
             }
             catch (SqlException sqlEx)
             {
-                logger.LogError(sqlEx, "Xảy ra lỗi dữ liệu khi thêm môn học mới.\nMã môn: {0},\nTên môn: {1},\nMã môn học: {2},\nSố tiết lý thuyết: {3},\nSố tiết thực hành: {4},\nGiảng viên: {5},\nTình trạng: {6}", monHoc.Mamon, monHoc.Tenmon, monHoc.Manganh, monHoc.Sotietlythuyet, monHoc.Sotietthuchanh, monHoc.Giangvien, monHoc.Tinhtrang);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi dữ liệu khi thêm môn học mới.\nMã môn: {0},\nTên môn: {1},\nMã môn học: {2},\nSố tiết lý thuyết: {3},\nSố tiết thực hành: {4},\nGiảng viên: {5},\nTình trạng: {6}", monHoc.Mamon, monHoc.Tenmon, monHoc.Manganh, monHoc.Sotietlythuyet, monHoc.Sotietthuchanh, monHoc.Giangvien, monHoc.Tinhtrang);
                 throw;
             }
 
@@ -72,7 +72,7 @@ namespace StudentManagment.DAL
             }
             catch (SqlException sqlEx)
             {
-                logger.LogError(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi sửa môn học.Mã môn học: {0},\nTên môn: {1},\nMã môn học: {2},\nSố tiết lý thuyết: {3},\nSố tiết thực hành: {4},\nGiảng viên: {5},\nTình trạng: {6}", monHoc.Mamon, monHoc.Tenmon, monHoc.Manganh, monHoc.Sotietlythuyet, monHoc.Sotietthuchanh, monHoc.Giangvien, monHoc.Tinhtrang);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi sửa môn học.Mã môn học: {0},\nTên môn: {1},\nMã môn học: {2},\nSố tiết lý thuyết: {3},\nSố tiết thực hành: {4},\nGiảng viên: {5},\nTình trạng: {6}", monHoc.Mamon, monHoc.Tenmon, monHoc.Manganh, monHoc.Sotietlythuyet, monHoc.Sotietthuchanh, monHoc.Giangvien, monHoc.Tinhtrang);
                 throw;
             }
 
@@ -97,7 +97,7 @@ namespace StudentManagment.DAL
             }
             catch (SqlException sqlEx)
             {
-                logger.LogError(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi xóa môn học.\nMã môn học: {0}", maMon);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi xóa môn học.\nMã môn học: {0}", maMon);
                 throw;
             }
 
@@ -125,7 +125,7 @@ namespace StudentManagment.DAL
             }
             catch (SqlException sqlEx)
             {
-                logger.LogError(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi lấy danh sách môn học theo điều kiện Mã môn học.\nMã môn học: {0}", maMon);
+                logger.LogCritical(sqlEx, "Xảy ra lỗi cơ sở dữ liệu khi lấy danh sách môn học theo điều kiện Mã môn học.\nMã môn học: {0}", maMon);
                 throw;
             }
 
