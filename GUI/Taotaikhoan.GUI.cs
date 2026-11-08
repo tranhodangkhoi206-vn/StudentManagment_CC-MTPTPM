@@ -79,11 +79,15 @@ namespace StudentManagment.GUI
         {
             try
             {
-                string username = tbTennguoidung.Text.ToString().Trim();
-                DataTable dt = taoTaiKhoanBLL.XoaTaiKhoan(username);
-                if (dt.Rows.Count != 0)
+                DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa chứ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
                 {
-                    dgvTaikhoan.DataSource = dt;
+                    string username = tbTennguoidung.Text.ToString().Trim();
+                    DataTable dt = taoTaiKhoanBLL.XoaTaiKhoan(username);
+                    if (dt.Rows.Count != 0)
+                    {
+                        dgvTaikhoan.DataSource = dt;
+                    }
                 }
             }
             catch (ArgumentException agEx)
